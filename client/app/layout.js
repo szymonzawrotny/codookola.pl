@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "cosiedzieje.pl",
+  title: "codookola.pl",
   description: "Aplikacja z którą odkryjesz wszystkie wspaniałe wydarzenia w Twojej okolicy!",
 };
 

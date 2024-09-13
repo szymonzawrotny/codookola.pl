@@ -1,8 +1,8 @@
 'use client'
 import React, { useState, useEffect } from 'react';
 import GoogleMapReact from 'google-map-react';
-import dark from '@/components/mapStyles';
-import "@/styles/home.scss";
+import dark from '@/components/mapPage/mapStyles';
+import "@/styles/mapPage/map.scss";
 
 const Home = ()=>{
 
