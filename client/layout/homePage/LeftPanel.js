@@ -1,10 +1,10 @@
 "use client"
 import "@/styles/homePage/leftPanel.scss";
+import { MdArrowDropDown } from "react-icons/md";
 
 const LeftPanel = ()=>{
 
     const handleClickPanel = (e)=>{
-
         const activePanel = document.querySelector(".active");
         const login = document.querySelector(".login");
         const register = document.querySelector(".register");
@@ -20,8 +20,22 @@ const LeftPanel = ()=>{
         }
     }
 
+    const handleScrollDown = ()=>{
+        window.scrollTo({
+            top:document.documentElement.scrollHeight,
+            behavior: "smooth"
+        })
+        console.log("siemka");
+    }
+
     return(
         <div className="leftPanel">
+            <div className="mobileLogo">codookola.pl</div>
+            <div className="mobileHeader1">Dołącz do nas,</div>
+            <div className="mobileHeader2">odkrywaj wydarzenia!</div>
+            <div className="scrollButton" onClick={handleScrollDown}>
+                <MdArrowDropDown size={72} style={{color:"#222"}} />
+            </div>
             <div className="linePanel"></div>
             <div className="linePanel"></div>
             <div className="linePanel"></div>
@@ -31,7 +45,6 @@ const LeftPanel = ()=>{
                 <div className="register" onClick={handleClickPanel}>register</div>
             </div>
             <div className="active"></div>
-            {/* <div className="logo">codOOkola.pl</div> */}
         </div>
     )
 }

@@ -4,8 +4,10 @@
         flex-basis: 35%;
         position: relative;
         overflow: hidden;
-        //dodaj do tych liń min-width żeby się nie ruszały na mniejszej rozdzielczości?
-        .linePanel:nth-child(4){
+        .mobileLogo,.mobileHeader1,.mobileHeader2,.scrollButton{
+            display: none;
+        }
+        .linePanel:nth-child(8){
             position: absolute;
             left:-130%;
             top:50%;
@@ -15,7 +17,7 @@
             transform: rotate(45deg);
             box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.568);
         }
-        .linePanel:nth-child(3){
+        .linePanel:nth-child(7){
             position: absolute;
             left:-40%;
             top:-30%;
@@ -25,7 +27,7 @@
             transform: rotate(-45deg);
             box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.568);
         }
-        .linePanel:nth-child(1){
+        .linePanel:nth-child(5){
             position: absolute;
             left:0;
             top:0;
@@ -35,7 +37,7 @@
             transform: rotate(-45deg);
             box-shadow: 0 0 25px 25px rgba(0, 0, 0, 0.568);
         }
-        .linePanel:nth-child(2){
+        .linePanel:nth-child(6){
             position: absolute;
             left:-40%;
             top:-20%;
@@ -47,7 +49,7 @@
         }
         .buttons{
             position: absolute;
-            top:20%;
+            bottom: calc(63% - 5px);
             right:0;
             width:200px;
             display:flex;
@@ -66,6 +68,7 @@
                 padding-right: 15px;
                 margin-top:10px;
                 transition: .3s ease-in-out;
+                text-shadow: 1px 1px 0px #222;
             }
             .login.move{
                 color:#222;
@@ -76,7 +79,7 @@
         }
         .active{
             position: absolute;
-            top: calc(20% + 10px);
+            bottom: calc(63% + 80px);
             right:0;
             width:200px;
             height:75px;
@@ -90,7 +93,7 @@
         .active::before{
             content:"";
             position: absolute;
-            top: calc(-75px  );
+            top: calc(-75px);
             right:calc( 0% );
             width:75px;
             height:75px;
@@ -109,13 +112,130 @@
             background-color: transparent;
             box-shadow: 10px -10px 0px 10px aliceblue;
         }
-        .logo{
-            position: absolute;
-            bottom:2%;
-            left:2%;
-            color:#222;
-            font-size: 26px;
-            font-weight: 600;
+    }
+}
+
+@media (max-width: 1020px){
+    .home{
+        flex-direction: column;
+        .leftPanel{
+            flex-basis: 110vh;
+            .mobileLogo{
+                display: block;
+                color:white;
+                font-size:26px;
+                text-shadow: 2px 2px 0px #222;
+                position: absolute;
+                top:5%;
+                left:5%;
+                cursor: pointer;
+            }
+            .mobileHeader1{
+                display: block;
+                position: absolute;
+                top:25%;
+                left:5%;
+                color:white;
+                text-shadow: 2px 2px 0px #222;
+                font-size:64px;
+                font-weight: 900;
+                z-index: 1;
+                margin:15px;
+            }
+            .mobileHeader1::before{
+                content: "";
+                position: absolute;
+                top:-5%;
+                left:20%;
+                width:90%;
+                height:80%;
+                background-color: #bee86e;
+                z-index: -1;
+            }
+            .mobileHeader2{
+                display: block;
+                position: absolute;
+                top:35%;
+                right:5%;
+                color:white;
+                text-shadow: 2px 2px 0px #222;
+                font-size:64px;
+                font-weight: 900;
+                z-index: 1;
+                margin:15px;
+            }
+            .mobileHeader2::before{
+                content: "";
+                position: absolute;
+                top:50%;
+                left:20%;
+                width:85%;
+                height:80%;
+                background-color: #bee86e;
+                z-index: -1;
+            }
+            .scrollButton{
+                display: block;
+                border:2px solid red;
+                position: absolute;
+                left:50%;
+                top:70%;
+                transform: translateX(-50%);
+                border:2px solid #222;
+                cursor: pointer;
+                box-shadow: 2px 2px 0px #222;
+            }
+            .linePanel{
+                display: none;
+            }
+            .buttons{
+                bottom:0;
+                top:none;
+                text-align: center;
+                left:50%;
+                transform: translateX(-50%);
+                flex-direction: row;
+                justify-content: space-around;
+                width:80%;
+                z-index:11;
+                .login,.register{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    flex-basis: 25%;
+                    padding:0;
+                    z-index:11;
+                    border-bottom: 5px solid #FFE97F;
+                }
+                .login.move{
+                    color:#222;
+                    border-bottom: 5px solid #222;
+                }
+                .register.move{
+                    color:#222;
+                    border-bottom: 5px solid #222;
+                }
+            }
+            .active{
+                display: none;
+            }
+            .active::before.active::after{
+                display: none;
+            }
+        }
+    }
+}
+
+@media (max-width: 850px){
+    .home{
+        .leftPanel{
+            .mobileHeader1{
+                font-size:42px;
+            }
+            .mobileHeader2{
+                font-size:36px;
+                width:50%;
+            }
         }
     }
 }
