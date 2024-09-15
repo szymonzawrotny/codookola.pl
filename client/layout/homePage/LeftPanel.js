@@ -2,30 +2,13 @@
 import "@/styles/homePage/leftPanel.scss";
 import { MdArrowDropDown } from "react-icons/md";
 
-const LeftPanel = ()=>{
-
-    const handleClickPanel = (e)=>{
-        const activePanel = document.querySelector(".active");
-        const login = document.querySelector(".login");
-        const register = document.querySelector(".register");
-
-        if(e.target.textContent == "login"){
-            activePanel.classList.remove("move");
-            register.classList.remove("move");
-            login.classList.add("move");
-        } else if(e.target.textContent == "register"){
-            activePanel.classList.add("move");
-            register.classList.add("move");
-            login.classList.remove("move");
-        }
-    }
+const LeftPanel = ({handleClickPanel})=>{
 
     const handleScrollDown = ()=>{
         window.scrollTo({
             top:document.documentElement.scrollHeight,
             behavior: "smooth"
         })
-        console.log("siemka");
     }
 
     return(

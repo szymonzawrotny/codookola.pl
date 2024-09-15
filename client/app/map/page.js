@@ -16,7 +16,7 @@ const Home = ()=>{
     fetch("http://localhost:5000/api")
     .then(response=>response.json())
     .then(data=>setLocations(data))
-
+    
     navigator.geolocation.getCurrentPosition((position)=>{
         setLat(position.coords.latitude);
         setLng(position.coords.longitude);
@@ -34,7 +34,8 @@ const Home = ()=>{
   };
 
   return(
-    <div className="homePage">
+    <div className="mapPage">
+        <div className="sidePanel"></div>
         <GoogleMapReact
                 bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_KEY }}
                 // bootstrapURLKeys={{ key: "" }}
@@ -45,7 +46,7 @@ const Home = ()=>{
                 defaultZoom={13}
                 options={mapOptions}
             >
-                
+        
         </GoogleMapReact>
     </div>
 )

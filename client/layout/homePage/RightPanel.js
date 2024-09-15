@@ -1,19 +1,14 @@
 'use client'
-import { useRouter } from "next/navigation";
+import Link from 'next/link';
+import LoginForm from '@/components/homePage/LoginForm.js';
+import RegisterForm from '@/components/homePage/RegisterForm';
+
+import { FaGithub, FaInstagramSquare, FaFacebook, FaArrowRight } from "react-icons/fa";
 import "@/styles/homePage/rightPanel.scss";
 
-import { IoPersonCircleOutline } from "react-icons/io5";
-import { FaUnlockAlt, FaGithub, FaInstagramSquare, FaFacebook } from "react-icons/fa";
+const RightPanel = ({headerText})=>{
 
-const RightPanel = ()=>{
-
-    const router = useRouter();
-
-    const handleFormSend = (e)=>{
-        e.preventDefault();
-        console.log("siema");
-        router.push("/map");
-    }
+    const form = headerText=="login"?<LoginForm/>:<RegisterForm/>;
 
     return(
         <div className="rightPanel">
@@ -23,23 +18,10 @@ const RightPanel = ()=>{
                 </svg>
             </div>
             <div className="logo"></div>
-            <div className="title">login</div>
-            <form onSubmit={handleFormSend}>
-                <div className="input">
-                    <IoPersonCircleOutline size={42} style={{color:"#222"}}/>
-                    <input type="text" placeholder="Email" />
-                </div>
-                <div className="input">
-                    <FaUnlockAlt size={34} style={{color:"#222",marginLeft: "4px"}}/>
-                    <input type="password" placeholder="Password"/>
-                </div>
-                <div className="down">
-                    <span>Forgot Password?</span>
-                    <input type="submit" value="NEXT" />
-                </div>
-            </form>
+            <div className="title">{headerText}</div>
+            {form}
             <footer>
-                <span>sprawdź też</span>
+                {/* <span>check out</span>
                 <div className="socials">
                     <a href="https://github.com/szymonzawrotny" target="_blank">
                         <div className="icon">
@@ -56,12 +38,15 @@ const RightPanel = ()=>{
                             <FaFacebook size={26}/>
                         </div>
                     </a>
-                </div>
+                </div> */}
                 <div className="wave2">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
                         <path fill="#FFE97F" fillOpacity="1" d="M0,224L48,240C96,256,192,288,288,256C384,224,480,128,576,80C672,32,768,32,864,53.3C960,75,1056,117,1152,144C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
                     </svg>
                 </div>
+                <Link href="/policy" className="policy">
+                    privacy policy <FaArrowRight/>
+                </Link>
             </footer>
         </div>
     )

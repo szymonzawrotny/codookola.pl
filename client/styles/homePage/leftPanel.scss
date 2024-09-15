@@ -176,7 +176,6 @@
             }
             .scrollButton{
                 display: block;
-                border:2px solid red;
                 position: absolute;
                 left:50%;
                 top:70%;
@@ -235,6 +234,7 @@
             .mobileHeader2{
                 font-size:36px;
                 width:50%;
+                right:10%;
             }
         }
     }
