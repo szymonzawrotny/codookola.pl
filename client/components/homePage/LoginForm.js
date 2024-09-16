@@ -7,12 +7,15 @@ import { FaEyeSlash } from "react-icons/fa6";
 const LoginForm = ()=>{
 
     const router = useRouter();
+    const emailRef = useRef();
+
     const [email,setEmail] = useState("");
     const [pass,setPass] = useState("");
-    const [error,setError] = useState("");
-    const [passwordVisible, setPasswordVisible] = useState(false);
 
-    const ref = useRef();
+    const [emailError,setEmailError] = useState("");
+    const [passwordError,setPasswordError] = useState("");
+
+    const [passwordVisible, setPasswordVisible] = useState(false);
 
     const handleFormSend = async (e)=>{
         e.preventDefault();
@@ -33,25 +36,36 @@ const LoginForm = ()=>{
         if(data.message == "Zalogowano pomyślnie"){
             router.push("/map");
         } else{
-            setError("Nieprawidłowe dane logowania!");
+            setEmailError("Nieprawidłowe dane logowania!");
+            setPasswordError("Nieprawidłowe dane logowania!");
         }
     }
 
     const validation = ()=>{
-        //console.log("Siema");
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        let email = emailRef.current.value;
+
+        if(!regex.test(email) && email !== ""){
+            setEmailError("Błędny adres email!");
+        } else{
+            setEmailError("");
+        }
     }
 
     const handleInput = e=>{
 
-        if(e.target.id == "text") setEmail(e.target.value);
-        else if(e.target.id == "password") setPass(e.target.value)
+        if(e.target.id == "text"){
+            setEmail(e.target.value);
+            setEmailError("");
+        }else if(e.target.id == "password"){
+            setPass(e.target.value);
+            setPasswordError("");
+        }
 
-        validation();
+        //validation();
     }
 
-    const changeType = () => {
-        setPasswordVisible(!passwordVisible);
-    };
+    const changeType = () => setPasswordVisible(!passwordVisible);
 
     return(
         <form onSubmit={handleFormSend} className="login">
@@ -62,19 +76,19 @@ const LoginForm = ()=>{
                     id="text"
                     placeholder="Email" 
                     value={email}
-                    onChange={handleInput}
-                    />
+                    ref={emailRef}
+                    onChange={handleInput}/>
+                <div className="errorText">{emailError}</div>
             </div>
             <div className="input">
-                <FaUnlockAlt size={34} style={{color:"#222",marginLeft: "4px"}}/>
+                <FaUnlockAlt size={34} style={{color:"#222",marginLeft: "8px"}}/>
                 <input 
                     type={passwordVisible ? "text" : "password"}
                     id="password" 
                     placeholder="Password"
                     value={pass}
-                    onChange={handleInput}
-                    ref={ref}
-                    />
+                    onChange={handleInput}/>
+                    <div className="errorText">{passwordError}</div>
                 {passwordVisible ? <FaEyeSlash size={36} onClick={changeType}/> : <FaEye size={36} onClick={changeType}/>}
             </div>
             <div className="down">

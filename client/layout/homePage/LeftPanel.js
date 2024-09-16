@@ -24,8 +24,8 @@ const LeftPanel = ({handleClickPanel})=>{
             <div className="linePanel"></div>
             <div className="linePanel"></div>
             <div className="buttons">
-                <div className="login move" onClick={handleClickPanel}>login</div>
-                <div className="register" onClick={handleClickPanel}>register</div>
+                <div className="login move" onClick={handleClickPanel}>sign in</div>
+                <div className="register" onClick={handleClickPanel}>sign up</div>
             </div>
             <div className="active"></div>
         </div>

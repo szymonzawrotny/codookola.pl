@@ -4,11 +4,16 @@ import LoginForm from '@/components/homePage/LoginForm.js';
 import RegisterForm from '@/components/homePage/RegisterForm';
 
 import { FaGithub, FaInstagramSquare, FaFacebook, FaArrowRight } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
 import "@/styles/homePage/rightPanel.scss";
 
 const RightPanel = ({headerText})=>{
 
     const form = headerText=="login"?<LoginForm/>:<RegisterForm/>;
+
+    const handleGoogle = ()=>{
+        console.log("sign up with google");
+    }
 
     return(
         <div className="rightPanel">
@@ -25,6 +30,10 @@ const RightPanel = ({headerText})=>{
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 319">
                         <path fill="#FFE97F" fillOpacity="1" d="M0,224L48,240C96,256,192,288,288,256C384,224,480,128,576,80C672,32,768,32,864,53.3C960,75,1056,117,1152,144C1248,171,1344,181,1392,186.7L1440,192L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
                     </svg>
+                </div>
+                <div className="googleButton" onClick={handleGoogle}>
+                    <FcGoogle size={28}/>
+                    Sign up with google
                 </div>
                 <Link href="/policy" className="policy">
                     privacy policy <FaArrowRight/>

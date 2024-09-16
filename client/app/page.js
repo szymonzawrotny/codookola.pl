@@ -14,12 +14,12 @@ const Home = ()=>{
         const login = document.querySelector(".login");
         const register = document.querySelector(".register");
 
-        if(e.target.textContent == "login"){
+        if(e.target.textContent == "sign in"){
             activePanel.classList.remove("move");
             register.classList.remove("move");
             login.classList.add("move");
             setHeaderText("login");
-        } else if(e.target.textContent == "register"){
+        } else if(e.target.textContent == "sign up"){
             activePanel.classList.add("move");
             register.classList.add("move");
             login.classList.remove("move");

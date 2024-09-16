@@ -44,6 +44,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
+                position: relative;
                 input{
                     width: 100%;
                     border: none;
@@ -55,6 +56,18 @@
                 input:focus{
                     outline: none;
                 }
+                .errorText{
+                    position: absolute;
+                    top:100%;
+                    left:55px;
+                    margin-top: 15px;
+                    text-transform: capitalize;
+                    font-weight: 700;
+                    color:Red;
+                }
+            }
+            .input.error{
+                border-bottom: 2px solid red;
             }
             .down{
                 width:100%;
@@ -62,6 +75,10 @@
                 justify-content: space-between;
                 align-items: center;
                 flex-grow: 1;
+                .captchaBox{
+                    opacity: 0;
+                    z-index: -1;
+                }
                 span{
                     color:#222;
                     font-weight: 700;
@@ -88,6 +105,9 @@
             .input{
                 margin:25px;
             }
+            .down{
+                margin-top: 5px;
+            }
         }
         footer{
             position: absolute;
@@ -97,8 +117,22 @@
             height: 12vh;
             min-height: 80px;
             display: flex;
-            flex-direction: column;
             align-items: center;
+            .googleButton{
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                border:1px solid #222;
+                margin-left: 10%;
+                height:60px;
+                padding:15px;
+                border-radius:45px;
+                cursor:pointer;
+                background-color: aliceblue;
+                svg{
+                    margin-right: 15px;
+                }
+            }
             a.policy{
                 display: flex;
                 align-items: center;
@@ -146,14 +180,11 @@
                 z-index:2;
                 .input{
                     margin:15px;
-                }
-                .errorText{
-                    bottom:50%;
-                }
-            }
-            form.register{
-                .errorText{
-                    bottom:20%;
+                    .errorText{
+                        margin-top: 5px;
+                        font-size:12px;
+                        left:0;
+                    }
                 }
             }
             footer{
@@ -168,7 +199,7 @@
                     width:100%;
                     z-index:-1;
                 }
-                a.policy{
+                .policy{
                     right:2%;
                 }
             }
@@ -203,6 +234,21 @@
                 }
                 .errorText{
                     bottom:40%;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 600px){
+    .home{
+        .rightPanel{
+            footer{
+                align-items: flex-end;
+                .googleButton{
+                    margin: 0 0 15px 15px;
+                    width:40%;
+                    font-size: 12px;
                 }
             }
         }
