@@ -35,19 +35,17 @@ const Home = ()=>{
 
   return(
     <div className="mapPage">
-        <div className="sidePanel"></div>
-        <GoogleMapReact
-                bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_KEY }}
-                // bootstrapURLKeys={{ key: "" }}
-                center={{
-                        lat: lat,
-                        lng: lng
-                    }}
-                defaultZoom={13}
-                options={mapOptions}
-            >
-        
-        </GoogleMapReact>
+      <div className="sidePanel"></div>
+      <GoogleMapReact
+          bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_KEY }}
+          // bootstrapURLKeys={{ key: "" }}
+          center={{
+                  lat: lat,
+                  lng: lng
+              }}
+          defaultZoom={13}
+          options={mapOptions}>
+      </GoogleMapReact>
     </div>
 )
 }
