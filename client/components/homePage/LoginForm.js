@@ -33,9 +33,11 @@ const LoginForm = ()=>{
             }
         })
 
-        const data = await response.json();
+        if(response.ok){
+            const data = await response.json();
+            const token = data.token;
 
-        if(data.message == "Zalogowano pomyślnie"){
+            localStorage.setItem('token',token);
 
             router.push("/map");
         } else{

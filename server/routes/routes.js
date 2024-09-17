@@ -1,4 +1,5 @@
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken'
 import { conn } from '../config/database.js';
 
 const register = async (req,res)=>{
@@ -63,7 +64,10 @@ const login = (req,res)=>{
 
                 if(isMatch){
                     user.status = "Zalogowany pomyślnie";
-                    res.status(200).json({ success: true, message: 'Zalogowano pomyślnie' });
+
+                    const token = jwt.sign({email,pass},process.env.TOKEN_SECRET_KEY,{expiresIn:"1h"})
+
+                    res.status(200).json({ success: true, message: 'Zalogowano pomyślnie',token });
                 } else{
                     res.status(401).json({ success: false, message: 'Błędny login' });
                 }
@@ -84,4 +88,25 @@ const api = (req,res)=>{
     })
 };
 
-export { register, login, api }
+const protectedRoute = (req,res)=>{
+    const authHeader = req.headers['authorization'];
+
+    if(!authHeader){
+        return res.status(401).json({message: "brak tokena :("})
+    }
+
+    const token = authHeader.split(' ')[1];
+    if(!token){
+        return res.status(401).json({message: "token nieprawidłowy"})
+    }
+
+    jwt.verify(token, process.env.TOKEN_SECRET_KEY, (err, decoded)=>{
+        if(err){
+            return res.status(401).json({message: "niepoprawny token"})
+        }
+
+        res.status(200).json({message: "token prawidłowy", user: decoded})
+    })
+}
+
+export { register, login, api, protectedRoute }
