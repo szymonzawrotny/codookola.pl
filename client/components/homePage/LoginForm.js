@@ -8,6 +8,8 @@ const LoginForm = ()=>{
 
     const router = useRouter();
     const emailRef = useRef();
+    const emailInputRef = useRef();
+    const passInputRef = useRef();
 
     const [email,setEmail] = useState("");
     const [pass,setPass] = useState("");
@@ -34,21 +36,13 @@ const LoginForm = ()=>{
         const data = await response.json();
 
         if(data.message == "Zalogowano pomyślnie"){
+
             router.push("/map");
         } else{
             setEmailError("Nieprawidłowe dane logowania!");
             setPasswordError("Nieprawidłowe dane logowania!");
-        }
-    }
-
-    const validation = ()=>{
-        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        let email = emailRef.current.value;
-
-        if(!regex.test(email) && email !== ""){
-            setEmailError("Błędny adres email!");
-        } else{
-            setEmailError("");
+            emailInputRef.current.classList.add("error");
+            passInputRef.current.classList.add("error");
         }
     }
 
@@ -57,19 +51,19 @@ const LoginForm = ()=>{
         if(e.target.id == "text"){
             setEmail(e.target.value);
             setEmailError("");
+            emailInputRef.current.classList.remove("error");
         }else if(e.target.id == "password"){
             setPass(e.target.value);
             setPasswordError("");
+            passInputRef.current.classList.remove("error");
         }
-
-        //validation();
     }
 
     const changeType = () => setPasswordVisible(!passwordVisible);
 
     return(
         <form onSubmit={handleFormSend} className="login">
-            <div className="input">
+            <div className="input" ref={emailInputRef}>
                 <IoPersonCircleOutline size={42} style={{color:"#222"}}/>
                 <input 
                     type="text" 
@@ -80,7 +74,7 @@ const LoginForm = ()=>{
                     onChange={handleInput}/>
                 <div className="errorText">{emailError}</div>
             </div>
-            <div className="input">
+            <div className="input" ref={passInputRef}>
                 <FaUnlockAlt size={34} style={{color:"#222",marginLeft: "8px"}}/>
                 <input 
                     type={passwordVisible ? "text" : "password"}
