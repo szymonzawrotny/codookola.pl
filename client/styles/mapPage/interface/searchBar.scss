@@ -1,0 +1,67 @@
+.mapPage{
+    .searchBar{
+        position: fixed;
+        top:0;
+        left:50%;
+        width:50%;
+        z-index: 2;
+        min-height: 80px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .search{
+            height:50px;
+            width:75%;
+            margin-left:10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            background-color: aliceblue;
+            box-shadow: 3px 3px 0px #FFE97F;
+            padding: 5px;
+            .logo{
+                min-width:30px;
+                height:30px;
+                background-image: url("../../../public/images/icon.png");
+                background-size: cover;
+                background-position: center;
+                margin-left: 5px;
+            }
+            input{
+                background-color: aliceblue;
+                border: none;
+                height:100%;
+                letter-spacing: 2px;
+                width:80%;
+                padding-left: 10px;
+            }
+            input:focus{
+                outline: none;
+            }
+            svg{
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@media (max-width: 850px){
+    .mapPage{
+        .searchBar{
+            position: fixed;
+            top:0;
+            left:0;
+            width:100%;
+            height:10svh;
+            min-height: 80px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            .search{
+                input{
+                    padding-left: 15px;
+                }
+            }
+        }
+    }
+}

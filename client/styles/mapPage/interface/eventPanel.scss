@@ -1,0 +1,56 @@
+.mapPage{
+    .eventPanel{
+        position: fixed;
+        top:0;
+        left:-553px;
+        height:100dvh;
+        width:550px;
+        background-color: aliceblue;
+        box-shadow: 3px 3px 0px #FFE97F;
+        color:#222;
+        z-index: 1;
+        padding-left: 100px;
+        transition: .3s ease-in-out;
+        .close{
+            position: absolute;
+            top:0;
+            right: 0;
+            margin:15px;
+            cursor: pointer;
+            svg{
+                font-size:32px;
+            }
+        }
+    }
+    .eventPanel.active{
+        transform: translateX(553px);
+    }
+}
+
+@media (max-width:1200px){
+    .mapPage{
+        .eventPanel{
+            width:400px;
+            left:-403px;
+        }
+        .eventPanel.active{
+            transform: translateX(403px);
+        }
+    }
+}
+
+@media (max-width:850px){
+    .mapPage{
+        .eventPanel{
+            width:100%;
+            padding:0;
+            padding-bottom: 50px;
+            top:100%;
+            height:500px;
+            left:0;
+        }
+        .eventPanel.active{
+            transform: translate(0,-500px);
+        }
+    }
+}

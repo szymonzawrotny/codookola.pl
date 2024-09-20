@@ -1,7 +1,10 @@
 'use client'
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+
+import InterFace from '@/layout/mapPage/Interface';
 import GoogleMapReact from 'google-map-react';
 import dark from '@/components/mapPage/mapStyles';
+import { PiMapPinFill } from "react-icons/pi";
 import "@/styles/mapPage/map.scss";
 
 const Home = ()=>{
@@ -12,8 +15,6 @@ const Home = ()=>{
   const [selectedId, setSelectedId] = useState(null);
   const [eventOver,setEventOver] = useState("");
 
-  const [text,setText] = useState("siemka2");
-
   const fetchUserData = async ()=>{
     const token = localStorage.getItem('token');
 
@@ -22,13 +23,13 @@ const Home = ()=>{
       const response = await fetch("http://localhost:5000/protected", {
         method: "GET",
         headers: {
-            "Authorization": `Bearer ${token}`  // Przekaż token w nagłówku
+            "Authorization": `Bearer ${token}`
         }
       });
 
       if (response.ok) {
           const data = await response.json();
-          setText(data.user.email);
+          console.log(data);
       } else {
           console.log("brak dostępu do danych")
       }
@@ -49,7 +50,7 @@ const Home = ()=>{
     },(error)=>{
         console.log("error getting location " + error.message);
         setLat(53.56317881922556)
-        setLng(20.99479282831869)
+        setLng(20.99479282831869)  //usuń stąd i daj po prostu do state te wartości
     });
 
     fetchUserData();
@@ -63,9 +64,7 @@ const Home = ()=>{
 
   return(
     <div className="mapPage">
-      <div className="sidePanel">
-        {text}
-      </div>
+      <InterFace/>
       <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.NEXT_PUBLIC_KEY }}
           // bootstrapURLKeys={{ key: "" }}
@@ -74,6 +73,7 @@ const Home = ()=>{
                   lng: lng
               }}
           defaultZoom={13}
+          className="halo"
           options={mapOptions}>
       </GoogleMapReact>
     </div>
