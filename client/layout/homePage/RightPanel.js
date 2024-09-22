@@ -3,8 +3,7 @@ import Link from 'next/link';
 import LoginForm from '@/components/homePage/LoginForm.js';
 import RegisterForm from '@/components/homePage/RegisterForm';
 
-import { FaGithub, FaInstagramSquare, FaFacebook, FaArrowRight } from "react-icons/fa";
-import { FcGoogle } from "react-icons/fc";
+import { FaArrowRight } from "react-icons/fa";
 import "@/styles/homePage/rightPanel.scss";
 
 const RightPanel = ({headerText})=>{

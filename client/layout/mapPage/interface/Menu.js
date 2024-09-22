@@ -1,9 +1,23 @@
+'use client'
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
+
 import "@/styles/mapPage/interface/menu.scss"
 import { MdOutlineManageAccounts,  MdOutlinePrivacyTip } from "react-icons/md";
 import { BiLogOutCircle } from "react-icons/bi";
 import { RiMapPinUserFill } from "react-icons/ri";
 
+
 const Menu = ({menuRef})=>{
+
+    const {data:session} = useSession({
+        required: false,
+    })
+
+    const logout = ()=>{
+        signOut({ callbackUrl: "/" })
+    }
+
     return(
         <aside className="menu" ref={menuRef}>
             <div className="element">
@@ -21,7 +35,7 @@ const Menu = ({menuRef})=>{
                 <MdOutlinePrivacyTip/>
                 Polityka prywatności
             </div>
-            <div className="element">
+            <div className="element" onClick={logout}>
                 <BiLogOutCircle />
                 Wyloguj
             </div>

@@ -3,7 +3,7 @@ import cors from 'cors';
 import session from 'express-session';
 import "dotenv/config";
 
-import { register, login, api, protectedRoute } from "./routes/routes.js";
+import { register, api} from "./routes/routes.js";
 import { handleDisconnect } from './config/database.js';
 
 const app = express();
@@ -28,5 +28,3 @@ app.listen(port,()=>{
 
 app.get("/api", api)
 app.post("/reg", register);
-app.post("/log", login);
-app.get("/protected", protectedRoute)

@@ -175,9 +175,9 @@
             footer{
                 height: 12svh;
                 z-index:1;
-                background-color: #FFE97F;
+                //background-color: #FFE97F;
                 .wave2{
-                    display: block;
+                    //display: block;
                     position: absolute;
                     bottom: calc(100% - 5px);
                     left:0;
@@ -205,8 +205,13 @@
                     }
                 }
                 .down{
+                    span{
+                        font-size: 14px;
+                    }
                     input[type="submit"]{
-                        height:50px;
+                        height:40px;
+                        width:120px;
+                        font-size:18px;
                     }
                 }
             }

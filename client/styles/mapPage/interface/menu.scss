@@ -17,7 +17,8 @@
         .element{
             width:90%;
             min-height:80px;
-            box-shadow: 3px 3px 3px 3px #222;
+            box-shadow: 3px 3px 0px 1px #222;
+            border:1px solid #222;
             color:#222;
             cursor:pointer;
             display: flex;
@@ -46,6 +47,7 @@
             margin:0;
             font-size: 22px;
             cursor: default;
+            border:none;
         }
         .element:nth-child(1):hover{
             transform: none;

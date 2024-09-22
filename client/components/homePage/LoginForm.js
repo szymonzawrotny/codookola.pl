@@ -1,5 +1,7 @@
 import { useState, useRef } from 'react';
 import { useRouter } from "next/navigation";
+import { signIn } from 'next-auth/react';
+
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { FaEye , FaUnlockAlt } from "react-icons/fa";
 import { FaEyeSlash } from "react-icons/fa6";
@@ -22,30 +24,21 @@ const LoginForm = ()=>{
     const handleFormSend = async (e)=>{
         e.preventDefault();
 
-        const response  = await fetch("http://localhost:5000/log",{
-            method: "POST",
-            body: JSON.stringify({
-                email,
-                pass
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
-
-        if(response.ok){
-            const data = await response.json();
-            const token = data.token;
-
-            localStorage.setItem('token',token);
-
-            router.push("/map");
-        } else{
+        const result = await signIn("credentials",{
+            redirect: false,
+            username: email,
+            password: pass
+          })
+      
+          if(result.error){
+            console.log(result.error);
             setEmailError("Nieprawidłowe dane logowania!");
             setPasswordError("Nieprawidłowe dane logowania!");
             emailInputRef.current.classList.add("error");
             passInputRef.current.classList.add("error");
-        }
+          } else {
+            router.push('/map')
+          }
     }
 
     const handleInput = e=>{
