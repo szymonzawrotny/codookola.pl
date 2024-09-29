@@ -1,6 +1,7 @@
 'use client'
 import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import Link from "next/link";
 
 import "@/styles/mapPage/interface/menu.scss"
 import { MdOutlineManageAccounts,  MdOutlinePrivacyTip } from "react-icons/md";
@@ -23,18 +24,18 @@ const Menu = ({menuRef})=>{
             <div className="element">
                 cod<span style={{color:"#FFE97F"}}>oo</span>kola.pl
             </div>
-            <div className="element">
+            <Link href="/userpanel" className="element">
                 <MdOutlineManageAccounts />
                 Twój profil
-            </div>
+            </Link>
             <div className="element">
                 <RiMapPinUserFill/>
                 Twoje wydarzenia
             </div>
-            <div className="element">
+            <Link href="/policy" className="element">
                 <MdOutlinePrivacyTip/>
                 Polityka prywatności
-            </div>
+            </Link>
             <div className="element" onClick={logout}>
                 <BiLogOutCircle />
                 Wyloguj

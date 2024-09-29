@@ -17,6 +17,9 @@
             right: 0;
             margin:15px;
             cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-user-select: none; 
             svg{
                 font-size:32px;
             }

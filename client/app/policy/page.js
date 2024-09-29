@@ -48,7 +48,7 @@ const Policy = ()=>{
     ]
 
     const elements = chapterData.map(one=>{
-        return <Chapter tittle={one.tittle} text={one.text} />
+        return <Chapter tittle={one.tittle} text={one.text} key={one.tittle}/>
     })
 
     return(

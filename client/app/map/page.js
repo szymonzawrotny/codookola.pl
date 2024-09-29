@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, useLoadScript } from '@react-google-maps/api';
 
 import dark from '@/components/mapPage/mapStyles';
 import InterFace from '@/layout/mapPage/Interface';
@@ -48,11 +48,13 @@ const Home = () => {
     )
   })
 
-
   return (
     <div className="mapPage">
       <InterFace />
-      <LoadScript googleMapsApiKey={process.env.NEXT_PUBLIC_KEY}>
+      <LoadScript 
+        //googleMapsApiKey={process.env.NEXT_PUBLIC_KEY}
+        googleMapsApiKey=""
+        >
         <GoogleMap
           mapContainerStyle={{ height: "100vh", width: "100%" }}
           center={{ lat: lat, lng: lng }}

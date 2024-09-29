@@ -17,7 +17,7 @@ app.use(
         saveUninitialized: true,
         cookie: {secure: false}
     })
-)
+)   //to do usunięcia?
 
 handleDisconnect();
 

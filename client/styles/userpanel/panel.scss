@@ -1,0 +1,148 @@
+.logged{
+    height:100svh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #222;
+    nav{
+        flex-basis: 15%;
+        height:92svh;
+        min-height: 550px;
+        align-self: flex-start;
+        margin-top: 4svh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        .logo{
+            color:white;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 5px;
+            font-size: 22px;
+            cursor: default;
+        }
+        .option{
+            flex-basis:60px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            text-transform: capitalize;
+            font-weight: 400;
+            letter-spacing: 2px;
+            cursor: pointer;
+            border-top-left-radius: 25px;
+            border-bottom-left-radius: 25px;
+            color: white;
+            font-size: 20;
+            svg{
+                margin:0 20px 0 20px;
+                font-size: 26px;
+                color:aliceblue;
+            }
+        }
+        .option.active{
+            background-color: aliceblue;
+            position: relative;
+            color:#222;
+            font-weight: 700;
+            svg{
+                color: #222;
+            }
+        }
+        .option.active::after{
+            content: "";
+            width:40px;
+            height:40px;
+            position: absolute;
+            top:-40px;
+            right:0px;
+            border-radius: 0 0 50%;
+            box-shadow: 10px 10px aliceblue;
+        }
+        .option.active::before{
+            content: "";
+            width:40px;
+            height:40px;
+            position: absolute;
+            bottom:-40px;
+            right:0px;
+            border-radius: 0 50%;
+            box-shadow: 10px -10px aliceblue;
+        }
+        .add{
+            background-color: rgba(240, 248, 255, 0.678);
+            height:25svh;
+            margin:50px 25px 0px 0px;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: justify;
+        }
+    } 
+    main{
+        background-color: aliceblue;
+        flex-basis: 80%;
+        height:95svh;
+        border-radius: 50px;
+        display: flex;
+        flex-direction: column;
+        header{
+            flex-basis: 8svh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            .userInfo{
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                margin-left: 15px;
+                font-weight: 700;
+                cursor: default;
+                svg{
+                    font-size: 28px;
+                    margin: 0 10px 0 15px;
+                }
+            }
+            .space{
+                flex-grow: 1;
+            }
+            .search{
+                width:40svh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border-bottom: 2px solid #222;
+                svg{
+                    font-size: 28px;
+                    margin: 0 10px 0 15px;
+                    cursor: pointer;
+                }
+                input{
+                    background-color: transparent;
+                    border:none;
+                    width:80%;
+                    padding:10px;
+                    font-size: 18px;
+                }
+                input:focus{
+                    outline: none;
+                }
+            }
+            .alerts{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 0 25px 0 25px;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+        .content{
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+}

@@ -1,0 +1,30 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+.userPanel{
+    background-color: aliceblue;
+    min-height: 100svh;
+    overflow: hidden;
+    .noLoggedError{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height:100svh;
+        width:100%;
+        font-size: 48px;
+        font-weight: 700;;
+        color:#FFE97F;
+        text-shadow: 2px 2px 0px #222;
+    }
+}
+
+@media (max-width:900px){
+    .userPanel{
+        .noLoggedError{
+            font-size: 22px;
+        }
+    }
+}
