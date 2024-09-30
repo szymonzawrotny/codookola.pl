@@ -1,4 +1,6 @@
 import "@/styles/userpanel/panel.scss"
+
+import { useSession } from 'next-auth/react'
 import { BiLogOutCircle } from "react-icons/bi";
 import { BsChatText } from "react-icons/bs";
 import { MdEventNote } from "react-icons/md";
@@ -8,6 +10,10 @@ import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
 
 const Panel = ()=>{
+
+    const {data:session} = useSession({
+        required: false,
+    })
 
     const handleOption = (e)=>{
 
@@ -22,15 +28,17 @@ const Panel = ()=>{
         }else {
             e.target.classList.add("active");
         }
+
     }
 
     return(
         <div className="logged">
             <nav>
                 <div className="logo">
-                    logo
+                    <span className="hi">Hejka</span>
+                    <span className="user">{session.user.email.email}</span>
                 </div>
-                <div className="option  active" onClick={handleOption}>
+                <div className="option active" onClick={handleOption}>
                     <FaHome />
                     home
                 </div>
@@ -39,7 +47,7 @@ const Panel = ()=>{
                     info
                 </div>
                 <div className="option" onClick={handleOption}>
-                    <IoStatsChart size={24}/>
+                    <IoStatsChart/>
                     stats
                 </div>
                 <div className="option" onClick={handleOption}>
@@ -47,7 +55,7 @@ const Panel = ()=>{
                     events
                 </div>
                 <div className="option" onClick={handleOption}>
-                    <BsChatText size={22} style={{marginLeft:"22px"}}/>
+                    <BsChatText/>
                     support
                 </div>
                 <div className="option" onClick={handleOption}>
@@ -55,7 +63,8 @@ const Panel = ()=>{
                     log out
                 </div>
                 <div className="add">
-                    tutaj jakiś tekst fajny
+                    zapraszam na nasz serwer discord?
+                    <button>dołącz</button>
                 </div>
             </nav>
             <main>

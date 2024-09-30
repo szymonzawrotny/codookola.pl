@@ -7,7 +7,6 @@
 .userPanel{
     background-color: aliceblue;
     min-height: 100svh;
-    overflow: hidden;
     .noLoggedError{
         display: flex;
         justify-content: center;
@@ -27,4 +26,21 @@
             font-size: 22px;
         }
     }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background-color:#555;
 }
