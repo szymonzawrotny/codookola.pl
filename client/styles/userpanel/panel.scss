@@ -82,6 +82,7 @@
             cursor: default;
             position: relative;
             padding:25px;
+            box-shadow: 5px 5px 0 0 #222;
             button{
                 position: absolute;
                 bottom:5%;
@@ -95,9 +96,10 @@
                 letter-spacing: 4px;
                 cursor: pointer;
                 transition: .3s ease-in-out;
+                box-shadow: 2px 2px 0 0 #222;
             }
             button:hover{
-                transform: rotate(5deg);
+                transform: scale(1.02);
             }
         }
     }
@@ -110,6 +112,7 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        box-shadow: 5px 5px 0 0 #222;
         header{
             width:100%;
             flex-basis: 8svh;

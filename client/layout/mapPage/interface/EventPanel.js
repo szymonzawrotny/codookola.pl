@@ -1,23 +1,19 @@
 import "@/styles/mapPage/interface/eventPanel.scss";
+import { animated } from 'react-spring'
 import { IoClose } from "react-icons/io5";
 
-const EventPanel = ({eventPanelRef, component})=>{
+const EventPanel = ({ component, pos, bindPos, isMobile}) => {
 
-    const closePanel = ()=>{
-        eventPanelRef.current.classList.remove("active");
+    return (
+        <animated.div
+            className="eventPanel"
+            {...bindPos()}
+            style={isMobile ? { y: pos.y } : { x: pos.x }}>
 
-        [...document.querySelectorAll(".icon")].forEach(one=>{
-            one.classList.remove("active");
-        })
-    }
+            <div className="line"></div>
+            {/* {component} */}
 
-    return(
-        <div className="eventPanel" ref={eventPanelRef}>
-            <div className="close" onClick={closePanel}>
-                <IoClose />
-            </div>
-            {component}
-        </div>
+        </animated.div>
     )
 }
 export default EventPanel;

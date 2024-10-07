@@ -7,7 +7,7 @@
         position: relative;
         padding-bottom: 12vh;
         background-color: aliceblue;
-        .wave,.wave2{
+        .wave{
             display: none;
         }
         .logo{
@@ -185,14 +185,6 @@
                 height: 12svh;
                 z-index:1;
                 //background-color: #FFE97F;
-                .wave2{
-                    //display: block;
-                    position: absolute;
-                    bottom: calc(100% - 5px);
-                    left:0;
-                    width:100%;
-                    z-index:-1;
-                }
                 .policy{
                     right:2%;
                 }
