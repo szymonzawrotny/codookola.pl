@@ -2,13 +2,26 @@
     .eventPanel{
         position: absolute;
         bottom:0;
-        left:-350px;
+        left:-500px;
         width:500px;
         height:100svh;
+        padding-left: 80px;
         background-color: aliceblue;
         z-index:1;
         touch-action:none;
         box-shadow: 3px -3px 0px #FFE97F;
+        .close{
+            position: absolute;
+            top:15px;
+            right: 15px;
+            cursor: pointer;
+            user-select: none;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -webkit-user-select: none; 
+            svg{
+                font-size:26px;
+            }
+        }
         .line{
             display: none;
         }
@@ -23,6 +36,7 @@
             width:100%;
             left:0;
             bottom:-380px;
+            padding-left: 0;
             .line{
                 display: block;
                 position: absolute;
@@ -37,6 +51,9 @@
                 user-select: none;
                 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
                 -webkit-user-select: none; 
+            }
+            .close{
+                top:5px;
             }
         }
     }

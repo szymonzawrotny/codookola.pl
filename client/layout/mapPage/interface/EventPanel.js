@@ -4,6 +4,18 @@ import { IoClose } from "react-icons/io5";
 
 const EventPanel = ({ component, pos, bindPos, isMobile}) => {
 
+    const closePanel = ()=>{
+        [...document.querySelectorAll(".icon")].forEach(one=>{
+            one.classList.remove("active");
+        })
+
+        if(isMobile){
+            pos.y.start(0);
+        } else {
+            pos.x.start(0);
+        }
+    }
+
     return (
         <animated.div
             className="eventPanel"
@@ -11,7 +23,10 @@ const EventPanel = ({ component, pos, bindPos, isMobile}) => {
             style={isMobile ? { y: pos.y } : { x: pos.x }}>
 
             <div className="line"></div>
-            {/* {component} */}
+            <div className="close" onClick={closePanel}>
+                <IoClose/>
+            </div>
+            {component}
 
         </animated.div>
     )

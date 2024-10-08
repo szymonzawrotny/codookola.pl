@@ -1,6 +1,6 @@
 'use client'
 import { useRef, useState, useEffect } from 'react';
-import { useSpring, animated } from 'react-spring'
+import { useSpring } from 'react-spring'
 import { useDrag } from 'react-use-gesture'
 
 import SidePanel from '@/layout/mapPage/interface/SidePanel';
@@ -20,14 +20,14 @@ const InterFace = () => {
     const menuRef = useRef();
     const [component, setComponent] = useState(<Save />);
 
-    const pos = useSpring({ x: 0, y: 0 });
+    const [posState, setPosState] = useState({ x: 0, y: 0 });
+    const pos = useSpring({ x: posState.x, y: posState.y });
     const [isMobile, setIsMobile] = useState(false);
 
     const handleBurger = () => {
         burgerRef.current.classList.toggle("active");
         menuRef.current.classList.toggle("active");
     }
-
 
     const handleIconAnimation = (e) => {
         [...document.querySelectorAll(".icon")].forEach(one => {
@@ -46,6 +46,7 @@ const InterFace = () => {
             e.target.classList.add("active");
             id = e.target.id;
         }
+        
 
         switch (id) {
             case "discover": setComponent(<Discover />);
@@ -57,6 +58,12 @@ const InterFace = () => {
             case "add": setComponent(<Add />);
                 break;
         }
+
+        if(isMobile){
+            setPosState({ x: 0, y: -430 });
+        } else {
+            setPosState({ x: 500, y: 0 });
+        }
     }
 
     const bindPos = useDrag(params => {
@@ -67,18 +74,19 @@ const InterFace = () => {
             if (isMobile) {
                 value = params.offset[1];
 
-                if (value < -400) value = -400;
+                if (value < -430) value = -430;
                 if (value > 0) value = 0;
-                console.log(value);
 
                 pos.y.start(value);
+                setPosState((prev) => ({ ...prev, y: value }));
             } else {
                 value = params.offset[0];
 
                 if (value < 0) value = 0;
-                if (value > 400) value = 400;
+                if (value > 430) value = 430;
 
                 pos.x.start(value);
+                setPosState((prev) => ({ ...prev, x: value }));
             }
         }
     })
@@ -88,6 +96,7 @@ const InterFace = () => {
             setIsMobile(window.innerWidth <= 850);
             pos.x.set(0);
             pos.y.set(0);
+            setPosState({ x: 0, y: 0 });
         }
 
         handleResize();
@@ -98,7 +107,7 @@ const InterFace = () => {
         <>
             <Burger burgerRef={burgerRef} handleBurger={handleBurger} />
             <SearchBar />
-            <SidePanel handleIconAnimation={handleIconAnimation} pos={pos} />
+            <SidePanel handleIconAnimation={handleIconAnimation}/>
             <Menu menuRef={menuRef} />
             <EventPanel
                 pos={pos}
