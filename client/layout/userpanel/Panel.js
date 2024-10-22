@@ -9,7 +9,7 @@ import { FaRegUserCircle, FaHome, FaRegBell } from "react-icons/fa";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
 
-const Panel = ()=>{
+const Panel = ({children})=>{
 
     const {data:session} = useSession({
         required: false,
@@ -83,7 +83,7 @@ const Panel = ()=>{
                     </div>
                 </header>
                 <div className="content">
-                    siema
+                    {children}
                 </div>
             </main>
         </div>

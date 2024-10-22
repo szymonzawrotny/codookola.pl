@@ -1,26 +1,53 @@
+import { useState, useEffect} from 'react';
 import "@/styles/mapPage/interface/panels/discover.scss"
-import { SlOptions } from "react-icons/sl";
-import { FaRegUserCircle } from "react-icons/fa";
+import { HiMagnifyingGlass } from "react-icons/hi2";
+
+import Event from "./Event";
 
 const Discover = ()=>{
+
+    const [eventList,setEventList] = useState([]);
+
+    const fetchData = async () =>{
+        const result = await fetch("http://localhost:5000/api")
+        .then(response => response.json())
+        .then(data=>setEventList(data));
+    }
+
+    useEffect(()=>{
+        fetchData();
+    },[]);
+
+    const elements = eventList.map((one,index)=>{
+        return <Event
+                author={one.author_id}
+                name={one.nazwa}
+                />
+    })
+
     return(
         <div className="discover">
             <div className="search">
-                search
+                <div className='input'>
+                    <input type="text"></input>
+                    <HiMagnifyingGlass />
+                </div>
+                <div className='sort'>
+                    <select className='type'>
+                        <option>Wszystkie</option>
+                        <option>Kultura</option>
+                        <option>Sport</option>
+                        <option>Koncert</option>
+                        <option>Festiwal</option>
+                    </select>
+                    <select className='date'>
+                        <option>Popularne</option>
+                        <option>Już zaraz!</option>
+                    </select>
+                </div>
             </div>
             <div className="eventList">
-                <div className="event">
-                    <div className="options"><SlOptions size={28}/></div>
-                    <div className="userData">
-                        <div className="icon"><FaRegUserCircle/></div>
-                        <div className="name">szymonzawrotny@gmail.com</div>
-                    </div>
-                    <div className="photos">2</div>
-                    <div className="title">3</div>
-                </div>
-                <div className="event">dwa</div>
-                <div className="event">trzy</div>
-                <div className="event">cztery</div>
+                {elements}
             </div>
         </div>
     )

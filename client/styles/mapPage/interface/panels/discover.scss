@@ -7,14 +7,51 @@
             flex-direction: column;
             overflow: hidden;
             .search{
-                flex-basis: 25%;
+                flex-basis: 15%;
+                min-height: 150px;
                 display: flex;
+                flex-direction: column;
                 justify-content: center;
                 align-items: center;
                 box-shadow: 0px 2px 1px 0px #22222256;
                 background-color:#FFE97F;
+                .input{
+                    margin-top: 25px;
+                    width:80%;
+                    background-color: aliceblue;
+                    padding:5px;
+                    border-bottom: 2px solid #222;
+                    display: flex;
+                    input{
+                        background-color: aliceblue;
+                        border:none;
+                        flex-basis: 80%;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
+                    svg{
+                        flex-basis: 20%;
+                        font-size:28px;
+                        cursor:pointer;
+                    }
+                }
+                .sort{
+                    margin-top:5px;
+                    width:80%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: flex-start;
+                    select:nth-child(1){
+                        margin-right: 5px;
+                    }
+                    select:focus{
+                        outline:none;
+                    }
+                }
             }
             .eventList{
+                padding-bottom: 25px;
                 flex-grow: 1;
                 display: flex;
                 flex-direction: column;
@@ -24,14 +61,13 @@
                 .event{
                     width:100%;
                     height:400px;
-                    min-height: 300px;
+                    min-height: 400px;
                     position: relative;
                     display: flex;
                     flex-direction: column;
-                    box-shadow: 0px 2px 1px 0px #22222256;
                     .options{
                         position: absolute;
-                        right:5px;
+                        right:10px;
                         top:5px;
                         cursor: pointer;
                     }
@@ -40,18 +76,93 @@
                         display: flex;
                         justify-content: flex-start;
                         align-items: center;
+                        font-weight: 700;
                         .icon{
                             svg{
                                 font-size:28px;
                                 margin: 0 15px 0 15px;
+                                color:#222;
                             }
+                        }
+                        .name{
+                            cursor: default;
                         }
                     }
                     .photos{
-                        flex-basis:60%;
+                        overflow: hidden;
+                        position: relative;
+                        .swiper-wrapper{
+                            height: 200px;
+                            .swiper-slide{
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                position: relative;
+                                img{
+                                    position: absolute;
+                                    top:50%;
+                                    left:50%;
+                                    transform: translate(-50%,-50%);
+                                    width:100%;
+                                    height: auto;
+                                }
+                            }
+                        }
                     }
                     .title{
-                        flex-basis: 20%;
+                        flex-basis: 10%;
+                        position: relative;
+                        display: flex;
+                        align-items:center;
+                        font-weight: 700;
+                        letter-spacing: 2px;
+                        cursor: default;
+                        text-transform: capitalize;
+                        span{
+                            margin-left: 15px;
+                        }
+                    }
+                    .buttons{
+                        flex-grow:1;
+                        display: flex;
+                        justify-content: flex-end;
+                        align-items: center;
+                        .like{
+                            height:40px;
+                            display: flex;
+                            justify-content:center;
+                            align-items: center;
+                            margin-right: 15px;
+                            cursor: pointer;
+                            svg{
+                                font-size:26px;
+                            }
+                        }
+                        .save{
+                            height:40px;
+                            display: flex;
+                            justify-content:center;
+                            align-items: center;
+                            cursor: pointer;
+                            svg{
+                                font-size:26px;
+                            }
+                        }
+                        .check{
+                            background-color: #FFE97F;
+                            width:120px;
+                            height:40px;
+                            margin: 0 15px 0 15px;
+                            display: flex;
+                            justify-content:center;
+                            align-items:center;
+                            border-radius:25px;
+                            text-transform: uppercase;
+                            font-weight: 600;
+                            box-shadow: 2px 2px #222;
+                            border:none;
+                            cursor: pointer;
+                        }
                     }
                 }
             }
@@ -82,7 +193,9 @@
             .discover{
                 .eventList{
                     .event{
-                        min-height: 300px;
+                        min-height: 350px;
+                        box-shadow:none;
+                        margin-bottom: 25px;
                         .userData{
                             .icon{
                                 svg{
@@ -93,7 +206,7 @@
                     }
                 }
                 .search{
-                    min-height: 70px;
+                    min-height: 135px;
                 }
             }
         }

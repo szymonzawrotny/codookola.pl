@@ -4,7 +4,7 @@
         left:0;
         bottom:0;
         height:100dvh;
-        width:5%;
+        width:80px;
         min-width:80px;
         z-index:2;
         background-color: aliceblue;
@@ -61,9 +61,9 @@
                 font-size: 14px;
             }
             .icon.active{
-                color:red;
+                color:#FFE97F;
                 svg{
-                    color:red;
+                    color:#FFE97F;
                 }
             }
         }

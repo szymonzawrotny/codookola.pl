@@ -1,0 +1,27 @@
+.mapPage{
+    .eventPanel{
+        .add{
+            width:100%;
+            height:100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            h1{
+                position: relative;
+                z-index:10;
+                margin-top: 25px;
+                cursor: default;
+            }
+            h1::after{
+                content:"";
+                position: absolute;
+                top:-5px;
+                left:-15px;
+                background-color: #FFE97F;
+                width:100%;
+                height:80%;
+                z-index: -1;
+            }
+        }
+    }
+}
