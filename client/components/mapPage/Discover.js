@@ -29,7 +29,7 @@ const Discover = ()=>{
         <div className="discover">
             <div className="search">
                 <div className='input'>
-                    <input type="text"></input>
+                    <input type="text" placeholder='Wpisz wydarzenie...'></input>
                     <HiMagnifyingGlass />
                 </div>
                 <div className='sort'>

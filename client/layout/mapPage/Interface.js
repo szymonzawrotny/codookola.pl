@@ -60,7 +60,7 @@ const InterFace = () => {
         }
 
         if(isMobile){
-            setPosState({ x: 0, y: -430 });
+            setPosState({ x: 0, y: -530 });
         } else {
             setPosState({ x: 500, y: 0 });
         }
@@ -74,11 +74,24 @@ const InterFace = () => {
             if (isMobile) {
                 value = params.offset[1];
 
-                if (value < -430) value = -430;
-                if (value > 0) value = 0;
+                if(params.dragging){
+                    if (value < -530) value = -530;
+                    if (value > 0) value = 0;
 
-                pos.y.start(value);
-                setPosState((prev) => ({ ...prev, y: value }));
+                    pos.y.start(value);
+                    setPosState((prev) => ({ ...prev, y: value }));
+                    params.offset[1] = value;
+                } else {
+                    if(value < -250){
+                        pos.y.start(-530);
+                        setPosState((prev) => ({ ...prev, y: -530 }));
+                        params.offset[1] = -530;  // usuwa różnicę pomiędzy stanem przeciągania a stanem upuszczenia 
+                    } else {
+                        pos.y.start(0);
+                        setPosState((prev) => ({ ...prev, y: 0 }));
+                        params.offset[1] = 0;
+                    }
+                }
             } else {
                 value = params.offset[0];
 

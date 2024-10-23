@@ -25,14 +25,15 @@
                     input{
                         background-color: aliceblue;
                         border:none;
-                        flex-basis: 80%;
+                        flex-basis: 90%;
+                        letter-spacing: 4px;
                     }
                     input:focus{
                         outline: none;
                     }
                     svg{
-                        flex-basis: 20%;
-                        font-size:28px;
+                        flex-basis: 10%;
+                        font-size:32px;
                         cursor:pointer;
                     }
                 }
@@ -42,6 +43,12 @@
                     display: flex;
                     align-items: center;
                     justify-content: flex-start;
+                    select{
+                        border:none;
+                        border-bottom: 2px solid #222;
+                        padding:5px;
+                        background: aliceblue;
+                    }
                     select:nth-child(1){
                         margin-right: 5px;
                     }
@@ -187,7 +194,7 @@
     background-color:#555;
 }
 
-@media (max-width:800px){
+@media (max-width:850px){
     .mapPage{
         .eventPanel{
             .discover{
