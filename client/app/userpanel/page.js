@@ -1,9 +1,11 @@
 'use client'
-import "@/styles/userPanel/userPanel.scss";
+import "@/styles/userPanel/home.scss";
 
 const Home = ()=>{
     return(
-        <div>home</div>
+        <div className="home">
+            home
+        </div>
     )
 }
 export default Home;

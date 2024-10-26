@@ -1,0 +1,100 @@
+.stats{
+    width:100%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    .chartButtons{
+        height:15svh;
+        width:90%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        .chartButton{
+            background-color: #FFE97F;
+            box-shadow: 4px 4px #222;
+            width:25%;
+            height:80%;
+            cursor: pointer;
+            transition: .3s ease-in-out;
+            position: relative;
+            min-width:120px;
+            span{
+                position: absolute;
+                top:15px;
+                left:15px;
+                font-weight: 600;
+                font-size:22px;
+            }
+            svg{
+                position: absolute;
+                right:30px;
+                bottom:15px;
+                font-size: 32px;
+                transition: .3s ease-in-out;
+            }
+        }
+        .chartButton:hover{
+            transform: scale(1.02);
+        }
+        .chartButton.active{
+            background-color: #ffea7f6f;
+        }
+    }
+    .chart{
+        height:65svh;
+        width:90%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        header{
+            position: absolute;
+            top:15px;
+            left:25px;
+            background-color: #FFE97F;
+            width:140px;
+            height:40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: default;
+            box-shadow:2px 2px #222;
+        }
+        select{
+            position: absolute;
+            top:15px;
+            right:25px;
+            width:140px;
+            height:40px;
+            background-color: #FFE97F;
+            box-shadow:2px 2px #222;
+            cursor: pointer;
+        }
+        select:focus{
+            outline:none;
+        }
+    }
+}
+
+@media (max-width:900px){
+    .stats{
+        .chartButtons{
+            width:100%;
+            justify-content: space-around;
+            .chartButton{
+                span{
+                    font-size: 14px;
+                }
+                svg{
+                    font-size: 24px;
+                    right:15px;
+                }
+            }
+        }
+        .chart{
+            width:100%;
+        }
+    }
+}

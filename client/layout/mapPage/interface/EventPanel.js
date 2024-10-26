@@ -2,7 +2,7 @@ import "@/styles/mapPage/interface/eventPanel.scss";
 import { animated } from 'react-spring'
 import { IoClose } from "react-icons/io5";
 
-const EventPanel = ({ component, pos, bindPos, isMobile}) => {
+const EventPanel = ({ component, pos, bindPos, isMobile, setPosState}) => {
 
     const closePanel = ()=>{
         [...document.querySelectorAll(".icon")].forEach(one=>{
@@ -11,6 +11,7 @@ const EventPanel = ({ component, pos, bindPos, isMobile}) => {
 
         if(isMobile){
             pos.y.start(0);
+            setPosState((prev) => ({ ...prev, y: 0 }));
         } else {
             pos.x.start(0);
         }

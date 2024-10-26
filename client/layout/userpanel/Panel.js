@@ -1,6 +1,8 @@
 import "@/styles/userpanel/panel.scss"
 
 import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import Link from "next/link";
 import { BiLogOutCircle } from "react-icons/bi";
 import { BsChatText } from "react-icons/bs";
 import { MdEventNote } from "react-icons/md";
@@ -11,8 +13,13 @@ import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
 const Panel = ({children})=>{
 
+    const router = useRouter();
+
     const {data:session} = useSession({
-        required: false,
+        required: true,
+        onUnauthenticated(){
+            router.push("/")
+        }
     })
 
     const handleOption = (e)=>{
@@ -35,29 +42,29 @@ const Panel = ({children})=>{
         <div className="logged">
             <nav>
                 <div className="logo">
-                    <span className="hi">Hejka</span>
+                    <span className="hi"></span>
                     <span className="user">{session.user.email.email}</span>
                 </div>
-                <div className="option active" onClick={handleOption}>
+                <Link href="/userpanel" className="option active" onClick={handleOption}>
                     <FaHome />
                     home
-                </div>
-                <div className="option" onClick={handleOption}>
+                </Link>
+                <Link href="/userpanel/info" className="option" onClick={handleOption}>
                     <FaRegUserCircle />
                     info
-                </div>
-                <div className="option" onClick={handleOption}>
+                </Link>
+                <Link href="/userpanel/stats" className="option" onClick={handleOption}>
                     <IoStatsChart/>
                     stats
-                </div>
-                <div className="option" onClick={handleOption}>
+                </Link>
+                <Link href="/userpanel/events" className="option" onClick={handleOption}>
                     <MdEventNote/>
                     events
-                </div>
-                <div className="option" onClick={handleOption}>
+                </Link>
+                <Link href="/userpanel/support" className="option" onClick={handleOption}>
                     <BsChatText/>
                     support
-                </div>
+                </Link>
                 <div className="option" onClick={handleOption}>
                     <BiLogOutCircle/>
                     log out

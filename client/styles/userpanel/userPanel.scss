@@ -7,6 +7,7 @@
 .userPanel{
     background-color: aliceblue;
     min-height: 100svh;
+    max-height: 100svh;
     .noLoggedError{
         display: flex;
         justify-content: center;

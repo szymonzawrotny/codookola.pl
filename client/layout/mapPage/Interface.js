@@ -126,6 +126,7 @@ const InterFace = () => {
                 pos={pos}
                 bindPos={bindPos}
                 isMobile={isMobile}
+                setPosState={setPosState}
                 component={component} />
         </>
     )
