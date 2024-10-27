@@ -13,12 +13,13 @@ import Discover from '@/components/mapPage/Discover';
 import Save from '@/components/mapPage/Save';
 import Last from '@/components/mapPage/Last';
 import Add from '@/components/mapPage/Add';
+import Details from '@/components/mapPage/Details';
 
 const InterFace = () => {
 
     const burgerRef = useRef();
     const menuRef = useRef();
-    const [component, setComponent] = useState(<Save />);
+    const [component, setComponent] = useState(<Save/>);
 
     const [posState, setPosState] = useState({ x: 0, y: 0 });
     const pos = useSpring({ x: posState.x, y: posState.y });
@@ -27,6 +28,10 @@ const InterFace = () => {
     const handleBurger = () => {
         burgerRef.current.classList.toggle("active");
         menuRef.current.classList.toggle("active");
+    }
+
+    const handleButton = (title,author,desc)=>{
+        setComponent(<Details title={title} author={author} desc={desc}/>)
     }
 
     const handleIconAnimation = (e) => {
@@ -49,13 +54,13 @@ const InterFace = () => {
         
 
         switch (id) {
-            case "discover": setComponent(<Discover />);
+            case "discover": setComponent(<Discover handleButton={handleButton}/>);
                 break;
-            case "save": setComponent(<Save />);
+            case "save": setComponent(<Save/>);
                 break;
-            case "last": setComponent(<Last />);
+            case "last": setComponent(<Last/>);
                 break;
-            case "add": setComponent(<Add />);
+            case "add": setComponent(<Add/>);
                 break;
         }
 

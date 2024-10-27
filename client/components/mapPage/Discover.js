@@ -4,7 +4,7 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 
 import Event from "./Event";
 
-const Discover = ()=>{
+const Discover = ({handleButton})=>{
 
     const [eventList,setEventList] = useState([]);
 
@@ -20,7 +20,10 @@ const Discover = ()=>{
 
     const elements = eventList.map((one,index)=>{
         return <Event
+                key={index}
                 author={one.author_id}
+                desc={one.opis}
+                handleButton={handleButton}
                 name={one.nazwa}
                 />
     })

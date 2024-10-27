@@ -26,8 +26,12 @@ const SwiperBox = ()=>{
         //   modifier: 1,
         //   slideShadows: false,
         // }}
-        onSlideChange={() => console.log('slide change')}
-        onSwiper={(swiper) => console.log(swiper)}
+        onSlideChange={() => {
+            //console.log('slide change')
+        }}
+        onSwiper={(swiper) => {
+            //console.log(swiper)
+        }}
         >
         <SwiperSlide>
             <Image

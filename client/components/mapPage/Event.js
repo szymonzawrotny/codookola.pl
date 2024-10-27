@@ -1,8 +1,15 @@
+import { useState } from 'react';
+
 import { SlOptions } from "react-icons/sl";
-import { FaRegUserCircle,FaRegHeart, FaRegBookmark } from "react-icons/fa";
+import { FaRegUserCircle,FaRegHeart, FaRegBookmark, FaHeart } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa6";
 import SwiperBox from "./SwiperBox";
 
-const Event = ({author,name})=>{
+const Event = ({author,name,handleButton,desc})=>{
+
+    const [like,setLike] = useState(false);
+    const [save,setSave] = useState(false);
+
     return(
         <div className="event">
             <div className="options"><SlOptions size={28}/></div>
@@ -17,13 +24,13 @@ const Event = ({author,name})=>{
                 <span>{name}</span>
             </div>
             <div className="buttons">
-                <div className="like">
-                    <FaRegHeart/>
+                <div className="like" onClick={()=>setLike(!like)}>
+                    {like? <FaHeart/> : <FaRegHeart/>}
                 </div>
-                <div className="save">
-                    <FaRegBookmark/>
+                <div className="save" onClick={()=>{setSave(!save)}}>
+                    {save? <FaBookmark/> : <FaRegBookmark/>}
                 </div>
-                <button className="check">sprawdź</button>
+                <button className="check" onClick={()=>handleButton(name,author,desc)}>sprawdź</button>
             </div>
         </div>
     )

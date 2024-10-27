@@ -39,7 +39,12 @@
             transform: scale(1.02);
         }
         .chartButton.active{
-            background-color: #ffea7f6f;
+            span{
+                color:royalblue;
+            }
+            svg{
+                color:royalblue
+            }
         }
     }
     .chart{

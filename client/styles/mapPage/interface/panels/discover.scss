@@ -98,6 +98,7 @@
                     .photos{
                         overflow: hidden;
                         position: relative;
+                        user-select: none;
                         .swiper-wrapper{
                             height: 200px;
                             .swiper-slide{
