@@ -42,8 +42,6 @@ const Panel = ({children})=>{
         <div className="logged">
             <nav>
                 <div className="logo">
-                    <span className="hi"></span>
-                    <span className="user">{session.user.email.email}</span>
                 </div>
                 <Link href="/userpanel" className="option active" onClick={handleOption}>
                     <FaHome />
@@ -78,7 +76,7 @@ const Panel = ({children})=>{
                 <header>
                     <div className="userInfo">
                         <FaRegUserCircle />
-                        szymonzawrotny@gmail.com
+                        {session?.user?.email?.email}
                     </div>
                     <div className="space"></div>
                     <div className="search">

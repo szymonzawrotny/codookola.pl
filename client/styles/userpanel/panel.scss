@@ -19,14 +19,6 @@
             flex-direction: column;
             justify-content: space-around;
             align-items: center;
-            .hi{
-                display: block;
-                cursor:default;
-            }
-            .user{
-                display: none;
-                cursor:default;
-            }
         }
         .option{
             text-decoration: none;
@@ -117,6 +109,7 @@
         header{
             width:100%;
             flex-basis: 8svh;
+            min-height: 8svh;
             display: flex;
             justify-content: flex-start;
             align-items: center;
@@ -167,7 +160,7 @@
             }
         }
         .content{
-            flex-grow: 1;
+            height:85svh;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -200,13 +193,6 @@
                 height:8svh;
                 color:#222;
                 justify-content: center;
-                .user{
-                    display: block;
-                    margin: 15px;
-                }
-                .hi{
-                    margin: 15px;
-                }
             }
             .option{
                 flex-basis: 22svh;
@@ -250,11 +236,6 @@
 @media (max-width:800px){
     .logged{
         nav{
-            .logo{
-                .hi,.user{
-                    font-size: 16px;
-                }
-            }
             .option{
                 flex-basis: 18svh;
                 height:18svh;

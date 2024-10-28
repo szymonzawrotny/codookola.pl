@@ -3,21 +3,13 @@ import cors from 'cors';
 import session from 'express-session';
 import "dotenv/config";
 
-import { register, api} from "./routes/routes.js";
+import { register, api, likes, addLike, save, addSave} from "./routes/routes.js";
 import { handleDisconnect } from './config/database.js';
 
 const app = express();
 
 app.use(cors());
-app.use(express.json());
-app.use(
-    session({
-        secret:process.env.TOKEN_SECRET_KEY,
-        resave: false,
-        saveUninitialized: true,
-        cookie: {secure: false}
-    })
-)   //to do usunięcia?
+app.use(express.json());  //to do usunięcia?
 
 handleDisconnect();
 
@@ -28,3 +20,7 @@ app.listen(port,()=>{
 
 app.get("/api", api)
 app.post("/reg", register);
+app.get("/likes", likes);
+app.post("/addlike",addLike);
+app.get("/save",save)
+app.post("/addSave",addSave);

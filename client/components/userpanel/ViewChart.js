@@ -79,7 +79,7 @@ const ViewChart = ()=>{
                 <option value="month">zeszły miesiąc</option>
                 <option value="year">zeszły rok</option>
                 </select>
-            <LineChart data={currentData} width={1000} height={500}>
+            <LineChart data={currentData} width={1000} height={450}>
                 <CartesianGrid/>
                 <Line dataKey="value" dot={false} type="monotone"/>
                 <XAxis dataKey="date"/>

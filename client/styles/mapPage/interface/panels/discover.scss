@@ -87,12 +87,13 @@
                         .icon{
                             svg{
                                 font-size:28px;
-                                margin: 0 15px 0 15px;
+                                margin: 0 10px 0 15px;
                                 color:#222;
                             }
                         }
                         .name{
                             cursor: default;
+                            font-size:14px;
                         }
                     }
                     .photos{
@@ -126,6 +127,7 @@
                         letter-spacing: 2px;
                         cursor: default;
                         text-transform: capitalize;
+                        font-size:16px;
                         span{
                             margin-left: 15px;
                         }
