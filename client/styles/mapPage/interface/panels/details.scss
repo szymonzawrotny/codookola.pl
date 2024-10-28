@@ -1,0 +1,128 @@
+.mapPage{
+    .eventPanel{
+        .details{
+            height:100svh;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            .mainPhoto{
+                overflow: hidden;
+                position: relative;
+                user-select: none;
+                width:100%;
+                box-shadow: 0px 2px 1px 0px #22222256;
+                .swiper-wrapper{
+                    height: 200px;
+                    .swiper-slide{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        position: relative;
+                        img{
+                            position: absolute;
+                            top:50%;
+                            left:50%;
+                            transform: translate(-50%,-50%);
+                            width:100%;
+                            height: auto;
+                        }
+                    }
+                }
+            }
+            .detailButtons{
+                width:100%;
+                height:5svh;
+                display: flex;
+                justify-content:flex-end;
+                align-items: center;
+                .like{
+                    height:40px;
+                    display: flex;
+                    justify-content:center;
+                    align-items: center;
+                    margin-right: 15px;
+                    cursor: pointer;
+                    svg{
+                        font-size:26px;
+                    }
+                }
+                .save{
+                    height:40px;
+                    display: flex;
+                    justify-content:center;
+                    align-items: center;
+                    cursor: pointer;
+                    margin-right: 15px;
+                    svg{
+                        font-size:26px;
+                    }
+                }
+            }
+            h1{
+                text-transform: capitalize;
+                cursor: default;
+                font-size:20px;
+                width:100%;
+                padding-left: 15px;
+                margin-top: 15px;
+                font-weight: 400;
+                letter-spacing: 2px;
+            }
+            h2{
+                width:100%;
+                cursor: default;
+                padding-left: 15px;
+                font-size:14px;
+                font-weight: 400;
+                letter-spacing: 2px;
+                margin-top: 5px;
+            }
+            .detailsNav{
+                width:100%;
+                height:50px;
+                display: flex;
+                justify-content: space-around;
+                text-transform: uppercase;
+                align-items: end;
+                .option{
+                    border-bottom:2px solid #222;
+                    width:25%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: flex-end;
+                    cursor: pointer;
+                }
+                .option:hover{
+                    opacity: .8;
+                }
+            }
+            .detailsMain{
+                width:100%;
+                flex-grow: 1;
+                display: flex;
+                flex-direction: column;
+                overflow-y: scroll;
+                p{
+                    width:100%;
+                    height:20svh;
+                    padding:25px;
+                    text-align: justify;
+                    letter-spacing: 2px;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width:800px){
+    .mapPage{
+        .eventPanel{
+            .details{
+                .mainPhoto{
+                    margin-top: 50px;
+                }
+            }
+        }
+    }
+}

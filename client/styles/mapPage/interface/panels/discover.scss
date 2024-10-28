@@ -94,6 +94,7 @@
                         .name{
                             cursor: default;
                             font-size:14px;
+                            font-weight: 500;
                         }
                     }
                     .photos{
@@ -123,7 +124,7 @@
                         position: relative;
                         display: flex;
                         align-items:center;
-                        font-weight: 700;
+                        font-weight: 500;
                         letter-spacing: 2px;
                         cursor: default;
                         text-transform: capitalize;
