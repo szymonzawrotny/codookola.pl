@@ -2,7 +2,6 @@ import { useState, useEffect} from 'react';
 import "@/styles/mapPage/interface/panels/discover.scss"
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { useSession } from 'next-auth/react'
-import { FaRegUserCircle,FaRegHeart, FaRegBookmark, FaHeart } from "react-icons/fa";
 
 import Event from "./Event";
 

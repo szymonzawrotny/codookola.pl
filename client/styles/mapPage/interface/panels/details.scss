@@ -92,9 +92,14 @@
                     justify-content: center;
                     align-items: flex-end;
                     cursor: pointer;
+                    transition:.3s ease-in-out;
                 }
                 .option:hover{
                     opacity: .8;
+                }
+                .option.active{
+                    border-bottom:2px solid royalblue;
+                    color:royalblue;
                 }
             }
             .detailsMain{
@@ -120,7 +125,7 @@
         .eventPanel{
             .details{
                 .mainPhoto{
-                    margin-top: 50px;
+                    margin-top: 40px;
                 }
             }
         }

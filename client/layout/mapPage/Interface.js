@@ -19,7 +19,7 @@ const InterFace = () => {
 
     const burgerRef = useRef();
     const menuRef = useRef();
-    const [component, setComponent] = useState(<Save/>);
+    const [component, setComponent] = useState(<Discover/>);
 
     const [posState, setPosState] = useState({ x: 0, y: 0 });
     const pos = useSpring({ x: posState.x, y: posState.y });

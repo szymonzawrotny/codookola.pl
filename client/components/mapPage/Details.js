@@ -2,6 +2,7 @@
 import {useState} from 'react';
 import "@/styles/mapPage/interface/panels/details.scss"
 import { FaRegUserCircle,FaRegHeart, FaRegBookmark, FaHeart } from "react-icons/fa";
+import { FaBookmark } from "react-icons/fa6";
 import SwiperBox from "./SwiperBox";
 
 const General = ({desc})=> <div><p>{desc}</p></div>
@@ -11,9 +12,16 @@ const Info = ()=> <div>info</div>
 const Details = ({title,author,desc})=>{
 
     const [component,setComponent] = useState(<General desc={desc}/>)
+    const [like, setLike] = useState(false);
+    const [save, setSave] = useState(false);
 
     const handleDetails = (e)=>{
         const value = e.target.getAttribute("data-component");
+
+        [...document.querySelectorAll("nav.detailsNav>.option")].forEach(one=>{
+            one.classList.remove("active");
+        })
+        e.target.classList.add("active");
 
         switch(value){
             case "general": {
@@ -36,16 +44,16 @@ const Details = ({title,author,desc})=>{
             <h1>{title}</h1>
             <h2>{author}</h2>
             <div className="detailButtons">
-                <div className="like">
-                   <FaRegHeart style={{color:"#222"}}/>
+                <div className="like" onClick={()=>setLike(!like)}>
+                   {like ? <FaHeart style={{color:"red"}}/> : <FaRegHeart style={{color:"#222"}}/>}
                 </div>
-                <div className="save">
-                    <FaRegBookmark style={{color:"#222"}}/>
+                <div className="save" onClick={()=>setSave(!save)}>
+                    {save? <FaBookmark style={{color:"lightgreen"}}/> : <FaRegBookmark style={{color:"#222"}}/>}
                 </div>
             </div>
             <nav className="detailsNav">
                 <div 
-                    className="option" 
+                    className="option active" 
                     onClick={handleDetails}
                     data-component="general">
                         ogólne</div>

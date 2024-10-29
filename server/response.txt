@@ -1,0 +1,436 @@
+[
+  {
+    "event_id": 1,
+    "nazwa": "PRO8L3M / Director's Cut / Trójmiasto",
+    "data": "Sob., 23 listopada 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "ERGO ARENA Gdańsk/Sopot, Gdańsk",
+    "location": {
+      "lat": 54.42521,
+      "lng": 18.57982
+    }
+  },
+  {
+    "event_id": 2,
+    "nazwa": "PRO8L3M / Director's Cut / Katowice",
+    "data": "Sob., 30 listopada 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "MCK - Międzynarodowe Centrum Kongresowe, Katowice",
+    "location": {
+      "lat": 50.26637,
+      "lng": 19.02839
+    }
+  },
+  {
+    "event_id": 3,
+    "nazwa": "OKI | WE ARE ERA 47 | KRAKÓW",
+    "data": "Czw., 19 grudnia 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "TAURON Arena Kraków, Kraków",
+    "location": {
+      "lat": 50.0679,
+      "lng": 19.9918
+    }
+  },
+  {
+    "event_id": 4,
+    "nazwa": "OKI | WE ARE ERA 47 | GDAŃSK/SOPOT",
+    "data": "Pt., 22 listopada 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "ERGO ARENA Gdańsk/Sopot, Gdańsk",
+    "location": {
+      "lat": 54.42521,
+      "lng": 18.57982
+    }
+  },
+  {
+    "event_id": 5,
+    "nazwa": "Gibbs & Opał - Drive Tour 2024 - Łódź",
+    "data": "Czw., 21 listopada 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Wytwórnia, Łódź",
+    "location": {
+      "lat": 51.75788,
+      "lng": 19.4437
+    }
+  },
+  {
+    "event_id": 6,
+    "nazwa": "Mortal - Mortal Tour Vol. 2 - Wrocław",
+    "data": "Niedz., 17 listopada 2024, 19:30",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "A2 - Centrum Koncertowe, Wrocław",
+    "location": {
+      "lat": 51.10873,
+      "lng": 17.00226
+    }
+  },
+  {
+    "event_id": 7,
+    "nazwa": "OKI | WE ARE ERA 47 | POZNAŃ",
+    "data": "Niedz., 24 listopada 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "MTP Pawilon 5, Poznań",
+    "location": {
+      "lat": 52.4078,
+      "lng": 16.94034
+    }
+  },
+  {
+    "event_id": 8,
+    "nazwa": "OKI | WE ARE ERA 47 | KATOWICE",
+    "data": "Pt., 29 listopada 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "MCK - Międzynarodowe Centrum Kongresowe, Katowice",
+    "location": {
+      "lat": 50.26637,
+      "lng": 19.02839
+    }
+  },
+  {
+    "event_id": 9,
+    "nazwa": "Mortal - Mortal Tour Vol. 2 - Kraków",
+    "data": "Niedz., 1 grudnia 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Studio, Kraków",
+    "location": {
+      "lat": 50.06809,
+      "lng": 19.90803
+    }
+  },
+  {
+    "event_id": 10,
+    "nazwa": "Mortal - Mortal Tour Vol. 2 - Warszawa",
+    "data": "Wt., 19 listopada 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Progresja, Warszawa",
+    "location": {
+      "lat": 52.22474,
+      "lng": 20.92824
+    }
+  },
+  {
+    "event_id": 11,
+    "nazwa": "Mortal - Mortal Tour Vol. 2 - Trójmiasto",
+    "data": "Niedz., 24 listopada 2024, 19:30",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "B90, Gdańsk",
+    "location": {
+      "lat": 54.36444,
+      "lng": 18.64828
+    }
+  },
+  {
+    "event_id": 12,
+    "nazwa": "Mortal - Mortal Tour Vol. 2 - Katowice",
+    "data": "Niedz., 15 grudnia 2024, 19:30",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "MCK - Międzynarodowe Centrum Kongresowe, Katowice",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 13,
+    "nazwa": "KIZO × BLETKA | Gdańsk [SOLD OUT]",
+    "data": "Pt., 13 grudnia 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "B90, Gdańsk",
+    "location": {
+      "lat": 54.36444,
+      "lng": 18.64828
+    }
+  },
+  {
+    "event_id": 14,
+    "nazwa": "KAZ BAŁAGANE | RZESZÓW | A NIE MÓWIŁEM?",
+    "data": "od 109.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Pod Palmą, Rzeszów",
+    "location": {
+      "lat": 50.01652,
+      "lng": 22.00478
+    }
+  },
+  {
+    "event_id": 16,
+    "nazwa": "KAZ BAŁAGANE | BIAŁYSTOK | A NIE MÓWIŁEM?",
+    "data": "od 119.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Stary Klasztor, Wrocław",
+    "location": {
+      "lat": 51.11027,
+      "lng": 17.03966
+    }
+  },
+  {
+    "event_id": 17,
+    "nazwa": "KAZ BAŁAGANE | SZCZECIN | A NIE MÓWIŁEM?",
+    "data": "od 109.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Gwint, Białystok",
+    "location": {
+      "lat": 53.11896,
+      "lng": 23.15131
+    }
+  },
+  {
+    "event_id": 18,
+    "nazwa": "KAZ BAŁAGANE | POZNAŃ | A NIE MÓWIŁEM?",
+    "data": "od 109.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Kosmos, Szczecin",
+    "location": {
+      "lat": 53.42705,
+      "lng": 14.54492
+    }
+  },
+  {
+    "event_id": 22,
+    "nazwa": "Julia Żugaj x Cztery Pory Roku | Gliwice",
+    "data": "od 119.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Muzyczny B17, Poznań",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 24,
+    "nazwa": "Julia Żugaj x Cztery Pory Roku | Gdańsk",
+    "data": "od 119.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "P23, Katowice",
+    "location": {
+      "lat": 48.11891,
+      "lng": 20.78742
+    }
+  },
+  {
+    "event_id": 25,
+    "nazwa": "Julia Żugaj x Cztery Pory Roku | Poznań",
+    "data": "od 119.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Parlament, Gdańsk",
+    "location": {
+      "lat": 54.35121,
+      "lng": 18.6496
+    }
+  },
+  {
+    "event_id": 26,
+    "nazwa": "KAZ BAŁAGANE | TORUŃ | A NIE MÓWIŁEM?",
+    "data": "od 119.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Od Nowa, Toruń",
+    "location": {
+      "lat": 53.01891,
+      "lng": 18.58042
+    }
+  },
+  {
+    "event_id": 28,
+    "nazwa": "Julia Żugaj x Cztery Pory Roku | Wrocław",
+    "data": "od 139.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Mała Arena, PreZero Arena Gliwice, Gliwice",
+    "location": {
+      "lat": 50.28596,
+      "lng": 18.6861
+    }
+  },
+  {
+    "event_id": 29,
+    "nazwa": "Julia Żugaj x Cztery Pory Roku | Łódź",
+    "data": "od 97.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Baloo, Zielona Góra",
+    "location": {
+      "lat": 51.93424,
+      "lng": 15.50022
+    }
+  },
+  {
+    "event_id": 31,
+    "nazwa": "Julia Żugaj x Cztery Pory Roku | Kraków",
+    "data": "od 149.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Stary Maneż, Gdańsk",
+    "location": {
+      "lat": 54.38071,
+      "lng": 18.58894
+    }
+  },
+  {
+    "event_id": 32,
+    "nazwa": "KAZ BAŁAGANE | KATOWICE | A NIE MÓWIŁEM?",
+    "data": "od 149.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Muzyczny B17, Poznań",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 33,
+    "nazwa": "BAMBI | TRAP OR DIE TOUR | WROCŁAW",
+    "data": "od 109.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Lizard King, Toruń",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 36,
+    "nazwa": "Rów Babicze - Nierówności Tour | Kraków",
+    "data": "od 109.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Rura, Częstochowa",
+    "location": {
+      "lat": 50.81223,
+      "lng": 19.11509
+    }
+  },
+  {
+    "event_id": 37,
+    "nazwa": "Gibbs & Opał - Drive Tour 2024 - Olsztyn",
+    "data": "od 139.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "A2 - Centrum Koncertowe, Wrocław",
+    "location": {
+      "lat": 51.10873,
+      "lng": 17.00226
+    }
+  },
+  {
+    "event_id": 38,
+    "nazwa": "BAMBI | TRAP OR DIE TOUR | WARSZAWA",
+    "data": "od 139.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Wytwórnia, Łódź",
+    "location": {
+      "lat": 51.75788,
+      "lng": 19.4437
+    }
+  },
+  {
+    "event_id": 39,
+    "nazwa": "Kortowiada 2025 - Festiwal Studencki",
+    "data": "od 139.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Arena Gorzów, Gorzów Wielkopolski",
+    "location": {
+      "lat": 52.74603,
+      "lng": 15.25223
+    }
+  },
+  {
+    "event_id": 40,
+    "nazwa": "Rów Babicze - Nierówności Tour | Katowice",
+    "data": "od 139.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie przez api",
+    "adres": "Klub Studio, Kraków",
+    "location": {
+      "lat": 50.06809,
+      "lng": 19.90803
+    }
+  }
+]

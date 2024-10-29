@@ -2,6 +2,8 @@ import express from 'express';
 import cors from 'cors';
 import "dotenv/config";
 
+import { fetchEvents, response } from './webScrapping.js';
+
 import { register, api, likes, addLike, save, addSave } from "./routes/routes.js";
 import { pool } from './config/database.js';
 
@@ -21,3 +23,11 @@ app.get("/likes", likes);
 app.post("/addlike", addLike);
 app.get("/save", save);
 app.post("/addSave", addSave);
+
+fetchEvents();
+
+app.get("/api2",(req,res)=>{
+    res.json({
+        events: response
+    })
+})
