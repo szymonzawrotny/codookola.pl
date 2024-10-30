@@ -401,8 +401,8 @@
     "opis": "wygenerowano automatycznie",
     "adres": "Klub Wytwórnia, Łódź",
     "location": {
-      "lat": "brak",
-      "lng": "brak"
+      "lat": 51.75788,
+      "lng": 19.4437
     }
   },
   {

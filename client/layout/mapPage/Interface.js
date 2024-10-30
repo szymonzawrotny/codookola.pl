@@ -15,23 +15,15 @@ import Last from '@/components/mapPage/Last';
 import Add from '@/components/mapPage/Add';
 import Details from '@/components/mapPage/Details';
 
-const InterFace = () => {
+const InterFace = ({posState, setPosState,pos,handleButton,component,setComponent}) => {
 
     const burgerRef = useRef();
     const menuRef = useRef();
-    const [component, setComponent] = useState(<Discover/>);
-
-    const [posState, setPosState] = useState({ x: 0, y: 0 });
-    const pos = useSpring({ x: posState.x, y: posState.y });
     const [isMobile, setIsMobile] = useState(false);
 
     const handleBurger = () => {
         burgerRef.current.classList.toggle("active");
         menuRef.current.classList.toggle("active");
-    }
-
-    const handleButton = (title,author,desc)=>{
-        setComponent(<Details title={title} author={author} desc={desc}/>)
     }
 
     const handleIconAnimation = (e) => {

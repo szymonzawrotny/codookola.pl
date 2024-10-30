@@ -29,7 +29,7 @@ const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,sa
                 </div>
                 <button 
                     className="check" 
-                    onClick={()=>handleButton(name,author,desc)}>
+                    onClick={()=>handleButton(name,author,desc,id)}>
                         sprawdź
                 </button>
             </div>

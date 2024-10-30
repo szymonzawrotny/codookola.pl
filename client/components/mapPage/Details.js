@@ -1,5 +1,5 @@
 "use client"
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
 import "@/styles/mapPage/interface/panels/details.scss"
 import { FaRegUserCircle,FaRegHeart, FaRegBookmark, FaHeart } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa6";
@@ -35,6 +35,10 @@ const Details = ({title,author,desc})=>{
             } break;
         }
     }
+
+    useEffect(()=>{
+        setComponent(<General desc={desc}/>)
+    },[desc])
 
     return(
         <div className="details">

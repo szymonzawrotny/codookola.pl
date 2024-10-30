@@ -1,17 +1,19 @@
 import { MarkerF } from '@react-google-maps/api';
 import { useState } from 'react';
 
-const CustomMarker = ({ key, position, handleClick }) => {
+const CustomMarker = ({ key, position, handleClick, event_id, selectedId}) => {
   const [isHovered, setIsHovered] = useState(false);
 
+  let state = event_id === selectedId
+
   const icon = {
-    url: isHovered? '/images/pinIconGreen.png':'/images/pinIcon.png',
-    scaledSize: isHovered 
-      ? new window.google.maps.Size(35, 35) 
-      : new window.google.maps.Size(30, 30),
-    anchor: isHovered
-    ? new window.google.maps.Point(17.5, 35)
-    : new window.google.maps.Point(15, 30)
+    url: state? '/images/pinIconGreen.png':'/images/pinIcon.png',
+    scaledSize: state || isHovered
+      ? new window.google.maps.Size(30, 35) 
+      : new window.google.maps.Size(25, 30),
+    anchor: state || isHovered
+    ? new window.google.maps.Point(15, 35)
+    : new window.google.maps.Point(12.5, 30)
   };
 
   return (
