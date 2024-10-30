@@ -6,7 +6,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "ERGO ARENA Gdańsk/Sopot, Gdańsk",
     "location": {
       "lat": 54.42521,
@@ -20,7 +20,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "MCK - Międzynarodowe Centrum Kongresowe, Katowice",
     "location": {
       "lat": 50.26637,
@@ -34,7 +34,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "TAURON Arena Kraków, Kraków",
     "location": {
       "lat": 50.0679,
@@ -48,7 +48,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "ERGO ARENA Gdańsk/Sopot, Gdańsk",
     "location": {
       "lat": 54.42521,
@@ -62,7 +62,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Wytwórnia, Łódź",
     "location": {
       "lat": 51.75788,
@@ -76,7 +76,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "A2 - Centrum Koncertowe, Wrocław",
     "location": {
       "lat": 51.10873,
@@ -90,7 +90,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "MTP Pawilon 5, Poznań",
     "location": {
       "lat": 52.4078,
@@ -104,7 +104,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "MCK - Międzynarodowe Centrum Kongresowe, Katowice",
     "location": {
       "lat": 50.26637,
@@ -118,7 +118,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Studio, Kraków",
     "location": {
       "lat": 50.06809,
@@ -132,7 +132,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Progresja, Warszawa",
     "location": {
       "lat": 52.22474,
@@ -146,7 +146,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "B90, Gdańsk",
     "location": {
       "lat": 54.36444,
@@ -160,11 +160,11 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "MCK - Międzynarodowe Centrum Kongresowe, Katowice",
     "location": {
-      "lat": "brak",
-      "lng": "brak"
+      "lat": 50.26637,
+      "lng": 19.02839
     }
   },
   {
@@ -174,7 +174,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "B90, Gdańsk",
     "location": {
       "lat": 54.36444,
@@ -188,7 +188,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Pod Palmą, Rzeszów",
     "location": {
       "lat": 50.01652,
@@ -202,7 +202,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Stary Klasztor, Wrocław",
     "location": {
       "lat": 51.11027,
@@ -216,7 +216,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Gwint, Białystok",
     "location": {
       "lat": 53.11896,
@@ -230,7 +230,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Kosmos, Szczecin",
     "location": {
       "lat": 53.42705,
@@ -244,11 +244,11 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Muzyczny B17, Poznań",
     "location": {
-      "lat": "brak",
-      "lng": "brak"
+      "lat": 52.39688,
+      "lng": 16.85972
     }
   },
   {
@@ -258,7 +258,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "P23, Katowice",
     "location": {
       "lat": 48.11891,
@@ -272,7 +272,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Parlament, Gdańsk",
     "location": {
       "lat": 54.35121,
@@ -286,7 +286,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Od Nowa, Toruń",
     "location": {
       "lat": 53.01891,
@@ -300,7 +300,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Mała Arena, PreZero Arena Gliwice, Gliwice",
     "location": {
       "lat": 50.28596,
@@ -314,7 +314,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Baloo, Zielona Góra",
     "location": {
       "lat": 51.93424,
@@ -328,7 +328,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Stary Maneż, Gdańsk",
     "location": {
       "lat": 54.38071,
@@ -342,11 +342,11 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Muzyczny B17, Poznań",
     "location": {
-      "lat": "brak",
-      "lng": "brak"
+      "lat": 52.39688,
+      "lng": 16.85972
     }
   },
   {
@@ -356,11 +356,11 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Lizard King, Toruń",
     "location": {
-      "lat": "brak",
-      "lng": "brak"
+      "lat": 53.00939,
+      "lng": 18.60504
     }
   },
   {
@@ -370,7 +370,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Rura, Częstochowa",
     "location": {
       "lat": 50.81223,
@@ -384,7 +384,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "A2 - Centrum Koncertowe, Wrocław",
     "location": {
       "lat": 51.10873,
@@ -398,11 +398,11 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Wytwórnia, Łódź",
     "location": {
-      "lat": 51.75788,
-      "lng": 19.4437
+      "lat": "brak",
+      "lng": "brak"
     }
   },
   {
@@ -412,7 +412,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Arena Gorzów, Gorzów Wielkopolski",
     "location": {
       "lat": 52.74603,
@@ -426,7 +426,7 @@
     "rodzaj": "koncert",
     "author_id": "999",
     "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie przez api",
+    "opis": "wygenerowano automatycznie",
     "adres": "Klub Studio, Kraków",
     "location": {
       "lat": 50.06809,
