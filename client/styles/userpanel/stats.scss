@@ -12,7 +12,7 @@
         justify-content: space-between;
         align-items: center;
         .chartButton{
-            background-color: #FFE97F;
+            background-color: rgba(203, 224, 242, 0.97);
             box-shadow: 4px 4px #222;
             width:25%;
             height:80%;
@@ -20,12 +20,20 @@
             transition: .3s ease-in-out;
             position: relative;
             min-width:120px;
-            span{
+            .title{
                 position: absolute;
                 top:15px;
                 left:15px;
                 font-weight: 600;
                 font-size:22px;
+            }
+            .number{
+                position: absolute;
+                bottom:15px;
+                left:15px;
+                font-weight: 600;
+                font-size:28px;
+                letter-spacing: 2px;
             }
             svg{
                 position: absolute;
@@ -52,28 +60,21 @@
         width:90%;
         position: relative;
         display: flex;
-        justify-content: center;
-        align-items: flex-end;
-        header{
-            position: absolute;
-            top:15px;
-            left:25px;
-            background-color: #FFE97F;
-            width:140px;
-            height:40px;
+        justify-content: flex-start;
+        align-items: center;
+        .containerChart{
+            width:100%;
             display: flex;
-            justify-content: center;
             align-items: center;
-            cursor: default;
-            box-shadow:2px 2px #222;
+            justify-content:flex-start;
         }
         select{
             position: absolute;
             top:15px;
-            right:25px;
+            right:0;
             width:140px;
             height:40px;
-            background-color: #FFE97F;
+            background-color: rgba(203, 224, 242, 0.97);
             box-shadow:2px 2px #222;
             cursor: pointer;
         }
@@ -89,7 +90,7 @@
             width:100%;
             justify-content: space-around;
             .chartButton{
-                span{
+                .title{
                     font-size: 14px;
                 }
                 svg{
@@ -97,9 +98,6 @@
                     right:15px;
                 }
             }
-        }
-        .chart{
-            width:100%;
         }
     }
 }

@@ -20,7 +20,6 @@ const Home = ()=>{
     },[])
 
     const [component,setComponent] = useState(<ViewChart/>);
-    const [headerText,setHeaderText] = useState("Wyświetlenia")
 
     const likeRef = useRef();
     const saveRef = useRef();
@@ -39,17 +38,14 @@ const Home = ()=>{
         switch(option){
         case "like": {
             setComponent(<LikeChart/>)
-            setHeaderText("Polubienia")
             likeRef.current.classList.add("active")
         } break;
         case "save": {
             setComponent(<SaveChart/>)
-            setHeaderText("Zapisania")
             saveRef.current.classList.add("active")
         } break;
         case "view":{
             setComponent(<ViewChart/>)
-            setHeaderText("Wyświetlenia")
             viewRef.current.classList.add("active")
         } break;
         }
@@ -63,7 +59,8 @@ const Home = ()=>{
                     data-option="view"
                     ref={viewRef}
                     className="chartButton active">
-                        <span>Wyświetlenia</span>
+                        <span className='title'>Wyświetlenia</span>
+                        <span className='number'>256</span>
                         <TbView360 />
                 </div>
                 <div 
@@ -71,7 +68,8 @@ const Home = ()=>{
                     data-option="like"
                     ref={likeRef}
                     className="chartButton">
-                        <span>Polubienia</span>
+                        <span className='title'>Polubienia</span>
+                        <span className='number'>128</span>
                         <FaRegHeart/>
                 </div>
                 <div 
@@ -79,13 +77,15 @@ const Home = ()=>{
                     data-option="save"
                     ref={saveRef}
                     className="chartButton">
-                        <span>Zapisania</span>
+                        <span className='title'>Zapisania</span>
+                        <span className='number'>37</span>
                         <MdBookmarkBorder />
                 </div>
             </div>
             <div className="chart">
-                <header>{headerText}</header>
-                {component}
+                <div className="containerChart">
+                    {component}
+                </div>
             </div>
         </div>
     )

@@ -1,6 +1,7 @@
 import "@/styles/userpanel/panel.scss"
 
 import { useSession } from 'next-auth/react'
+import { signOut } from "next-auth/react";
 import { useRouter } from 'next/navigation'
 import Link from "next/link";
 import { BiLogOutCircle } from "react-icons/bi";
@@ -21,6 +22,10 @@ const Panel = ({children})=>{
             router.push("/")
         }
     })
+
+    const logout = ()=>{
+        signOut({ callbackUrl: "/" })
+    }
 
     const handleOption = (e)=>{
 
@@ -63,7 +68,7 @@ const Panel = ({children})=>{
                     <BsChatText/>
                     support
                 </Link>
-                <div className="option" onClick={handleOption}>
+                <div className="option" onClick={logout}>
                     <BiLogOutCircle/>
                     log out
                 </div>

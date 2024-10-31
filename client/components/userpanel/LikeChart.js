@@ -1,7 +1,7 @@
 "use client"
 
 import { useEffect, useState } from 'react';
-import { LineChart, Line, CartesianGrid, XAxis, YAxis, Tooltip, ResponsiveContainer } from "recharts";
+import { AreaChart,Area, CartesianGrid, XAxis, YAxis, ResponsiveContainer } from "recharts";
 
 const data1 = [
     {
@@ -75,13 +75,18 @@ const LikeChart = ()=>{
             <option value="month">zeszły miesiąc</option>
             <option value="year">zeszły rok</option>
             </select>
-            <LineChart data={currentData} width={1000} height={450}>
-                <CartesianGrid/>
-                <Line dataKey="value" dot={false} type="monotone"/>
-                <XAxis dataKey="date"/>
-                <YAxis />
-                {/* <Tooltip/> */}
-            </LineChart>
+            <ResponsiveContainer height={450}>
+                <AreaChart
+                    width={900} height={500}
+                    data={currentData}
+                    style={{backgroundColor:"rgba(203, 224, 242, 0.97)",padding: "15px",boxShadow: "5px 5px 0 0 #222"}}
+                    >
+                        <CartesianGrid />
+                        <XAxis dataKey="date" dy={15}/>
+                        <YAxis dx={-5}/>
+                        <Area type="monotone" dataKey="value"  stroke="#222" fill="#222" />
+                </AreaChart>
+            </ResponsiveContainer>
         </>
     )
 }

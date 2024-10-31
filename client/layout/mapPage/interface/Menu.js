@@ -28,10 +28,10 @@ const Menu = ({menuRef})=>{
                 <MdOutlineManageAccounts />
                 Twój profil
             </Link>
-            <div className="element">
+            <Link href="/userpanel/events" className="element">
                 <RiMapPinUserFill/>
                 Twoje wydarzenia
-            </div>
+            </Link>
             <Link href="/policy" className="element">
                 <MdOutlinePrivacyTip/>
                 Polityka prywatności
