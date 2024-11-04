@@ -38,7 +38,7 @@ const Menu = ({menuRef})=>{
             </Link>
             <div className="element" onClick={logout}>
                 <BiLogOutCircle />
-                Wyloguj
+                {session ? "Wyloguj" : "Zaloguj"}
             </div>
         </aside>
     )

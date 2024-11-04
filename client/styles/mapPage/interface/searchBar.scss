@@ -19,6 +19,7 @@
             background-color: aliceblue;
             box-shadow: 3px 3px 0px #FFE97F;
             padding: 5px;
+            position: relative;
             .logo{
                 min-width:30px;
                 height:30px;
@@ -39,10 +40,53 @@
                 outline: none;
             }
             svg{
-                cursor: pointer;
                 user-select: none;
                 -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
                 -webkit-user-select: none; 
+            }
+            .list{
+                position: absolute;
+                top:100%;
+                left:0;
+                width:100%;
+                height:0%;
+                background-color: aliceblue;
+                box-shadow: 3px 3px #FFE97F;
+                transition:.3s ease-in-out;
+                .elements{
+                    display: none;
+                    overflow: hidden;
+                }
+            }
+        }
+        .search.active{
+            .list{
+                height:300%;
+                .elements{
+                    display: block;
+                    height:100%;
+                    display:flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    .empty{
+                        flex-grow:1;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        cursor: pointer;
+                    }
+                    .element{
+                        flex-basis:25%;
+                        display: flex;
+                        align-items: center;
+                        padding-left: 15px;
+                        cursor: pointer;
+                        text-transform: capitalize;
+                    }
+                    .element:hover{
+                        opacity: .8;
+                    }
+                }
             }
         }
     }

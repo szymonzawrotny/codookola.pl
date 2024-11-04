@@ -24,10 +24,10 @@ app.post("/addlike", addLike);
 app.get("/save", save);
 app.post("/addSave", addSave);
 
-fetchEvents();
+// fetchEvents();
 
-app.get("/api2",(req,res)=>{
-    res.json({
-        events: response
-    })
-})
+// app.get("/api2",(req,res)=>{
+//     res.json({
+//         events: response
+//     })
+// })

@@ -116,7 +116,7 @@ const InterFace = ({posState, setPosState,pos,handleButton,component,setComponen
     return (
         <>
             <Burger burgerRef={burgerRef} handleBurger={handleBurger} />
-            <SearchBar />
+            <SearchBar handleButton={handleButton}/>
             <SidePanel handleIconAnimation={handleIconAnimation}/>
             <Menu menuRef={menuRef} />
             <EventPanel

@@ -105,7 +105,7 @@
         border-radius: 50px;
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: flex-start;
         align-items: center;
         box-shadow: 5px 5px 0 0 #222;
         header{
@@ -202,9 +202,8 @@
                 height:22svh;
                 margin:0 60px 0 60px;
                 background-color: aliceblue;
-                box-shadow: 5px 5px 0px 0px #222;
+                border-radius: 15px;
                 color:#222;
-                border-radius: 0;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
@@ -225,8 +224,13 @@
         }
         main{
             width:100%;
-            flex-basis: 100svh;
+            min-height: 100svh;
+            flex-basis: 120svh; 
+            height:120svh;
             border-radius: 0px;
+            .content{
+                height:100%;
+            }
             header{
                 .search{
                     width:25svh;

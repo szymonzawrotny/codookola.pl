@@ -1,20 +1,6 @@
 [
   {
     "event_id": 1,
-    "nazwa": "PRO8L3M / Director's Cut / Trójmiasto",
-    "data": "Sob., 23 listopada 2024, 20:00",
-    "rodzaj": "koncert",
-    "author_id": "999",
-    "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie",
-    "adres": "ERGO ARENA Gdańsk/Sopot, Gdańsk",
-    "location": {
-      "lat": 54.42521,
-      "lng": 18.57982
-    }
-  },
-  {
-    "event_id": 2,
     "nazwa": "PRO8L3M / Director's Cut / Katowice",
     "data": "Sob., 30 listopada 2024, 20:00",
     "rodzaj": "koncert",
@@ -25,6 +11,20 @@
     "location": {
       "lat": 50.26637,
       "lng": 19.02839
+    }
+  },
+  {
+    "event_id": 2,
+    "nazwa": "PRO8L3M / Director's Cut / Trójmiasto",
+    "data": "Sob., 23 listopada 2024, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "ERGO ARENA Gdańsk/Sopot, Gdańsk",
+    "location": {
+      "lat": 54.42521,
+      "lng": 18.57982
     }
   },
   {
@@ -113,20 +113,6 @@
   },
   {
     "event_id": 9,
-    "nazwa": "Mortal - Mortal Tour Vol. 2 - Kraków",
-    "data": "Niedz., 1 grudnia 2024, 20:00",
-    "rodzaj": "koncert",
-    "author_id": "999",
-    "author_email": "bot o.O",
-    "opis": "wygenerowano automatycznie",
-    "adres": "Klub Studio, Kraków",
-    "location": {
-      "lat": 50.06809,
-      "lng": 19.90803
-    }
-  },
-  {
-    "event_id": 10,
     "nazwa": "Mortal - Mortal Tour Vol. 2 - Warszawa",
     "data": "Wt., 19 listopada 2024, 20:00",
     "rodzaj": "koncert",
@@ -140,7 +126,7 @@
     }
   },
   {
-    "event_id": 11,
+    "event_id": 10,
     "nazwa": "Mortal - Mortal Tour Vol. 2 - Trójmiasto",
     "data": "Niedz., 24 listopada 2024, 19:30",
     "rodzaj": "koncert",
@@ -154,7 +140,7 @@
     }
   },
   {
-    "event_id": 12,
+    "event_id": 11,
     "nazwa": "Mortal - Mortal Tour Vol. 2 - Katowice",
     "data": "Niedz., 15 grudnia 2024, 19:30",
     "rodzaj": "koncert",
@@ -168,7 +154,7 @@
     }
   },
   {
-    "event_id": 13,
+    "event_id": 12,
     "nazwa": "KIZO × BLETKA | Gdańsk [SOLD OUT]",
     "data": "Pt., 13 grudnia 2024, 20:00",
     "rodzaj": "koncert",
@@ -182,7 +168,7 @@
     }
   },
   {
-    "event_id": 14,
+    "event_id": 13,
     "nazwa": "KAZ BAŁAGANE | RZESZÓW | A NIE MÓWIŁEM?",
     "data": "od 109.99 zł",
     "rodzaj": "koncert",
@@ -196,7 +182,7 @@
     }
   },
   {
-    "event_id": 16,
+    "event_id": 15,
     "nazwa": "KAZ BAŁAGANE | BIAŁYSTOK | A NIE MÓWIŁEM?",
     "data": "od 119.99 zł",
     "rodzaj": "koncert",
@@ -210,7 +196,7 @@
     }
   },
   {
-    "event_id": 17,
+    "event_id": 16,
     "nazwa": "KAZ BAŁAGANE | SZCZECIN | A NIE MÓWIŁEM?",
     "data": "od 109.99 zł",
     "rodzaj": "koncert",
@@ -224,7 +210,7 @@
     }
   },
   {
-    "event_id": 18,
+    "event_id": 17,
     "nazwa": "KAZ BAŁAGANE | POZNAŃ | A NIE MÓWIŁEM?",
     "data": "od 109.99 zł",
     "rodzaj": "koncert",
@@ -238,7 +224,7 @@
     }
   },
   {
-    "event_id": 22,
+    "event_id": 21,
     "nazwa": "Julia Żugaj x Cztery Pory Roku | Gliwice",
     "data": "od 119.99 zł",
     "rodzaj": "koncert",
@@ -252,7 +238,7 @@
     }
   },
   {
-    "event_id": 24,
+    "event_id": 23,
     "nazwa": "Julia Żugaj x Cztery Pory Roku | Gdańsk",
     "data": "od 119.99 zł",
     "rodzaj": "koncert",
@@ -266,7 +252,7 @@
     }
   },
   {
-    "event_id": 25,
+    "event_id": 24,
     "nazwa": "Julia Żugaj x Cztery Pory Roku | Poznań",
     "data": "od 119.99 zł",
     "rodzaj": "koncert",
@@ -280,7 +266,7 @@
     }
   },
   {
-    "event_id": 26,
+    "event_id": 25,
     "nazwa": "KAZ BAŁAGANE | TORUŃ | A NIE MÓWIŁEM?",
     "data": "od 119.99 zł",
     "rodzaj": "koncert",
@@ -294,7 +280,7 @@
     }
   },
   {
-    "event_id": 28,
+    "event_id": 27,
     "nazwa": "Julia Żugaj x Cztery Pory Roku | Wrocław",
     "data": "od 139.99 zł",
     "rodzaj": "koncert",
@@ -308,7 +294,7 @@
     }
   },
   {
-    "event_id": 29,
+    "event_id": 28,
     "nazwa": "Julia Żugaj x Cztery Pory Roku | Łódź",
     "data": "od 97.99 zł",
     "rodzaj": "koncert",
@@ -322,7 +308,7 @@
     }
   },
   {
-    "event_id": 31,
+    "event_id": 30,
     "nazwa": "Julia Żugaj x Cztery Pory Roku | Kraków",
     "data": "od 149.99 zł",
     "rodzaj": "koncert",
@@ -336,7 +322,7 @@
     }
   },
   {
-    "event_id": 32,
+    "event_id": 31,
     "nazwa": "KAZ BAŁAGANE | KATOWICE | A NIE MÓWIŁEM?",
     "data": "od 149.99 zł",
     "rodzaj": "koncert",
@@ -350,7 +336,7 @@
     }
   },
   {
-    "event_id": 33,
+    "event_id": 32,
     "nazwa": "BAMBI | TRAP OR DIE TOUR | WROCŁAW",
     "data": "od 109.99 zł",
     "rodzaj": "koncert",
@@ -364,8 +350,8 @@
     }
   },
   {
-    "event_id": 36,
-    "nazwa": "Rów Babicze - Nierówności Tour | Kraków",
+    "event_id": 35,
+    "nazwa": "Gibbs & Opał - Drive Tour 2024 - Olsztyn",
     "data": "od 109.99 zł",
     "rodzaj": "koncert",
     "author_id": "999",
@@ -378,8 +364,8 @@
     }
   },
   {
-    "event_id": 37,
-    "nazwa": "Gibbs & Opał - Drive Tour 2024 - Olsztyn",
+    "event_id": 36,
+    "nazwa": "BAMBI | TRAP OR DIE TOUR | WARSZAWA",
     "data": "od 139.99 zł",
     "rodzaj": "koncert",
     "author_id": "999",
@@ -392,8 +378,8 @@
     }
   },
   {
-    "event_id": 38,
-    "nazwa": "BAMBI | TRAP OR DIE TOUR | WARSZAWA",
+    "event_id": 37,
+    "nazwa": "Kortowiada 2025 - Festiwal Studencki",
     "data": "od 139.99 zł",
     "rodzaj": "koncert",
     "author_id": "999",
@@ -406,8 +392,8 @@
     }
   },
   {
-    "event_id": 39,
-    "nazwa": "Kortowiada 2025 - Festiwal Studencki",
+    "event_id": 38,
+    "nazwa": "Rów Babicze - Nierówności Tour | Katowice",
     "data": "od 139.99 zł",
     "rodzaj": "koncert",
     "author_id": "999",
@@ -420,8 +406,8 @@
     }
   },
   {
-    "event_id": 40,
-    "nazwa": "Rów Babicze - Nierówności Tour | Katowice",
+    "event_id": 39,
+    "nazwa": "Rów Babicze - Nierówności Tour | Warszawa",
     "data": "od 139.99 zł",
     "rodzaj": "koncert",
     "author_id": "999",
@@ -431,6 +417,20 @@
     "location": {
       "lat": 50.06809,
       "lng": 19.90803
+    }
+  },
+  {
+    "event_id": 40,
+    "nazwa": "Rów Babicze - Nierówności Tour | Rzeszów",
+    "data": "od 109.99 zł",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "P23, Katowice",
+    "location": {
+      "lat": 48.11891,
+      "lng": 20.78742
     }
   }
 ]

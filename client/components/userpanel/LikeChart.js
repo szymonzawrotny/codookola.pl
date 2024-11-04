@@ -79,12 +79,12 @@ const LikeChart = ()=>{
                 <AreaChart
                     width={900} height={500}
                     data={currentData}
-                    style={{backgroundColor:"rgba(203, 224, 242, 0.97)",padding: "15px",boxShadow: "5px 5px 0 0 #222"}}
+                    style={{backgroundColor:"#FFE97F",padding: "15px", borderRadius: "15px"}}
                     >
                         <CartesianGrid />
                         <XAxis dataKey="date" dy={15}/>
                         <YAxis dx={-5}/>
-                        <Area type="monotone" dataKey="value"  stroke="#222" fill="#222" />
+                        <Area type="monotone" dataKey="value"  stroke="#4169e1" fill="#4169e1" />
                 </AreaChart>
             </ResponsiveContainer>
         </>

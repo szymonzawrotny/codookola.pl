@@ -5,9 +5,12 @@
     padding-top: 5svh;
     .userInfo{
         flex-basis: 60%;
-        background-color: rgba(203, 224, 242, 0.97);
-        box-shadow: 4px 4px #222;
+        background-color: #FFE97F;
+        border-radius:15px;
         margin: 0px 0px 80px 80px;
+        display:flex;
+        justify-content:center;
+        align-items: center;
     }
     aside{
         flex-basis: 40%;
@@ -18,15 +21,18 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: rgba(203, 224, 242, 0.97);
-            box-shadow: 4px 4px #222;
+            background-color: #FFE97F;
+            border-radius:15px;
             margin: 0px 80px 0px 80px;
         }
         .describe{
             flex-basis: 40%;
-            background-color: rgba(203, 224, 242, 0.97);
-            box-shadow: 4px 4px #222;
+            background-color: #FFE97F;
+            border-radius:15px;
             margin: 80px;
+            display:flex;
+            justify-content:center;
+            align-items: center;
         }
     }
 }

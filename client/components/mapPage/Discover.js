@@ -1,4 +1,4 @@
-import { useState, useEffect} from 'react';
+import { useState, useEffect, useRef} from 'react';
 import "@/styles/mapPage/interface/panels/discover.scss"
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { useSession } from 'next-auth/react'
@@ -15,10 +15,17 @@ const Discover = ({handleButton})=>{
     const [likeList,setLikeList] = useState([]);
     const [saveList,setSaveList] = useState([]);
 
+    const [tab,setTab] = useState([]);
+    const [eventType,setEventType] = useState("wszystkie")
+    const inputRef = useRef();
+
     const fetchData = async () =>{
         const result = await fetch("http://localhost:5000/api")
         .then(response => response.json())
-        .then(data=>setEventList(data));
+        .then(data=>{
+            setEventList(data) 
+            setTab(data)
+        });
     }
 
     const fetchLikeList = async ()=>{
@@ -89,13 +96,62 @@ const Discover = ({handleButton})=>{
         }
     }
 
+    const handleEventType = async (e)=>{
+        const value = e.target.value;
+        setEventType(value)
+
+        inputRef.current.value = ""
+
+        if(value=="wszystkie"){
+            setTab(eventList)
+        } else {
+            const newTab = eventList.filter(one=>{
+                return (one.rodzaj == value )
+            })
+
+            setTab(newTab)
+        }
+    }
+
+    const handleSort = async (e)=>{
+
+        const value = e.target.value.toLowerCase();
+
+        if(value === "" || value === " " || value == null){
+            if(eventType=="wszystkie"){
+                setTab(eventList)
+            } else {
+                const newTab = eventList.filter(one=>{
+                    return (one.rodzaj == eventType )
+                })
+
+                setTab(newTab)
+            }
+        } else {
+            if(eventType=="wszystkie"){
+                const newTab = eventList.filter(one=>{
+                    return one.nazwa.toLowerCase().includes(value)
+                })
+
+                setTab(newTab)
+            } else {
+                const newTab = eventList.filter(one=>{
+                    return one.nazwa.toLowerCase().includes(value) && (one.rodzaj == eventType)
+                })
+
+                setTab(newTab)
+            }
+        }
+
+    }
+
     useEffect(()=>{
         fetchData();
         fetchLikeList();
         fetchSaveList();
     },[]);
 
-    const elements = eventList.map((one,index)=>{
+    const elements = tab.map((one,index)=>{
 
         let isLike = false;
         let isSave = false;
@@ -134,16 +190,22 @@ const Discover = ({handleButton})=>{
         <div className="discover">
             <div className="search">
                 <div className='input'>
-                    <input type="text" placeholder='Wpisz wydarzenie...'></input>
+                    <input 
+                        type="text" 
+                        placeholder='Wpisz wydarzenie...' 
+                        ref={inputRef}
+                        onChange={handleSort}></input>
                     <HiMagnifyingGlass />
                 </div>
                 <div className='sort'>
-                    <select className='type'>
-                        <option>Wszystkie</option>
-                        <option>Kultura</option>
-                        <option>Sport</option>
-                        <option>Koncert</option>
-                        <option>Festiwal</option>
+                    <select className='type' onChange={handleEventType}>
+                        <option value="wszystkie">Wszystkie</option>
+                        <option value="kultura">Kultura</option>
+                        <option value="sport">Sport</option>
+                        <option value="koncert">Koncert</option>
+                        <option value="festiwal">Festiwal</option>
+                        <option value="naukowe">Naukowe</option>
+                        <option value="imprezka">Imprezka</option>
                     </select>
                     <select className='date'>
                         <option>Popularne</option>
@@ -152,7 +214,9 @@ const Discover = ({handleButton})=>{
                 </div>
             </div>
             <div className="eventList">
-                {elements}
+                {
+                    elements.length >0 ? elements : <div className="empty">brak postów</div>
+                }
             </div>
         </div>
     )

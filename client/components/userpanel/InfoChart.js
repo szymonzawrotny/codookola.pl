@@ -37,7 +37,7 @@ export default class Example extends PureComponent {
             cy="50%"
             labelLine={false}
             label={renderCustomizedLabel}
-            outerRadius={150}
+            outerRadius={100}
             fill="#8884d8"
             dataKey="value"
           >

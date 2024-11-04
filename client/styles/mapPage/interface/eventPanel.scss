@@ -10,6 +10,18 @@
         z-index:1;
         touch-action:none;
         box-shadow: 3px -3px 0px #FFE97F;
+        .Login{
+            height:100svh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size:26px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            text-shadow: 2px 2px #222;
+            color: #FFE97F;
+        }
         .close{
             position: absolute;
             top:15px;

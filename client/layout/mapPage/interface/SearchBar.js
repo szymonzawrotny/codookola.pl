@@ -1,14 +1,67 @@
 import "@/styles/mapPage/interface/searchBar.scss"
+import { useRef, useState, useEffect } from 'react';
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 
-const SearchBar = ()=>{
+const SearchBar = ({handleButton})=>{
+
+    const ref = useRef();
+    const [eventList,setEventList] = useState([]);
+    const [tab,setTab] = useState([]);
+
+    const handleInputShow = (e)=>{
+        ref.current.classList.toggle("active");
+    }
+
+    const handleInput = (e)=>{
+        const value = e.target.value;
+
+        const newTab = eventList.filter(one=>{
+            return one.nazwa.toLowerCase().includes(value)
+        })
+
+        setTab(newTab)
+    }
+
+    const fetchData = async () =>{
+        const result = await fetch("http://localhost:5000/api")
+        .then(response => response.json())
+        .then(data=>{
+            setEventList(data) 
+            setTab(data)
+        });
+    }
+
+    useEffect(()=>{
+        fetchData();
+    },[]);
+
+    const elements = tab.map((one,index)=>{
+        if(index >= 4) return
+        return (
+            <div 
+                key={index} 
+                className="element" 
+                onClick={()=>handleButton(one.nazwa,one.author_email,one.opis,one.event_id)}>
+                    {one.nazwa}, {one.adres}, {one.data}
+            </div>
+        )
+    })
 
     return(
         <div className="searchBar">
-            <div className="search">
+            <div className="search" ref={ref}>
                 <div className="logo"></div>
-                <input type="text" placeholder="Search location"/>
+                <input 
+                    type="text"
+                    onClick={handleInputShow} 
+                    onChange={handleInput}
+                    placeholder="Search location"/>
                 <HiOutlineMagnifyingGlass size={32}/>
+                <div className="list">
+                    <div className="elements">
+                        {elements.length > 0 ? elements : <div className="empty">brak wyszukiwań</div> }
+                    </div>
+                </div>
             </div>
         </div>
     )
