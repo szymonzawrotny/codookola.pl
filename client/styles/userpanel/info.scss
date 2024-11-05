@@ -2,37 +2,98 @@
     width:100%;
     height:100%;
     display:flex;
+    flex-direction:column;
     padding-top: 5svh;
     .userInfo{
-        flex-basis: 60%;
-        background-color: #FFE97F;
+        flex-basis: 80%;
+        //background-color: #FFE97F;
         border-radius:15px;
-        margin: 0px 0px 80px 80px;
+        margin: 0px 60px 80px 40px;
         display:flex;
-        justify-content:center;
-        align-items: center;
+        overflow-y: scroll;
+        .contentInfo{
+            width:100%;
+            min-height:500%;
+            display: flex;
+            flex-direction: column;
+            .dataInfo{
+                border:2px solid red;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .adressInfo{
+                border:2px solid blue;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .photoInfo{
+                border:2px solid red;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .accessInfo{
+                border:2px solid red;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .settingsInfo{
+                border:2px solid red;
+                flex-grow: 1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        }
     }
     aside{
-        flex-basis: 40%;
+        flex-basis: 20%;
         display: flex;
         flex-direction: column;
-        .infoChart{
-            flex-basis: 60%;
+        align-items: center;
+        justify-content: flex-start;
+        .progressBar{
+            background-color: #FFE97F;
+            border-radius:15px;
+            width:85%;
+            height:5px;
             display: flex;
-            justify-content: center;
+            flex-direction: row;
+            justify-content: space-between;
             align-items: center;
-            background-color: #FFE97F;
-            border-radius:15px;
-            margin: 0px 80px 0px 80px;
-        }
-        .describe{
-            flex-basis: 40%;
-            background-color: #FFE97F;
-            border-radius:15px;
-            margin: 80px;
-            display:flex;
-            justify-content:center;
-            align-items: center;
+            .dot{
+                background-color: aliceblue;
+                border: 5px solid #FFE97F;
+                border-radius:50%;
+                width:40px;
+                height:40px;
+                transition: .3s ease-in-out;
+                position: relative;
+                span{
+                    position: absolute;
+                    background-color: #FFE97F;
+                    border-radius: 5px;
+                    text-align: center;
+                    letter-spacing: 2px;
+                    width:150px;
+                    display: block;
+                    left:50%;
+                    transform: translate(-50%);
+                    top:150%;
+                    cursor: pointer;
+                    padding:5px;
+                }
+            }
+            .dot.active{
+                background-color: #FFE97F;
+            }
         }
     }
 }
