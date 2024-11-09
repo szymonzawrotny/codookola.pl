@@ -2,97 +2,110 @@
     width:100%;
     height:100%;
     display:flex;
-    flex-direction:column;
-    padding-top: 5svh;
-    .userInfo{
-        flex-basis: 80%;
-        //background-color: #FFE97F;
-        border-radius:15px;
-        margin: 0px 60px 80px 40px;
-        display:flex;
-        overflow-y: scroll;
-        .contentInfo{
-            width:100%;
-            min-height:500%;
-            display: flex;
-            flex-direction: column;
-            .dataInfo{
-                border:2px solid red;
-                flex-grow: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .adressInfo{
-                border:2px solid blue;
-                flex-grow: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .photoInfo{
-                border:2px solid red;
-                flex-grow: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .accessInfo{
-                border:2px solid red;
-                flex-grow: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-            .settingsInfo{
-                border:2px solid red;
-                flex-grow: 1;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
-        }
-    }
-    aside{
-        flex-basis: 20%;
+    margin-top: 0;
+    .leftInfo{
+        flex-basis: 50%;
         display: flex;
         flex-direction: column;
-        align-items: center;
-        justify-content: flex-start;
-        .progressBar{
+        .userData, .userAddress{
+            height:40%;
             background-color: #FFE97F;
             border-radius:15px;
-            width:85%;
-            height:5px;
+            margin:25px;
+            margin-left: 50px;
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
-            .dot{
+        }
+        .userAddress{
+            height:60%;
+        }
+    }
+    .rightInfo{
+        flex-basis: 50%;
+        display: flex;
+        flex-direction: column;
+        .userAvatar, .userAccess{
+            border-radius:15px; 
+            height:75%;
+            background-color: #FFE97F;
+            margin:25px;
+            margin-right: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .userAvatar{
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding-top: 50px;
+            position: relative;
+            .avatar{
                 background-color: aliceblue;
-                border: 5px solid #FFE97F;
-                border-radius:50%;
-                width:40px;
-                height:40px;
-                transition: .3s ease-in-out;
-                position: relative;
-                span{
-                    position: absolute;
-                    background-color: #FFE97F;
+                width:25svh;
+                height:25svh;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+            .editAvatar{
+                position: absolute;
+                top:48%;
+                left:57%;
+                background-color: royalblue;
+                color:aliceblue;
+                width:5svh;
+                height:5svh;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+            }
+            .interest{
+                margin-top: 15px;
+                display: flex;
+                flex-direction: column;
+                width:80%;
+                height:20%;
+                letter-spacing: 2px;
+                select{
+                    margin-top: 15px;
+                    flex-grow: 1;
                     border-radius: 5px;
-                    text-align: center;
-                    letter-spacing: 2px;
-                    width:150px;
-                    display: block;
-                    left:50%;
-                    transform: translate(-50%);
-                    top:150%;
                     cursor: pointer;
-                    padding:5px;
                 }
             }
-            .dot.active{
-                background-color: #FFE97F;
+        }
+        .userAccess{
+            height:25%;
+        }
+    }
+}
+
+@media (max-width:1200px){
+    .info{
+        flex-direction: column;
+        .leftInfo{
+            .userData, .userAddress{
+                margin:0;
+                border-radius: 0;
+            }
+            .userAddress{
+                background-color: aliceblue;
+            }
+        }
+        .rightInfo{
+            .userAvatar, .userAccess{
+                margin:0;
+                border-radius: 0;
+            }
+            .userAccess{
+                height:25%;
+                background-color: aliceblue;
             }
         }
     }

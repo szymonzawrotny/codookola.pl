@@ -147,7 +147,7 @@ const RegisterForm = ()=>{
                     ref={password}
                     placeholder="Password"/>
                 <div className="errorText">{passwordError}</div>
-                {passwordVisible ? <FaEyeSlash size={36} onClick={changeType}/> : <FaEye size={36} onClick={changeType}/>}
+                {passwordVisible ? <FaEyeSlash size={36} onClick={changeType} style={{cursor:"pointer"}}/> : <FaEye size={36} onClick={changeType} style={{cursor:"pointer"}}/>}
             </div>
 
             <div className="input" ref={passwordRepeatInputRef}>
@@ -160,7 +160,7 @@ const RegisterForm = ()=>{
                     ref={passwordRepeat}
                     placeholder="Repeat Password"/>
                 <div className="errorText">{passwordRepeatError}</div>
-                {passwordVisible2 ? <FaEyeSlash size={36} onClick={changeType2}/> : <FaEye size={36} onClick={changeType2}/>}
+                {passwordVisible2 ? <FaEyeSlash size={36} onClick={changeType2} style={{cursor:"pointer"}}/> : <FaEye size={36} onClick={changeType2} style={{cursor:"pointer"}}/>}
             </div>
 
             <div className="down">

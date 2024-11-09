@@ -165,11 +165,11 @@ const ViewChart = ()=>{
                 <LineChart
                     width={900} height={520}
                     data={currentData}
-                    style={{backgroundColor:"#FFE97F",padding: "15px", borderRadius: "15px"}}
+                    style={{backgroundColor:"#FFE97F",padding: "15px"}}
                     >
                         <CartesianGrid strokeDasharray="3 3" type="category"/>
                         <XAxis dataKey="date" dy={15} type="category" allowDuplicatedCategory={false}/>
-                        <Legend layout="horizontal" verticalAlign="top" align="center"/>
+                        <Legend layout="horizontal" verticalAlign="top" align="right"/>
                         <Tooltip />
                         <YAxis dx={-5}/>
                         {currentData.map((s) => (

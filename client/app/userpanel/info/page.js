@@ -1,6 +1,7 @@
 "use client"
 import { useState, useEffect, useRef} from 'react';
 import "@/styles/userpanel/info.scss"
+import { GoPencil } from "react-icons/go";
 
 import InfoChart from '@/components/userpanel/InfoChart';
 
@@ -14,34 +15,27 @@ const Home = ()=>{
 
     return(
         <div className="info">
-            <div className="userInfo">
-                <div className="contentInfo">
-                    <div className="dataInfo">dane</div>
-                    <div className="adressInfo">adres</div>
-                    <div className="photoInfo">fotka</div>
-                    <div className="accessInfo">zgody</div>
-                    <div className="settingsInfo">ustawienia</div>
-                </div>
+            <div className="leftInfo">
+                <div className="userData">dane</div>
+                <div className="userAddress">adres</div>
             </div>
-            <aside>
-                <div className="progressBar">
-                    <div className="dot active">
-                        <span>Dane</span>
+            <div className="rightInfo">
+                <div className="userAvatar">
+                    <div className="avatar">Tu twoja fotka</div>
+                    <div className="editAvatar">
+                        <GoPencil />
                     </div>
-                    <div className="dot">
-                        <span>Adres</span>
-                    </div>
-                    <div className="dot">
-                        <span>Zdjęcie profilowe</span>
-                    </div>
-                    <div className="dot">
-                        <span>Zgody</span>
-                    </div>
-                    <div className="dot">
-                        <span>Ustawienia</span>
+                    <div className="interest">
+                        Choose ur main interest 
+                        <select name="" id="">
+                            <option value="koncerty">koncerty</option>
+                            <option value="imprezy">imprezy</option>
+                            <option value="naukowe">naukowe</option>
+                        </select>
                     </div>
                 </div>
-            </aside>
+                <div className="userAccess">zgody</div>
+            </div>
         </div>
     )
 }

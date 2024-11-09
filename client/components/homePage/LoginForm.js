@@ -78,7 +78,7 @@ const LoginForm = ()=>{
                     value={pass}
                     onChange={handleInput}/>
                     <div className="errorText">{passwordError}</div>
-                {passwordVisible ? <FaEyeSlash size={36} onClick={changeType}/> : <FaEye size={36} onClick={changeType}/>}
+                {passwordVisible ? <FaEyeSlash size={36} onClick={changeType} style={{cursor:"pointer"}}/> : <FaEye size={36} onClick={changeType} style={{cursor:"pointer"}}/>}
             </div>
             <div className="down">
                 <span>Forgot Password?</span>

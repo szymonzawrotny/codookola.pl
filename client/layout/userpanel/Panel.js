@@ -8,8 +8,9 @@ import { BiLogOutCircle } from "react-icons/bi";
 import { BsChatText } from "react-icons/bs";
 import { MdEventNote } from "react-icons/md";
 import { IoStatsChart } from "react-icons/io5";
-import { FaRegUserCircle, FaHome, FaRegBell } from "react-icons/fa";
+import { FaRegUserCircle, FaHome, FaBell, FaRegBell } from "react-icons/fa";
 import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
+import { FaUserCircle } from "react-icons/fa";
 
 
 const Panel = ({children})=>{
@@ -47,6 +48,17 @@ const Panel = ({children})=>{
         <div className="logged">
             <nav>
                 <div className="logo">
+                    <div className="userIcon">
+                        <FaUserCircle />
+                    </div>
+                    <div className="userData">
+                        <span className="userName">Szymon Zawrotny</span>
+                        <span className="userEmail">{session?.user?.email?.email}</span>
+                    </div>
+                    <div className="space"></div>
+                    <div className="alerts">
+                        <FaBell/>
+                    </div>
                 </div>
                 <Link href="/userpanel" className="option active" onClick={handleOption}>
                     <FaHome />
@@ -76,6 +88,7 @@ const Panel = ({children})=>{
                     zapraszam na nasz serwer discord?
                     <button>dołącz</button>
                 </div>
+                <div className="line"></div>
             </nav>
             <main>
                 <header>

@@ -70,7 +70,8 @@
             height:85svh;
             z-index: 11;
             .element{
-                min-height:50px;
+                min-height:80px;
+                margin: 10px 0 10px 0;
             }
             .element:nth-child(1){
                 right:50%;
