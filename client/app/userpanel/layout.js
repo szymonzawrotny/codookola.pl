@@ -6,7 +6,7 @@ import Panel from "@/layout/userpanel/Panel";
 import AuthProvider from "../context/AuthProvider";
 
 export default function RootLayout({ children }) {
-  const router = useRouter();
+    const router = useRouter();
 
     const {data:session} = useSession({
         required: true,

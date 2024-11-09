@@ -1,4 +1,6 @@
 import bcrypt from 'bcrypt';
+import nodemailer from 'nodemailer'
+import "dotenv/config";
 import { pool } from '../config/database.js';
 
 const register = async (req, res) => {
@@ -135,4 +137,28 @@ const addSave = async (req, res) => {
     });
 };
 
-export { register, api, likes, addLike, save, addSave };
+const send = (req,res)=>{
+    const {email,message,title} = req.body;
+
+    let transporter = nodemailer.createTransport({
+        service: "gmail",
+        auth: {
+            user: "szymonzawrotnyserv@gmail.com",
+            pass: process.env.MAILER_PASS
+        }
+    });
+
+    let mailOptions = {
+        from: "szymonzawrotnyserv@gmail.com",
+        to: "szymonzawrotny@gmail.com",
+        subject: title,
+        text: message + ` Wiadomość od ${email}`
+    }
+
+    transporter.sendMail(mailOptions,(err)=>{
+        if(err) console.log(err);
+        else console.log("Wysłano!");
+    })
+}
+
+export { register, api, likes, addLike, save, addSave, send };

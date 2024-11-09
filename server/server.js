@@ -4,7 +4,7 @@ import "dotenv/config";
 
 import { fetchEvents, response } from './webScrapping.js';
 
-import { register, api, likes, addLike, save, addSave } from "./routes/routes.js";
+import { register, api, likes, addLike, save, addSave, send } from "./routes/routes.js";
 import { pool } from './config/database.js';
 
 const app = express();
@@ -23,6 +23,7 @@ app.get("/likes", likes);
 app.post("/addlike", addLike);
 app.get("/save", save);
 app.post("/addSave", addSave);
+app.post("/send",send);
 
 // fetchEvents();
 
