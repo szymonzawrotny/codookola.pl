@@ -3,7 +3,7 @@ import chrome from 'selenium-webdriver/chrome.js';
 import path from 'path';
 import { setTimeout } from 'timers/promises';
 import * as cheerio from 'cheerio';
-import { convert } from "./addressToLocation.js";
+import { convert } from "../addressToLocation.js";
 import fs from 'fs'; 
 
 const chromeDriverPath = path.resolve("C:/Users/grzyb/szymon/programowanie/dane/chromedriver-win64/chromedriver.exe");
