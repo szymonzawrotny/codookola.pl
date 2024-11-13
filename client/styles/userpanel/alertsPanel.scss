@@ -1,0 +1,44 @@
+.logged{
+    main{
+        .alertsPanel{
+            background-color: #FFE97F;
+            border-radius: 15px 0 0 0px;
+            position: absolute;
+            width:400px;
+            height:90%;
+            top:10%;
+            right:-400px;
+            z-index:10;
+            transition: .3s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            padding:15px;
+            overflow-y: scroll;
+            border:5px solid #FFE97F;
+            h2{
+                text-transform: capitalize;
+                color:#222;
+                letter-spacing: 2px;
+                margin-bottom: 25px;
+                cursor: default;
+            }
+            .alert{
+                background-color: aliceblue;
+                padding:15px;
+                border-radius: 15px;
+                margin: 5px 0 5px 0;
+                width:100%;
+                cursor: pointer;
+            }
+            .alert:hover{
+                opacity: .8;
+            }
+        }
+        .alertsPanel.active{
+            right: 0;
+            box-shadow: 0 0 15px 5px rgb(190, 188, 188);
+        }
+    }
+}

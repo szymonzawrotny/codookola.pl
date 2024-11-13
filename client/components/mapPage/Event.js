@@ -1,15 +1,32 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 import { SlOptions } from "react-icons/sl";
 import { FaRegUserCircle,FaRegHeart, FaRegBookmark, FaHeart } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa6";
+import { MdReportGmailerrorred } from "react-icons/md";
+
 import SwiperBox from "./SwiperBox";
 
 const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,save})=>{
 
+    const ref = useRef();
+
+    const handleOptions = (e)=>{
+        ref.current.classList.toggle("active"); 
+    }
+
+    const handleReport = ()=>{
+        console.log("zgłoszono!")
+    }
+
     return(
         <div className="event">
-            <div className="options"><SlOptions size={28}/></div>
+            <div className="options" onClick={handleOptions} ref={ref}>
+                <SlOptions size={28}/>
+                <div className="optionsPanel" onClick={handleReport}>
+                    <MdReportGmailerrorred/>zgłoś
+                </div>
+            </div>
             <div className="userData">
                 <div className="icon"><FaRegUserCircle/></div>
                 <div className="name">{author}</div>
@@ -29,7 +46,7 @@ const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,sa
                 </div>
                 <button 
                     className="check" 
-                    onClick={()=>handleButton(name,author,desc,id)}>
+                    onClick={()=>handleButton(name,author,desc,id,isLike,save,handleLike,handleSave)}>
                         sprawdź
                 </button>
             </div>

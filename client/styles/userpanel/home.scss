@@ -59,15 +59,17 @@
             height:40%;
             background-color: #FFE97F;
             border-radius: 15px;
+            box-shadow: 0 0 15px 5px rgb(190, 188, 188);
         }
         .calendar{
-           margin-top: 25px;
+            margin-top: 25px;
             width:100%;
             .react-calendar{
                 width:100%;
                 background-color: #FFE97F;
                 border-radius: 15px;
                 border:none;
+                box-shadow: 0 0 15px 5px rgb(190, 188, 188);
             }
         }
         .goToMap{
@@ -80,6 +82,7 @@
             cursor: pointer;
             margin-top: 25px;
             width:100%;
+            box-shadow: 0 0 15px 5px rgb(190, 188, 188);
         }
     }
 }

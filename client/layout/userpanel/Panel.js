@@ -1,6 +1,7 @@
 import "@/styles/userpanel/panel.scss"
 
 import { useSession } from 'next-auth/react'
+import { useRef, useState } from "react";
 import { signOut } from "next-auth/react";
 import { useRouter } from 'next/navigation'
 import Link from "next/link";
@@ -9,13 +10,21 @@ import { BsChatText } from "react-icons/bs";
 import { MdEventNote } from "react-icons/md";
 import { IoStatsChart } from "react-icons/io5";
 import { FaRegUserCircle, FaHome, FaBell, FaRegBell } from "react-icons/fa";
-import { HiOutlineMagnifyingGlass } from "react-icons/hi2";
 import { FaUserCircle } from "react-icons/fa";
+
+import Search from "@/components/userpanel/Search";
+import AlertsPanel from "./AlertsPanel";
 
 
 const Panel = ({children})=>{
 
     const router = useRouter();
+    const alertRef = useRef();
+    const alertPanelRef = useRef();
+    const searchRef= useRef();
+    const searchInputRef = useRef();
+
+    const [bellIcon,setBellIcon] = useState(true);
 
     const {data:session} = useSession({
         required: true,
@@ -42,6 +51,27 @@ const Panel = ({children})=>{
             e.target.classList.add("active");
         }
 
+    }
+
+    const handleAlertsButton = ()=>{
+        alertRef.current.classList.toggle("active")
+        alertPanelRef.current.classList.toggle("active")
+
+        searchRef.current.classList.remove("active")
+        searchInputRef.current.classList.remove("active")
+
+        setBellIcon(!bellIcon)
+    }
+
+    const handleSearch = ()=>{
+        console.log("szukam różnych rzeczy")
+        searchRef.current.classList.toggle("active")
+        searchInputRef.current.classList.toggle("active")
+
+        alertRef.current.classList.remove("active")
+        alertPanelRef.current.classList.remove("active")
+
+        setBellIcon(true)
     }
 
     return(
@@ -91,18 +121,16 @@ const Panel = ({children})=>{
                 <div className="line"></div>
             </nav>
             <main>
+                <AlertsPanel alertPanelRef={alertPanelRef}/>
                 <header>
                     <div className="userInfo">
                         <FaRegUserCircle />
                         {session?.user?.email?.email}
                     </div>
                     <div className="space"></div>
-                    <div className="search">
-                        <input type="text" placeholder="search"/>
-                        <HiOutlineMagnifyingGlass/>
-                    </div>
-                    <div className="alerts">
-                        <FaRegBell/>
+                    <Search searchInputRef={searchInputRef} handleSearch={handleSearch} searchRef={searchRef}/>
+                    <div className="alerts" onClick={handleAlertsButton} ref={alertRef}>
+                        {bellIcon ? <FaRegBell/>: <FaBell/>}
                     </div>
                 </header>
                 <div className="content">

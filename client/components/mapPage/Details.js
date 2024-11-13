@@ -9,7 +9,7 @@ const General = ({desc})=> <div><p>{desc}</p></div>
 const Opinions = ()=> <div>opinie</div>
 const Info = ()=> <div>info</div>
 
-const Details = ({title,author,desc})=>{
+const Details = ({title,author,desc,id,isLike,isSave,handleLike, handleSave})=>{
 
     const [component,setComponent] = useState(<General desc={desc}/>)
     const [like, setLike] = useState(false);
@@ -38,6 +38,9 @@ const Details = ({title,author,desc})=>{
 
     useEffect(()=>{
         setComponent(<General desc={desc}/>)
+
+        setLike(isLike)
+        setSave(isSave)
     },[desc])
 
     return(
@@ -48,10 +51,10 @@ const Details = ({title,author,desc})=>{
             <h1>{title}</h1>
             <h2>{author}</h2>
             <div className="detailButtons">
-                <div className="like" onClick={()=>setLike(!like)}>
+                <div className="like" onClick={(e)=>{setLike(!like); handleLike(e);}} id={id}>
                    {like ? <FaHeart style={{color:"red"}}/> : <FaRegHeart style={{color:"#222"}}/>}
                 </div>
-                <div className="save" onClick={()=>setSave(!save)}>
+                <div className="save" onClick={(e)=>{setSave(!save); handleSave(e);}} id={id}>
                     {save? <FaBookmark style={{color:"lightgreen"}}/> : <FaRegBookmark style={{color:"#222"}}/>}
                 </div>
             </div>

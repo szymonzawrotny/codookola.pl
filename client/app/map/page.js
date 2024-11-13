@@ -20,8 +20,17 @@ const Home = () => {
   const [component, setComponent] = useState(<Discover/>);
   const [selectedId, setSelectedId] = useState(null);
 
-  const handleButton = (title,author,desc,id)=>{
-        setComponent(<Details title={title} author={author} desc={desc}/>)
+  const handleButton = (title,author,desc,id,isLike,save,handleLike,handleSave)=>{
+        setComponent(
+          <Details 
+            title={title} 
+            author={author} 
+            desc={desc} id={id} 
+            isLike={isLike} 
+            isSave={save} 
+            handleLike={handleLike} 
+            handleSave={handleSave}/>
+        )
         setSelectedId(id);
     }
 

@@ -85,6 +85,40 @@
                         right:10px;
                         top:5px;
                         cursor: pointer;
+                        .optionsPanel{
+                            display: none;
+                        }
+                    }
+
+                    .options.active{
+                        .optionsPanel{
+                            display: block;
+                            position: absolute;
+                            top:100%;
+                            left:-250%;
+                            background-color: #FFE97F;
+                            border-radius: 10px;
+                            box-shadow: 2px 2px #222;
+                            width:350%;
+                            height:150%;
+                            z-index:10;
+                            display: flex;
+                            flex-direction: row;
+                            justify-content: center;
+                            align-items: center;
+                            padding:5px;
+                            transition: .3s ease-in-out;
+                            text-transform: capitalize;
+                            letter-spacing: 2px;
+                            svg{
+                                font-size:18px;
+                                margin-right: 5px;
+                            }
+                        }
+                        .optionsPanel:hover{
+                            background-color: royalblue;
+                            color:aliceblue
+                        }
                     }
                     .userData{
                         flex-basis: 20%;
@@ -103,6 +137,7 @@
                             cursor: default;
                             font-size:14px;
                             font-weight: 500;
+                            user-select:none;
                         }
                     }
                     .photos{
