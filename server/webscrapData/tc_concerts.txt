@@ -1,0 +1,1130 @@
+[
+  {
+    "event_id": 0,
+    "nazwa": "METZ",
+    "data": "środa, 13 listopada 2024",
+    "adress": "Hydrozagadka, Warszawa"
+  },
+  {
+    "event_id": 1,
+    "nazwa": "ZHU",
+    "data": "środa, 13 listopada 2024",
+    "adress": "Klub Palladium, Warszawa"
+  },
+  {
+    "event_id": 2,
+    "nazwa": "Lordofon przedstawia: koncert w Stodole | Warszawa",
+    "data": "środa, 13 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 3,
+    "nazwa": "Happysad",
+    "data": "czwartek, 14 listopada 2024",
+    "adress": "Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 4,
+    "nazwa": "Luxtorpeda",
+    "data": "czwartek, 14 listopada 2024",
+    "adress": "Drizzly Grizzly, Gdańsk"
+  },
+  {
+    "event_id": 5,
+    "nazwa": "Dr Misio",
+    "data": "czwartek, 14 listopada 2024",
+    "adress": "Stary Klasztor, Wrocław"
+  },
+  {
+    "event_id": 6,
+    "nazwa": "The Dumplings Orkiestra",
+    "data": "czwartek, 14 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 7,
+    "nazwa": "IST IST",
+    "data": "piątek, 15 listopada 2024",
+    "adress": "Klub Hybrydy, Warszawa"
+  },
+  {
+    "event_id": 8,
+    "nazwa": "Kult - Trasa Pomarańczowa 2024",
+    "data": "piątek, 15 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 9,
+    "nazwa": "SICK SAINTS “Autumn Saints” 2024 + Insekt",
+    "data": "piątek, 15 listopada 2024",
+    "adress": "Wooltura, Łódź"
+  },
+  {
+    "event_id": 10,
+    "nazwa": "Pablopavo i Ludziki + Kirszenbaum",
+    "data": "piątek, 15 listopada 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 11,
+    "nazwa": "The Dumplings Orkiestra",
+    "data": "piątek, 15 listopada 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 12,
+    "nazwa": "Armia",
+    "data": "sobota, 16 listopada 2024",
+    "adress": "Klub Scenografia, Łódź"
+  },
+  {
+    "event_id": 13,
+    "nazwa": "Luxtorpeda",
+    "data": "sobota, 16 listopada 2024",
+    "adress": "Blue Note, Poznań"
+  },
+  {
+    "event_id": 14,
+    "nazwa": "Dżem",
+    "data": "sobota, 16 listopada 2024",
+    "adress": "Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 15,
+    "nazwa": "Kult - Trasa Pomarańczowa 2024",
+    "data": "sobota, 16 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 16,
+    "nazwa": "Miserere Luminis & Givre & Halny",
+    "data": "sobota, 16 listopada 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 17,
+    "nazwa": "KAZ BAŁAGANE “A nie mówiłem?\"",
+    "data": "sobota, 16 listopada 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 18,
+    "nazwa": "Dr Misio",
+    "data": "niedziela, 17 listopada 2024",
+    "adress": "Blue Note, Poznań"
+  },
+  {
+    "event_id": 19,
+    "nazwa": "Helmet",
+    "data": "niedziela, 17 listopada 2024",
+    "adress": "Klub Hybrydy, Warszawa"
+  },
+  {
+    "event_id": 20,
+    "nazwa": "Armia",
+    "data": "niedziela, 17 listopada 2024",
+    "adress": "Lizard King, Toruń"
+  },
+  {
+    "event_id": 21,
+    "nazwa": "Joywave | Permanent Pleasure: UK/Europe 2024",
+    "data": "niedziela, 17 listopada 2024",
+    "adress": "Klub Kwadrat, Kraków"
+  },
+  {
+    "event_id": 22,
+    "nazwa": "Rafał Rutkowski - Żarty dla mas",
+    "data": "niedziela, 17 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 23,
+    "nazwa": "Kult - Pomarańczowa Trasa",
+    "data": "niedziela, 17 listopada 2024",
+    "adress": "Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 24,
+    "nazwa": "DAVID ELLEFSON & JEFF YOUNG KINGS OF THRASH “The Mega Years\" + DIETH",
+    "data": "niedziela, 17 listopada 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 25,
+    "nazwa": "TSA Dream Team",
+    "data": "niedziela, 17 listopada 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 26,
+    "nazwa": "Empress Of",
+    "data": "poniedziałek, 18 listopada 2024",
+    "adress": "Klub Niebo, Warszawa"
+  },
+  {
+    "event_id": 27,
+    "nazwa": "Helmet",
+    "data": "poniedziałek, 18 listopada 2024",
+    "adress": "Blue Note, Poznań"
+  },
+  {
+    "event_id": 28,
+    "nazwa": "Floodlights",
+    "data": "środa, 20 listopada 2024",
+    "adress": "Klub Pod Minogą, Poznań"
+  },
+  {
+    "event_id": 29,
+    "nazwa": "Dylan.pl",
+    "data": "środa, 20 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 30,
+    "nazwa": "MOŻDŻER/DANIELSSON/FRESCO BEAMO",
+    "data": "środa, 20 listopada 2024",
+    "adress": "Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 31,
+    "nazwa": "Floodlights",
+    "data": "czwartek, 21 listopada 2024",
+    "adress": "VooDoo Club, Warszawa"
+  },
+  {
+    "event_id": 32,
+    "nazwa": "Jaye Jayle & Of The Wand & The Moon",
+    "data": "czwartek, 21 listopada 2024",
+    "adress": "Klub RE, Kraków"
+  },
+  {
+    "event_id": 33,
+    "nazwa": "Luxtorpeda",
+    "data": "czwartek, 21 listopada 2024",
+    "adress": "Dom Kultury Słowianin, Szczecin"
+  },
+  {
+    "event_id": 34,
+    "nazwa": "Monetochka",
+    "data": "czwartek, 21 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 35,
+    "nazwa": "Palaye Royale",
+    "data": "piątek, 22 listopada 2024",
+    "adress": "Klub Muzyczny B17, Poznań"
+  },
+  {
+    "event_id": 36,
+    "nazwa": "DŻEM",
+    "data": "piątek, 22 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 37,
+    "nazwa": "Łąki Łan",
+    "data": "piątek, 22 listopada 2024",
+    "adress": "Klub Niebo, Warszawa"
+  },
+  {
+    "event_id": 38,
+    "nazwa": "Hard Crack Fest: Embrional, Perversity, Putrid Evil, Hegony",
+    "data": "piątek, 22 listopada 2024",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 39,
+    "nazwa": "Safario",
+    "data": "piątek, 22 listopada 2024",
+    "adress": "Klub Hydrozagadka, Warszawa"
+  },
+  {
+    "event_id": 40,
+    "nazwa": "TABU",
+    "data": "piątek, 22 listopada 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 41,
+    "nazwa": "Dr Misio",
+    "data": "piątek, 22 listopada 2024",
+    "adress": "CK Wiatrak, Zabrze"
+  },
+  {
+    "event_id": 42,
+    "nazwa": "SICK SAINTS “Autumn Saints” 2024 + Kawa O Północy",
+    "data": "piątek, 22 listopada 2024",
+    "adress": "Chicago, Kielce"
+  },
+  {
+    "event_id": 43,
+    "nazwa": "Luxtorpeda",
+    "data": "sobota, 23 listopada 2024",
+    "adress": "Centrum Koncertowe A2, Wrocław"
+  },
+  {
+    "event_id": 44,
+    "nazwa": "Kult - Trasa Pomarańczowa 2024",
+    "data": "sobota, 23 listopada 2024",
+    "adress": "Hala Spodek Katowice, Katowice"
+  },
+  {
+    "event_id": 45,
+    "nazwa": "DŻEM",
+    "data": "sobota, 23 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 46,
+    "nazwa": "SICK SAINTS “Autumn Saints” 2024",
+    "data": "sobota, 23 listopada 2024",
+    "adress": "MotoPUB, Białystok"
+  },
+  {
+    "event_id": 47,
+    "nazwa": "Pidżama Porno XXXVII URODZINY",
+    "data": "sobota, 23 listopada 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 48,
+    "nazwa": "ANKA",
+    "data": "sobota, 23 listopada 2024",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 49,
+    "nazwa": "Natalia Przybysz",
+    "data": "niedziela, 24 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 50,
+    "nazwa": "T.Love",
+    "data": "niedziela, 24 listopada 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 51,
+    "nazwa": "Carrion “Back on the Road Tour\"",
+    "data": "niedziela, 24 listopada 2024",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 52,
+    "nazwa": "MUR | МУР НЕ [РОМАНТИКА]",
+    "data": "wtorek, 26 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 53,
+    "nazwa": "Andrzej Poniedzielski",
+    "data": "czwartek, 28 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 54,
+    "nazwa": "The Dumplings",
+    "data": "czwartek, 28 listopada 2024",
+    "adress": "Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 55,
+    "nazwa": "SOKOŁOWSKI",
+    "data": "czwartek, 28 listopada 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 56,
+    "nazwa": "Mery Spolsky",
+    "data": "piątek, 29 listopada 2024",
+    "adress": "Klub Tama, Poznań"
+  },
+  {
+    "event_id": 57,
+    "nazwa": "WBW 2024 • Wielki Finał",
+    "data": "piątek, 29 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 58,
+    "nazwa": "LADY PANK - OHYDA",
+    "data": "piątek, 29 listopada 2024",
+    "adress": "Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 59,
+    "nazwa": "Ćpaj Stajl + Zdechły Osa",
+    "data": "piątek, 29 listopada 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 60,
+    "nazwa": "SICK SAINTS “Autumn Saints” 2024 + Blindfolded",
+    "data": "piątek, 29 listopada 2024",
+    "adress": "Jednorożec, Tarnobrzeg"
+  },
+  {
+    "event_id": 61,
+    "nazwa": "Dr Misio",
+    "data": "sobota, 30 listopada 2024",
+    "adress": "Podwórko.art, Gdynia"
+  },
+  {
+    "event_id": 62,
+    "nazwa": "Armia",
+    "data": "sobota, 30 listopada 2024",
+    "adress": "Fabryka Kultury Zgrzyt, Lublin"
+  },
+  {
+    "event_id": 63,
+    "nazwa": "T.Love",
+    "data": "sobota, 30 listopada 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 64,
+    "nazwa": "Cronica & Czarny Bez & Runika",
+    "data": "sobota, 30 listopada 2024",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 65,
+    "nazwa": "HURT",
+    "data": "sobota, 30 listopada 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 66,
+    "nazwa": "COALS Primabalerina Tour",
+    "data": "sobota, 30 listopada 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 67,
+    "nazwa": "Luxtorpeda",
+    "data": "niedziela, 1 grudnia 2024",
+    "adress": "Klub Proxima, Warszawa"
+  },
+  {
+    "event_id": 68,
+    "nazwa": "10-lecie ROCKSERWIS.FM, 20-lecie HIPGNOSIS",
+    "data": "niedziela, 1 grudnia 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 69,
+    "nazwa": "Jann",
+    "data": "niedziela, 1 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 70,
+    "nazwa": "Pink Floyd History: \"Welcome to the Machine\"",
+    "data": "poniedziałek, 2 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 71,
+    "nazwa": "Faithless",
+    "data": "wtorek, 3 grudnia 2024",
+    "adress": "Centrum Koncertowe A2, Wrocław"
+  },
+  {
+    "event_id": 72,
+    "nazwa": "Fabiana Palladino",
+    "data": "środa, 4 grudnia 2024",
+    "adress": "Klub Hydrozagadka, Warszawa"
+  },
+  {
+    "event_id": 73,
+    "nazwa": "Hackle & Buckshot · WICKER MEN TOUR",
+    "data": "czwartek, 5 grudnia 2024",
+    "adress": "Klub Proxima, Warszawa"
+  },
+  {
+    "event_id": 74,
+    "nazwa": "Myslovitz",
+    "data": "czwartek, 5 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 75,
+    "nazwa": "Karaś/Rogucki",
+    "data": "czwartek, 5 grudnia 2024",
+    "adress": "Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 76,
+    "nazwa": "KALEO",
+    "data": "piątek, 6 grudnia 2024",
+    "adress": "Centrum Koncertowe A2, Wrocław"
+  },
+  {
+    "event_id": 77,
+    "nazwa": "Myslovitz",
+    "data": "piątek, 6 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 78,
+    "nazwa": "Luxtorpeda",
+    "data": "piątek, 6 grudnia 2024",
+    "adress": "Fabryka Kultury Zgrzyt, Lublin"
+  },
+  {
+    "event_id": 79,
+    "nazwa": "Lady Pank “Ohyda\"",
+    "data": "piątek, 6 grudnia 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 80,
+    "nazwa": "Dziwna Wiosna",
+    "data": "piątek, 6 grudnia 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 81,
+    "nazwa": "Łysa Góra “W ogniu świat\"",
+    "data": "piątek, 6 grudnia 2024",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 82,
+    "nazwa": "Armia",
+    "data": "sobota, 7 grudnia 2024",
+    "adress": "Fabryka Smaku, Rzeszów"
+  },
+  {
+    "event_id": 83,
+    "nazwa": "Palaye Royale",
+    "data": "sobota, 7 grudnia 2024",
+    "adress": "Klub B90, Gdańsk"
+  },
+  {
+    "event_id": 84,
+    "nazwa": "Hamulec  „Deszcze Niespokojne Tour\"",
+    "data": "sobota, 7 grudnia 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 85,
+    "nazwa": "Lady Pank",
+    "data": "sobota, 7 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 86,
+    "nazwa": "Luxtorpeda + Flapjack",
+    "data": "sobota, 7 grudnia 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 87,
+    "nazwa": "Mery Spolsky",
+    "data": "niedziela, 8 grudnia 2024",
+    "adress": "Klub Stary Maneż, Gdańsk"
+  },
+  {
+    "event_id": 88,
+    "nazwa": "Palaye Royale",
+    "data": "niedziela, 8 grudnia 2024",
+    "adress": "Centrum Koncertowe A2, Wrocław"
+  },
+  {
+    "event_id": 89,
+    "nazwa": "Justyna Steczkowska WITCH",
+    "data": "niedziela, 8 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 90,
+    "nazwa": "Ania Dąbrowska  “TEGO CHCIAŁAM” Trasa 20-lecia",
+    "data": "niedziela, 8 grudnia 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 91,
+    "nazwa": "October Drift",
+    "data": "wtorek, 10 grudnia 2024",
+    "adress": "VooDoo Club, Warszawa"
+  },
+  {
+    "event_id": 92,
+    "nazwa": "Cool Kids of Death + WaluśKraksaKryzys",
+    "data": "wtorek, 10 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 93,
+    "nazwa": "Ania Dąbrowska",
+    "data": "środa, 11 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 94,
+    "nazwa": "BUNT.",
+    "data": "czwartek, 12 grudnia 2024",
+    "adress": "Klub Tama, Poznań"
+  },
+  {
+    "event_id": 95,
+    "nazwa": "Jazz Band Młynarski-Masecki",
+    "data": "czwartek, 12 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 96,
+    "nazwa": "LOR",
+    "data": "czwartek, 12 grudnia 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 97,
+    "nazwa": "SKUBAS \"W Ogień\"",
+    "data": "czwartek, 12 grudnia 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 98,
+    "nazwa": "Bladee · COLD VISIONS WINTER In Europe Tour",
+    "data": "piątek, 13 grudnia 2024",
+    "adress": "Klub Progresja, Warszawa"
+  },
+  {
+    "event_id": 99,
+    "nazwa": "Lady Pank",
+    "data": "piątek, 13 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 100,
+    "nazwa": "Żywiołak",
+    "data": "piątek, 13 grudnia 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 101,
+    "nazwa": "Natalia Szroeder “Sama na Planecie Tour\"",
+    "data": "piątek, 13 grudnia 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 102,
+    "nazwa": "DROWNFEST #10: Faust Again, Drown My Day, Czerń, Moron, My Own Abyss, Synapsa, Six Steps Forward",
+    "data": "sobota, 14 grudnia 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 103,
+    "nazwa": "IRA",
+    "data": "sobota, 14 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 104,
+    "nazwa": "OSZALELI ANIELI - Vogule Poland",
+    "data": "sobota, 14 grudnia 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 105,
+    "nazwa": "Accantus Live 6",
+    "data": "niedziela, 15 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 106,
+    "nazwa": "Natalia Szroeder - Sama Na Planecie",
+    "data": "niedziela, 15 grudnia 2024",
+    "adress": "Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 107,
+    "nazwa": "Renonce / Double Darkness / Real Trvth",
+    "data": "niedziela, 15 grudnia 2024",
+    "adress": "Klub RE, Kraków"
+  },
+  {
+    "event_id": 108,
+    "nazwa": "AFROMENTAL feat. PAWBEATS ORCHESTRA",
+    "data": "wtorek, 17 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 109,
+    "nazwa": "Karaś/Rogucki “Znikam\"",
+    "data": "wtorek, 17 grudnia 2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 110,
+    "nazwa": "Karaś/Rogucki",
+    "data": "środa, 18 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 111,
+    "nazwa": "Zdechły Osa x Ćpaj Stajl",
+    "data": "czwartek, 19 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 112,
+    "nazwa": "Lech Janerka",
+    "data": "piątek, 20 grudnia 2024",
+    "adress": "Teatr Muzyczny „Roma”, Warszawa"
+  },
+  {
+    "event_id": 113,
+    "nazwa": "Dr Misio",
+    "data": "piątek, 20 grudnia 2024",
+    "adress": "Fabryka Kultury Zgrzyt, Lublin"
+  },
+  {
+    "event_id": 114,
+    "nazwa": "Przedświąteczny Balet z Zimnym Gulaszem",
+    "data": "piątek, 20 grudnia 2024",
+    "adress": "Klub Zaścianek, Kraków"
+  },
+  {
+    "event_id": 115,
+    "nazwa": "MAŁPA · KILKA NUMERÓW O CZYMŚ",
+    "data": "piątek, 20 grudnia 2024",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 116,
+    "nazwa": "Stanisław Soyka i Grott Orkiestra",
+    "data": "sobota, 21 grudnia 2024",
+    "adress": "Teatr Muzyczny „Roma”, Warszawa"
+  },
+  {
+    "event_id": 117,
+    "nazwa": "Koncert jubileuszowy: 10-lecie zespołu Lor",
+    "data": "piątek, 10 stycznia 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 118,
+    "nazwa": "Ania Wyszkoni, trasa \"Wszystkiego Najlepszego\"",
+    "data": "czwartek, 16 stycznia 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 119,
+    "nazwa": "Świetliki",
+    "data": "piątek, 17 stycznia 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 120,
+    "nazwa": "Sam Greenfield",
+    "data": "poniedziałek, 20 stycznia 2025",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 121,
+    "nazwa": "Sam Greenfield",
+    "data": "wtorek, 21 stycznia 2025",
+    "adress": "Klub Hydrozagadka, Warszawa"
+  },
+  {
+    "event_id": 122,
+    "nazwa": "G-Eazy",
+    "data": "wtorek, 28 stycznia 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 123,
+    "nazwa": "Royal Republic · The LoveCop Tour",
+    "data": "piątek, 31 stycznia 2025",
+    "adress": "Klub Tama, Poznań"
+  },
+  {
+    "event_id": 124,
+    "nazwa": "Kazik & Kwartet ProForma",
+    "data": "piątek, 31 stycznia 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 125,
+    "nazwa": "Spencer Sutherland",
+    "data": "sobota, 1 lutego 2025",
+    "adress": "Klub Niebo, Warszawa"
+  },
+  {
+    "event_id": 126,
+    "nazwa": "Royal Republic · The LoveCop Tour",
+    "data": "sobota, 1 lutego 2025",
+    "adress": "Klub Proxima, Warszawa"
+  },
+  {
+    "event_id": 127,
+    "nazwa": "KAZIK",
+    "data": "sobota, 1 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 128,
+    "nazwa": "Royal Republic · The LoveCop Tour",
+    "data": "niedziela, 2 lutego 2025",
+    "adress": "Klub Kwadrat, Kraków"
+  },
+  {
+    "event_id": 129,
+    "nazwa": "Lisa Gerrard & Jules Maxwell: BURN Tour 2025",
+    "data": "niedziela, 2 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 130,
+    "nazwa": "KAZIK",
+    "data": "niedziela, 2 lutego 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 131,
+    "nazwa": "Soul Asylum",
+    "data": "poniedziałek, 3 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 132,
+    "nazwa": "Kazik & Kwartet ProForma",
+    "data": "poniedziałek, 3 lutego 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 133,
+    "nazwa": "Weekend z Kazikiem - Karnet",
+    "data": "2-3.02.2024",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 134,
+    "nazwa": "Slimane · World Tour",
+    "data": "wtorek, 4 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 135,
+    "nazwa": "Set It Off",
+    "data": "piątek, 7 lutego 2025",
+    "adress": "Klub Progresja, Warszawa"
+  },
+  {
+    "event_id": 136,
+    "nazwa": "Emei - THE RABBITHOLE TOUR",
+    "data": "poniedziałek, 10 lutego 2025",
+    "adress": "Klub Niebo, Warszawa"
+  },
+  {
+    "event_id": 137,
+    "nazwa": "Livingston",
+    "data": "wtorek, 11 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 138,
+    "nazwa": "Alessandra · THE QUEEN IS BACK - TOUR 2025",
+    "data": "piątek, 14 lutego 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 139,
+    "nazwa": "Nieve Ella · Watch It Ache And Bleed Tour",
+    "data": "poniedziałek, 17 lutego 2025",
+    "adress": "Klub Hydrozagadka, Warszawa"
+  },
+  {
+    "event_id": 140,
+    "nazwa": "Polo & Pan",
+    "data": "środa, 19 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 141,
+    "nazwa": "Polo & Pan",
+    "data": "czwartek, 20 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 142,
+    "nazwa": "Omar Rudberg",
+    "data": "piątek, 21 lutego 2025",
+    "adress": "Klub Proxima, Warszawa"
+  },
+  {
+    "event_id": 143,
+    "nazwa": "Moonsorrow + Houle + Radogost",
+    "data": "piątek, 21 lutego 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 144,
+    "nazwa": "Loreen",
+    "data": "niedziela, 23 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 145,
+    "nazwa": "Loreen",
+    "data": "poniedziałek, 24 lutego 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 146,
+    "nazwa": "Windows95Man",
+    "data": "piątek, 7 marca 2025",
+    "adress": "Klub Kwadrat, Kraków"
+  },
+  {
+    "event_id": 147,
+    "nazwa": "Magda Umer - koncert jubileuszowy",
+    "data": "piątek, 7 marca 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 148,
+    "nazwa": "Bednarek",
+    "data": "sobota, 8 marca 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 149,
+    "nazwa": "Kasia Kowalska “30 lat GEMINI Pol’and’Rock\"",
+    "data": "sobota, 8 marca 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 150,
+    "nazwa": "almost monday – the DIVE tour",
+    "data": "niedziela, 9 marca 2025",
+    "adress": "Klub Hybrydy, Warszawa"
+  },
+  {
+    "event_id": 151,
+    "nazwa": "Windows95Man",
+    "data": "niedziela, 9 marca 2025",
+    "adress": "Klub Blue Note, Poznań"
+  },
+  {
+    "event_id": 152,
+    "nazwa": "Andrzej Piaseczny",
+    "data": "niedziela, 9 marca 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 153,
+    "nazwa": "Bars & Melody “The Final Tour\"",
+    "data": "poniedziałek, 10 marca 2025",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 154,
+    "nazwa": "BILK",
+    "data": "wtorek, 11 marca 2025",
+    "adress": "Klub Hydrozagadka, Warszawa"
+  },
+  {
+    "event_id": 155,
+    "nazwa": "Joost Klein",
+    "data": "środa, 12 marca 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 156,
+    "nazwa": "BILK",
+    "data": "środa, 12 marca 2025",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 157,
+    "nazwa": "Coco & Clair Clair",
+    "data": "czwartek, 13 marca 2025",
+    "adress": "Klub Hybrydy, Warszawa"
+  },
+  {
+    "event_id": 158,
+    "nazwa": "SICK SAINTS “Autumn Saints” 2024",
+    "data": "piątek, 14 marca 2025",
+    "adress": "Zakład, Leszno"
+  },
+  {
+    "event_id": 159,
+    "nazwa": "Orla Gartland",
+    "data": "sobota, 15 marca 2025",
+    "adress": "Klub Hydrozagadka, Warszawa"
+  },
+  {
+    "event_id": 160,
+    "nazwa": "Tycho",
+    "data": "niedziela, 16 marca 2025",
+    "adress": "Klub Palladium, Warszawa"
+  },
+  {
+    "event_id": 161,
+    "nazwa": "Igor Herbut",
+    "data": "niedziela, 16 marca 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 162,
+    "nazwa": "Kamasi Washington · Fearless Movement Europe Tour",
+    "data": "środa, 19 marca 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 163,
+    "nazwa": "Myles Smith",
+    "data": "czwartek, 20 marca 2025",
+    "adress": "Klub Proxima, Warszawa"
+  },
+  {
+    "event_id": 164,
+    "nazwa": "Margaret - Siniaki i Cekiny Tour",
+    "data": "czwartek, 20 marca 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 165,
+    "nazwa": "Snatam Kaur",
+    "data": "piątek, 21 marca 2025",
+    "adress": "Stary Maneż, Gdańsk"
+  },
+  {
+    "event_id": 166,
+    "nazwa": "Myslovitz “Wieczorami chłopcy wychodzą na ulicę - EPILOG\"",
+    "data": "piątek, 21 marca 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 167,
+    "nazwa": "Ben Lukas Boysen",
+    "data": "niedziela, 23 marca 2025",
+    "adress": "Klub Hydrozagadka, Warszawa"
+  },
+  {
+    "event_id": 168,
+    "nazwa": "Snatam Kaur",
+    "data": "niedziela, 23 marca 2025",
+    "adress": "Progresja, Warszawa"
+  },
+  {
+    "event_id": 169,
+    "nazwa": "Warhaus",
+    "data": "środa, 26 marca 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 170,
+    "nazwa": "Anastacia",
+    "data": "niedziela, 30 marca 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 171,
+    "nazwa": "INIKO",
+    "data": "poniedziałek, 31 marca 2025",
+    "adress": "Klub Progresja, Warszawa"
+  },
+  {
+    "event_id": 172,
+    "nazwa": "Hooverphonic",
+    "data": "środa, 2 kwietnia 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 173,
+    "nazwa": "glaive | 2025 Tour",
+    "data": "piątek, 4 kwietnia 2025",
+    "adress": "Klub Hybrydy, Warszawa"
+  },
+  {
+    "event_id": 174,
+    "nazwa": "IGO \"12 zmysłów\"",
+    "data": "niedziela, 6 kwietnia 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 175,
+    "nazwa": "Antimatter",
+    "data": "poniedziałek, 7 kwietnia 2025",
+    "adress": "Klub Gwarek, Kraków"
+  },
+  {
+    "event_id": 176,
+    "nazwa": "NEMO · BREAK THE CODE EUROPE TOUR 2025",
+    "data": "sobota, 12 kwietnia 2025",
+    "adress": "Klub Progresja, Warszawa"
+  },
+  {
+    "event_id": 177,
+    "nazwa": "Klangphonics · PERFECT OPPOSURE TOUR 2025",
+    "data": "sobota, 12 kwietnia 2025",
+    "adress": "Klub Palladium, Warszawa"
+  },
+  {
+    "event_id": 178,
+    "nazwa": "NEMO · BREAK THE CODE EUROPE TOUR 2025",
+    "data": "poniedziałek, 14 kwietnia 2025",
+    "adress": "Klub Muzyczny B17, Poznań"
+  },
+  {
+    "event_id": 179,
+    "nazwa": "NEMO · BREAK THE CODE EUROPE TOUR 2025",
+    "data": "wtorek, 15 kwietnia 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 180,
+    "nazwa": "Esprit D'Air",
+    "data": "wtorek, 22 kwietnia 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 181,
+    "nazwa": "Scott Bradlee's Postmodern Jukebox · Magic and Moonlight Tour 2025",
+    "data": "poniedziałek, 2 czerwca 2025",
+    "adress": "Klub Wytwórnia, Łódź"
+  },
+  {
+    "event_id": 182,
+    "nazwa": "Scott Bradlee's Postmodern Jukebox · Magic and Moonlight Tour 2025",
+    "data": "wtorek, 3 czerwca 2025",
+    "adress": "Klub Stary Maneż, Gdańsk"
+  },
+  {
+    "event_id": 183,
+    "nazwa": "Larkin Poe",
+    "data": "niedziela, 2 listopada 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 184,
+    "nazwa": "METALLICA & Symphony by «Scream inc»",
+    "data": "wtorek, 4 listopada 2025",
+    "adress": "Klub Studio, Kraków"
+  },
+  {
+    "event_id": 185,
+    "nazwa": "METALLICA & Symphony by «Scream inc»",
+    "data": "środa, 5 listopada 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  },
+  {
+    "event_id": 186,
+    "nazwa": "METALLICA & Symphony by «Scream inc»",
+    "data": "czwartek, 6 listopada 2025",
+    "adress": "Stary Maneż, Gdańsk"
+  },
+  {
+    "event_id": 187,
+    "nazwa": "The Rasmus | weirdo tour 2025",
+    "data": "czwartek, 13 listopada 2025",
+    "adress": "Klub Stodoła, Warszawa"
+  }
+]

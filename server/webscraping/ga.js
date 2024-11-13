@@ -107,7 +107,7 @@ const fetchEvents = async () => {
             }
         }
 
-        fs.writeFileSync('response.txt', JSON.stringify(response, null, 2), 'utf-8');
+        fs.writeFileSync('../webscrapData/ga.txt', JSON.stringify(response, null, 2), 'utf-8');
         console.log('Odpowiedź została zapisana do pliku response.txt');
 
     } finally {
