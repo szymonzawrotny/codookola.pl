@@ -1,13 +1,14 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 import { SlOptions } from "react-icons/sl";
 import { FaRegUserCircle,FaRegHeart, FaRegBookmark, FaHeart } from "react-icons/fa";
 import { FaBookmark } from "react-icons/fa6";
 import { MdReportGmailerrorred } from "react-icons/md";
+import Image from 'next/image';
 
 import SwiperBox from "./SwiperBox";
 
-const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,save})=>{
+const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,save,authorId})=>{
 
     const ref = useRef();
 
@@ -19,6 +20,25 @@ const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,sa
         console.log("zgłoszono!")
     }
 
+
+    const [iconPath,setIconPath] = useState(false)
+    const fetchIcon = async ()=>{
+        const response = await fetch("http://localhost:5000/icons")
+        .then(response=>response.json())
+        .then(data=>{
+            data.forEach(one=>{
+                if(one.user_id === authorId){
+                    setIconPath(`http://localhost:5000${one.path}`)
+                }
+            })
+        })
+    }
+
+    useEffect(()=>{
+        fetchIcon();
+        console.log(author)
+    },[])
+
     return(
         <div className="event">
             <div className="options" onClick={handleOptions} ref={ref}>
@@ -28,7 +48,13 @@ const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,sa
                 </div>
             </div>
             <div className="userData">
-                <div className="icon"><FaRegUserCircle/></div>
+                <div className="icon">
+                    {iconPath ? <div className="userIcon"><Image
+                            src={iconPath} 
+                            alt="siema"
+                            width="1920" 
+                            height="1080"/></div> : <FaRegUserCircle />}
+                </div>
                 <div className="name">{author}</div>
             </div>
             <div className="photos">

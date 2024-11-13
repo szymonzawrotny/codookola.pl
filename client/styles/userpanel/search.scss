@@ -2,7 +2,7 @@
     main{
         header{
             .search{
-                width:35svh;
+                width:40svh;
                 display: flex;
                 justify-content: center;
                 align-items: center;
@@ -11,6 +11,7 @@
                 border-radius: 15px;
                 box-shadow:2px 2px #222;
                 transition: .3s ease-in-out;
+                margin-left: 50px;
                 svg{
                     font-size: 28px;
                     margin: 0 10px 0 15px;

@@ -116,8 +116,7 @@
                             }
                         }
                         .optionsPanel:hover{
-                            background-color: royalblue;
-                            color:aliceblue
+                            color:red;
                         }
                     }
                     .userData{
@@ -127,6 +126,24 @@
                         align-items: center;
                         font-weight: 700;
                         .icon{
+                            .userIcon{
+                                width:30px;
+                                height:30px;
+                                margin: 0 10px 0 15px;
+                                border-radius: 50%;
+                                position: relative;
+                                overflow: hidden;
+                                img{
+                                    position: absolute;
+                                    top:50%;
+                                    left:50%;
+                                    transform: translate(-50%,-50%);
+                                    max-height:100%;
+                                    width:auto;
+                                    user-select:none;
+                                    -webkit-user-drag: none;  //zakaz przeciągania fotek
+                                }
+                            }
                             svg{
                                 font-size:28px;
                                 margin: 0 10px 0 15px;

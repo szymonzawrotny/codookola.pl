@@ -183,6 +183,7 @@ const Discover = ({handleButton})=>{
                 handleSave={handleSave}
                 save={isSave}
                 id={one.event_id}
+                authorId={one.author_id}
                 />
     })
 

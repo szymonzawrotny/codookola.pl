@@ -1,7 +1,7 @@
 import "@/styles/userpanel/panel.scss"
 
 import { useSession } from 'next-auth/react'
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { signOut } from "next-auth/react";
 import { useRouter } from 'next/navigation'
 import Link from "next/link";
@@ -11,6 +11,7 @@ import { MdEventNote } from "react-icons/md";
 import { IoStatsChart } from "react-icons/io5";
 import { FaRegUserCircle, FaHome, FaBell, FaRegBell } from "react-icons/fa";
 import { FaUserCircle } from "react-icons/fa";
+import Image from "next/image";
 
 import Search from "@/components/userpanel/Search";
 import AlertsPanel from "./AlertsPanel";
@@ -32,6 +33,19 @@ const Panel = ({children})=>{
             router.push("/")
         }
     })
+
+    const [iconPath,setIconPath] = useState(false)
+    const fetchIcon = async ()=>{
+        const response = await fetch("http://localhost:5000/icons")
+        .then(response=>response.json())
+        .then(data=>{
+            data.forEach(one=>{
+                if(one.user_id === session?.user?.email?.id){
+                    setIconPath(`http://localhost:5000${one.path}`)
+                }
+            })
+        })
+    }
 
     const logout = ()=>{
         signOut({ callbackUrl: "/" })
@@ -73,6 +87,10 @@ const Panel = ({children})=>{
 
         setBellIcon(true)
     }
+
+    useEffect(()=>{
+        fetchIcon();
+    },[])
 
     return(
         <div className="logged">
@@ -123,12 +141,16 @@ const Panel = ({children})=>{
             <main>
                 <AlertsPanel alertPanelRef={alertPanelRef}/>
                 <header>
+                    <Search searchInputRef={searchInputRef} handleSearch={handleSearch} searchRef={searchRef}/>
+                    <div className="space"></div>
                     <div className="userInfo">
-                        <FaRegUserCircle />
+                        {iconPath ? <div className="userIcon"><Image
+                            src={iconPath} 
+                            alt="siema"
+                            width="1920" 
+                            height="1080"/></div> : <FaRegUserCircle />}
                         {session?.user?.email?.email}
                     </div>
-                    <div className="space"></div>
-                    <Search searchInputRef={searchInputRef} handleSearch={handleSearch} searchRef={searchRef}/>
                     <div className="alerts" onClick={handleAlertsButton} ref={alertRef}>
                         {bellIcon ? <FaRegBell/>: <FaBell/>}
                     </div>

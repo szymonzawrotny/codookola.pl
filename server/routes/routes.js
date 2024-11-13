@@ -85,7 +85,7 @@ const addLike = async (req, res) => {
                 res.status(200).json({ message: "usunięto polubienie" });
             });
         } else {
-            pool.query(`INSERT INTO likes VALUES (NULL, ?, ?, 1, ?)`, [eventId, userId, "testowa data"], (err) => {
+            pool.query(`INSERT INTO likes VALUES (NULL, ?, ?, 1, ?)`, [eventId, userId, new Date()], (err) => {
                 if (err) {
                     console.error("Błąd dodawania polubienia:", err);
                     return res.status(500).json({ message: "Błąd serwera" });
@@ -126,7 +126,7 @@ const addSave = async (req, res) => {
                 res.status(200).json({ message: "usunięto zapisanie" });
             });
         } else {
-            pool.query(`INSERT INTO save VALUES (NULL, ?, ?, 1, ?)`, [eventId, userId, "testowa data"], (err) => {
+            pool.query(`INSERT INTO save VALUES (NULL, ?, ?, 1, ?)`, [eventId, userId, new Date()], (err) => {
                 if (err) {
                     console.error("Błąd dodawania zapisu:", err);
                     return res.status(500).json({ message: "Błąd serwera" });
@@ -161,4 +161,52 @@ const send = (req,res)=>{
     })
 }
 
-export { register, api, likes, addLike, save, addSave, send };
+const addIcon = (req, res) => {
+    const { id } = req.body;
+
+    if (!req.file) {
+        return res.status(400).json({ message: 'Brak pliku do przesłania' });
+    }
+
+    const newPath = `/uploads/${req.file.filename}`;
+
+    pool.query('SELECT * FROM icons WHERE user_id = ?', [id], (err, result) => {
+        if (err) {
+        console.error("Błąd przy zapytaniu do bazy danych:", err);
+        return res.status(500).json({ message: "Błąd przy zapytaniu do bazy danych" });
+        }
+
+        if (result.length > 0) {
+        // Jeśli rekord istnieje, wykonujemy UPDATE
+        pool.query('UPDATE icons SET path = ? WHERE user_id = ?', [newPath, id], (err) => {
+            if (err) {
+            console.error("Błąd przy aktualizacji bazy danych:", err);
+            return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" });
+            }
+            return res.status(200).json({ message: "Aktualizacja zakończona sukcesem", path: newPath });
+        });
+        } else {
+        // Jeśli rekord nie istnieje, wykonujemy INSERT
+        pool.query('INSERT INTO icons (user_id, path) VALUES (?, ?)', [id, newPath], (err) => {
+            if (err) {
+            console.error("Błąd przy dodawaniu do bazy danych:", err);
+            return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+            }
+            return res.status(200).json({ message: "Dodanie zakończone sukcesem", path: newPath });
+        });
+        }
+    });
+}
+
+const icons = (req,res)=>{
+    const query = `SELECT * FROM icons`;
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.error("Błąd zapytania:", err);
+            return res.status(500).json({ message: 'Błąd serwera' });
+        }
+        res.json(result);
+    });
+}
+
+export { register, api, likes, addLike, save, addSave, send, addIcon,icons };

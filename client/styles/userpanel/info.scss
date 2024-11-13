@@ -52,33 +52,19 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
-            }
-            .editAvatar{
-                position: absolute;
-                top:48%;
-                left:57%;
-                background-color: royalblue;
-                color:aliceblue;
-                width:5svh;
-                height:5svh;
-                border-radius: 50%;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                cursor: pointer;
-            }
-            .interest{
-                margin-top: 15px;
-                display: flex;
-                flex-direction: column;
-                width:80%;
-                height:20%;
-                letter-spacing: 2px;
-                select{
-                    margin-top: 15px;
-                    flex-grow: 1;
-                    border-radius: 5px;
-                    cursor: pointer;
+                overflow: hidden;
+                user-select:none;
+                position: relative;
+                user-select: none;
+                img{
+                    position: absolute;
+                    top:50%;
+                    left:50%;
+                    transform: translate(-50%,-50%);
+                    max-height:100%;
+                    width:auto;
+                    user-select:none;
+                    -webkit-user-drag: none;  //zakaz przeciągania fotek
                 }
             }
         }
