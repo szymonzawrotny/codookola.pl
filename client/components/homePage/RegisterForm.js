@@ -57,7 +57,8 @@ const RegisterForm = ()=>{
             })
 
             if(response.ok){
-                router.push("/map");
+                console.log("dodano konto")
+                alert("dodano konto")
             } else {
                 console.log("błąd rejestracji")
             }

@@ -36,7 +36,6 @@ const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,sa
 
     useEffect(()=>{
         fetchIcon();
-        console.log(author)
     },[])
 
     return(

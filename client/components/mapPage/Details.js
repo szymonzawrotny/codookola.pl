@@ -2,13 +2,13 @@
 import {useEffect, useState} from 'react';
 import "@/styles/mapPage/interface/panels/details.scss"
 import { FaRegUserCircle,FaRegHeart, FaRegBookmark, FaHeart } from "react-icons/fa";
+import { FcBullish, FcCalendar } from "react-icons/fc";
+import { RiOpenaiFill } from "react-icons/ri";
 import { FaBookmark } from "react-icons/fa6";
 import SwiperBox from "./SwiperBox";
 import { useSession } from 'next-auth/react'
 
-const General = ({desc})=> <div><p>{desc}</p></div>
-const Opinions = ()=> <div>opinie</div>
-const Info = ()=> <div>info</div>
+import {General, Opinions, Chatbot} from './DetailsOptions';
 
 const Details = ({title,author,desc,id})=>{
 
@@ -19,6 +19,10 @@ const Details = ({title,author,desc,id})=>{
     const [component,setComponent] = useState(<General desc={desc}/>)
     const [like, setLike] = useState(false);
     const [save, setSave] = useState(false);
+    const [address,setAddress] = useState("");
+    const [city,setCity] = useState("");
+    const [eventType,setEventType] = useState("");
+    const [date,setDate] = useState("");
 
 
     const handleDetails = (e)=>{
@@ -31,10 +35,10 @@ const Details = ({title,author,desc,id})=>{
 
         switch(value){
             case "general": {
-                setComponent(<General desc={desc}/>)
+                setComponent(<General desc={desc} address={address} city={city} date={date} eventType={eventType}/>)
             } break;
-            case "info": {
-                setComponent(<Info/>)
+            case "chatbot": {
+                setComponent(<Chatbot/>)
             } break;
             case "opinions": {
                 setComponent(<Opinions/>)
@@ -131,11 +135,32 @@ const Details = ({title,author,desc,id})=>{
         }
     }
 
+    const fetchDetailInfo = async ()=>{
+        const response = await fetch("http://localhost:5000/api")
+        .then(response=>response.json())
+        .then(data=>{
+            data.forEach(one=>{
+                if(id===one.event_id){
+                    console.log(one.adres)
+                    setAddress(one.adres)
+                    setCity(one.miasto)
+                    setDate(one.data)
+                    setEventType(one.rodzaj)
+                }
+            })
+        })
+    }
+
     useEffect(()=>{
-        setComponent(<General desc={desc}/>)
+        fetchDetailInfo();
+    },[])
+
+    useEffect(()=>{
+        fetchDetailInfo();
+        setComponent(<General desc={desc} address={address} city={city} date={date} eventType={eventType}/>)
         fetchLikes();
         fetchSaves();
-    },[desc])
+    },[desc,address])
 
     return(
         <div className="details">
@@ -157,17 +182,17 @@ const Details = ({title,author,desc,id})=>{
                     className="option active" 
                     onClick={handleDetails}
                     data-component="general">
-                        ogólne</div>
+                        <FcCalendar style={{marginRight:"5px"}}/>ogólne</div>
                 <div 
                     className="option"
                     onClick={handleDetails}
-                    data-component="info">
-                        informacje</div>
+                    data-component="chatbot">
+                        <RiOpenaiFill style={{marginRight:"5px"}}/>chatbot</div>
                 <div 
                     className="option" 
                     onClick={handleDetails}
                     data-component="opinions">
-                        opinie</div>
+                        <FcBullish style={{marginRight:"5px"}}/>opinie</div>
             </nav>
             <div className="detailsMain">
                 {component}

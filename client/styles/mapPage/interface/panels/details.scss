@@ -88,9 +88,10 @@
                 .option{
                     border-bottom:2px solid #222;
                     width:25%;
+                    height:40px;
                     display: flex;
                     justify-content: center;
-                    align-items: flex-end;
+                    align-items: center;
                     cursor: pointer;
                     transition:.3s ease-in-out;
                 }
@@ -108,12 +109,80 @@
                 display: flex;
                 flex-direction: column;
                 overflow-y: scroll;
-                p{
+                padding:25px;
+                cursor: default;
+                p.description{
+                    display: block;
+                    background-color: #FFE97F;
+                    padding:15px;
+                    border-radius: 15px;
                     width:100%;
-                    height:20svh;
-                    padding:25px;
                     text-align: justify;
                     letter-spacing: 2px;
+                    //box-shadow: 2px 2px #222;
+                }
+                .detailInfoPanel{
+                    margin: 10px 0 10px 0;
+                    height:50px;
+                    background-color: #FFE97F;
+                    border-radius: 15px;
+                    display: flex;
+                    justify-content: flex-start;
+                    padding-left: 15px;
+                    align-items: center;
+                    letter-spacing: 2px;
+                    text-transform: capitalize;
+                    //box-shadow: 2px 2px #222;
+                    svg{
+                        margin-right: 10px;
+                        color:royalblue;
+                        font-size:22px;
+                    }
+                }
+                .chat{
+                    flex-basis: 90%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    .userQuestion{
+                        background-color: #FFE97F;
+                        padding:10px;
+                        border-radius: 5px;
+                        width:60%;
+                        align-self: flex-start;
+                        margin-top:10px;
+                    }
+                    .chatResponse{
+                        background-color: #FFE97F;
+                        padding:10px;
+                        border-radius: 5px;
+                        width:60%;
+                        align-self: flex-end;
+                        margin-top:10px;
+                    }
+                }
+                .askQuestion{
+                    flex-basis: 10%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-bottom:2px solid #222;
+                    input{
+                        width:90%;
+                        padding:15px;
+                        background-color: transparent;
+                        border:none;
+                        font-size:16px;
+                        letter-spacing: 2px;
+                    }
+                    input:focus{
+                        outline: none;
+                    }
+                    svg{
+                        width:10%;
+                        font-size:26px;
+                        cursor: pointer;
+                    }
                 }
             }
         }

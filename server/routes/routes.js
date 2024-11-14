@@ -20,19 +20,31 @@ const register = async (req, res) => {
         const data = await response.json();
 
         if (data.success) {
-            bcrypt.hash(pass, 10, (err, hashedPassword) => {
+            const checkEmailQuery = `SELECT * FROM users WHERE email = ?`;
+            pool.query(checkEmailQuery, [email], (err, results) => {
                 if (err) {
-                    console.log("Błąd hashowania hasła: ", err);
+                    console.error("Błąd podczas sprawdzania e-mail w bazie danych:", err);
                     return res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
                 }
 
-                const query = `INSERT INTO users VALUES (NULL, ?, ?, 'user')`;
-                pool.query(query, [email, hashedPassword], (err, results) => {
+                if (results.length > 0) {
+                    return res.status(500).json({ message: 'Już jest taki email' });
+                }
+
+                bcrypt.hash(pass, 10, (err, hashedPassword) => {
                     if (err) {
-                        console.error("Błąd podczas zapisu do bazy danych:", err);
+                        console.log("Błąd hashowania hasła: ", err);
                         return res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
                     }
-                    res.status(200).json({ success: true, message: 'Zarejestrowano pomyślnie' });
+
+                    const query = `INSERT INTO users (email, password, role) VALUES (?, ?, 'user')`;
+                    pool.query(query, [email, hashedPassword], (err, results) => {
+                        if (err) {
+                            console.error("Błąd podczas zapisu do bazy danych:", err);
+                            return res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
+                        }
+                        res.status(200).json({ success: true, message: 'Zarejestrowano pomyślnie' });
+                    });
                 });
             });
         } else {
