@@ -1,0 +1,247 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+
+html{
+    scroll-behavior: smooth;
+}
+
+.rankingPage{
+    min-height: 500svh;
+    background-color: aliceblue;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    .title{
+        cursor: default;
+        text-transform: uppercase;
+        font-size: 80px;
+        letter-spacing: 25px;
+        position: absolute;
+        top:40px;
+        left:40px;
+        font-weight: 700;
+        z-index:0;
+        font-family: "Geist Mono", monospace;
+    }
+    .title2{
+        font-size: 90px;
+        letter-spacing: 25px;
+        position: fixed;
+        top:40px;
+        right:40px;
+        font-weight: 700;
+        z-index:0;
+        font-family: "Geist Mono", monospace;
+    }
+    .top{
+        flex-basis: 60svh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-end;
+        transition: .8s ease-in-out;
+        z-index:1;
+        .bar{
+            flex-basis: 25%;
+            height:50%;
+            margin: 0 10px 0 10px;
+            border-radius: 50px 50px 0 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: aliceblue;
+            font-size:56px;
+            font-weight: 600;
+            cursor: default;
+        }
+        .top2{
+            height:45%;
+            background-color: lightgreen;
+        }
+        .top1{
+            height:60%;
+            background-color: lightcoral;
+        }
+        .top3{
+            height:30%;
+            background-color: lightblue;
+        }
+    }  
+    .ranking{
+        z-index:1;
+        background-color: #FFE97F;
+        border-radius: 50px 50px 0 0;
+        flex-grow:1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .legend{
+            width:90%;
+            height:80px;
+            display: flex;
+            align-items: center;
+            background-color: aliceblue;
+            padding-left: 25px;
+            font-size:14px;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            cursor: default;
+            overflow: hidden;
+            letter-spacing: 2px;
+            .space{
+                flex-grow: 1;
+            }
+            .viewsLegend,.likeLegend, .saveLegend{
+                width:100px;
+                height:100%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-width:50px;
+                svg{
+                    font-size:26px;
+                }
+            }
+            .viewsLegend{
+                background-color: lightgreen;
+            }
+            .likeLegend{
+                background-color: lightcoral;
+            }
+            .saveLegend{
+                background-color: lightblue;
+            }
+        }
+        .container{
+            width:90%;
+            height:410svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            .user{
+                opacity:0;
+                transform: scale(0.95);
+                background-color: aliceblue;
+                border-radius: 5px;
+                height:80px;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                transition: .5s ease-in-out;
+                cursor: default;
+                overflow: hidden;
+                span{
+                    margin: 0 25px 0 25px;
+                    font-size: 26px;
+                    font-weight: 700;
+                    font-family: "Geist Mono", monospace;
+                }
+                .space{
+                    flex-grow: 1;
+                }
+                .likes,.saves,.views{
+                    height:100%;
+                    width:100px;
+                    font-size: 26px;
+                    font-weight: 700;
+                    font-family: "Geist Mono", monospace;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    min-width:50px;
+                }
+                .views{
+                    background-color: lightgreen;
+                }
+                .likes{
+                    background-color: lightcoral;
+                }
+                .saves{
+                    background-color: lightblue;
+                }
+            }
+            .user.active{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+    }
+    .toUp{
+        background-color: #222;
+        color:aliceblue;
+        font-size:32px;
+        width:50px;
+        height:50px;
+        position: fixed;
+        right:-50px;
+        top:80svh;
+        border-radius: 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transition: .5s ease-in-out;
+        cursor: pointer;
+    }
+    .toUp.active{
+        transform: translateX(-50px);
+    }
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+::-webkit-scrollbar-thumb:hover
+{
+    background-color:#555;
+}
+
+@media (max-width:1050px){
+    .rankingPage{
+        .title{
+            font-size: 30px;
+            letter-spacing: 10px;
+        }
+        .title2{
+            font-size: 40px;
+            letter-spacing: 10px;
+            top:50px;
+        }
+        .top{
+            .bar{
+                margin: 0;
+                border-radius: 25px 25px 0 0;
+                flex-basis: 30%;
+            }
+        }
+        .ranking{
+            border-radius: 25px 25px 0 0;
+            .legend{
+                 .viewsLegend,.likeLegend, .saveLegend{
+                    width:60px;
+                    svg{
+                        font-size:18px;
+                    }
+                 }
+            }
+            .container{
+                .user{
+                    .likes,.saves,.views{
+                        width:60px;
+                    }
+                }
+            }
+        }
+    }
+}

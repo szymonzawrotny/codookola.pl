@@ -7,6 +7,7 @@ import "@/styles/mapPage/interface/menu.scss"
 import { MdOutlineManageAccounts,  MdOutlinePrivacyTip } from "react-icons/md";
 import { BiLogOutCircle } from "react-icons/bi";
 import { RiMapPinUserFill } from "react-icons/ri";
+import { PiRankingFill } from "react-icons/pi";
 
 
 const Menu = ({menuRef})=>{
@@ -31,6 +32,10 @@ const Menu = ({menuRef})=>{
             <Link href="/userpanel/events" className="element">
                 <RiMapPinUserFill/>
                 Twoje wydarzenia
+            </Link>
+            <Link href="/ranking" className="element">
+                <PiRankingFill />
+                Ranking
             </Link>
             <Link href="/policy" className="element">
                 <MdOutlinePrivacyTip/>
