@@ -174,16 +174,12 @@ const Discover = ({handleButton})=>{
 
         return <Event
                 key={index}
-                author={one.author_email}
-                desc={one.opis}
                 handleButton={handleButton}
-                name={one.nazwa}
+                eventInfo={one}
                 handleLike={handleLike}
                 isLike={isLike}
                 handleSave={handleSave}
                 save={isSave}
-                id={one.event_id}
-                authorId={one.author_id}
                 />
     })
 

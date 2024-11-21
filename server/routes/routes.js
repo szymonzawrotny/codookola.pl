@@ -2,6 +2,7 @@ import bcrypt from 'bcryptjs';
 import nodemailer from 'nodemailer'
 import "dotenv/config";
 import { pool } from '../config/database.js';
+import {getResponse} from "../getChatbotAnswer.js"
 
 const register = async (req, res) => {
     const { email, pass, captchaToken } = req.body;
@@ -221,4 +222,15 @@ const icons = (req,res)=>{
     });
 }
 
-export { register, api, likes, addLike, save, addSave, send, addIcon,icons };
+const askbot = async (req,res)=>{
+    const {value} = req.body
+
+    // getResponse(value).then(data=>{
+    //     console.log(data);
+    //     res.status(200).json({answer:data,question:value});
+    // });
+
+    res.status(200).json({answer:"kod zablokowałem bo to płatne i się boję XD",question:value});
+}
+
+export { register, api, likes, addLike, save, addSave, send, addIcon,icons,askbot };

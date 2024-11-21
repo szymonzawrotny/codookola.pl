@@ -141,7 +141,6 @@ const Details = ({title,author,desc,id})=>{
         .then(data=>{
             data.forEach(one=>{
                 if(id===one.event_id){
-                    console.log(one.adres)
                     setAddress(one.adres)
                     setCity(one.miasto)
                     setDate(one.data)

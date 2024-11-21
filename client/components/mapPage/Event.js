@@ -8,7 +8,7 @@ import Image from 'next/image';
 
 import SwiperBox from "./SwiperBox";
 
-const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,save,authorId})=>{
+const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
 
     const ref = useRef();
 
@@ -27,7 +27,7 @@ const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,sa
         .then(response=>response.json())
         .then(data=>{
             data.forEach(one=>{
-                if(one.user_id === authorId){
+                if(one.user_id === eventInfo.author_id){
                     setIconPath(`http://localhost:5000${one.path}`)
                 }
             })
@@ -54,24 +54,24 @@ const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,sa
                             width="1920" 
                             height="1080"/></div> : <FaRegUserCircle />}
                 </div>
-                <div className="name">{author}</div>
+                <div className="name">{eventInfo.author_email}</div>
             </div>
             <div className="photos">
                 <SwiperBox/>
             </div>
             <div className="title">
-                <span>{name}</span>
+                <span>{eventInfo.nazwa}</span>
             </div>
             <div className="buttons">
-                <div className="like" onClick={handleLike} id={id}>
+                <div className="like" onClick={handleLike} id={eventInfo.event_id}>
                     {isLike ? <FaHeart className='liked'/> : <FaRegHeart className='noLiked'/>}
                 </div>
-                <div className="save" onClick={handleSave} id={id}>
+                <div className="save" onClick={handleSave} id={eventInfo.event_id}>
                     {save? <FaBookmark style={{color:"lightgreen"}}/> : <FaRegBookmark style={{color:"#222"}}/>}
                 </div>
                 <button 
                     className="check" 
-                    onClick={()=>handleButton(name,author,desc,id,isLike,save)}>
+                    onClick={()=>handleButton(eventInfo.nazwa,eventInfo.author_email,eventInfo.opis,eventInfo.event_id,isLike,save)}>
                         sprawdź
                 </button>
             </div>

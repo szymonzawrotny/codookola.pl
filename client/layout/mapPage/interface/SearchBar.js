@@ -59,7 +59,7 @@ const SearchBar = ({handleButton})=>{
                 <HiOutlineMagnifyingGlass size={32}/>
                 <div className="list">
                     <div className="elements">
-                        {elements.length > 0 ? elements : <div className="empty">brak wyszukiwań</div> }
+                        {elements.length > 0 ? elements : <div className="empty">brak wydarzeń</div> }
                     </div>
                 </div>
             </div>
