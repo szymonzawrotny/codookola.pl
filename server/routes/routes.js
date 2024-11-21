@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import nodemailer from 'nodemailer'
 import "dotenv/config";
 import { pool } from '../config/database.js';

@@ -54,7 +54,7 @@ const Discover = ({handleButton})=>{
         const response = await fetch("http://localhost:5000/addlike",{
         method: "POST",
         body:JSON.stringify({
-            userId: session.user.email.id,
+            userId: session?.user?.email?.id,
             eventId
         }),
         headers: {
@@ -82,7 +82,7 @@ const Discover = ({handleButton})=>{
         const response = await fetch("http://localhost:5000/addSave",{
         method: "POST",
         body:JSON.stringify({
-            userId: session.user.email.id,
+            userId: session?.user?.email?.id,
             eventId
         }),
         headers: {

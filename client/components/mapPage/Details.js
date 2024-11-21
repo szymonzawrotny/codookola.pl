@@ -171,7 +171,7 @@ const Details = ({title,author,desc,id})=>{
             <h2>{author}</h2>
             <div className="detailButtons">
                 <div className="like" onClick={handleLike} id={id}>
-                   {like ? <FaHeart style={{color:"red"}}/> : <FaRegHeart style={{color:"#222"}}/>}
+                   {like ? <FaHeart className='liked'/> : <FaRegHeart className='noLiked'/>}
                 </div>
                 <div className="save" onClick={handleSave} id={id}>
                     {save? <FaBookmark style={{color:"lightgreen"}}/> : <FaRegBookmark style={{color:"#222"}}/>}

@@ -209,6 +209,14 @@
                             svg{
                                 font-size:26px;
                             }
+                            .liked{
+                                transform-origin:50% 100%;
+                                animation: like-animation .6s ease-in-out forwards;
+                                color:red;
+                            }
+                            .noLiked{
+                                color:#222;
+                            }
                         }
                         .save{
                             height:40px;
@@ -282,5 +290,24 @@
                 }
             }
         }
+    }
+}
+
+
+@keyframes like-animation{
+    0%{
+        transform: scale(1) rotate(0);
+    }
+    15%{
+        transform: scale(1.1) rotate(15deg);
+    }
+    30%{
+        transform: scale(1.1) rotate(-15deg);
+    }
+    45%{
+        transform: scale(1.1) rotate(0);
+    }
+    60%{
+        transform: scale(1) rotate(0);
     }
 }

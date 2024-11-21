@@ -1,6 +1,6 @@
+"use client"
 import "@/styles/policyPage/policy.scss";
 import Chapter from "@/components/policyPage/Chapter";
-
 
 const Policy = ()=>{
 

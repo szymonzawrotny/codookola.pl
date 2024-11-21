@@ -1,7 +1,7 @@
 'use client'
 import { useState } from 'react';
 import Calendar from 'react-calendar';
-import "@/styles/userPanel/home.scss";
+import "@/styles/userpanel/home.scss";
 import 'react-calendar/dist/Calendar.css';
 
 import InfoChart from '@/components/userpanel/InfoChart';

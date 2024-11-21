@@ -64,7 +64,7 @@ const Event = ({author,name,handleButton,desc,handleLike,isLike,id,handleSave,sa
             </div>
             <div className="buttons">
                 <div className="like" onClick={handleLike} id={id}>
-                    {isLike ? <FaHeart style={{color:"red"}}/> : <FaRegHeart style={{color:"#222"}}/>}
+                    {isLike ? <FaHeart className='liked'/> : <FaRegHeart className='noLiked'/>}
                 </div>
                 <div className="save" onClick={handleSave} id={id}>
                     {save? <FaBookmark style={{color:"lightgreen"}}/> : <FaRegBookmark style={{color:"#222"}}/>}

@@ -1,5 +1,5 @@
 'use client'
-import "@/styles/userPanel/userPanel.scss";
+import "@/styles/userpanel/userPanel.scss";
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import Panel from "@/layout/userpanel/Panel";

@@ -1,6 +1,6 @@
 import CredentialsProvider from "next-auth/providers/credentials";
 import mysql from 'mysql2/promise'
-import bcrypt from 'bcrypt'
+import bcrypt from 'bcryptjs'
 
 export const options = {
     providers: [
