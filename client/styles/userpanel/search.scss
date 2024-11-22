@@ -40,17 +40,40 @@
                     flex-direction: column;
                     align-items: flex-start;
                     justify-content: space-around;
-                    padding:10px;
-                    color:aliceblue;
-                    .searchPanelOption{
-                        cursor: pointer;
-                        text-transform: capitalize;
-                        letter-spacing: 2px;
+                    padding:0px;
+                    padding-left:10px;
+                    .elements{
+                        display: block;
+                        height:100%;
                         width:100%;
-                        padding-left: 10px;
-                    }
-                    .searchPanelOption:hover{
-                        opacity: .8;
+                        display:flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        .searchPanelOption{
+                            color:#222;
+                            cursor: pointer;
+                            text-transform: capitalize;
+                            letter-spacing: 2px;
+                            width:100%;
+                            flex-basis: 25%;
+                            padding-left: 10px;
+                            text-decoration: none;
+                            transition: .3s ease-in-out;
+                            opacity:0;
+                        }
+                        .searchPanelOption:hover{
+                            color: lightblue;
+                        }
+                        .empty{
+                            width:100%;
+                            flex-grow:1;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            cursor: pointer;
+                            opacity:0;
+                            transition: .3s ease-in-out;
+                        }
                     }
                 }
                 .searchPanel.active{
@@ -60,6 +83,9 @@
                     border-radius: 0 0 15px 15px;
                     padding:10px;
                     color:#222;
+                    .searchPanelOption,.empty{
+                        opacity:1;
+                    }
                 }
             }
             .search.active{

@@ -3,7 +3,6 @@ import { useState, useEffect, useRef} from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import "@/styles/userpanel/info.scss"
-import { GoPencil } from "react-icons/go";
 import Image from 'next/image';
 
 import InfoChart from '@/components/userpanel/InfoChart';
