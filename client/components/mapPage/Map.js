@@ -50,6 +50,8 @@ const Map = React.memo(({setPosState,setComponent,mapRef,selectedId,setSelectedI
         zoomControl: false,
         mapTypeControl: false,
         streetViewControl: false,
+        minZoom: 4,
+        maxZoom: 25, 
         })
     )
 

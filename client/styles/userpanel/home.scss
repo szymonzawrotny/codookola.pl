@@ -72,18 +72,6 @@
                 box-shadow: 0 0 15px 5px rgb(190, 188, 188);
             }
         }
-        .goToMap{
-            background-color: #FFE97F;
-            padding:15px;
-            border-radius: 15px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            border:none;
-            cursor: pointer;
-            margin-top: 25px;
-            width:100%;
-            box-shadow: 0 0 15px 5px rgb(190, 188, 188);
-        }
     }
 }
 
@@ -124,9 +112,6 @@
                     height:100%;
                     width:100%;
                 }
-            }
-            .goToMap{
-                margin-bottom: 5px;
             }
         }
     }

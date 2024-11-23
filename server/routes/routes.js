@@ -233,4 +233,22 @@ const askbot = async (req,res)=>{
     res.status(200).json({answer:"kod zablokowałem bo to płatne i się boję XD",question:value});
 }
 
-export { register, api, likes, addLike, save, addSave, send, addIcon,icons,askbot };
+const getSavedEvents = async (req,res)=>{
+    const {id} = req.body
+
+    const query = `SELECT * FROM save where user_id = '${id}'`;
+    pool.query(query, (err, result) => {
+        if (err) {
+            console.error("Błąd zapytania:", err);
+            res.status(500).json({message:"błąd po stronie serwera"});
+        }
+
+        result.map(one=>{
+            console.log(one.event_id) //tutaj pokazuje id każdego eventu który użytkownik ma zapisany
+        })
+
+        res.status(200).json({answer: result});
+    });
+}
+
+export { register, api, likes, addLike, save, addSave, send, addIcon,icons,askbot, getSavedEvents };

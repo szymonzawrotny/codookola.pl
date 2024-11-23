@@ -17,9 +17,79 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 0 15px 5px rgb(190, 188, 188);
+            position: relative;
+            span{
+                position: absolute;
+                top:25px;
+                left:25px;
+                font-size: 18px;
+                letter-spacing: 2px;
+                font-weight: 400;
+                border-bottom: 2px solid #222;
+                cursor: default;
+            }
+        }
+        .userData{
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            padding-left: 25px;
+            form{
+                flex-basis:35%;
+                width:50%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                input[type="text"]{
+                    padding:5px;
+                    background-color: aliceblue;
+                    border:2px solid #222;
+                    border-bottom: none;
+                    box-shadow:2px 2px #222;
+                }
+                input[type="submit"]{
+                    background-color: #FFE97F;
+                    padding:5px;
+                    letter-spacing: 2px;
+                    box-shadow:2px 2px #222;
+                    border-top: none;
+                    cursor: pointer;
+                }
+                input:focus{
+                    outline: none;
+                }
+            }
         }
         .userAddress{
             height:60%;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 25px;
+            form{
+                width:50%;
+                flex-basis:25%;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                input[type="text"]{
+                    padding:5px;
+                    background-color: aliceblue;
+                    border:2px solid #222;
+                    border-bottom: none;
+                    box-shadow:2px 2px #222;
+                }
+                input[type="submit"]{
+                    background-color: #FFE97F;
+                    padding:5px;
+                    letter-spacing: 2px;
+                    box-shadow:2px 2px #222;
+                    border-top: none;
+                    cursor: pointer;
+                }
+                input:focus{
+                    outline: none;
+                }
+            }
         }
     }
     .rightInfo{
@@ -36,6 +106,17 @@
             justify-content: center;
             align-items: center;
             box-shadow: 0 0 15px 5px rgb(190, 188, 188);
+            position: relative;
+            span{
+                position: absolute;
+                top:15px;
+                left:15px;
+                font-size: 18px;
+                letter-spacing: 2px;
+                font-weight: 400;
+                border-bottom: 2px solid #222;
+                cursor: default;
+            }
         }
         .userAvatar{
             display: flex;
@@ -65,6 +146,36 @@
                     width:auto;
                     user-select:none;
                     -webkit-user-drag: none;  //zakaz przeciągania fotek
+                }
+            }
+            form{
+                margin-top: 50px;
+                display: flex;
+                flex-direction: column;
+                width:50%;
+                box-shadow:2px 2px #222;
+                .fileInput{
+                    background-color: aliceblue;
+                    border:2px solid #222;
+                    border-bottom: none;
+                    height:100px;
+                    position: relative;
+                    overflow: hidden;
+                    padding:5px;
+                }
+                .fileInput::after{
+                    content:"Kliknij lub przeciągnij";
+                    position:absolute;
+                    left:50%;
+                    top:50%;
+                    transform: translate(-50%,-50%);
+                    border: 2px dotted #222;
+                }
+                input[type="submit"]{
+                    background-color: #FFE97F;
+                    padding:5px;
+                    letter-spacing: 2px;
+                    border-top: none;
                 }
             }
         }

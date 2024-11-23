@@ -6,7 +6,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
-import { register, api, likes, addLike, save, addSave, send, addIcon,icons, askbot } from "./routes/routes.js";
+import { register, api, likes, addLike, save, addSave, send, addIcon,icons, askbot, getSavedEvents } from "./routes/routes.js";
 import { pool } from './config/database.js';
 
 const __filename = fileURLToPath(import.meta.url);
@@ -45,3 +45,4 @@ app.post("/send",send);
 app.get("/icons",icons)
 app.post('/addIcon', upload.single('file'), addIcon);
 app.post("/askbot",askbot);
+app.post("/getsavedevents",getSavedEvents);

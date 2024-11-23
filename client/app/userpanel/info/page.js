@@ -70,11 +70,36 @@ const Home = ()=>{
     return(
         <div className="info">
             <div className="leftInfo">
-                <div className="userData">dane</div>
-                <div className="userAddress">adres</div>
+                <div className="userData">
+                    <span>Dane</span>
+                    <form action="">
+                        <input type="text" placeholder='Podaj imię...' />
+                        <input type="submit" value="edytuj" />
+                    </form>
+                    <form action="">
+                        <input type="text" placeholder='Podaj nazwisko...'/>
+                        <input type="submit" value="edytuj" />
+                    </form>
+                </div>
+                <div className="userAddress">
+                    <span>Adres</span>
+                    <form action="">
+                        <input type="text" placeholder='Podaj imię...' />
+                        <input type="submit" value="edytuj" />
+                    </form>
+                    <form action="">
+                        <input type="text" placeholder='Podaj imię...' />
+                        <input type="submit" value="edytuj" />
+                    </form>
+                    <form action="">
+                        <input type="text" placeholder='Podaj imię...' />
+                        <input type="submit" value="edytuj" />
+                    </form>
+                </div>
             </div>
             <div className="rightInfo">
                 <div className="userAvatar">
+                    <span>Awatar</span>
                     <div className="avatar">
                         <Image
                             src={iconPath} 
@@ -83,11 +108,13 @@ const Home = ()=>{
                             height="1080"/>
                     </div>
                     <form onSubmit={handleForm}>
-                        <input type="file" onChange={e=>setFile(e.target.files[0])}/>
+                        <input type="file" onChange={e=>setFile(e.target.files[0])} className='fileInput'/>
                         <input type="submit" value="dodaj" />
                     </form>
                 </div>
-                <div className="userAccess">zgody</div>
+                <div className="userAccess">
+                    <span>Zgody</span>
+                </div>
             </div>
         </div>
     )

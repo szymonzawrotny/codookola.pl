@@ -133,8 +133,10 @@ const Panel = ({children})=>{
                     log out
                 </div>
                 <div className="add">
-                    zapraszam na nasz serwer discord?
-                    <button>dołącz</button>
+                    odkrywaj wydarzenia!
+                    <button>
+                        <Link href="/map" className="mapLink">sprawdź</Link>
+                    </button>
                 </div>
                 <div className="line"></div>
             </nav>

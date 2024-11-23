@@ -5,7 +5,40 @@ import { HiMagnifyingGlass } from "react-icons/hi2";
 
 const Login = ()=> <div className="Login">zaloguj</div>
 
-const SavePanel = ()=>{
+const SavePanel = ({session})=>{
+
+
+    const [list,setList] = useState([]);
+
+    const fetchSavedEvents = async ()=>{
+        const response = await fetch("http://localhost:5000/getsavedevents",{
+            method: "POST",
+            body: JSON.stringify({
+                id: session?.user?.email?.id
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        if(response.ok){
+            const data = await response.json();
+            console.log(data.answer)
+        } else {
+            console.log("coś nie poszło")
+        }
+    }
+
+    useEffect(()=>{
+        fetchSavedEvents();
+    },[])
+
+    const elements = list.map((one,index)=>{
+        return (
+            <div className="event">siema</div>
+        )
+    });
+
     return(
         <div className="savePanel">
             <div className="search">
@@ -15,21 +48,14 @@ const SavePanel = ()=>{
                         placeholder='Wpisz wydarzenie...' ></input>
                     <HiMagnifyingGlass />
                 </div>
-                <div className='sort'>
-                    <select className='type'>
-                        <option value="wszystkie">Wszystkie</option>
-                        <option value="kultura">Kultura</option>
-                        <option value="sport">Sport</option>
-                        <option value="koncert">Koncert</option>
-                        <option value="festiwal">Festiwal</option>
-                        <option value="naukowe">Naukowe</option>
-                        <option value="imprezka">Imprezka</option>
-                    </select>
-                    <select className='date'>
-                        <option>Popularne</option>
-                        <option>Już zaraz!</option>
-                    </select>
+                <div className="sectionName">
+                    <span>zapisane</span>
                 </div>
+            </div>
+            <div className="eventList">
+                {
+                    elements.length >0 ? elements : <div className="empty">brak postów</div>
+                }
             </div>
         </div>
     )
@@ -42,7 +68,7 @@ const Save = ()=>{
     })
     
     {
-        if(session) return <SavePanel/>
+        if(session) return <SavePanel session={session}/>
         else return <Login/>
     }
 }

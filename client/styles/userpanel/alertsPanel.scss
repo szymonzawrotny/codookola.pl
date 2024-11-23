@@ -1,8 +1,8 @@
 .logged{
     main{
         .alertsPanel{
-            background-color: #FFE97F;
-            border-radius: 15px 0 0 0px;
+            background-color: #FFE14C;
+            //border-radius: 15px 0 0 0px;
             position: absolute;
             width:400px;
             height:90%;
@@ -16,7 +16,7 @@
             align-items: center;
             padding:15px;
             overflow-y: scroll;
-            border:5px solid #FFE97F;
+            border:5px solid #FFE14C;
             h2{
                 text-transform: capitalize;
                 color:#222;
@@ -38,7 +38,7 @@
         }
         .alertsPanel.active{
             right: 0;
-            box-shadow: 0 0 15px 5px rgb(190, 188, 188);
+            //box-shadow: 0 0 15px 5px rgb(190, 188, 188);
         }
     }
 }

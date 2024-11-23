@@ -23,7 +23,6 @@ const Home = ()=>{
                 <div className="homeChart">
                     <InfoChart/>
                 </div>
-                <button className="goToMap">sprawdź mapy!</button>
             </div>
         </div>
     )

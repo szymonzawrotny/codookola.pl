@@ -1,11 +1,19 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { MdPlace, MdEventNote } from "react-icons/md";
 import { AiFillPushpin } from "react-icons/ai";
 import { PiCityBold } from "react-icons/pi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
 
 const General = ({desc,address,city,date,eventType})=>{
+
+    useEffect(()=>{
+        [...document.querySelectorAll("nav.detailsNav>.option")].forEach((one,index)=>{
+            one.classList.remove("active");
+            if(index==0) one.classList.add("active");
+        })
+    },[])
+
     return(
          <>
             <p className="description">{desc}</p>
@@ -17,9 +25,19 @@ const General = ({desc,address,city,date,eventType})=>{
     )
 }
 const Opinions = ()=>{
+
+    useEffect(()=>{
+        [...document.querySelectorAll("nav.detailsNav>.option")].forEach((one,index)=>{
+            one.classList.remove("active");
+            if(index==2) one.classList.add("active");
+        })
+    },[])
+
     return(
          <>
-            opiniee
+            <div className="opinions">
+                siema
+            </div>
          </>
     )
 }
@@ -59,8 +77,15 @@ const Chatbot = ()=>{
             setAnswer("coś średnio poszło")
         }
 
-        setText("")
+        setText("spróbuj ponownie później...")
     }
+
+    useEffect(()=>{
+        [...document.querySelectorAll("nav.detailsNav>.option")].forEach((one,index)=>{
+            one.classList.remove("active");
+            if(index==1) one.classList.add("active");
+        })
+    },[])
 
     return(
          <>

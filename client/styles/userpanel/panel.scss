@@ -72,29 +72,41 @@
             border-radius: 15px;
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
+            padding-top: 25px;
             text-align: justify;
             cursor: default;
             position: relative;
             padding:25px;
             box-shadow: 5px 5px 0 0 #222;
+            background-image: url("/images/mapka.jpg");
+            font-weight: 700;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color:#222;
             button{
                 position: absolute;
                 bottom:5%;
                 width:80%;
-                height:5svh;
-                background-color:#FFE97F;
+                height:4svh;
+                background-color:aliceblue;
                 border:none;
-                border-radius: 15px;
+                border-radius: 40px;
                 text-transform: uppercase;
-                font-weight: 700;
+                font-weight: 400;
+                font-size: 16px;
                 letter-spacing: 4px;
                 cursor: pointer;
                 transition: .3s ease-in-out;
                 box-shadow: 2px 2px 0 0 #222;
+                .mapLink{
+                    color:#222;
+                    text-decoration: none;
+                }
             }
             button:hover{
-                transform: scale(1.02);
+                transform: rotate(2deg);
             }
         }
         .line{

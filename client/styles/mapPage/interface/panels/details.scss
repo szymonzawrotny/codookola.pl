@@ -32,7 +32,7 @@
             }
             .detailButtons{
                 width:100%;
-                height:5svh;
+                height:5%;
                 display: flex;
                 justify-content:flex-end;
                 align-items: center;
@@ -112,13 +112,11 @@
                 }
             }
             .detailsMain{
-                width:100%;
-                flex-grow: 1;
-                display: flex;
-                flex-direction: column;
                 overflow-y: scroll;
-                padding:25px;
-                cursor: default;
+                width:100%;
+                padding: 25px;
+                cursor:default;
+                height:60%;
                 p.description{
                     display: block;
                     background-color: #FFE97F;
@@ -130,7 +128,7 @@
                     //box-shadow: 2px 2px #222;
                 }
                 .detailInfoPanel{
-                    margin: 10px 0 10px 0;
+                    margin: 15px 0 15px 0;
                     height:50px;
                     background-color: #FFE97F;
                     border-radius: 5px;
@@ -148,7 +146,7 @@
                     }
                 }
                 .chat{
-                    flex-basis: 90%;
+                    height: 90%;
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;
@@ -157,7 +155,7 @@
                         padding:10px;
                         border-radius: 5px;
                         width:60%;
-                        align-self: flex-start;
+                        align-self: flex-end;
                         margin-top:10px;
                     }
                     .chatResponse{
@@ -165,12 +163,12 @@
                         padding:10px;
                         border-radius: 5px;
                         width:60%;
-                        align-self: flex-end;
+                        align-self: flex-start;
                         margin-top:10px;
                     }
                 }
                 .askQuestion{
-                    flex-basis: 10%;
+                    height: 10%;
                     display: flex;
                     justify-content: center;
                     align-items: center;
@@ -191,6 +189,11 @@
                         font-size:26px;
                         cursor: pointer;
                     }
+                }
+                .opinions{
+                    border:2px solid blue;
+                    width:100%;
+                    height:600px;
                 }
             }
         }

@@ -31,7 +31,14 @@ const Details = ({title,author,desc,id})=>{
         [...document.querySelectorAll("nav.detailsNav>.option")].forEach(one=>{
             one.classList.remove("active");
         })
-        e.target.classList.add("active");
+
+        if (e.target.tagName == "svg") {
+            e.target.parentNode.classList.add("active");
+        } else if (e.target.tagName == "path") {
+            e.target.parentNode.parentNode.classList.add("active");
+        } else {
+            e.target.classList.add("active");
+        }
 
         switch(value){
             case "general": {
