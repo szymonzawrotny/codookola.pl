@@ -2,6 +2,7 @@
 
 import { useState, useRef } from 'react';
 import { useSpring } from 'react-spring'
+import { useSession } from 'next-auth/react'
 
 import Map from '@/components/mapPage/Map';
 import InterFace from '@/layout/mapPage/Interface';
@@ -12,6 +13,10 @@ import "@/styles/mapPage/map.scss";
 
 const Home = () => {
 
+  const {data:session} = useSession({
+        required: false,
+  })
+
   const [posState, setPosState] = useState({ x: 0, y: 0 });
   const pos = useSpring({ x: posState.x, y: posState.y });
 
@@ -19,6 +24,26 @@ const Home = () => {
 
   const [component, setComponent] = useState(<Discover/>);
   const [selectedId, setSelectedId] = useState(null);
+
+  const addView = async (eventId)=>{
+
+    const response = await fetch("http://localhost:5000/addView",{
+            method: "POST",
+            body: JSON.stringify({
+                id: session?.user?.email?.id,
+                eventId: eventId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        if(response.ok){
+            console.log("dodano")
+        } else {
+            console.log("coś nie poszło")
+        }
+  }
 
   const handleButton = (title,author,desc,id)=>{
         setComponent(
@@ -28,6 +53,7 @@ const Home = () => {
             desc={desc} id={id}/>
         )
         setSelectedId(id);
+        addView(id)
     }
 
   return (

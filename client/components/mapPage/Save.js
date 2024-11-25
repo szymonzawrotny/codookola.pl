@@ -2,13 +2,16 @@ import "@/styles/mapPage/interface/panels/save.scss"
 import { useState, useEffect, useRef} from 'react';
 import { useSession } from 'next-auth/react'
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import Event from "./Event";
 
 const Login = ()=> <div className="Login">zaloguj</div>
 
-const SavePanel = ({session})=>{
+const SavePanel = ({session,handleButton})=>{
 
 
     const [list,setList] = useState([]);
+    const [likeList,setLikeList] = useState([]);
+    const [saveList,setSaveList] = useState([]);
 
     const fetchSavedEvents = async ()=>{
         const response = await fetch("http://localhost:5000/getsavedevents",{
@@ -23,20 +26,116 @@ const SavePanel = ({session})=>{
 
         if(response.ok){
             const data = await response.json();
-            console.log(data.answer)
+            setList(data.answer)
         } else {
             console.log("coś nie poszło")
         }
     }
 
+    const fetchLikeList = async ()=>{
+        const result = await fetch("http://localhost:5000/likes")
+        .then(response => response.json())
+        .then(data=>setLikeList(data));
+    }
+    
+    const fetchSaveList = async ()=>{
+        const result = await fetch("http://localhost:5000/save")
+        .then(response => response.json())
+        .then(data=>setSaveList(data));
+    }
+
     useEffect(()=>{
+        fetchLikeList();
+        fetchSaveList();
         fetchSavedEvents();
     },[])
 
+    const handleLike = async (e)=>{
+
+        let eventId;
+        if(e.target.tagName == "svg"){
+            eventId = e.target.parentNode.id;
+        } else if(e.target.tagName == "path"){
+            eventId = e.target.parentNode.parentNode.id;
+        }else {
+            eventId = e.target.id;
+        }
+
+        const response = await fetch("http://localhost:5000/addlike",{
+        method: "POST",
+        body:JSON.stringify({
+            userId: session?.user?.email?.id,
+            eventId
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+        })
+
+        if(response.ok){
+            const data = await response.json();
+            fetchLikeList();
+        }
+    }
+
+    const handleSave = async (e)=>{
+
+        let eventId;
+        if(e.target.tagName == "svg"){
+            eventId = e.target.parentNode.id;
+        } else if(e.target.tagName == "path"){
+            eventId = e.target.parentNode.parentNode.id;
+        }else {
+            eventId = e.target.id;
+        }
+
+        const response = await fetch("http://localhost:5000/addSave",{
+        method: "POST",
+        body:JSON.stringify({
+            userId: session?.user?.email?.id,
+            eventId
+        }),
+        headers: {
+            "Content-Type": "application/json"
+        }
+        })
+
+        if(response.ok){
+            const data = await response.json();
+            fetchSaveList();
+        }
+    }
+
     const elements = list.map((one,index)=>{
-        return (
-            <div className="event">siema</div>
-        )
+
+        let isLike = false;
+        let isSave = false;
+
+        likeList.forEach(like=>{
+            if(session?.user?.email?.id === like.user_id){
+                if(one.event_id === like.event_id){
+                    isLike = true;
+                }
+            }
+        })
+
+        saveList.forEach(save=>{
+            if(session?.user?.email?.id === save.user_id){
+                if(one.event_id === save.event_id){
+                    isSave = true;
+                }
+            }
+        })
+
+        return <Event
+                key={index}
+                handleButton={handleButton}
+                eventInfo={one}
+                handleLike={handleLike}
+                isLike={isLike}
+                handleSave={handleSave}
+                save={isSave}
+                />
     });
 
     return(
@@ -61,14 +160,14 @@ const SavePanel = ({session})=>{
     )
 }
 
-const Save = ()=>{
+const Save = ({handleButton})=>{
 
     const {data:session} = useSession({
         required: false,
     })
     
     {
-        if(session) return <SavePanel session={session}/>
+        if(session) return <SavePanel session={session} handleButton={handleButton}/>
         else return <Login/>
     }
 }

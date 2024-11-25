@@ -185,28 +185,26 @@ const addIcon = (req, res) => {
 
     pool.query('SELECT * FROM icons WHERE user_id = ?', [id], (err, result) => {
         if (err) {
-        console.error("Błąd przy zapytaniu do bazy danych:", err);
-        return res.status(500).json({ message: "Błąd przy zapytaniu do bazy danych" });
+            console.error("Błąd przy zapytaniu do bazy danych:", err);
+            return res.status(500).json({ message: "Błąd przy zapytaniu do bazy danych" });
         }
 
         if (result.length > 0) {
-        // Jeśli rekord istnieje, wykonujemy UPDATE
-        pool.query('UPDATE icons SET path = ? WHERE user_id = ?', [newPath, id], (err) => {
-            if (err) {
-            console.error("Błąd przy aktualizacji bazy danych:", err);
-            return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" });
-            }
-            return res.status(200).json({ message: "Aktualizacja zakończona sukcesem", path: newPath });
-        });
+            pool.query('UPDATE icons SET path = ? WHERE user_id = ?', [newPath, id], (err) => {
+                if (err) {
+                console.error("Błąd przy aktualizacji bazy danych:", err);
+                return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" });
+                }
+                return res.status(200).json({ message: "Aktualizacja zakończona sukcesem", path: newPath });
+            });
         } else {
-        // Jeśli rekord nie istnieje, wykonujemy INSERT
-        pool.query('INSERT INTO icons (user_id, path) VALUES (?, ?)', [id, newPath], (err) => {
-            if (err) {
-            console.error("Błąd przy dodawaniu do bazy danych:", err);
-            return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
-            }
-            return res.status(200).json({ message: "Dodanie zakończone sukcesem", path: newPath });
-        });
+            pool.query('INSERT INTO icons (user_id, path) VALUES (?, ?)', [id, newPath], (err) => {
+                if (err) {
+                console.error("Błąd przy dodawaniu do bazy danych:", err);
+                return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+                }
+                return res.status(200).json({ message: "Dodanie zakończone sukcesem", path: newPath });
+            });
         }
     });
 }
@@ -236,19 +234,59 @@ const askbot = async (req,res)=>{
 const getSavedEvents = async (req,res)=>{
     const {id} = req.body
 
-    const query = `SELECT * FROM save where user_id = '${id}'`;
-    pool.query(query, (err, result) => {
-        if (err) {
-            console.error("Błąd zapytania:", err);
-            res.status(500).json({message:"błąd po stronie serwera"});
-        }
+    try {
+        const [events] = await pool.promise().query("SELECT * FROM events");
+        const [saved] = await pool.promise().query(`SELECT * FROM save WHERE user_id = ?`, [id]);
 
-        result.map(one=>{
-            console.log(one.event_id) //tutaj pokazuje id każdego eventu który użytkownik ma zapisany
-        })
+        const savedEvents = events.filter(one => 
+            saved.some(s => s.event_id === one.event_id)
+        );
 
-        res.status(200).json({answer: result});
-    });
+        res.status(200).json({ answer: savedEvents }); 
+    } catch (err) {
+        console.error("Błąd zapytania:", err);
+        res.status(500).json({ message: "Błąd serwera" });
+    }
 }
 
-export { register, api, likes, addLike, save, addSave, send, addIcon,icons,askbot, getSavedEvents };
+const views = async (req,res)=>{
+    const {id} = req.body; 
+
+    try{
+        const [views] = await pool.promise().query(`select * from views where user_id = ? limit 5`,[id])  
+        const [events] = await pool.promise().query("SELECT * FROM events");
+
+        const lastEvents = events.filter(one => 
+            views.some(s => s.event_id === one.event_id)
+        );
+
+        res.status(200).json({answer: lastEvents})
+
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log("błąd zapytania: ",err)
+    }
+}
+
+const addView = async (req,res)=>{
+    const {id,eventId} = req.body; 
+
+    try{
+        const [view] = await pool.promise().query(`select * from views where user_id = ? && event_id = ?`,[id,eventId])
+
+        if(view.length <= 0){
+             pool.query('INSERT INTO views (view_id,event_id,user_id, date) VALUES (NULL,?,?,?)', [eventId, id,new Date()], (err) => {
+                if (err) {
+                    console.error("Błąd przy dodawaniu do bazy danych:", err);
+                    return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+                }
+                return res.status(200).json({ message: "Dodanie zakończone sukcesem"});
+            });
+        }
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log("błąd zapytania: ",err)
+    }
+}
+
+export { register, api, likes, addLike, save, addSave, send, addIcon,icons,askbot, getSavedEvents,views,addView };

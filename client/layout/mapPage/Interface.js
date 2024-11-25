@@ -48,9 +48,9 @@ const InterFace = ({posState, setPosState,pos,handleButton,component,setComponen
         switch (id) {
             case "discover": setComponent(<Discover handleButton={handleButton}/>);
                 break;
-            case "save": setComponent(<Save/>);
+            case "save": setComponent(<Save handleButton={handleButton}/>);
                 break;
-            case "last": setComponent(<Last/>);
+            case "last": setComponent(<Last handleButton={handleButton}/>);
                 break;
             case "add": setComponent(<Add/>);
                 break;
