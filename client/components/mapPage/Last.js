@@ -4,12 +4,15 @@ import "@/styles/mapPage/interface/panels/last.scss"
 import { useSession } from 'next-auth/react'
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import Event from './Event';
+import "@/styles/mapPage/interface/panels/event.scss";
 
 const Login = ()=> <div className="Login">zaloguj</div>
 
 const LastPanel = ({session,handleButton})=>{
 
     const [list,setList] = useState([]);
+    const [tab,setTab] = useState([]);
+    
     const [likeList,setLikeList] = useState([]);
     const [saveList,setSaveList] = useState([]);
 
@@ -27,6 +30,7 @@ const LastPanel = ({session,handleButton})=>{
         if(response.ok){
             const data = await response.json();
             setList(data.answer)
+            setTab(data.answer)
         } else {
             console.log("coś nie poszło")
         }
@@ -106,7 +110,17 @@ const LastPanel = ({session,handleButton})=>{
         }
     }
 
-    const elements = list.map((one,index)=>{
+    const handleSort = (e)=>{
+        const value = e.target.value;
+
+        const newTab = list.filter(one=>{
+            return one.nazwa.toLowerCase().includes(value)
+        })
+
+        setTab(newTab)
+    }
+
+    const elements = tab.map((one,index)=>{
 
         let isLike = false;
         let isSave = false;
@@ -144,6 +158,7 @@ const LastPanel = ({session,handleButton})=>{
                 <div className='input'>
                     <input 
                         type="text" 
+                        onChange={handleSort}
                         placeholder='Wpisz wydarzenie...' ></input>
                     <HiMagnifyingGlass />
                 </div>

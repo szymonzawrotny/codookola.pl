@@ -72,7 +72,6 @@ const Chatbot = ()=>{
         if(response.ok){
             const data = await response.json();
             setAnswer(data.answer);
-            console.log(data.question)
         } else {
             setAnswer("coś średnio poszło")
         }

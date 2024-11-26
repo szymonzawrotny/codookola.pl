@@ -7,6 +7,7 @@ import { MdReportGmailerrorred } from "react-icons/md";
 import Image from 'next/image';
 
 import SwiperBox from "./SwiperBox";
+import "@/styles/mapPage/interface/panels/event.scss";
 
 const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
 

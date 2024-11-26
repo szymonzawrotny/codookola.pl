@@ -60,6 +60,12 @@ const Map = React.memo(({setPosState,setComponent,mapRef,selectedId,setSelectedI
     const points = useMemo(() => {
         return locations.map((one, index) => {
             const handleClick = () => {
+
+                [...document.querySelectorAll(".sidePanel>.icon")].forEach((one,index)=>{
+                    if(!index==0) one.classList.remove("active");
+                    else one.classList.add("active");
+                })
+
                 setSelectedId(one.event_id);
                 setPosState({ x: 500, y: 0 });
                 setComponent(<Details title={one.nazwa} author={one.author_email} desc={one.opis} id={one.event_id}/>)
@@ -87,7 +93,12 @@ const Map = React.memo(({setPosState,setComponent,mapRef,selectedId,setSelectedI
                 center={{ lat: lat, lng: lng }}
                 zoom={zoom}
                 options={mapOptions}
-                onClick={()=>setPosState({ x: 0, y: 0 })}
+                onClick={()=>{
+                    setPosState({ x: 0, y: 0 });
+                    [...document.querySelectorAll(".sidePanel>.icon")].forEach((one,index)=>{
+                        one.classList.remove("active");
+                    })
+                }}
                 onLoad={onLoad}
             >
                 {points}

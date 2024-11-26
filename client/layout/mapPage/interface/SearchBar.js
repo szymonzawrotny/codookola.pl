@@ -41,7 +41,13 @@ const SearchBar = ({handleButton})=>{
             <div 
                 key={index} 
                 className="element" 
-                onClick={()=>handleButton(one.nazwa,one.author_email,one.opis,one.event_id)}>
+                onClick={()=>{
+                    [...document.querySelectorAll(".sidePanel>.icon")].forEach((one,index)=>{
+                        if(!index==0) one.classList.remove("active");
+                        else one.classList.add("active");
+                    })
+                    handleButton(one.nazwa,one.author_email,one.opis,one.event_id);
+                }}>
                     {one.nazwa}, {one.adres}, {one.data}
             </div>
         )
