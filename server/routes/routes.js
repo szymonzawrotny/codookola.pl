@@ -289,4 +289,27 @@ const addView = async (req,res)=>{
     }
 }
 
-export { register, api, likes, addLike, save, addSave, send, addIcon,icons,askbot, getSavedEvents,views,addView };
+const eventsToAccept = async (req,res) =>{
+    const query = "SELECT * FROM events_to_accept";
+    pool.query(query, (err, results) => {
+        if (err) {
+            console.error("Błąd zapytania:", err);
+            return res.status(500).json({ message: 'Błąd serwera' });
+        }
+        res.json(results);
+    });
+}
+
+const eventsReported = async (req,res) =>{
+    const query = "SELECT * FROM events_reported";
+    pool.query(query, (err, results) => {
+        if (err) {
+            console.error("Błąd zapytania:", err);
+            return res.status(500).json({ message: 'Błąd serwera' });
+        }
+        res.json(results);
+    });
+}
+
+export { register, api, likes, addLike, save, addSave, send,
+         addIcon,icons,askbot, getSavedEvents,views,addView,eventsToAccept,eventsReported};

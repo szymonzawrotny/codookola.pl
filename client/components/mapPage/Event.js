@@ -19,6 +19,7 @@ const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
 
     const handleReport = ()=>{
         console.log("zgłoszono!")
+        
     }
 
 
