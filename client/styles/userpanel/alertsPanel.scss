@@ -2,7 +2,7 @@
     main{
         .alertsPanel{
             background-color: #FFE14C;
-            //border-radius: 15px 0 0 0px;
+            border-radius: 15px 0 0 0px;
             position: absolute;
             width:400px;
             height:90%;
@@ -17,6 +17,12 @@
             padding:15px;
             overflow-y: scroll;
             border:5px solid #FFE14C;
+            .empty{
+                position: absolute;
+                top:50%;
+                left:50%;
+                transform: translate(-50%,-50%);
+            }
             h2{
                 text-transform: capitalize;
                 color:#222;

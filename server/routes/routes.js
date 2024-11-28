@@ -332,5 +332,20 @@ const addReport = async (req,res)=>{
     }
 }
 
+const getAlerts = async (req,res)=>{
+    const {id} = req.body; 
+
+    try{ 
+        const [alerts] = await pool.promise().query("SELECT * FROM alerts where user_id = ?",[id]);
+
+        res.status(200).json({answer: alerts})
+
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log("błąd zapytania: ",err)
+    }
+}
+
 export { register, api, likes, addLike, save, addSave, send,
-         addIcon,icons,askbot, getSavedEvents,views,addView,eventsToAccept,eventsReported, addReport};
+         addIcon,icons,askbot, getSavedEvents,views,addView,
+         eventsToAccept,eventsReported, addReport, getAlerts};

@@ -8,7 +8,7 @@ import { dirname, join } from 'path';
 
 import { register, api, likes, addLike, save, addSave, send,
          addIcon,icons, askbot, getSavedEvents, views, addView, eventsToAccept, 
-         eventsReported, addReport } from "./routes/routes.js";
+         eventsReported, addReport, getAlerts } from "./routes/routes.js";
          
 import { pool } from './config/database.js';
 
@@ -54,3 +54,4 @@ app.post("/addView",addView)
 app.get("/eventsToAccept",eventsToAccept);
 app.get("/eventsReported",eventsReported);
 app.post("/addreport", addReport)
+app.post("/getalerts",getAlerts)
