@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useSession } from 'next-auth/react'
 
 import { SlOptions } from "react-icons/sl";
 import { FaRegUserCircle,FaRegHeart, FaRegBookmark, FaHeart } from "react-icons/fa";
@@ -11,15 +12,35 @@ import "@/styles/mapPage/interface/panels/event.scss";
 
 const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
 
+    const {data:session} = useSession({
+        required: false,
+    })
+
     const ref = useRef();
 
     const handleOptions = (e)=>{
         ref.current.classList.toggle("active"); 
     }
 
-    const handleReport = ()=>{
+    const handleReport = async ()=>{
         console.log("zgłoszono!")
-        
+        const response = await fetch("http://localhost:5000/addreport",{
+            method: "POST",
+            body: JSON.stringify({
+                id: session?.user?.email?.id,
+                eventId: eventInfo.event_id
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        if(response.ok){
+            console.log("dodano")
+        } else {
+            console.log("coś nie poszło")
+        }
+  
     }
 
 

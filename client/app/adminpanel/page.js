@@ -26,6 +26,7 @@ const Home = ()=>{
     })
 
     const burgerRef = useRef();
+    const asideRef = useRef();
 
     const handleOption = (e)=>{
         [...document.querySelectorAll(".adminOption")].forEach(one => {
@@ -51,6 +52,7 @@ const Home = ()=>{
     }
 
     const handleBurger = ()=>{
+        asideRef.current.classList.toggle("active")
         burgerRef.current.classList.toggle("active")
     }
 
@@ -76,7 +78,7 @@ const Home = ()=>{
                     {session?.user?.email?.email}
                 </span>
             </div>
-            <aside ref={burgerRef}>
+            <aside ref={asideRef}>
                 <div 
                     className="adminOption active"
                     data-component="ToAccept" 
@@ -94,7 +96,7 @@ const Home = ()=>{
                     data-component="Posts"
                     onClick={handleOption}>posty</div>
             </aside>
-            <div className="burger" onClick={handleBurger}>
+            <div className="burger" onClick={handleBurger} ref={burgerRef}>
                 <RxHamburgerMenu />
             </div>
             <main>

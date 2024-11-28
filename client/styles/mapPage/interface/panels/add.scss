@@ -11,6 +11,7 @@
                 z-index:10;
                 margin-top: 25px;
                 cursor: default;
+                user-select: none;
             }
             h1::after{
                 content:"";
@@ -69,7 +70,12 @@
                         }
                     }
                     form{
-                        margin-top: 50px;
+                        p{
+                            padding: 15px;
+                            cursor: default;
+                            text-align: justify;
+                        }
+                        margin-top: 15px;
                         flex-grow: 1;
                         padding:5px;
                         width:100%;

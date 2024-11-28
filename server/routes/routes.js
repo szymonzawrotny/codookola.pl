@@ -311,5 +311,26 @@ const eventsReported = async (req,res) =>{
     });
 }
 
+const addReport = async (req,res)=>{
+    const {id,eventId} = req.body; 
+
+    try{
+        const [view] = await pool.promise().query(`select * from events_reported where user_id = ? && event_id = ?`,[id,eventId])
+
+        if(view.length <= 0){
+             pool.query('INSERT INTO events_reported (report_id,user_id,event_id, data) VALUES (NULL,?,?,?)', [id, eventId,new Date()], (err) => {
+                if (err) {
+                    console.error("Błąd przy dodawaniu do bazy danych:", err);
+                    return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+                }
+                return res.status(200).json({ message: "Dodanie zgłoszenia zakończone sukcesem"});
+            });
+        }
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log("błąd zapytania: ",err)
+    }
+}
+
 export { register, api, likes, addLike, save, addSave, send,
-         addIcon,icons,askbot, getSavedEvents,views,addView,eventsToAccept,eventsReported};
+         addIcon,icons,askbot, getSavedEvents,views,addView,eventsToAccept,eventsReported, addReport};

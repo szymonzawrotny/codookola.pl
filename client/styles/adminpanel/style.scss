@@ -5,20 +5,24 @@
 }
 
 .adminpanel{
-    background-color: aliceblue;
+    background-color: #FFE97F;
     min-height:100svh;
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
     .adminInfo{
         position: absolute;
-        right:45px;
-        top:25px;
+        right:15px;
+        top:15px;
         cursor: default;
         display: flex;
         align-items: flex-start;
         justify-content: center;
         z-index:11;
+        background-color: aliceblue;
+        box-shadow: 2px 2px #222;
+        padding:15px;
         svg{
             color:#222;
             margin-right: 25px;
@@ -34,8 +38,8 @@
     }
     .burger{
         position: absolute;
-        top:5px;
-        left:5px;
+        top:15px;
+        left:15px;
         width:50px;
         height:50px;
         display: flex;
@@ -43,23 +47,29 @@
         align-items: center;
         cursor: pointer;
         z-index:10;
+        background-color: aliceblue;
+        box-shadow: 2px 2px #222;
+        transition: .3s ease-in-out;
         svg{
             font-size: 36px;
         }
+    }
+    .burger.active{
+        background-color: #FFE97F;
     }
     aside{
         position: fixed;
         top:0;
         height:100svh;
         left:0;
-        width: 10%;
-        min-width:150px;
+        width: 15%;
+        min-width:200px;
         transform: translateX(-100%);
-        background-color:  #ffe97e;
+        background-color:  aliceblue;
         transition: .3s ease-in-out;
         z-index:9;
         padding:10px;
-        padding-top: 5%;
+        padding-top: 100px;
         a{
             width:100%;
             display: block;
@@ -96,15 +106,15 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-end;
+        justify-content: center;
         user-select: none;
         z-index:0;
         section{
             padding: 50px;
-            background-color: #FFE97F;
-            width:100%;
-            height:80svh;
+            width:95%;
+            height:75svh;
             position: relative;
+            transform: translateY(15px);
         }
         section.ToAccept,section.Reported{
             display: flex;
@@ -114,12 +124,26 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: flex-start;
-                border-radius: 25px;
                 background-color: aliceblue;
+                box-shadow: 2px 2px #222;
+                margin:10px;
                 h2{
                     margin-top: 15px;
                     letter-spacing: 2px;
                     text-transform: uppercase;
+                    font-weight: 500;
+                    position: relative;
+                    z-index:1;
+                }
+                 h2:before{
+                    content: "";
+                    width:100%;
+                    height:70%;
+                    position: absolute;
+                    bottom:-20%;
+                    left:-20%;
+                    z-index:-1;
+                    background-color: #FFE97F;
                 }
                 .postsToAccept,.postsReported{
                     width:100%;
@@ -146,7 +170,7 @@
                         padding-left: 15px;
                         text-transform: capitalize;
                         button{
-                            background-color: #ffe97e;
+                            background-color: #FFE97F;
                             box-shadow: 2px 2px #222;
                             margin:5px;
                             padding:5px;
@@ -162,6 +186,10 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
+                background-color: aliceblue;
+                box-shadow: 2px 2px #222;
+                margin:10px;
+                transform: translateY(-15px);
             }
         }
     }
@@ -204,20 +232,37 @@
             }
         }
         main{
+            justify-content: flex-end;
             section{
                 flex-direction: column;
                 width:100%;
+                padding:0;
+                height:85svh;
             }
         }
+    }
+    .noLoggedError{
+        font-size: 22px;
     }
 }
 
 @media (max-width:900px){
     .adminpanel{
         aside{
-            padding-top: 15%;
+            top:0;
+            left:0;
+            width:100%;
+            height:300px;
+            padding-top: 80px;
+            transform: translateY(-100%) translateX(0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             .adminOption{
                 font-size:14px;
+                padding:10px;
+                margin: 5px 0 5px 0;
+                width:80%;
             }
         }
     }

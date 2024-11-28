@@ -1,13 +1,13 @@
 "use client"
 import { useState,useEffect } from 'react'
-import PostReported from "./Post"
+import PostReported from "./PostReported"
 
 const Reported = ()=>{
 
     const [list,setList] = useState([])
 
     const fetchData = async ()=>{
-        const response = await fetch("http://localhost:5000/eventsToAccept")
+        const response = await fetch("http://localhost:5000/eventsReported")
         .then(response => response.json())
         .then(data=>setList(data))
     }
