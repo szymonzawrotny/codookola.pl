@@ -6,7 +6,7 @@ import { useSession } from 'next-auth/react'
 
 const Login = ()=> <div className="Login">zaloguj</div>
 
-const Add = ()=>{
+const Add = ({handleMapAlert,mapAlertRef})=>{
 
     const [title,setTitle] = useState("")
     const [desc,setDesc] = useState("")
@@ -66,6 +66,16 @@ const Add = ()=>{
 
             if(response.ok){
                 console.log("siema dodano")
+
+                setTitle("");
+                setDesc("");
+                setCountry("");
+                setCity("");
+                setStreet("");
+                setNumber("");
+                setDate("");
+                setHour("")
+                handleMapAlert(mapAlertRef)
             } else {
                 console.log("coś nie poszło")
             }
@@ -130,14 +140,14 @@ const Add = ()=>{
                                 onChange={(e)=>setCity(e.target.value)}/>
                             <input 
                                 type="text" 
-                                placeholder="Ulica..."
-                                value={street} 
-                                onChange={(e)=>setStreet(e.target.value)}/>
-                            <input 
-                                type="text" 
-                                placeholder="Numer domu..."
+                                placeholder="Kod pocztowy..."
                                 value={number} 
                                 onChange={(e)=>setNumber(e.target.value)}/>
+                            <input 
+                                type="text" 
+                                placeholder="Ulica i numer budynku..."
+                                value={street} 
+                                onChange={(e)=>setStreet(e.target.value)}/>
                         </form>
                     </div>
                     <div className="addElement">

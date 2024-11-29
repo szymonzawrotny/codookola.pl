@@ -8,6 +8,7 @@ import SearchBar from "@/layout/mapPage/interface/SearchBar"
 import Burger from '@/layout/mapPage/interface/Burger';
 import Menu from './interface/Menu';
 import EventPanel from './interface/EventPanel';
+import MapAlert from './interface/MapAlert';
 
 import Discover from '@/components/mapPage/Discover';
 import Save from '@/components/mapPage/Save';
@@ -19,11 +20,20 @@ const InterFace = ({posState, setPosState,pos,handleButton,component,setComponen
 
     const burgerRef = useRef();
     const menuRef = useRef();
+    const mapAlertRef = useRef();
     const [isMobile, setIsMobile] = useState(false);
 
     const handleBurger = () => {
         burgerRef.current.classList.toggle("active");
         menuRef.current.classList.toggle("active");
+    }
+
+    const handleMapAlert = (mapAlertRef)=>{
+        mapAlertRef.current.classList.add("active");
+
+        setTimeout(()=>{
+            mapAlertRef.current.classList.remove("active");
+        },3000)
     }
 
     const handleIconAnimation = (e) => {
@@ -52,7 +62,7 @@ const InterFace = ({posState, setPosState,pos,handleButton,component,setComponen
                 break;
             case "last": setComponent(<Last handleButton={handleButton}/>);
                 break;
-            case "add": setComponent(<Add/>);
+            case "add": setComponent(<Add handleMapAlert={handleMapAlert} mapAlertRef={mapAlertRef}/>);
                 break;
         }
 
@@ -119,6 +129,7 @@ const InterFace = ({posState, setPosState,pos,handleButton,component,setComponen
             <SearchBar handleButton={handleButton}/>
             <SidePanel handleIconAnimation={handleIconAnimation}/>
             <Menu menuRef={menuRef} />
+            <MapAlert alert={"Pomyślnie dodano wydarzenie!"} mapAlertRef={mapAlertRef}/>
             <EventPanel
                 pos={pos}
                 bindPos={bindPos}

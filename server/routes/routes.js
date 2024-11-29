@@ -360,11 +360,9 @@ const addEvent = async (req,res) =>{
 
     const lat = '53.565344951554245';
     const lng = '19.11881682197994';
-    const adres = `${street} ${number}`
-
 
     try{
-        pool.query('INSERT INTO events_to_accept (event_id,nazwa,adres,miasto,kod_pocztowy,lat,lng,opis,rodzaj,data,author_id,author_email) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?)', [title,adres,city,'12-100',lat,lng,desc,type,date,id,email ], (err) => {
+        pool.query('INSERT INTO events_to_accept (event_id,nazwa,adres,miasto,kod_pocztowy,lat,lng,opis,rodzaj,data,author_id,author_email) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?)', [title,street,city,number,lat,lng,desc,type,date,id,email ], (err) => {
             if (err) {
                 console.error("Błąd przy dodawaniu do bazy danych:", err);
                 return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
@@ -373,7 +371,7 @@ const addEvent = async (req,res) =>{
         });
     } catch(err){
         res.status(500).json({message:"Błąd serwera"})
-        console.log("błąd zapytania: ",err)
+        console.log( "błąd zapytania: ",err)
     }
 }
 

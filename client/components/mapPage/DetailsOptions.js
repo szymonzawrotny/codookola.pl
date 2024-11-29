@@ -58,33 +58,35 @@ const Chatbot = ()=>{
 
     const handleSend = async ()=>{
 
-        let value;
+        if(chatNumber>0){
+            let value;
 
-        setQuestion(text)
-        inputRef.current.disabled = true;
+            setQuestion(text)
+            inputRef.current.disabled = true;
 
-        value = inputRef.current.value;
+            value = inputRef.current.value;
 
-        const response = await fetch("http://localhost:5000/askbot",{
-            method:"POST",
-            body: JSON.stringify({
-                value,
-                id: session?.user?.email?.id,
-                chatNumber
-            }),
-            headers: {
-                "Content-Type": "application/json"
+            const response = await fetch("http://localhost:5000/askbot",{
+                method:"POST",
+                body: JSON.stringify({
+                    value,
+                    id: session?.user?.email?.id,
+                    chatNumber
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+            if(response.ok){
+                const data = await response.json();
+                setAnswer(data.answer);
+            } else {
+                setAnswer("coś średnio poszło")
             }
-        })
 
-        if(response.ok){
-            const data = await response.json();
-            setAnswer(data.answer);
-        } else {
-            setAnswer("coś średnio poszło")
+            setText("spróbuj ponownie później...")
         }
-
-        setText("spróbuj ponownie później...")
     }
 
     const fetchChatNumber = async ()=>{
@@ -101,7 +103,7 @@ const Chatbot = ()=>{
         if(response.ok){
             const data = await response.json();
             setChatNumber(data.answer[0].chat_number)
-            if(data.answer[0].chat_number==0)
+            if(data.answer[0].chat_number<=0)
                 setText("Wykorzystano dzienny limit")
         } else {
             console.log("coś nie poszło")

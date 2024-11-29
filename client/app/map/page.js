@@ -54,7 +54,7 @@ const Home = () => {
         )
         setSelectedId(id);
         addView(id)
-    }
+  }
 
   return (
     <div className="mapPage">
@@ -63,7 +63,7 @@ const Home = () => {
         component={component}
         setComponent={setComponent}
         posState={posState} 
-        setPosState={setPosState} 
+        setPosState={setPosState}
         pos={pos}/>
       <Map 
         selectedId={selectedId}

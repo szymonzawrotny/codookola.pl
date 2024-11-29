@@ -41,7 +41,7 @@ app.listen(port, () => {
 
 let cronIteration = 0;
 
-cron.schedule('38 12 * * *',()=>{
+cron.schedule('00 01 * * *',()=>{
     if(cronIteration == 0){
         pool.query('update users set chat_number = 3',(err) => {
         if (err) {
@@ -55,7 +55,7 @@ cron.schedule('38 12 * * *',()=>{
     }
 })
 
-cron.schedule('39 12 * * *',()=>{
+cron.schedule('02 00 * * *',()=>{
     cronIteration = 0;
 })
 
