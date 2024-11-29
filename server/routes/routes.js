@@ -221,7 +221,16 @@ const icons = (req,res)=>{
 }
 
 const askbot = async (req,res)=>{
-    const {value} = req.body
+    const {value,id,chatNumber} = req.body
+
+    let newNumber = chatNumber-1;
+
+    pool.query('update users set chat_number = ? where user_id = ?', [newNumber,id], (err) => {
+        if (err) {
+        console.error("Błąd przy aktualizacji bazy danych:", err);
+        return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" });
+        }
+    });
 
     // getResponse(value).then(data=>{
     //     console.log(data);
@@ -346,6 +355,67 @@ const getAlerts = async (req,res)=>{
     }
 }
 
+const addEvent = async (req,res) =>{
+    const {id,email,title,desc,country,city,street,number,type,date,hour} = req.body;
+
+    const lat = '53.565344951554245';
+    const lng = '19.11881682197994';
+    const adres = `${street} ${number}`
+
+
+    try{
+        pool.query('INSERT INTO events_to_accept (event_id,nazwa,adres,miasto,kod_pocztowy,lat,lng,opis,rodzaj,data,author_id,author_email) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?)', [title,adres,city,'12-100',lat,lng,desc,type,date,id,email ], (err) => {
+            if (err) {
+                console.error("Błąd przy dodawaniu do bazy danych:", err);
+                return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+            }
+            return res.status(200).json({ message: "Dodanie zgłoszenia zakończone sukcesem"});
+        });
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log("błąd zapytania: ",err)
+    }
+}
+
+const deleteEvent = async (req,res) =>{
+    const {id,eventId} = req.body; 
+
+    try{
+        const [event] = await pool.promise().query(`select * from events where author_id = ? && event_id = ?`,[id,eventId])
+
+        if(event.length > 0){
+             pool.query('delete from events where event_id = ? && author_id', [eventId,id], (err) => {
+                if (err) {
+                    console.error("Błąd przy dodawaniu do bazy danych:", err);
+                    return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+                }
+                return res.status(200).json({ message: "Dodanie zakończone sukcesem"});
+            });
+        } else {
+            res.status(500).json({ message: "nie ma takiego wydarzenia :/" });
+        }
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log("błąd zapytania: ",err)
+    }
+}
+
+const checkNumber = async (req,res)=>{
+    const {id} = req.body; 
+
+    try{
+        const [event] = await pool.promise().query(`select chat_number from users where user_id = ?`,[id])
+
+        res.status(200).json({message:"działa ok",answer:event})
+        
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log("błąd zapytania: ",err)
+    }
+}
+
+
+
 export { register, api, likes, addLike, save, addSave, send,
          addIcon,icons,askbot, getSavedEvents,views,addView,
-         eventsToAccept,eventsReported, addReport, getAlerts};
+         eventsToAccept,eventsReported, addReport, getAlerts, addEvent, deleteEvent,checkNumber};

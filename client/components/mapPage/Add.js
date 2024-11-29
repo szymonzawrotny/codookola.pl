@@ -12,9 +12,9 @@ const Add = ()=>{
     const [desc,setDesc] = useState("")
     const [country,setCountry] = useState("");
     const [city,setCity] = useState("");
-    const [street,setStreet] = useState();
+    const [street,setStreet] = useState("");
     const [number,setNumber] = useState("");
-    const [type,setType] = useState("");
+    const [type,setType] = useState("Kultura");
     const [date,setDate] = useState("");
     const [hour,setHour] = useState("");
     const [photos,setPhotos] = useState([]);
@@ -41,10 +41,34 @@ const Add = ()=>{
         }
     }
 
-    const addEvent = ()=>{
+    const addEvent = async ()=>{
         if(title != "" && desc!= "" && country != "" && city != "" && street != "" && number != "" && type != "" && date != "" && hour!=""){
-            console.log("siema dodano")
-            //tutaj fetch post
+
+            const response = await fetch("http://localhost:5000/addevent",{
+                method: "POST",
+                body: JSON.stringify({
+                    id: session?.user?.email?.id,
+                    email: session?.user?.email?.email,
+                    title,
+                    desc,
+                    country,
+                    city,
+                    street,
+                    number,
+                    type,
+                    date,
+                    hour
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+            if(response.ok){
+                console.log("siema dodano")
+            } else {
+                console.log("coś nie poszło")
+            }
         } else {
             console.log("poprawnie uzupełnij dane")
         }
@@ -95,13 +119,25 @@ const Add = ()=>{
                         <form className="addAddress">
                             <p>Dodaj mniejsce wydarzenia, najważniejsze aby użytkownik bez problemu do nas trafił!</p>
                             <input 
-                            type="text" 
-                            placeholder="Kraj..."
-                            value={country} 
-                            onChange={(e)=>setCountry(e.target.value)}/>
-                            <input type="text" placeholder="Miasto..."/>
-                            <input type="text" placeholder="Ulica..."/>
-                            <input type="text" placeholder="Numer domu..."/>
+                                type="text" 
+                                placeholder="Kraj..."
+                                value={country} 
+                                onChange={(e)=>setCountry(e.target.value)}/>
+                            <input 
+                                type="text" 
+                                placeholder="Miasto..."
+                                value={city} 
+                                onChange={(e)=>setCity(e.target.value)}/>
+                            <input 
+                                type="text" 
+                                placeholder="Ulica..."
+                                value={street} 
+                                onChange={(e)=>setStreet(e.target.value)}/>
+                            <input 
+                                type="text" 
+                                placeholder="Numer domu..."
+                                value={number} 
+                                onChange={(e)=>setNumber(e.target.value)}/>
                         </form>
                     </div>
                     <div className="addElement">
@@ -113,8 +149,7 @@ const Add = ()=>{
                         </header>
                         <form className="addType">
                             <p>Co? Gdzie? I najważniejsze kiedy? Podaj datę wydarzenia oraz jego rodzaj</p>
-                            <select>
-                                <option value="wszystkie">Wszystkie</option>
+                            <select onChange={(e)=>setType(e.target.value)}>
                                 <option value="kultura">Kultura</option>
                                 <option value="sport">Sport</option>
                                 <option value="koncert">Koncert</option>
@@ -122,8 +157,15 @@ const Add = ()=>{
                                 <option value="naukowe">Naukowe</option>
                                 <option value="imprezka">Imprezka</option>
                             </select>
-                            <input type="date"/>
-                            <input type="text" placeholder="O której..."/>
+                            <input 
+                                type="date"
+                                value={date} 
+                                onChange={(e)=>setDate(e.target.value)}/>
+                            <input 
+                                type="text" 
+                                placeholder="O której..."
+                                value={hour} 
+                                onChange={(e)=>setHour(e.target.value)}/>
                         </form>
                     </div>
                     <div className="addElement">

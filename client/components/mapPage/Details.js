@@ -176,12 +176,12 @@ const Details = ({title,author,desc,id})=>{
             <h1>{title}</h1>
             <h2>{author}</h2>
             <div className="detailButtons">
-                <div className="like" onClick={handleLike} id={id}>
+                {session ? <div className="like" onClick={handleLike} id={id}>
                    {like ? <FaHeart className='liked'/> : <FaRegHeart className='noLiked'/>}
-                </div>
-                <div className="save" onClick={handleSave} id={id}>
+                </div> : null}
+                {session ? <div className="save" onClick={handleSave} id={id}>
                     {save? <FaBookmark style={{color:"lightgreen"}}/> : <FaRegBookmark style={{color:"#222"}}/>}
-                </div>
+                </div> : null}
             </div>
             <nav className="detailsNav">
                 <div 

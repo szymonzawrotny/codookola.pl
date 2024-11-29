@@ -3,9 +3,9 @@ import { useState, useEffect, useRef} from 'react';
 import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import "@/styles/userpanel/events.scss"
-import { IoIosArrowDown } from "react-icons/io";
 
 import EventListElement from '@/components/userpanel/EventListElement';
+
 
 const Home = ()=>{
 
@@ -17,7 +17,6 @@ const Home = ()=>{
         onUnauthenticated(){
             router.push("/")
         }
-
     })
 
     const fetchData = async () =>{
@@ -38,16 +37,28 @@ const Home = ()=>{
     },[])
 
     const handleEventElement = (e)=>{
+
+        if(e.target.className == "edit" || e.target.className == "show" || e.target.className == "delete")
+            return
+        
         [...document.querySelectorAll(".event")].forEach((one,index)=>{
             one.classList.remove("active");
         })
-        e.target.classList.add("active")
+
+
+        if (e.target.tagName == "SPAN") {
+            e.target.parentNode.classList.add("active");
+        } else if (e.target.tagName == "path") {
+            e.target.parentNode.parentNode.parentNode.classList.add("active");
+        } else if (e.target.tagName == "svg"){
+            e.target.parentNode.parentNode.classList.add("active");
+        } else {
+            e.target.classList.add("active");
+        }
     }
 
-    const elements = eventList
-    .filter(one => one.author_id === session?.user?.email?.id)
-    .map((one, index) => (
-        <EventListElement name={one.nazwa} key={index} number={index} handleEventElement={handleEventElement} />
+    const elements = eventList.filter(one => one.author_id === session?.user?.email?.id).map((one, index) => (
+        <EventListElement eventInfo={one} key={index} number={index} handleEventElement={handleEventElement} />
     ));
 
     return(

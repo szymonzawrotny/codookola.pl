@@ -1,5 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
+import { useSession } from "next-auth/react";
 import { MdPlace, MdEventNote } from "react-icons/md";
 import { AiFillPushpin } from "react-icons/ai";
 import { PiCityBold } from "react-icons/pi";
@@ -44,9 +45,14 @@ const Opinions = ()=>{
 
 const Chatbot = ()=>{
 
+    const {data:session} = useSession({
+        required: false,
+    })
+
     const [text,setText] = useState("");
     const [question,setQuestion] = useState("Zadaj pytanie...")
     const [answer, setAnswer] = useState(null)
+    const [chatNumber,setChatNumber] = useState(0)
 
     const inputRef = useRef()
 
@@ -62,7 +68,9 @@ const Chatbot = ()=>{
         const response = await fetch("http://localhost:5000/askbot",{
             method:"POST",
             body: JSON.stringify({
-                value
+                value,
+                id: session?.user?.email?.id,
+                chatNumber
             }),
             headers: {
                 "Content-Type": "application/json"
@@ -79,11 +87,35 @@ const Chatbot = ()=>{
         setText("spróbuj ponownie później...")
     }
 
+    const fetchChatNumber = async ()=>{
+        const response = await fetch("http://localhost:5000/checknumber",{
+            method: "POST",
+            body: JSON.stringify({
+                id: session?.user?.email?.id
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        if(response.ok){
+            const data = await response.json();
+            setChatNumber(data.answer[0].chat_number)
+            if(data.answer[0].chat_number==0)
+                setText("Wykorzystano dzienny limit")
+        } else {
+            console.log("coś nie poszło")
+        }
+    }
+
     useEffect(()=>{
         [...document.querySelectorAll("nav.detailsNav>.option")].forEach((one,index)=>{
             one.classList.remove("active");
             if(index==1) one.classList.add("active");
         })
+
+        if(session)
+            fetchChatNumber();
     },[])
 
     return(
@@ -98,7 +130,7 @@ const Chatbot = ()=>{
                     placeholder="zadaj pytanie..." 
                     ref={inputRef}
                     onChange={(e)=>setText(e.target.value)} 
-                    value={text} disabled={false}/>
+                    value={text} disabled={!chatNumber}/>
                         <HiMagnifyingGlass onClick={handleSend}/>
             </div>
          </>

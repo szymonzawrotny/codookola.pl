@@ -3,12 +3,13 @@ import cors from 'cors';
 import "dotenv/config";
 import multer from 'multer';
 import path from 'path';
+import cron from 'node-cron'
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 import { register, api, likes, addLike, save, addSave, send,
          addIcon,icons, askbot, getSavedEvents, views, addView, eventsToAccept, 
-         eventsReported, addReport, getAlerts } from "./routes/routes.js";
+         eventsReported, addReport, getAlerts, addEvent, deleteEvent, checkNumber } from "./routes/routes.js";
          
 import { pool } from './config/database.js';
 
@@ -38,6 +39,26 @@ app.listen(port, () => {
     console.log(`Serwer nasłuchuje na porcie ${port}`);
 });
 
+let cronIteration = 0;
+
+cron.schedule('38 12 * * *',()=>{
+    if(cronIteration == 0){
+        pool.query('update users set chat_number = 3',(err) => {
+        if (err) {
+          console.error("Błąd przy aktualizacji bazy danych:", err);
+          return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" });
+        }
+        console.log("odnowiono")
+    });
+
+        cronIteration++;
+    }
+})
+
+cron.schedule('39 12 * * *',()=>{
+    cronIteration = 0;
+})
+
 app.get("/api", api);
 app.post("/reg", register);
 app.get("/likes", likes);
@@ -55,3 +76,6 @@ app.get("/eventsToAccept",eventsToAccept);
 app.get("/eventsReported",eventsReported);
 app.post("/addreport", addReport)
 app.post("/getalerts",getAlerts)
+app.post("/addevent",addEvent);
+app.post("/deleteevent",deleteEvent);
+app.post("/checknumber",checkNumber)

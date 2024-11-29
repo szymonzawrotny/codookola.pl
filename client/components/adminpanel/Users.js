@@ -26,7 +26,7 @@ const Users = ()=>{
                 <h2>Użytkownicy</h2>
                 <div className="postsToAccept">
                     {
-                        elements.length >0 ? elements : <div className="empty">brak użytkowników</div>
+                        elements.length >0 ? elements : <div className="empty">brak użytkowników </div>
                     }
                 </div>
             </div>

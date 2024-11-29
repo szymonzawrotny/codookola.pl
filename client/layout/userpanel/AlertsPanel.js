@@ -40,7 +40,7 @@ const AlertsPanel = ({alertPanelRef})=>{
     },[])
 
     const elements = list.map((one,index)=>{
-        return <Alert content={one.content}/>
+        return <Alert content={one.content} key={index}/>
     })
 
     return(

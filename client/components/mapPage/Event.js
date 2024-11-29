@@ -23,24 +23,24 @@ const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
     }
 
     const handleReport = async ()=>{
-        console.log("zgłoszono!")
-        const response = await fetch("http://localhost:5000/addreport",{
-            method: "POST",
-            body: JSON.stringify({
-                id: session?.user?.email?.id,
-                eventId: eventInfo.event_id
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+        if(session){
+            console.log("zgłoszono!")
+            const response = await fetch("http://localhost:5000/addreport",{
+                method: "POST",
+                body: JSON.stringify({
+                    id: session?.user?.email?.id,
+                    eventId: eventInfo.event_id
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
 
-        if(response.ok){
-            console.log("dodano")
+            if(response.ok)console.log("dodano")
+            else console.log("coś nie poszło")
         } else {
-            console.log("coś nie poszło")
+            console.log("musisz sie zalogować")
         }
-  
     }
 
 
@@ -86,12 +86,12 @@ const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
                 <span>{eventInfo.nazwa}</span>
             </div>
             <div className="buttons">
-                <div className="like" onClick={handleLike} id={eventInfo.event_id}>
+                {session ? <div className="like" onClick={handleLike} id={eventInfo.event_id}>
                     {isLike ? <FaHeart className='liked'/> : <FaRegHeart className='noLiked'/>}
-                </div>
-                <div className="save" onClick={handleSave} id={eventInfo.event_id}>
+                </div> : null}
+                {session ? <div className="save" onClick={handleSave} id={eventInfo.event_id}>
                     {save? <FaBookmark style={{color:"lightgreen"}}/> : <FaRegBookmark style={{color:"#222"}}/>}
-                </div>
+                </div> : null}
                 <button 
                     className="check" 
                     onClick={()=>handleButton(eventInfo.nazwa,eventInfo.author_email,eventInfo.opis,eventInfo.event_id,isLike,save)}>

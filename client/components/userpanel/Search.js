@@ -53,7 +53,7 @@ const Search = ({searchInputRef,handleSearch,searchRef})=>{
 
     const elements = tab.map((one,index)=>{
         if(index >= 4) return
-        return <Link href={one.link} className="searchPanelOption">{one.nazwa}</Link>
+        return <Link key={index} href={one.link} className="searchPanelOption">{one.nazwa}</Link>
     })
 
     return(
