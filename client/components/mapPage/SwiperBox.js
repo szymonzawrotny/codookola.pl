@@ -9,7 +9,7 @@ import 'swiper/css/effect-coverflow';
 
 import Image from 'next/image'
 
-const SwiperBox = ()=>{
+const SwiperBox = ({path="/images/default.jpg",path2="/images/default.jpg",path3="/images/default.jpg"})=>{
     return(
     <Swiper
         effect={'coverflow'}
@@ -35,7 +35,7 @@ const SwiperBox = ()=>{
         >
         <SwiperSlide>
             <Image
-                    src="/images/reddead.jpg"
+                    src={path}
                     width="1900"
                     height="1000"
                     alt="swiper image"
@@ -43,7 +43,7 @@ const SwiperBox = ()=>{
         </SwiperSlide>
         <SwiperSlide>
             <Image
-                    src="/images/reddead.jpg"
+                    src={path2}
                     width="1900"
                     height="1000"
                     alt="swiper image"
@@ -51,7 +51,7 @@ const SwiperBox = ()=>{
         </SwiperSlide>
         <SwiperSlide>
             <Image
-                    src="/images/reddead.jpg"
+                    src={path3}
                     width="1900"
                     height="1000"
                     alt="swiper image"

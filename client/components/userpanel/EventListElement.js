@@ -4,7 +4,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { IoIosArrowDown } from "react-icons/io";
 
-const EventListElement = ({handleEventElement,eventInfo,number})=>{
+const EventListElement = ({handleEventElement,eventInfo,number,showEvent, editEvent})=>{
 
     const {data:session} = useSession({
         required: true,
@@ -13,13 +13,6 @@ const EventListElement = ({handleEventElement,eventInfo,number})=>{
         }
     })
 
-    const showEvent = async ()=>{
-        console.log("pokazuje")
-    }
-
-    const editEvent = async ()=>{
-        console.log("edytuje")
-    }
 
     const deleteEvent = async ()=>{
 
@@ -45,8 +38,8 @@ const EventListElement = ({handleEventElement,eventInfo,number})=>{
         <div className="event" onClick={handleEventElement}>
             <span>{`${number+1}. ${eventInfo.nazwa.toUpperCase()}`}<IoIosArrowDown /></span>
             <div className="eventButtons">
-                <div className="show" onClick={showEvent}>pokaż</div>
-                <div className="edit" onClick={editEvent}>edytuj</div>
+                <div className="show" onClick={()=>showEvent(eventInfo)}>pokaż</div>
+                <div className="edit" onClick={()=>{editEvent(eventInfo)}}>edytuj</div>
                 <div className="delete" onClick={deleteEvent}>usuń</div>
             </div>
         </div>

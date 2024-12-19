@@ -20,20 +20,20 @@ const InterFace = ({posState, setPosState,pos,handleButton,component,setComponen
 
     const burgerRef = useRef();
     const menuRef = useRef();
-    const mapAlertRef = useRef();
     const [isMobile, setIsMobile] = useState(false);
 
-    const handleBurger = () => {
-        burgerRef.current.classList.toggle("active");
-        menuRef.current.classList.toggle("active");
-    }
-
+    const mapAlertRef = useRef();
     const handleMapAlert = (mapAlertRef)=>{
         mapAlertRef.current.classList.add("active");
 
         setTimeout(()=>{
             mapAlertRef.current.classList.remove("active");
         },3000)
+    }
+
+    const handleBurger = () => {
+        burgerRef.current.classList.toggle("active");
+        menuRef.current.classList.toggle("active");
     }
 
     const handleIconAnimation = (e) => {

@@ -27,27 +27,32 @@ const Home = () => {
 
   const addView = async (eventId)=>{
 
-    const response = await fetch("http://localhost:5000/addView",{
-            method: "POST",
-            body: JSON.stringify({
-                id: session?.user?.email?.id,
-                eventId: eventId
-            }),
-            headers: {
-                "Content-Type": "application/json"
-            }
-        })
+    if(session){
+        const response = await fetch("http://localhost:5000/addView",{
+          method: "POST",
+          body: JSON.stringify({
+              id: session?.user?.email?.id,
+              eventId: eventId
+          }),
+          headers: {
+              "Content-Type": "application/json"
+          }
+      })
 
-        if(response.ok){
-            console.log("dodano")
-        } else {
-            console.log("coś nie poszło")
-        }
+      if(response.ok){
+          console.log("dodano")
+      } else {
+          console.log("coś nie poszło")
+      }
+    } else {
+      console.log("musisz się zalogować")
+    }
   }
 
-  const handleButton = (title,author,desc,id)=>{
+  const handleButton = (title,author,desc,id,eventInfo)=>{
         setComponent(
           <Details 
+            eventInfo={eventInfo}
             title={title} 
             author={author} 
             desc={desc} id={id}/>

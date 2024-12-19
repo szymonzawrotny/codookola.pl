@@ -5,6 +5,9 @@ import { MdPlace, MdEventNote } from "react-icons/md";
 import { AiFillPushpin } from "react-icons/ai";
 import { PiCityBold } from "react-icons/pi";
 import { HiMagnifyingGlass } from "react-icons/hi2";
+import { IoAddOutline } from "react-icons/io5";
+
+import Comment from "./Comment";
 
 const General = ({desc,address,city,date,eventType})=>{
 
@@ -25,19 +28,104 @@ const General = ({desc,address,city,date,eventType})=>{
          </>
     )
 }
-const Opinions = ()=>{
+const Opinions = ({id})=>{
+
+    const {data:session} = useSession({
+        required: false,
+    })
+
+    const [value,setValue] = useState("")
+    const [list,setList] = useState([])
+
+    const addComment = async ()=>{
+        if(session){
+            const response = await fetch("http://localhost:5000/addcomment",{
+                method: "POST",
+                body:JSON.stringify({
+                    id,
+                    userId: session?.user?.email.id,
+                    value
+                }),
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            })
+
+
+            if(!response.ok){
+                console.log("coś się zepsuło")
+            } else {
+                const data = await response.json();
+                console.log(data.message);
+                setValue("")
+                fetchComments();
+            }
+        } else {
+            let mapalert = document.querySelector(".MapAlert");
+
+            mapalert.classList.add("active")
+            mapalert.textContent = "Musisz się zalogować";
+            setTimeout(()=>{
+                mapalert.classList.remove("active")
+            },3000)
+
+            setTimeout(()=>{
+                mapalert.textContent = "Pomyślnie dodano!";
+            },3500)
+        }
+    }
+
+    const fetchComments = async ()=>{
+        const response = await fetch("http://localhost:5000/getcomments",{
+            method: "POST",
+            body:JSON.stringify({
+                id
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+
+        if(!response.ok){
+            console.log("coś się zepsuło")
+        } else {
+            const data = await response.json();
+            setList(data.answer)
+        }
+    }
 
     useEffect(()=>{
         [...document.querySelectorAll("nav.detailsNav>.option")].forEach((one,index)=>{
             one.classList.remove("active");
             if(index==2) one.classList.add("active");
         })
+
+        fetchComments();
     },[])
+
+    const elements = list.map((one,index)=>{
+        return <Comment key={index} value={one.value} username={one.email}/>
+    })
 
     return(
          <>
             <div className="opinions">
-                siema
+                <div className="addComment">
+                    <input 
+                        type="text" 
+                        value={value}
+                        onChange={e=>setValue(e.target.value)}
+                        placeholder="co sądzisz o tym wydarzeniu?"/>
+                    <button onClick={addComment}>
+                        <IoAddOutline/>
+                    </button>
+                </div>
+                <div className="commentsContainer">
+                    {
+                        elements.length >0 ? elements : <div className="empty">brak komentarzy</div>
+                    }
+                </div>
             </div>
          </>
     )
@@ -116,8 +204,11 @@ const Chatbot = ()=>{
             if(index==1) one.classList.add("active");
         })
 
-        if(session)
+        if(session){
             fetchChatNumber();
+        } else {
+            setText("Musisz się zalogować...")
+        }
     },[])
 
     return(

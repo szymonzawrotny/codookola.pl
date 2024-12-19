@@ -46,7 +46,7 @@ const SearchBar = ({handleButton})=>{
                         if(!index==0) one.classList.remove("active");
                         else one.classList.add("active");
                     })
-                    handleButton(one.nazwa,one.author_email,one.opis,one.event_id);
+                    handleButton(one.nazwa,one.author_email,one.opis,one.event_id,one);
                 }}>
                     {one.nazwa}, {one.adres}, {one.data}
             </div>

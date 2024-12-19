@@ -68,7 +68,7 @@ const Map = React.memo(({setPosState,setComponent,mapRef,selectedId,setSelectedI
 
                 setSelectedId(one.event_id);
                 setPosState({ x: 500, y: 0 });
-                setComponent(<Details title={one.nazwa} author={one.author_email} desc={one.opis} id={one.event_id}/>)
+                setComponent(<Details eventInfo={one} title={one.nazwa} author={one.author_email} desc={one.opis} id={one.event_id}/>)
             };
 
             return (

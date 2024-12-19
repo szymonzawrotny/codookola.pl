@@ -1,7 +1,7 @@
 import { MarkerF } from '@react-google-maps/api';
 import { useState } from 'react';
 
-const CustomMarker = ({ key, position, handleClick, event_id, selectedId}) => {
+const CustomMarker = ({ position, handleClick, event_id, selectedId}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   let state = event_id === selectedId
@@ -18,7 +18,6 @@ const CustomMarker = ({ key, position, handleClick, event_id, selectedId}) => {
 
   return (
     <MarkerF
-      key={key}
       position={position}
       icon={icon}
       onClick={handleClick}

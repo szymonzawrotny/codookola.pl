@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 
 import Event from "./Event";
 
-const Discover = ({handleButton})=>{
+const Discover = ({handleButton,})=>{
 
     const {data:session} = useSession({
         required: false,
@@ -20,12 +20,15 @@ const Discover = ({handleButton})=>{
     const inputRef = useRef();
 
     const fetchData = async () =>{
-        const result = await fetch("http://localhost:5000/api")
-        .then(response => response.json())
-        .then(data=>{
-            setEventList(data) 
-            setTab(data)
-        });
+        try {
+            const response = await fetch("http://localhost:5000/api");
+            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+            const data = await response.json();
+            setEventList(data);
+            setTab(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
 
     const fetchLikeList = async ()=>{
@@ -52,14 +55,14 @@ const Discover = ({handleButton})=>{
         }
 
         const response = await fetch("http://localhost:5000/addlike",{
-        method: "POST",
-        body:JSON.stringify({
-            userId: session?.user?.email?.id,
-            eventId
-        }),
-        headers: {
-            "Content-Type": "application/json"
-        }
+            method: "POST",
+            body:JSON.stringify({
+                userId: session?.user?.email?.id,
+                eventId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
 
         if(response.ok){
@@ -80,14 +83,14 @@ const Discover = ({handleButton})=>{
         }
 
         const response = await fetch("http://localhost:5000/addSave",{
-        method: "POST",
-        body:JSON.stringify({
-            userId: session?.user?.email?.id,
-            eventId
-        }),
-        headers: {
-            "Content-Type": "application/json"
-        }
+            method: "POST",
+            body:JSON.stringify({
+                userId: session?.user?.email?.id,
+                eventId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
 
         if(response.ok){
@@ -205,8 +208,10 @@ const Discover = ({handleButton})=>{
                         <option value="imprezka">Imprezka</option>
                     </select>
                     <select className='date'>
-                        <option>Popularne</option>
-                        <option>Już zaraz!</option>
+                        <option>poniżej 50km</option>
+                        <option>do 50km</option>
+                        <option>do 100km</option>
+                        <option>powyżej 100km</option>
                     </select>
                 </div>
             </div>

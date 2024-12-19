@@ -8,7 +8,6 @@ const Home = ()=>{
 
     const topRef = useRef();
     const [users,setUsers] = useState([
-        "","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","","",""
     ])
 
      const handleScroll = () => {
@@ -48,8 +47,17 @@ const Home = ()=>{
         window.scrollTo(0,0);
     }
 
+    const fetchData = async ()=>{
+        const result = await fetch("http://localhost:5000/rankingList")
+        .then(response => response.json())
+        .then(data=>{
+            setUsers(data);
+        });
+    }
+
     useEffect(() => {
         window.addEventListener("scroll", handleScroll);
+        fetchData();
 
         return () => {
             window.removeEventListener("scroll", handleScroll);
@@ -60,11 +68,11 @@ const Home = ()=>{
         return(
             <div className="user" key={index}>
                 <span>{index+4}.</span>
-                siemano
+                {one.email}
                 <div className="space"></div>
-                <div className="views">26</div>
-                <div className="likes">26</div>
-                <div className="saves">37</div>
+                <div className="views">{one.views}</div>
+                <div className="likes">{one.likes}</div>
+                <div className="saves">{one.save}</div>
             </div>
         )
     })
@@ -72,7 +80,7 @@ const Home = ()=>{
     return(
         <div className="rankingPage">
             <div className="title">ranking</div>
-            <div className="title2">top 50</div>
+            <div className="title2">top 25</div>
             <div className="top" ref={topRef}>
                 <div className="top2 bar">2</div>
                 <div className="top1 bar">1</div>

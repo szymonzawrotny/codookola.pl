@@ -5,12 +5,24 @@ import { useRouter } from 'next/navigation';
 import "@/styles/userpanel/events.scss"
 
 import EventListElement from '@/components/userpanel/EventListElement';
-
+import SwiperBox from '@/components/mapPage/SwiperBox';
+import EditPanel from '@/components/userpanel/EditPanel';
 
 const Home = ()=>{
 
     const [eventList,setEventList] = useState([]);
+    const [edit,setEdit] = useState(false)
     const router = useRouter();
+
+    const [eventName,setEventName] = useState("");
+    const [eventDesc,setEventDesc] = useState("");
+    const [eventAuthor,setEventAuthor] = useState("");
+    const [eventAddress,setEventAddress] = useState({
+        city: "",
+        cityNumber: "",
+        address: ""
+    })
+    const [date,setDate] = useState("")
 
     const {data:session} = useSession({
         required: true,
@@ -57,13 +69,46 @@ const Home = ()=>{
         }
     }
 
+    const showEvent = async (obiekt)=>{
+        setEdit(false)
+        setEventName(obiekt.nazwa);
+        setEventDesc(obiekt.opis);
+        setEventAuthor(obiekt.author_email)
+        setEventAddress({
+        city: obiekt.miasto,
+        cityNumber: obiekt.kod_pocztowy,
+        address: obiekt.adres
+    })
+    }
+
+    const editEvent = async (obiekt)=>{
+        showEvent(obiekt);
+        setEdit(true)
+        console.log(edit);
+    }
+
     const elements = eventList.filter(one => one.author_id === session?.user?.email?.id).map((one, index) => (
-        <EventListElement eventInfo={one} key={index} number={index} handleEventElement={handleEventElement} />
+        <EventListElement 
+            eventInfo={one} 
+            key={index} 
+            number={index} 
+            handleEventElement={handleEventElement} 
+            editEvent={editEvent}
+            showEvent={showEvent}/>
     ));
 
     return(
         <div className='events'>
-            <div className="eventsOption">siema</div>
+            <div className="eventsOption">
+                <div className="optionContainer">
+                    {!eventName==""? <EditPanel 
+                        eventAuthor={eventAuthor} 
+                        eventName={eventName} 
+                        eventDesc={eventDesc} 
+                        eventAddress={eventAddress} 
+                        edit={edit} />: <div className="empty">Wybierz swoje wydarzenie!</div> }
+                </div>
+            </div>
             <div className="eventsList">
                 <h1>Twoje wydarzenia</h1>
                 <div className="eventsContainer">

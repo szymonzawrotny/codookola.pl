@@ -237,7 +237,7 @@ const askbot = async (req,res)=>{
     //     res.status(200).json({answer:data,question:value});
     // });
 
-    res.status(200).json({answer:"kod zablokowałem bo to płatne i się boję XD",question:value});
+    res.status(200).json({answer:"Tymczasowo zablokowane...",question:value});
 }
 
 const getSavedEvents = async (req,res)=>{
@@ -361,8 +361,10 @@ const addEvent = async (req,res) =>{
     const lat = '53.565344951554245';
     const lng = '19.11881682197994';
 
+    const photo_path = "/uploads/default.jpg"
+
     try{
-        pool.query('INSERT INTO events_to_accept (event_id,nazwa,adres,miasto,kod_pocztowy,lat,lng,opis,rodzaj,data,author_id,author_email) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?)', [title,street,city,number,lat,lng,desc,type,date,id,email ], (err) => {
+        pool.query('INSERT INTO events_to_accept (event_id,nazwa,adres,miasto,kod_pocztowy,lat,lng,opis,rodzaj,data,author_id,author_email,photo_path,photo_path2,photo_path3) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?)', [title,street,city,number,lat,lng,desc,type,date,id,email,photo_path,photo_path,photo_path ], (err) => {
             if (err) {
                 console.error("Błąd przy dodawaniu do bazy danych:", err);
                 return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
@@ -412,8 +414,217 @@ const checkNumber = async (req,res)=>{
     }
 }
 
+const rankingList = async (req, res) => {
+    try {
+        const [users] = await pool.promise().query(`SELECT user_id, email FROM users limit 25`);
 
+        for (const one of users) {
+            one.views = 0;
+            one.likes = 0;
+            one.save = 0;
+
+            const [events] = await pool.promise().query("SELECT event_id FROM events WHERE author_id = ?", [one.user_id]);
+
+            for(const event of events){
+                const [likes] = await pool.promise().query("SELECT count(event_id) as number FROM likes WHERE event_id = ?", [event.event_id]);
+                const [views] = await pool.promise().query("SELECT count(event_id) as number FROM views WHERE event_id = ?", [event.event_id]);
+                const [save] = await pool.promise().query("SELECT count(event_id) as number FROM save WHERE event_id = ?", [event.event_id]);
+
+                one.views += views[0].number
+                one.likes += likes[0].number
+                one.save += save[0].number
+            }   
+
+            one.points = one.views + one.likes + one.save;
+        }
+
+        users.sort((a, b) => b.points - a.points);
+
+        res.json(users);
+    } catch (err) {
+        res.status(500).json({ message: "Błąd serwera" });
+        console.error("Błąd zapytania: ", err);
+    }
+};
+
+const stats = async (req,res)=>{
+    const { id } = req.body;
+
+    const createDate = today=>`${today.getDate()}.${today.getMonth()+1}.${today.getYear()-100}`
+
+    //tydzień
+    
+    const generateWeek = ()=>{
+        let today = new Date();
+        let weekData = [];
+
+        for(let i=7;i>=1;i--){
+            const currentDate = new Date(today);
+            currentDate.setDate(today.getDate()-i);
+            weekData.push({ date: createDate(currentDate), value: Math.floor(Math.random() * 100) })
+        }
+
+        return weekData
+    }
+
+    const series = [
+        {
+            name: 'Wyświetlenia',
+            color: "green",
+            data: generateWeek(),
+            
+        },
+        {
+            name: 'Polubienia',
+            color: "blue",
+            data: generateWeek(),
+        },
+        {
+            name: 'Zapisania',
+            color: "red",
+            data: generateWeek(),
+        },
+    ];
+
+    //miesiąc
+
+    const series2 = [
+    {
+        name: 'Wyświetlenia',
+        color: "green",
+        data: [
+            { date: '07.10.24', value: Math.floor(Math.random() *100)},
+            { date: '14.10.24', value: Math.floor(Math.random() *100)},
+            { date: '24.10.24', value: Math.floor(Math.random() *100)},
+            { date: '28.10.24', value: Math.floor(Math.random() *100)},
+        ],
+    },
+    {
+        name: 'Polubienia',
+        color: "blue",
+        data: [
+            { date: '07.10.24', value: Math.floor(Math.random() *100)},
+            { date: '14.10.24', value: Math.floor(Math.random() *100)},
+            { date: '24.10.24', value: Math.floor(Math.random() *100)},
+            { date: '28.10.24', value: Math.floor(Math.random() *100)},
+        ],
+    },
+    {
+        name: 'Zapisania',
+        color: "red",
+        data: [
+            { date: '07.10.24', value: Math.floor(Math.random() *100)},
+            { date: '14.10.24', value: Math.floor(Math.random() *100)},
+            { date: '24.10.24', value: Math.floor(Math.random() *100)},
+            { date: '28.10.24', value: Math.floor(Math.random() *100)},
+        ],
+    },
+    ];
+
+
+    //rok
+
+    const series3 = [
+    {
+        name: 'Wyświetlenia',
+        color: "green",
+        data: [
+            { date: 'Styczeń', value: Math.floor(Math.random() *100)},
+            { date: 'Luty', value: Math.floor(Math.random() *100)},
+            { date: 'Marzec', value: Math.floor(Math.random() *100)},
+            { date: 'Kwiecień', value: Math.floor(Math.random() *100)},
+            { date: 'Maj', value: Math.floor(Math.random() *100)},
+            { date: 'Czerwiec', value: Math.floor(Math.random() *100)},
+            { date: 'Lipiec', value: Math.floor(Math.random() *100)},
+            { date: 'Sierpień', value: Math.floor(Math.random() *100)},
+            { date: 'Wrzesień', value: Math.floor(Math.random() *100)},
+            { date: 'Pazdziernik', value: Math.floor(Math.random() *100)},
+            { date: 'Listopad', value: Math.floor(Math.random() *100)},
+            { date: 'Grudzień', value: Math.floor(Math.random() *100)},
+        ]
+    },
+    {
+        name: 'Polubienia',
+        color: "blue",
+        data: [
+            { date: 'Styczeń', value: Math.floor(Math.random() *100)},
+            { date: 'Luty', value: Math.floor(Math.random() *100)},
+            { date: 'Marzec', value: Math.floor(Math.random() *100)},
+            { date: 'Kwiecień', value: Math.floor(Math.random() *100)},
+            { date: 'Maj', value: Math.floor(Math.random() *100)},
+            { date: 'Czerwiec', value: Math.floor(Math.random() *100)},
+            { date: 'Lipiec', value: Math.floor(Math.random() *100)},
+            { date: 'Sierpień', value: Math.floor(Math.random() *100)},
+            { date: 'Wrzesień', value: Math.floor(Math.random() *100)},
+            { date: 'Pazdziernik', value: Math.floor(Math.random() *100)},
+            { date: 'Listopad', value: Math.floor(Math.random() *100)},
+            { date: 'Grudzień', value: Math.floor(Math.random() *100)},
+        ],
+    },
+    {
+        name: 'Zapisania',
+        color: "red",
+        data: [
+        { date: 'Styczeń', value: Math.floor(Math.random() *100)},
+        { date: 'Luty', value: Math.floor(Math.random() *100)},
+        { date: 'Marzec', value: Math.floor(Math.random() *100)},
+        { date: 'Kwiecień', value: Math.floor(Math.random() *100)},
+        { date: 'Maj', value: Math.floor(Math.random() *100)},
+        { date: 'Czerwiec', value: Math.floor(Math.random() *100)},
+        { date: 'Lipiec', value: Math.floor(Math.random() *100)},
+        { date: 'Sierpień', value: Math.floor(Math.random() *100)},
+        { date: 'Wrzesień', value: Math.floor(Math.random() *100)},
+        { date: 'Pazdziernik', value: Math.floor(Math.random() *100)},
+        { date: 'Listopad', value: Math.floor(Math.random() *100)},
+        { date: 'Grudzień', value: Math.floor(Math.random() *100)},
+        ],
+    },
+    ];
+
+
+    res.status(200).json({answer:series,answer2:series2,answer3:series3})
+
+}
+
+const getComments = async (req,res)=>{
+    const {id} = req.body; 
+
+    try{ 
+        const [comments] = await pool.promise().query("SELECT * FROM comments where event_id = ?",[id]);
+
+        for(const comment of comments){
+
+            const [email] = await pool.promise().query("SELECT email FROM users where user_id = ?",[comment.user_id]);
+
+            comment.email = email[0].email
+        }   
+
+        res.status(200).json({answer: comments})
+
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log("błąd zapytania: ",err)
+    }
+}
+
+const addComment = async (req,res)=>{
+   const {id,userId,value} = req.body;
+
+   try{
+        pool.query('INSERT INTO comments (comment_id,event_id,user_id,value,date) VALUES (NULL,?,?,?,?)', [id,userId,value, new Date()], (err) => {
+            if (err) {
+                console.error("Błąd przy dodawaniu do bazy danych:", err);
+                return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+            }
+            return res.status(200).json({ message: "Dodanie zgłoszenia zakończone sukcesem"});
+        });
+    } catch(err){
+        res.status(500).json({message:"Błąd serwera"})
+        console.log( "błąd zapytania: ",err)
+    }
+}
 
 export { register, api, likes, addLike, save, addSave, send,
          addIcon,icons,askbot, getSavedEvents,views,addView,
-         eventsToAccept,eventsReported, addReport, getAlerts, addEvent, deleteEvent,checkNumber};
+         eventsToAccept,eventsReported, addReport, getAlerts,
+         addEvent, deleteEvent,checkNumber,rankingList, stats, getComments, addComment};

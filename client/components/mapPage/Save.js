@@ -65,14 +65,14 @@ const SavePanel = ({session,handleButton})=>{
         }
 
         const response = await fetch("http://localhost:5000/addlike",{
-        method: "POST",
-        body:JSON.stringify({
-            userId: session?.user?.email?.id,
-            eventId
-        }),
-        headers: {
-            "Content-Type": "application/json"
-        }
+            method: "POST",
+            body:JSON.stringify({
+                userId: session?.user?.email?.id,
+                eventId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
 
         if(response.ok){
@@ -93,14 +93,14 @@ const SavePanel = ({session,handleButton})=>{
         }
 
         const response = await fetch("http://localhost:5000/addSave",{
-        method: "POST",
-        body:JSON.stringify({
-            userId: session?.user?.email?.id,
-            eventId
-        }),
-        headers: {
-            "Content-Type": "application/json"
-        }
+            method: "POST",
+            body:JSON.stringify({
+                userId: session?.user?.email?.id,
+                eventId
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
         })
 
         if(response.ok){

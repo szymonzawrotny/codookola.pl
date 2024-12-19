@@ -146,7 +146,7 @@
                     }
                 }
                 .chat{
-                    height: 90%;
+                    min-height: 90%;
                     display: flex;
                     flex-direction: column;
                     justify-content: flex-start;
@@ -155,6 +155,8 @@
                         padding:10px;
                         border-radius: 5px;
                         width:60%;
+                        word-wrap: break-word;
+                        overflow-wrap: break-word;
                         align-self: flex-end;
                         margin-top:10px;
                     }
@@ -191,9 +193,99 @@
                     }
                 }
                 .opinions{
-                    border:2px solid blue;
                     width:100%;
-                    height:600px;
+                    min-height:100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: flex-start;
+                    .addComment{
+                        display: flex;
+                        margin:0 25px 0 25px;
+                        border-bottom: 2px solid #222;
+                        input{
+                            flex-grow: 1;
+                            padding:5px;
+                            border: none;
+                            background-color: aliceblue;
+                        }
+                        input:focus{
+                            outline: none;
+                        }
+                        button{
+                            cursor: pointer;
+                            margin-left: 10px;
+                            flex-basis: 20%;
+                            border:none;
+                            border-radius: 5px;
+                            text-transform: uppercase;
+                            letter-spacing: 1px;
+                            background-color: transparent;
+                            svg{
+                                font-size: 28px;
+                            }
+                        }
+                    }
+                    .commentsContainer{
+                        flex-grow: 1;
+                        position: relative;
+                        .comment{
+                            margin-top:25px;
+                            display: flex;
+                            flex-direction: column;
+                            background-color: #FFE97F;
+                            padding:10px;
+                            border-radius: 5px;
+                            header{
+                                flex-basis: 20%;
+                                display: flex;
+                                justify-content: flex-start;
+                                align-items: center;
+                                font-weight: 700;
+                                .icon{
+                                    .userIcon{
+                                        width:30px;
+                                        height:30px;
+                                        margin: 0 10px 0 15px;
+                                        border-radius: 50%;
+                                        position: relative;
+                                        overflow: hidden;
+                                        img{
+                                            position: absolute;
+                                            top:50%;
+                                            left:50%;
+                                            transform: translate(-50%,-50%);
+                                            max-height:100%;
+                                            width:auto;
+                                            user-select:none;
+                                            -webkit-user-drag: none;
+                                        }
+                                    }
+                                    svg{
+                                        font-size:28px;
+                                        margin: 0 10px 0 5px;
+                                        color:#222;
+                                    }
+                                }
+                                .name{
+                                    cursor: default;
+                                    font-size:14px;
+                                    font-weight: 500;
+                                    user-select:none;
+                                }
+                            }
+                            main{
+                                padding:15px;
+                            }
+                        }
+                        .empty{
+                            position: absolute;
+                            top:50%;
+                            left:50%;
+                            transform: translate(-50%,-50%);
+                            font-size:22px;
+                            font-weight: 500;
+                        }
+                    }
                 }
             }
         }

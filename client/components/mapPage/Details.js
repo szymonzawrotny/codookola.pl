@@ -10,7 +10,7 @@ import { useSession } from 'next-auth/react'
 
 import {General, Opinions, Chatbot} from './DetailsOptions';
 
-const Details = ({title,author,desc,id})=>{
+const Details = ({eventInfo,title,author,desc,id})=>{
 
     const {data:session} = useSession({
         required: false,
@@ -23,6 +23,10 @@ const Details = ({title,author,desc,id})=>{
     const [city,setCity] = useState("");
     const [eventType,setEventType] = useState("");
     const [date,setDate] = useState("");
+
+    const [path,setPath] = useState("http://localhost:5000/uploads/default.jpg");
+    const [path2,setPath2] = useState("http://localhost:5000/uploads/default.jpg");
+    const [path3,setPath3] = useState("http://localhost:5000/uploads/default.jpg");
 
 
     const handleDetails = (e)=>{
@@ -48,7 +52,7 @@ const Details = ({title,author,desc,id})=>{
                 setComponent(<Chatbot/>)
             } break;
             case "opinions": {
-                setComponent(<Opinions/>)
+                setComponent(<Opinions id={id}/>)
             } break;
         }
     }
@@ -159,6 +163,9 @@ const Details = ({title,author,desc,id})=>{
 
     useEffect(()=>{
         fetchDetailInfo();
+        setPath(`http://localhost:5000${eventInfo.photo_path}`)
+        setPath2(`http://localhost:5000${eventInfo.photo_path2}`)
+        setPath3(`http://localhost:5000${eventInfo.photo_path3}`)
     },[])
 
     useEffect(()=>{
@@ -166,12 +173,15 @@ const Details = ({title,author,desc,id})=>{
         setComponent(<General desc={desc} address={address} city={city} date={date} eventType={eventType}/>)
         fetchLikes();
         fetchSaves();
+        setPath(`http://localhost:5000${eventInfo.photo_path}`)
+        setPath2(`http://localhost:5000${eventInfo.photo_path2}`)
+        setPath3(`http://localhost:5000${eventInfo.photo_path3}`)
     },[desc,address])
 
     return(
         <div className="details">
             <div className="mainPhoto">
-                <SwiperBox/>
+                <SwiperBox path={path} path2={path2} path3={path3}/>
             </div>
             <h1>{title}</h1>
             <h2>{author}</h2>

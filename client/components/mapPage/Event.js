@@ -57,8 +57,15 @@ const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
         })
     }
 
+    const [path,setPath] = useState("http://localhost:5000/uploads/default.jpg");
+    const [path2,setPath2] = useState("http://localhost:5000/uploads/default.jpg");
+    const [path3,setPath3] = useState("http://localhost:5000/uploads/default.jpg");
+
     useEffect(()=>{
         fetchIcon();
+        setPath(`http://localhost:5000${eventInfo.photo_path}`)
+        setPath2(`http://localhost:5000${eventInfo.photo_path2}`)
+        setPath3(`http://localhost:5000${eventInfo.photo_path3}`)
     },[])
 
     return(
@@ -80,7 +87,7 @@ const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
                 <div className="name">{eventInfo.author_email}</div>
             </div>
             <div className="photos">
-                <SwiperBox/>
+                <SwiperBox path={path} path2={path2} path3={path3}/>
             </div>
             <div className="title">
                 <span>{eventInfo.nazwa}</span>
@@ -94,7 +101,7 @@ const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
                 </div> : null}
                 <button 
                     className="check" 
-                    onClick={()=>handleButton(eventInfo.nazwa,eventInfo.author_email,eventInfo.opis,eventInfo.event_id,isLike,save)}>
+                    onClick={()=>handleButton(eventInfo.nazwa,eventInfo.author_email,eventInfo.opis,eventInfo.event_id,eventInfo)}>
                         sprawdź
                 </button>
             </div>

@@ -8,6 +8,60 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        .optionContainer{
+            width:80%;
+            height:95%;
+            background-color: #FFE97E;
+            border-radius:15px;
+            box-shadow: 0 0 15px 5px rgb(190, 188, 188);
+            padding:25px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            position: relative;
+            .empty{
+                position: absolute;
+                top:50%;
+                left:50%;
+                transform: translate(-50%,-50%);
+                letter-spacing: 2px;
+                width:100%;
+                text-align: center;
+            }
+            p{
+                width:90%;
+                padding:15px;
+                border-bottom: 2px solid #222;
+                display: flex;
+                span{
+                    flex-basis: 50%;
+                }
+                .space{
+                    flex-grow: 1;
+                }
+                form{
+                    border:2px solid red;
+                    min-width: 200px;
+                }
+            }
+            .swiperContainer{
+                width:90%;
+                margin-top: 50px;
+                max-width: 500px;
+                position: relative;
+                .swiper-slide{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    position: relative;
+                    img{
+                        width:100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
     }
     .eventsList{
         flex-basis:35%;
