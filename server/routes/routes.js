@@ -448,142 +448,243 @@ const rankingList = async (req, res) => {
 };
 
 const stats = async (req,res)=>{
-    const { id } = req.body;
+    const { id } = req.body;  //id użytkownika
 
-    const createDate = today=>`${today.getDate()}.${today.getMonth()+1}.${today.getYear()-100}`
+    try{
+        const createDate = today=>`${today.getDate()}.${today.getMonth()+1}.${today.getYear()-100}`
 
-    //tydzień
-    
-    const generateWeek = ()=>{
-        let today = new Date();
-        let weekData = [];
+        //tydzień
+        const generateWeek = async (type) => {
+            let today = new Date();
+            let weekData = [];
 
-        for(let i=7;i>=1;i--){
-            const currentDate = new Date(today);
-            currentDate.setDate(today.getDate()-i);
-            weekData.push({ date: createDate(currentDate), value: Math.floor(Math.random() * 100) })
-        }
+            const [events] = await pool.promise().query("SELECT event_id FROM events WHERE author_id = ?", [id]);
+            const eventIds = events.map(event => event.event_id);
 
-        return weekData
-    }
+            if (eventIds.length === 0) return weekData; 
 
-    const series = [
+            let query = "";
+            switch (type) {
+                case "views":
+                    query = "SELECT date FROM views WHERE event_id IN (?)";
+                    break;
+                case "likes":
+                    query = "SELECT date FROM likes WHERE event_id IN (?)";
+                    break;
+                case "save":
+                    query = "SELECT date FROM save WHERE event_id IN (?)";
+                    break;
+                default:
+                    throw new Error("Invalid type specified");
+            }
+
+            const [data] = await pool.promise().query(query, [eventIds]);
+
+            const groupedData = data.reduce((acc, item) => {
+                const date = new Date(item.date).toISOString().split("T")[0]; // yyyy-mm-dd
+                acc[date] = (acc[date] || 0) + 1;
+                return acc;
+            }, {});
+
+            for (let i = 6; i >= 0; i--) {
+                const currentDate = new Date(today);
+                currentDate.setDate(today.getDate() - i);
+                const currentDateString = currentDate.toISOString().split("T")[0]; // yyyy-mm-dd
+
+                const number = groupedData[currentDateString] || 0;
+
+                weekData.push({ date: createDate(currentDate), value: number });
+            }
+
+            return weekData;
+        };
+        
+        const series = [
+            {
+                name: 'Wyświetlenia',
+                color: "green",
+                data: await generateWeek("views"),
+                
+            },
+            {
+                name: 'Polubienia',
+                color: "blue",
+                data: await generateWeek("likes"),
+            },
+            {
+                name: 'Zapisania',
+                color: "red",
+                data: await generateWeek("save"),
+            },
+        ];
+
+        //miesiąc
+        const generateMonth = async (type) => {
+            let today = new Date();
+            let weekData = [];
+            let currentMonth = today.getMonth() - 1;
+            let currentYear = today.getFullYear();
+
+            if (currentMonth < 0) {
+                currentMonth = 11; // Grudzień poprzedniego roku
+                currentYear -= 1;
+            }
+
+            const [events] = await pool.promise().query("SELECT event_id FROM events WHERE author_id = ?", [id]);
+
+            // Pobranie wszystkich danych dla optymalizacji
+            const dataMap = {};
+            for (const event of events) {
+                const [data] = await pool.promise().query(`SELECT date FROM ${type} WHERE event_id = ?`, [event.event_id]);
+                for (const row of data) {
+                    const dateKey = new Date(row.date).toISOString().split("T")[0];
+                    dataMap[dateKey] = (dataMap[dateKey] || 0) + 1;
+                }
+            }
+
+            for (let i = 0; i < 4; i++) {
+                const startDay = i * 7 + 1;
+                const endDay = (i + 1) * 7;
+                let number = 0;
+
+                for (let j = startDay; j <= endDay; j++) { 
+                    const currentDate = new Date(currentYear, currentMonth, j);
+                    const currentDateString = currentDate.toISOString().split("T")[0];
+                    number += dataMap[currentDateString] || 0;
+                }
+
+                weekData.push({
+                    date: `${startDay}-${endDay}.${currentMonth + 1}.${currentYear}`,
+                    value: number,
+                });
+            }
+
+            return weekData;
+        };
+
+        const series2 = [
         {
             name: 'Wyświetlenia',
             color: "green",
-            data: generateWeek(),
-            
+            data: await generateMonth("views")
         },
         {
             name: 'Polubienia',
             color: "blue",
-            data: generateWeek(),
+            data: await generateMonth("likes")
         },
         {
             name: 'Zapisania',
             color: "red",
-            data: generateWeek(),
+            data: await generateMonth("save")
         },
-    ];
+        ];
 
-    //miesiąc
-
-    const series2 = [
-    {
-        name: 'Wyświetlenia',
-        color: "green",
-        data: [
-            { date: '07.10.24', value: Math.floor(Math.random() *100)},
-            { date: '14.10.24', value: Math.floor(Math.random() *100)},
-            { date: '24.10.24', value: Math.floor(Math.random() *100)},
-            { date: '28.10.24', value: Math.floor(Math.random() *100)},
-        ],
-    },
-    {
-        name: 'Polubienia',
-        color: "blue",
-        data: [
-            { date: '07.10.24', value: Math.floor(Math.random() *100)},
-            { date: '14.10.24', value: Math.floor(Math.random() *100)},
-            { date: '24.10.24', value: Math.floor(Math.random() *100)},
-            { date: '28.10.24', value: Math.floor(Math.random() *100)},
-        ],
-    },
-    {
-        name: 'Zapisania',
-        color: "red",
-        data: [
-            { date: '07.10.24', value: Math.floor(Math.random() *100)},
-            { date: '14.10.24', value: Math.floor(Math.random() *100)},
-            { date: '24.10.24', value: Math.floor(Math.random() *100)},
-            { date: '28.10.24', value: Math.floor(Math.random() *100)},
-        ],
-    },
-    ];
-
-
-    //rok
-
-    const series3 = [
-    {
-        name: 'Wyświetlenia',
-        color: "green",
-        data: [
-            { date: 'Styczeń', value: Math.floor(Math.random() *100)},
-            { date: 'Luty', value: Math.floor(Math.random() *100)},
-            { date: 'Marzec', value: Math.floor(Math.random() *100)},
-            { date: 'Kwiecień', value: Math.floor(Math.random() *100)},
-            { date: 'Maj', value: Math.floor(Math.random() *100)},
-            { date: 'Czerwiec', value: Math.floor(Math.random() *100)},
-            { date: 'Lipiec', value: Math.floor(Math.random() *100)},
-            { date: 'Sierpień', value: Math.floor(Math.random() *100)},
-            { date: 'Wrzesień', value: Math.floor(Math.random() *100)},
-            { date: 'Pazdziernik', value: Math.floor(Math.random() *100)},
-            { date: 'Listopad', value: Math.floor(Math.random() *100)},
-            { date: 'Grudzień', value: Math.floor(Math.random() *100)},
+        //rok
+        const monthName = [
+            'Styczeń',
+            'Luty',
+            'Marzec',
+            'Kwiecień',
+            'Maj',
+            'Czerwiec',
+            'Lipiec',
+            'Sierpień',
+            'Wrzesień',
+            'Pazdziernik',
+            'Listopad',
+            'Grudzień',
         ]
-    },
-    {
-        name: 'Polubienia',
-        color: "blue",
-        data: [
-            { date: 'Styczeń', value: Math.floor(Math.random() *100)},
-            { date: 'Luty', value: Math.floor(Math.random() *100)},
-            { date: 'Marzec', value: Math.floor(Math.random() *100)},
-            { date: 'Kwiecień', value: Math.floor(Math.random() *100)},
-            { date: 'Maj', value: Math.floor(Math.random() *100)},
-            { date: 'Czerwiec', value: Math.floor(Math.random() *100)},
-            { date: 'Lipiec', value: Math.floor(Math.random() *100)},
-            { date: 'Sierpień', value: Math.floor(Math.random() *100)},
-            { date: 'Wrzesień', value: Math.floor(Math.random() *100)},
-            { date: 'Pazdziernik', value: Math.floor(Math.random() *100)},
-            { date: 'Listopad', value: Math.floor(Math.random() *100)},
-            { date: 'Grudzień', value: Math.floor(Math.random() *100)},
-        ],
-    },
-    {
-        name: 'Zapisania',
-        color: "red",
-        data: [
-        { date: 'Styczeń', value: Math.floor(Math.random() *100)},
-        { date: 'Luty', value: Math.floor(Math.random() *100)},
-        { date: 'Marzec', value: Math.floor(Math.random() *100)},
-        { date: 'Kwiecień', value: Math.floor(Math.random() *100)},
-        { date: 'Maj', value: Math.floor(Math.random() *100)},
-        { date: 'Czerwiec', value: Math.floor(Math.random() *100)},
-        { date: 'Lipiec', value: Math.floor(Math.random() *100)},
-        { date: 'Sierpień', value: Math.floor(Math.random() *100)},
-        { date: 'Wrzesień', value: Math.floor(Math.random() *100)},
-        { date: 'Pazdziernik', value: Math.floor(Math.random() *100)},
-        { date: 'Listopad', value: Math.floor(Math.random() *100)},
-        { date: 'Grudzień', value: Math.floor(Math.random() *100)},
-        ],
-    },
-    ];
 
+        const generateYear = async (type) => {
+            let yearData = [];
+            const today = new Date();
+            const previousYear = today.getFullYear() - 1;
 
-    res.status(200).json({answer:series,answer2:series2,answer3:series3})
+            const [events] = await pool.promise().query("SELECT event_id FROM events WHERE author_id = ?", [id]);
+            const eventIds = events.map(event => event.event_id);
 
+            if (eventIds.length === 0) return yearData; 
+
+            let query = "";
+            switch (type) {
+                case "views":
+                    query = "SELECT date FROM views WHERE event_id IN (?)";
+                    break;
+                case "likes":
+                    query = "SELECT date FROM likes WHERE event_id IN (?)";
+                    break;
+                case "save":
+                    query = "SELECT date FROM save WHERE event_id IN (?)";
+                    break;
+                default:
+                    throw new Error("Invalid type specified");
+            }
+
+            const [data] = await pool.promise().query(query, [eventIds]);
+
+            const groupedData = data.reduce((acc, item) => {
+                const date = new Date(item.date);
+                if (date.getFullYear() === previousYear) {
+                    const month = date.getMonth();
+                    acc[month] = (acc[month] || 0) + 1;
+                }
+                return acc;
+            }, {});
+
+            for (let i = 0; i < 12; i++) {
+                const number = groupedData[i] || 0;
+
+                yearData.push({
+                    date: monthName[i],
+                    value: number,
+                });
+            }
+
+            return yearData;
+        };
+
+        const series3 = [
+        {
+            name: 'Wyświetlenia',
+            color: "green",
+            data: await generateYear("views")
+        },
+        {
+            name: 'Polubienia',
+            color: "blue",
+            data: await generateYear("likes")
+        },
+        {
+            name: 'Zapisania',
+            color: "red",
+            data: await generateYear("save")
+        },
+        ];
+
+        //ogólne
+        let viewsNumber = 0;
+        let likesNumber = 0;
+        let saveNumber = 0;
+
+        const [events] = await pool.promise().query("SELECT event_id FROM events WHERE author_id = ?", [id]);
+
+        for(const event of events){
+            const [likes] = await pool.promise().query("SELECT count(event_id) as number FROM likes WHERE event_id = ?", [event.event_id]);
+            const [views] = await pool.promise().query("SELECT count(event_id) as number FROM views WHERE event_id = ?", [event.event_id]);
+            const [save] = await pool.promise().query("SELECT count(event_id) as number FROM save WHERE event_id = ?", [event.event_id]);
+
+            viewsNumber += views[0].number
+            likesNumber += likes[0].number
+            saveNumber += save[0].number
+        }   
+
+        res.status(200).json({answer:series,answer2:series2,answer3:series3,views:viewsNumber,likes:likesNumber,save:saveNumber})
+
+    } catch(err){
+        res.status(500).json({ message: "Błąd serwera" });
+        console.error("Błąd zapytania: ", err);
+    }
 }
 
 const getComments = async (req,res)=>{
