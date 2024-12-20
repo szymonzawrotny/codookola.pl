@@ -14,6 +14,8 @@ const Discover = ({handleButton,})=>{
     const [eventList,setEventList] = useState([]);
     const [likeList,setLikeList] = useState([]);
     const [saveList,setSaveList] = useState([]);
+    const [lat, setLat] = useState(53.56317881922556);
+    const [lng, setLng] = useState(20.99479282831869);
 
     const [tab,setTab] = useState([]);
     const [eventType,setEventType] = useState("wszystkie")
@@ -116,42 +118,67 @@ const Discover = ({handleButton,})=>{
         }
     }
 
-    const handleSort = async (e)=>{
+    const handleDistance = async (e) => {
+        const value = e.target.value;
 
-        const value = e.target.value.toLowerCase();
-
-        if(value === "" || value === " " || value == null){
-            if(eventType=="wszystkie"){
-                setTab(eventList)
-            } else {
-                const newTab = eventList.filter(one=>{
-                    return (one.rodzaj == eventType )
-                })
-
-                setTab(newTab)
-            }
-        } else {
-            if(eventType=="wszystkie"){
-                const newTab = eventList.filter(one=>{
-                    return one.nazwa.toLowerCase().includes(value)
-                })
-
-                setTab(newTab)
-            } else {
-                const newTab = eventList.filter(one=>{
-                    return one.nazwa.toLowerCase().includes(value) && (one.rodzaj == eventType)
-                })
-
-                setTab(newTab)
-            }
+        let maxDistance;
+        if (value === "<50") {
+            maxDistance = 50;
+        } else if (value === "<100") {
+            maxDistance = 100;
+        } else if (value === "<150") {
+            maxDistance = 150;
+        } else if (value === ">150") {
+            maxDistance = Infinity;
         }
 
+        const filteredEvents = eventList.filter(event => {
+            const distance = getDistanceFromCords(lat, lng, event.lat, event.lng);
+            return distance <= maxDistance;
+        });
+
+        setTab(filteredEvents);
+    };
+
+    const getDistanceFromCords = (lat1,lng1,lat2,lng2) =>{
+        const deg2rad = (deg)=> deg*(Math.PI/180);
+
+        let R = 6371 //promień ziemi w km
+        let dLat = deg2rad(lat2-lat1);
+        let dLng = deg2rad(lng2-lng1);
+
+        let a = Math.sin(dLat/2) * Math.sin(dLat) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLng/2) * Math.sin(dLng/2)
+
+        let c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
+        let d = R * c; //dystans w km
+
+        return d;
     }
+
+    const handleSort = async (e) => {
+        const value = e?.target?.value?.toLowerCase()?.trim() || "";
+
+        const newTab = eventList.filter(one => 
+            one.nazwa.toLowerCase().includes(value) &&
+            (eventType === "wszystkie" || one.rodzaj === eventType)
+        );
+
+        setTab(newTab.length > 0 ? newTab : []);
+    };
 
     useEffect(()=>{
         fetchData();
         fetchLikeList();
         fetchSaveList();
+
+        navigator.geolocation.getCurrentPosition((position) => {
+            setLat(position.coords.latitude);
+            setLng(position.coords.longitude);
+        }, (error) => {
+            console.log("error getting location " + error.message);
+            setLat(53.56317881922556);
+            setLng(20.99479282831869);
+        });
     },[]);
 
     const elements = tab.map((one,index)=>{
@@ -207,11 +234,11 @@ const Discover = ({handleButton,})=>{
                         <option value="naukowe">Naukowe</option>
                         <option value="imprezka">Imprezka</option>
                     </select>
-                    <select className='date'>
-                        <option>poniżej 50km</option>
-                        <option>do 50km</option>
-                        <option>do 100km</option>
-                        <option>powyżej 100km</option>
+                    <select className='date' onChange={handleDistance}>
+                        <option value=">150">powyżej 150km</option>
+                        <option value="<150">100-150km</option>
+                        <option value="<100">50-100km</option>
+                        <option value="<50">poniżej 50km</option>
                     </select>
                 </div>
             </div>

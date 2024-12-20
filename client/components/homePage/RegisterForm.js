@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect, useRef } from 'react';
-import { useRouter } from "next/navigation";
 import ReCAPTCHA from "react-google-recaptcha";
 
 import { IoPersonCircleOutline } from "react-icons/io5";
@@ -17,7 +16,6 @@ const RegisterForm = ()=>{
     const passwordInputRef = useRef();
     const passwordRepeatInputRef = useRef();
 
-    const router = useRouter();
 
     const recaptchaRef = useRef();
     const [captchaToken, setCaptchaToken] = useState('');

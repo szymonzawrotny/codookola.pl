@@ -696,8 +696,10 @@ const getComments = async (req,res)=>{
         for(const comment of comments){
 
             const [email] = await pool.promise().query("SELECT email FROM users where user_id = ?",[comment.user_id]);
+            const [icon] = await pool.promise().query("SELECT path FROM icons where user_id = ?",[comment.user_id]);
 
             comment.email = email[0].email
+            comment.icon = icon[0].path
         }   
 
         res.status(200).json({answer: comments})

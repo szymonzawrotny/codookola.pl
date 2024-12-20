@@ -257,12 +257,12 @@
                                             max-height:100%;
                                             width:auto;
                                             user-select:none;
-                                            -webkit-user-drag: none;
+                                            -webkit-user-drag: none;  //zakaz przeciągania fotek
                                         }
                                     }
                                     svg{
                                         font-size:28px;
-                                        margin: 0 10px 0 5px;
+                                        margin: 0 10px 0 15px;
                                         color:#222;
                                     }
                                 }

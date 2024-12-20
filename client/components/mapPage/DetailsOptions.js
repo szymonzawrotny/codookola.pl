@@ -105,7 +105,7 @@ const Opinions = ({id})=>{
     },[])
 
     const elements = list.map((one,index)=>{
-        return <Comment key={index} value={one.value} username={one.email}/>
+        return <Comment key={index} value={one.value} username={one.email} icon={one.icon}/>
     })
 
     return(
