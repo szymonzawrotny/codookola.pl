@@ -78,12 +78,16 @@ const RegisterForm = () => {
         });
 
         if (response.ok) {
-            alert("Konto zostało utworzone!");
+            document.querySelector(".loginAlert").classList.remove("hidden");
             setName("");
             setEmail("");
             setPassword("");
             setCaptchaToken("");
             setErrors({});
+
+            setTimeout(()=>{
+                document.querySelector(".loginAlert").classList.add("hidden");
+            },3000)
         } else {
             alert("Wystąpił błąd podczas rejestracji.");
         }

@@ -92,6 +92,17 @@
     }
 }
 
+@media (max-width:1050px){
+    .mapPage{
+        .searchBar{
+            justify-content: flex-end;
+            .search{
+                margin-right: 15px;
+            }
+        }
+    }
+}
+
 @media (max-width: 850px){
     .mapPage{
         .searchBar{

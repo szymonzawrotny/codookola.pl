@@ -2,13 +2,16 @@
 import {useState, useEffect, useRef} from 'react';
 import { IoMdArrowDropup } from "react-icons/io";
 import "@/styles/rankingPage/rankingPage.scss"
-import { FaRegEye, FaRegHeart, FaRegBookmark } from "react-icons/fa";
+import { FaRegEye, FaRegHeart, FaRegBookmark,FaRegUserCircle } from "react-icons/fa";
+import Image from 'next/image';
 
 const Home = ()=>{
 
     const topRef = useRef();
-    const [users,setUsers] = useState([
-    ])
+    const [users,setUsers] = useState([])
+    const [iconPath,setIconPath] = useState(false)
+    const [iconPath2,setIconPath2] = useState(false)
+    const [iconPath3,setIconPath3] = useState(false)
 
      const handleScroll = () => {
         const value = window.scrollY;
@@ -47,12 +50,23 @@ const Home = ()=>{
         window.scrollTo(0,0);
     }
 
-    const fetchData = async ()=>{
+    const fetchData = async () => {
         const result = await fetch("http://localhost:5000/rankingList")
-        .then(response => response.json())
-        .then(data=>{
-            setUsers(data);
-        });
+            .then(response => response.json())
+            .then(data => {
+                setUsers(data);
+
+                for (let index = 0; index < data.length && index < 3; index++) {
+                    const one = data[index];
+
+                    if (one.path === "brak") 
+                        continue; 
+        
+                    if (index === 0) setIconPath2(`http://localhost:5000${one.path}`);
+                    else if (index === 1) setIconPath(`http://localhost:5000${one.path}`);
+                    else if (index === 2) setIconPath3(`http://localhost:5000${one.path}`);
+                }
+            });
     }
 
     useEffect(() => {
@@ -65,16 +79,18 @@ const Home = ()=>{
     }, []);
 
     const elements = users.map((one,index)=>{
-        return(
-            <div className="user" key={index}>
-                <span>{index+4}.</span>
-                {one.email}
-                <div className="space"></div>
-                <div className="views">{one.views}</div>
-                <div className="likes">{one.likes}</div>
-                <div className="saves">{one.save}</div>
-            </div>
-        )
+        if(index>2){
+            return(
+                <div className="user" key={index}>
+                    <span>{index+4}.</span>
+                    {one.email}
+                    <div className="space"></div>
+                    <div className="views">{one.views}</div>
+                    <div className="likes">{one.likes}</div>
+                    <div className="saves">{one.save}</div>
+                </div>
+            )
+        }
     })
 
     return(
@@ -82,9 +98,36 @@ const Home = ()=>{
             <div className="title">ranking</div>
             <div className="title2">top 25</div>
             <div className="top" ref={topRef}>
-                <div className="top2 bar">2</div>
-                <div className="top1 bar">1</div>
-                <div className="top3 bar">3</div>
+                <div className="top2 bar" data-email={users[1]?.email}>
+                    <div className="icon">
+                        {iconPath ? <div className="userIcon"><Image
+                            src={iconPath} 
+                            alt="siema"
+                            width="1920" 
+                            height="1080"/></div> : <FaRegUserCircle />}
+                    </div>
+                    2
+                </div>
+                <div className="top1 bar" data-email={users[0]?.email}>
+                    <div className="icon">
+                        {iconPath2 ? <div className="userIcon"><Image
+                            src={iconPath2} 
+                            alt="siema"
+                            width="1920" 
+                            height="1080"/></div> : <FaRegUserCircle />}
+                    </div>
+                    1
+                </div>
+                <div className="top3 bar" data-email={users[2]?.email}>
+                    <div className="icon">
+                        {iconPath3 ? <div className="userIcon"><Image
+                            src={iconPath3} 
+                            alt="siema"
+                            width="1920" 
+                            height="1080"/></div> : <FaRegUserCircle />}
+                    </div>
+                    3
+                </div>
             </div>
             <div className="ranking">
                 <div className="legend">

@@ -31,6 +31,7 @@ const Home = ()=>{
         <div className="home">
             <LeftPanel handleClickPanel={handleClickPanel}/>
             <RightPanel headerText={headerText}/>
+            <div className="loginAlert hidden">Konto zostało utworzone!</div>
         </div>
     )
 }

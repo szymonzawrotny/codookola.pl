@@ -42,7 +42,7 @@ app.listen(port, () => {
 
 let cronIteration = 0;
 
-cron.schedule('00 01 * * *',()=>{
+cron.schedule('01 00 * * *',async ()=>{
     if(cronIteration == 0){
       pool.query('update users set chat_number = 3',(err) => {
         if (err) {
@@ -51,17 +51,30 @@ cron.schedule('00 01 * * *',()=>{
         }
       });
 
-      pool.query('delete FROM `events_to_accept` WHERE data<NOW()',(err) => {
-        if (err) {
-          console.error("Błąd przy aktualizacji bazy danych:", err);
-          return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" });
+      const [events] = await pool.promise().query(`SELECT * FROM events WHERE data < NOW()`);
+      console.log(`Znaleziono ${events.length} wydarzeń do przeniesienia`);
+
+      // Przenoszenie wydarzeń do tabeli events_completed
+      for (const event of events) {
+        try {
+          await pool.promise().query(
+            `INSERT INTO events_completed (nazwa, adres, miasto, kod_pocztowy, lat, lng, opis, rodzaj, data, author_id, author_email, photo_path, photo_path2, photo_path3) 
+             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+            [
+              event.nazwa, event.adres, event.miasto, event.kod_pocztowy, event.lat, event.lng, 
+              event.opis, event.rodzaj, event.data, event.author_id, event.author_email, 
+              event.photo_path, event.photo_path2, event.photo_path3
+            ]
+          );
+          console.log(`Przeniesiono wydarzenie: ${event.nazwa}`);
+        } catch (err) {
+          console.error(`Błąd podczas przenoszenia wydarzenia ${event.nazwa}:`, err);
         }
-      });
+      }
 
-      //dodaj aby przed usunięciem te eventy przeszły do event_completed
-      //zbierasz je do jednej tablicy jak to 
-      //const [event] = await pool.promise().query(`select chat_number from users where user_id = ?`,[id]) a później tę tablicę pchasz na do właściwej tabeli w bazie
-
+      // Usuwanie starych wydarzeń
+      await pool.promise().query('DELETE FROM events WHERE data < NOW()');
+      console.log('Usunięto stare wydarzenia');
 
       cronIteration++;
     }

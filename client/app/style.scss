@@ -9,6 +9,22 @@
     min-height: 100svh;
     display: flex;
     overflow: hidden;
+    position: relative;
+    .loginAlert{
+        position: absolute;
+        top:25px;
+        right:15px;
+        padding:15px;
+        letter-spacing: 2px;
+        text-transform: capitalize;
+        background-color: #ffe97e;
+        box-shadow: 2px 2px #222;
+        transition: .3s ease-in-out;
+    }
+    .loginAlert.hidden{
+        transform: translateX(calc(100% + 15px));
+        border:2px solid red;
+    }
 }
 
 ::-webkit-scrollbar {

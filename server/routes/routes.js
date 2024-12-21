@@ -416,7 +416,7 @@ const checkNumber = async (req,res)=>{
 
 const rankingList = async (req, res) => {
     try {
-        const [users] = await pool.promise().query(`SELECT user_id, email FROM users limit 25`);
+        const [users] = await pool.promise().query(`SELECT user_id,email FROM users limit 25`);
 
         for (const one of users) {
             one.views = 0;
@@ -436,6 +436,10 @@ const rankingList = async (req, res) => {
             }   
 
             one.points = one.views + one.likes + one.save;
+
+            const [path] = await pool.promise().query("SELECT path FROM icons WHERE user_id = ?", [one.user_id]);
+
+            one.path = ( path[0] && path[0].path ) ? path[0].path : "brak"
         }
 
         users.sort((a, b) => b.points - a.points);
@@ -698,7 +702,7 @@ const getComments = async (req,res)=>{
             const [email] = await pool.promise().query("SELECT email FROM users where user_id = ?",[comment.user_id]);
             const [icon] = await pool.promise().query("SELECT path FROM icons where user_id = ?",[comment.user_id]);
 
-            comment.email = email[0].email
+            comment.email = (email[0] && email[0].email) ? email[0].email : "Użytkownik usunięty"
             comment.icon = (icon[0] && icon[0].path) ? icon[0].path : "brak";
         }   
 

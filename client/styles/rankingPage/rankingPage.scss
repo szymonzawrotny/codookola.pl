@@ -55,6 +55,50 @@ html{
             font-size:56px;
             font-weight: 600;
             cursor: default;
+            position: relative;
+            .icon{
+                overflow: hidden;
+                width:150px;
+                height:150px;
+                border-radius: 50%;
+                position: absolute;
+                top:-130px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                .userIcon{
+                    width:100%;
+                    height:100%;
+                    border-radius: 50%;
+                    position: relative;
+                    overflow: hidden;
+                    img{
+                        position: absolute;
+                        top:50%;
+                        left:50%;
+                        transform: translate(-50%,-50%);
+                        max-height:100%;
+                        width:auto;
+                        user-select:none;
+                        -webkit-user-drag: none;  //zakaz przeciągania fotek
+                    }
+                }
+                svg{
+                    width:100%;
+                    height:100%;
+                    color:#222;
+                }
+            }
+        }
+        .bar::after{
+            position: absolute;
+            top:30px;
+            left:0;
+            width:100%;
+            height:auto;
+            text-align: center;
+            font-size:17px;
+            content:attr(data-email);
         }
         .top2{
             height:45%;
@@ -226,6 +270,9 @@ html{
                 margin: 0;
                 border-radius: 25px 25px 0 0;
                 flex-basis: 30%;
+            }
+            .bar::after{
+                font-size:10px;
             }
         }
         .ranking{
