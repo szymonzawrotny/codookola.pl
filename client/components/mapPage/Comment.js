@@ -6,7 +6,8 @@ const Comment = ({value,username,icon})=>{
 
     const [iconPath,setIconPath] = useState(false)
     useEffect(()=>{
-        setIconPath(`http://localhost:5000${icon}`)
+        if(icon!="brak")
+            setIconPath(`http://localhost:5000${icon}`)
     },[])
 
     return(

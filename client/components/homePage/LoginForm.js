@@ -81,7 +81,6 @@ const LoginForm = ()=>{
                 {passwordVisible ? <FaEyeSlash size={36} onClick={changeType} style={{cursor:"pointer"}}/> : <FaEye size={36} onClick={changeType} style={{cursor:"pointer"}}/>}
             </div>
             <div className="down">
-                <span>Forgot Password?</span>
                 <input type="submit" value="NEXT" />
             </div>
         </form>

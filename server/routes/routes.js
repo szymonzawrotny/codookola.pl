@@ -5,7 +5,7 @@ import { pool } from '../config/database.js';
 import {getResponse} from "../getChatbotAnswer.js"
 
 const register = async (req, res) => {
-    const { email, pass, captchaToken } = req.body;
+    const {name, email, pass, captchaToken } = req.body;
 
     if (!captchaToken) {
         return res.status(400).json({ message: 'Brak tokenu CAPTCHA' });
@@ -38,8 +38,8 @@ const register = async (req, res) => {
                         return res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
                     }
 
-                    const query = `INSERT INTO users (email, password, role) VALUES (?, ?, 'user')`;
-                    pool.query(query, [email, hashedPassword], (err, results) => {
+                    const query = `INSERT INTO users (name,email, password, role,chat_number) VALUES (?,?, ?, 'user',3)`;
+                    pool.query(query, [name,email, hashedPassword], (err, results) => {
                         if (err) {
                             console.error("Błąd podczas zapisu do bazy danych:", err);
                             return res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
@@ -699,7 +699,7 @@ const getComments = async (req,res)=>{
             const [icon] = await pool.promise().query("SELECT path FROM icons where user_id = ?",[comment.user_id]);
 
             comment.email = email[0].email
-            comment.icon = icon[0].path
+            comment.icon = (icon[0] && icon[0].path) ? icon[0].path : "brak";
         }   
 
         res.status(200).json({answer: comments})

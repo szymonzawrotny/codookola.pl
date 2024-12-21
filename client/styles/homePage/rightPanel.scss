@@ -72,21 +72,12 @@
             .down{
                 width:100%;
                 display: flex;
-                justify-content: space-between;
+                justify-content: flex-end;
                 align-items: center;
                 flex-grow: 1;
                 .captchaBox{
                     opacity: 0;
                     z-index: -1;
-                }
-                span{
-                    color:#222;
-                    font-weight: 700;
-                    cursor: pointer;
-                    letter-spacing: 2px;
-                    user-select: none;
-                    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-                    -webkit-user-select: none; 
                 }
                 input[type="submit"]{
                     width:160px;
