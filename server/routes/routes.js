@@ -38,7 +38,7 @@ const register = async (req, res) => {
                         return res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
                     }
 
-                    const query = `INSERT INTO users (name,email, password, role,chat_number) VALUES (?,?, ?, 'user',3)`;
+                    const query = `INSERT INTO users (name,lastname,city,street,age,email, password, role,chat_number) VALUES (?," "," "," ",0,?, ?, 'user',3)`;
                     pool.query(query, [name,email, hashedPassword], (err, results) => {
                         if (err) {
                             console.error("Błąd podczas zapisu do bazy danych:", err);
@@ -355,27 +355,34 @@ const getAlerts = async (req,res)=>{
     }
 }
 
-const addEvent = async (req,res) =>{
-    const {id,email,title,desc,country,city,street,number,type,date,hour} = req.body;
-
+const addEvent = async (req, res) => {
+    const { id, email, title, desc, country, city, street, number, type, date, hour } = req.body;
     const lat = '53.565344951554245';
     const lng = '19.11881682197994';
 
-    const photo_path = "/uploads/default.jpg"
+    // Pobranie ścieżek plików
+    const photoPaths = req.files.map(file => `/uploads/${file.filename}`);
 
-    try{
-        pool.query('INSERT INTO events_to_accept (event_id,nazwa,adres,miasto,kod_pocztowy,lat,lng,opis,rodzaj,data,author_id,author_email,photo_path,photo_path2,photo_path3) VALUES (NULL,?,?,?,?,?,?,?,?,?,?,?)', [title,street,city,number,lat,lng,desc,type,date,id,email,photo_path,photo_path,photo_path ], (err) => {
-            if (err) {
-                console.error("Błąd przy dodawaniu do bazy danych:", err);
-                return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+    const [photo_path, photo_path2, photo_path3] = photoPaths;
+
+    try {
+        pool.query(
+            'INSERT INTO events_to_accept (event_id, nazwa, adres, miasto, kod_pocztowy, lat, lng, opis, rodzaj, data, author_id, author_email, photo_path, photo_path2, photo_path3) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+            [title, street, city, number, lat, lng, desc, type, date, id, email, photo_path, photo_path2, photo_path3],
+            (err) => {
+                if (err) {
+                    console.error("Błąd przy dodawaniu do bazy danych:", err);
+                    return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+                }
+                return res.status(200).json({ message: "Dodanie zgłoszenia zakończone sukcesem" });
             }
-            return res.status(200).json({ message: "Dodanie zgłoszenia zakończone sukcesem"});
-        });
-    } catch(err){
-        res.status(500).json({message:"Błąd serwera"})
-        console.log( "błąd zapytania: ",err)
+        );
+    } catch (err) {
+        res.status(500).json({ message: "Błąd serwera" });
+        console.log("Błąd zapytania: ", err);
     }
-}
+};
+
 
 const deleteEvent = async (req,res) =>{
     const {id,eventId} = req.body; 
@@ -731,7 +738,49 @@ const addComment = async (req,res)=>{
     }
 }
 
-export { register, api, likes, addLike, save, addSave, send,
-         addIcon,icons,askbot, getSavedEvents,views,addView,
-         eventsToAccept,eventsReported, addReport, getAlerts,
-         addEvent, deleteEvent,checkNumber,rankingList, stats, getComments, addComment};
+const editUserData = async (req,res)=>{
+    const {id,type,value} = req.body;
+
+    try{
+
+        let query = '';
+
+        switch(type){
+            case "name":{
+                query = 'update users set name = ? where user_id = ?';
+            }break;
+            case "lastname":{
+                query = 'update users set lastname = ? where user_id = ?';
+            }break;
+            case "city":{
+                query = 'update users set city = ? where user_id = ?';
+            }break;
+            case "street":{
+                query = 'update users set street = ? where user_id = ?';
+            }break;
+            case "age":{
+                query = 'update users set age = ? where user_id = ?';
+            }break;
+        }
+
+
+        pool.query(query,[value,id],(err) => {
+            if (err) {
+            console.error("Błąd przy aktualizacji bazy danych:", err);
+            res.status(500).json({message: "błąd w zapytaniu do bazy danych "})
+            }
+        });
+
+        res.status(200).json({message: "zmieniono dane użytkownika"})
+    } catch(err){
+        console.log("błąd w zapytaniu do bazy danych")
+        res.status(500).json({message: "błąd w zapytaniu do bazy danych "})
+    }
+}
+
+export {register, api, likes, addLike, save, addSave, send,
+        addIcon,icons,askbot, getSavedEvents,views,addView,
+        eventsToAccept,eventsReported, addReport, getAlerts,
+        addEvent, deleteEvent,checkNumber,rankingList, stats,
+        getComments, addComment, editUserData};
+

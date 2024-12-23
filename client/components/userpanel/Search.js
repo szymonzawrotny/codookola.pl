@@ -46,7 +46,6 @@ const Search = ({searchInputRef,handleSearch,searchRef})=>{
             return one.nazwa.toLowerCase().includes(value)
         })
 
-        console.log(newTab)
 
         setTab(newTab)
     }

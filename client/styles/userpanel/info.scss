@@ -32,7 +32,7 @@
         .userData{
             flex-direction: column;
             justify-content: center;
-            align-items: flex-start;
+            align-items: flex-end;
             padding-left: 25px;
             form{
                 flex-basis:35%;
@@ -40,6 +40,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                margin-right: 50px;
                 input[type="text"]{
                     padding:5px;
                     background-color: aliceblue;
@@ -59,11 +60,14 @@
                     outline: none;
                 }
             }
+            form:nth-of-type(2){
+                margin-right: 100px;
+            }
         }
         .userAddress{
             height:60%;
             flex-direction: column;
-            align-items: flex-start;
+            align-items: flex-end;
             padding-left: 25px;
             form{
                 width:50%;
@@ -71,6 +75,7 @@
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                margin-right: 150px;
                 input[type="text"]{
                     padding:5px;
                     background-color: aliceblue;
@@ -89,6 +94,12 @@
                 input:focus{
                     outline: none;
                 }
+            }
+            form:nth-of-type(2){
+                margin-right: 100px;
+            }
+            form:nth-of-type(3){
+                margin-right: 125px;
             }
         }
     }

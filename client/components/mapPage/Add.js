@@ -17,7 +17,10 @@ const Add = ({handleMapAlert,mapAlertRef})=>{
     const [type,setType] = useState("Kultura");
     const [date,setDate] = useState("");
     const [hour,setHour] = useState("");
-    const [photos,setPhotos] = useState([]);
+
+    const [photo_path,setPhoto_path] = useState(null);
+    const [photo_path2,setPhoto_path2] = useState(null);
+    const [photo_path3,setPhoto_path3] = useState(null);
 
     const {data:session} = useSession({
         required: false,
@@ -41,48 +44,42 @@ const Add = ({handleMapAlert,mapAlertRef})=>{
         }
     }
 
-    const addEvent = async ()=>{
-        if(title != "" && desc!= "" && country != "" && city != "" && street != "" && number != "" && type != "" && date != "" && hour!=""){
+    const addEvent = async () => {
+        if (title && desc && country && city && street && number && type && date && hour) {
+            const formData = new FormData();
 
-            const response = await fetch("http://localhost:5000/addevent",{
+            formData.append('id', session?.user?.email?.id);
+            formData.append('email', session?.user?.email?.email);
+            formData.append('title', title);
+            formData.append('desc', desc);
+            formData.append('country', country);
+            formData.append('city', city);
+            formData.append('street', street);
+            formData.append('number', number);
+            formData.append('type', type);
+            formData.append('date', date);
+            formData.append('hour', hour);
+
+            if (photo_path) formData.append('photos', photo_path);
+            if (photo_path2) formData.append('photos', photo_path2);
+            if (photo_path3) formData.append('photos', photo_path3);
+
+            const response = await fetch("http://localhost:5000/addevent", {
                 method: "POST",
-                body: JSON.stringify({
-                    id: session?.user?.email?.id,
-                    email: session?.user?.email?.email,
-                    title,
-                    desc,
-                    country,
-                    city,
-                    street,
-                    number,
-                    type,
-                    date,
-                    hour
-                }),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
+                body: formData,
+            });
 
-            if(response.ok){
-                console.log("siema dodano")
-
-                setTitle("");
-                setDesc("");
-                setCountry("");
-                setCity("");
-                setStreet("");
-                setNumber("");
-                setDate("");
-                setHour("")
-                handleMapAlert(mapAlertRef)
+            if (response.ok) {
+                console.log("Dodano wydarzenie");
+                handleMapAlert(mapAlertRef);
             } else {
-                console.log("coś nie poszło")
+                console.log("Błąd przy dodawaniu wydarzenia");
             }
         } else {
-            console.log("poprawnie uzupełnij dane")
+            console.log("Proszę uzupełnić wszystkie pola");
         }
-    }
+    };
+
 
     if(session){
         return(
@@ -188,9 +185,9 @@ const Add = ({handleMapAlert,mapAlertRef})=>{
 
                         <form className="addPhoto">
                             <p>Dodaj jakieś ładne fotki!</p>
-                            <input type="file" onChange={e=>setFile(e.target.files[0])} className='fileInput'/>
-                            <input type="file" onChange={e=>setFile(e.target.files[0])} className='fileInput'/>
-                            <input type="file" onChange={e=>setFile(e.target.files[0])} className='fileInput'/>
+                            <input type="file" onChange={e=>setPhoto_path(e.target.files[0])} className='fileInput'/>
+                            <input type="file" onChange={e=>setPhoto_path2(e.target.files[0])} className='fileInput'/>
+                            <input type="file" onChange={e=>setPhoto_path3(e.target.files[0])} className='fileInput'/>
                         </form>
                     </div>
                     <button onClick={addEvent}>dodaj</button>

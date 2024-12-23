@@ -10,7 +10,7 @@ import { dirname, join } from 'path';
 import { register, api, likes, addLike, save, addSave, send,
          addIcon,icons, askbot, getSavedEvents, views, addView, eventsToAccept, 
          eventsReported, addReport, getAlerts, addEvent, deleteEvent, checkNumber,
-         rankingList, stats, getComments, addComment } from "./routes/routes.js";
+         rankingList, stats, getComments, addComment, editUserData } from "./routes/routes.js";
          
 import { pool } from './config/database.js';
 
@@ -101,10 +101,11 @@ app.get("/eventsToAccept",eventsToAccept)
 app.get("/eventsReported",eventsReported)
 app.post("/addreport", addReport)
 app.post("/getalerts",getAlerts)
-app.post("/addevent",addEvent)
+app.post("/addevent",upload.array('photos', 3),addEvent)
 app.post("/deleteevent",deleteEvent)
 app.post("/checknumber",checkNumber)
 app.get("/rankingList",rankingList)
 app.post("/stats",stats)
 app.post("/addcomment",addComment)
 app.post("/getcomments",getComments);
+app.post("/edituserdata",editUserData)

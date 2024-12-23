@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import "@/styles/userpanel/info.scss"
 import Image from 'next/image';
 
-import InfoChart from '@/components/userpanel/InfoChart';
 
 const Home = ()=>{
 
@@ -30,17 +29,17 @@ const Home = ()=>{
         formData.append('id', session?.user?.email?.id);
 
         const response = await fetch("http://localhost:5000/addIcon",{
-        method: "POST",
-        body: formData,
+            method: "POST",
+            body: formData,
         })
 
         if(!response.ok){
-        const data = await response.json();
-        console.log(data.message);
+            const data = await response.json();
+            console.log(data.message);
         } else {
-        const data = await response.json();
-        console.log(data.message);
-        console.log(data.path);
+            const data = await response.json();
+            console.log(data.message);
+            console.log(data.path);
         }
 
         fetchIcon();
@@ -58,6 +57,34 @@ const Home = ()=>{
         })
     }
 
+    const editData = async (e)=>{
+        e.preventDefault();
+
+        const type = e.target.getAttribute("data-type");
+        const value = e.target.children[0].value;
+
+
+        const response = await fetch("http://localhost:5000/edituserdata",{
+            method: "POST",
+            body: JSON.stringify({
+                id: session?.user?.email?.id,
+                type,
+                value
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+
+        if(!response.ok){
+            console.log("coś nie poszło")
+        } else {
+            const data = await response.json();
+            console.log(data.message);
+        }
+
+    }
+
     useEffect(()=>{
         [...document.querySelectorAll(".option")].forEach((one,index)=>{
             if(index == 1) one.classList.add("active");
@@ -72,28 +99,46 @@ const Home = ()=>{
             <div className="leftInfo">
                 <div className="userData">
                     <span>Dane</span>
-                    <form action="">
-                        <input type="text" placeholder='Podaj imię...' />
-                        <input type="submit" value="edytuj" />
+                    <form onSubmit={editData} data-type="name">
+                        <input 
+                            type="text" 
+                            placeholder='Podaj imię...' />
+                        <input 
+                            type="submit" 
+                            value="edytuj" />
                     </form>
-                    <form action="">
+                    <form onSubmit={editData} data-type="lastname">
                         <input type="text" placeholder='Podaj nazwisko...'/>
-                        <input type="submit" value="edytuj" />
+                        <input 
+                            type="submit" 
+                            value="edytuj" />
                     </form>
                 </div>
                 <div className="userAddress">
                     <span>Adres</span>
-                    <form action="">
-                        <input type="text" placeholder='Podaj imię...' />
-                        <input type="submit" value="edytuj" />
+                    <form onSubmit={editData} data-type="city">
+                        <input 
+                            type="text" 
+                            placeholder='Podaj miasto...' />
+                        <input 
+                            type="submit" 
+                            value="edytuj" />
                     </form>
-                    <form action="">
-                        <input type="text" placeholder='Podaj imię...' />
-                        <input type="submit" value="edytuj" />
+                    <form onSubmit={editData} data-type="street">
+                        <input 
+                            type="text" 
+                            placeholder='Podaj ulicę...' />
+                        <input 
+                            type="submit" 
+                            value="edytuj" />
                     </form>
-                    <form action="">
-                        <input type="text" placeholder='Podaj imię...' />
-                        <input type="submit" value="edytuj" />
+                    <form onSubmit={editData} data-type="age">
+                        <input 
+                            type="text" 
+                            placeholder='Podaj wiek...' />
+                        <input 
+                            type="submit" 
+                            value="edytuj" />
                     </form>
                 </div>
             </div>

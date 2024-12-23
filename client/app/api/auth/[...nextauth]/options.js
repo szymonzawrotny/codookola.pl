@@ -40,14 +40,15 @@ export const options = {
                                 email: {
                                     id:user.user_id,
                                     email: user.email,
-                                    role: user.role
+                                    role: user.role,
+                                    name: user.name
                                 }
                             };
                         } else {
-                            return null;  //złe hasło
+                            return null;
                         }
                     } else {
-                        return null  //nie ma takiego emaila
+                        return null  
                     }
                 } catch(error){
                     console.log(error);

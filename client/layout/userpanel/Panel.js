@@ -78,7 +78,6 @@ const Panel = ({children})=>{
     }
 
     const handleSearch = ()=>{
-        console.log("szukam różnych rzeczy")
         searchRef.current.classList.toggle("active")
         searchInputRef.current.classList.toggle("active")
 
@@ -100,7 +99,7 @@ const Panel = ({children})=>{
                         <FaUserCircle />
                     </div>
                     <div className="userData">
-                        <span className="userName">Szymon Zawrotny</span>
+                        <span className="userName">{session?.user?.email?.name}</span>
                         <span className="userEmail">{session?.user?.email?.email}</span>
                     </div>
                     <div className="space"></div>

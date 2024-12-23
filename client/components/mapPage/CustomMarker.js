@@ -1,5 +1,5 @@
 import { MarkerF } from '@react-google-maps/api';
-import { useState } from 'react';
+import { useState } from 'react'
 
 const CustomMarker = ({ position, handleClick, event_id, selectedId}) => {
   const [isHovered, setIsHovered] = useState(false);
