@@ -162,7 +162,7 @@
                         left:50%;
                         transform:translate(-50%,-50%);
                     }
-                    .postToAccept{
+                    .postToAccept,.user{
                         border-bottom: 2px solid #222;
                         cursor: pointer;
                         width:100%;
@@ -177,6 +177,9 @@
                             border:none;
                             cursor: pointer;
                         }
+                    }
+                    .user{
+                        text-transform: lowercase;
                     }
                 }
             }

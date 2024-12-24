@@ -30,7 +30,7 @@ const Details = ({eventInfo,title,author,desc,id})=>{
 
 
     const handleDetails = (e)=>{
-        const value = e.target.getAttribute("data-component");
+        let value;
 
         [...document.querySelectorAll("nav.detailsNav>.option")].forEach(one=>{
             one.classList.remove("active");
@@ -38,10 +38,13 @@ const Details = ({eventInfo,title,author,desc,id})=>{
 
         if (e.target.tagName == "svg") {
             e.target.parentNode.classList.add("active");
+            value = e.target.parentNode.getAttribute("data-component");
         } else if (e.target.tagName == "path") {
             e.target.parentNode.parentNode.classList.add("active");
+            value = e.target.parentNode.parentNode.getAttribute("data-component");
         } else {
             e.target.classList.add("active");
+            value = e.target.getAttribute("data-component");
         }
 
         switch(value){

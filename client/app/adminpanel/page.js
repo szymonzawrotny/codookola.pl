@@ -62,10 +62,10 @@ const Home = ()=>{
                 router.push("/")
     })
 
-    const isLogged = (session && session?.user?.email?.id == 2167) ? (
+    const isLogged = (session && session?.user?.email?.role == "admin") ? (
         <div className="adminpanel">
             <div className="adminInfo">
-                <Link href="/map">
+                <Link href="/map"> 
                     <FiMapPin />
                 </Link>
                 <Link href="/userpanel">

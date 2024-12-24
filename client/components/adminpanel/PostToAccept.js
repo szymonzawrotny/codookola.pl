@@ -1,7 +1,7 @@
-const Post = ({one,index})=>{
+const PostToAccept = ({one,index})=>{
 
     const showEvent = ()=>{
-        console.log("siema pokaż event")
+        console.log("siema pokaż event do akceptacji")
     }
 
     return(
@@ -13,4 +13,4 @@ const Post = ({one,index})=>{
         </div>
     )
 }
-export default Post;
+export default PostToAccept;

@@ -1,6 +1,6 @@
-const PostReported = ()=>{
+const PostReported = ({one,index})=>{
     return(
-        <div className="postToAccept">1. Siema fajna imprezka <button>sprawdź</button> </div>
+        <div className="postToAccept">{index}. Siema fajna imprezka <button>sprawdź</button> </div>
     )
 }
 export default PostReported

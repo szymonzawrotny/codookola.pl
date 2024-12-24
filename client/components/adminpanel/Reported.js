@@ -17,7 +17,7 @@ const Reported = ()=>{
     },[])
 
     const elements = list.map((one,index)=>{
-        return <PostReported one={one}/>
+        return <PostReported one={one} key={index} index={index}/>
     })
 
     return(

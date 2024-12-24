@@ -3,6 +3,7 @@ import nodemailer from 'nodemailer'
 import "dotenv/config";
 import { pool } from '../config/database.js';
 import {getResponse} from "../getChatbotAnswer.js"
+import { convert } from "../addressToLocation.js";
 
 const register = async (req, res) => {
     const {name, email, pass, captchaToken } = req.body;
@@ -357,8 +358,16 @@ const getAlerts = async (req,res)=>{
 
 const addEvent = async (req, res) => {
     const { id, email, title, desc, country, city, street, number, type, date, hour } = req.body;
-    const lat = '53.565344951554245';
-    const lng = '19.11881682197994';
+
+    let location = { lat: "brak", lng: "brak" };
+
+    const address = `${coutnry},${city} ${street} ${number}`;
+
+    try {
+        location = await convert(address);
+    } catch (error) {
+        console.error(error);
+    }
 
     // Pobranie ścieżek plików
     const photoPaths = req.files.map(file => `/uploads/${file.filename}`);
@@ -368,7 +377,7 @@ const addEvent = async (req, res) => {
     try {
         pool.query(
             'INSERT INTO events_to_accept (event_id, nazwa, adres, miasto, kod_pocztowy, lat, lng, opis, rodzaj, data, author_id, author_email, photo_path, photo_path2, photo_path3) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
-            [title, street, city, number, lat, lng, desc, type, date, id, email, photo_path, photo_path2, photo_path3],
+            [title, street, city, number, location.lat, location.lng, desc, type, date, id, email, photo_path, photo_path2, photo_path3],
             (err) => {
                 if (err) {
                     console.error("Błąd przy dodawaniu do bazy danych:", err);
@@ -382,7 +391,6 @@ const addEvent = async (req, res) => {
         console.log("Błąd zapytania: ", err);
     }
 };
-
 
 const deleteEvent = async (req,res) =>{
     const {id,eventId} = req.body; 
@@ -778,9 +786,20 @@ const editUserData = async (req,res)=>{
     }
 }
 
+const usersApi = async (req,res)=>{
+    const query = "SELECT user_id,name,lastname,email,role,city,street FROM users";
+    pool.query(query, (err, results) => {
+        if (err) {
+            console.error("Błąd zapytania:", err);
+            return res.status(500).json({ message: 'Błąd serwera' });
+        }
+        res.json(results);
+    });
+}
+
 export {register, api, likes, addLike, save, addSave, send,
         addIcon,icons,askbot, getSavedEvents,views,addView,
         eventsToAccept,eventsReported, addReport, getAlerts,
         addEvent, deleteEvent,checkNumber,rankingList, stats,
-        getComments, addComment, editUserData};
+        getComments, addComment, editUserData, usersApi};
 

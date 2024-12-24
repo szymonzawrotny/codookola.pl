@@ -1,6 +1,6 @@
 "use client"
 import { useState,useEffect } from 'react'
-import Post from "./Post"
+import PostToAccept from "./PostToAccept.js"
 
 const ToAccept = ()=>{
 
@@ -17,7 +17,7 @@ const ToAccept = ()=>{
     },[])
 
     const elements = list.map((one,index)=>{
-        return <Post one={one}/>
+        return <PostToAccept one={one} index={index} key={index}/>
     })
 
     return(

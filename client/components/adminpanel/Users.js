@@ -1,13 +1,13 @@
 "use client"
 import { useState,useEffect } from 'react'
-import Post from "./Post"
+import User from './User'
 
 const Users = ()=>{
 
     const [list,setList] = useState([])
 
     const fetchData = async ()=>{
-        const response = await fetch("http://localhost:5000/eventsToAccept")
+        const response = await fetch("http://localhost:5000/usersapi")
         .then(response => response.json())
         .then(data=>setList(data))
     }
@@ -17,7 +17,7 @@ const Users = ()=>{
     },[])
 
     const elements = list.map((one,index)=>{
-        return <Post one={one}/>
+        return <User one={one} index={index} key={index}/>
     })
 
     return(
