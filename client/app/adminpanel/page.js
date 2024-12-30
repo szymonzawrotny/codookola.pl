@@ -37,7 +37,7 @@ const Home = ()=>{
         const type = e.target.getAttribute("data-component")
         switch(type){
             case "ToAccept":{
-                setComponent(<ToAccept/>)
+                setComponent(<ToAccept />)
             } break;
             case "Reported":{
                 setComponent(<Reported/>)

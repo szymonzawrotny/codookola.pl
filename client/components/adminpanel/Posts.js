@@ -1,6 +1,6 @@
 "use client"
 import { useState,useEffect } from 'react'
-import Post from "./Post"
+import Post from "./listElements/Post"
 
 const Posts = ()=>{
 
@@ -30,7 +30,7 @@ const Posts = ()=>{
                     }
                 </div>
             </div>
-            <div className="editPost">tutaj edycja</div>
+            <div className="editPost">tutaj edycjaaaaa</div>
         </section>
     )
 }

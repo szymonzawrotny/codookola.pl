@@ -1,6 +1,6 @@
 "use client"
 import { useState,useEffect } from 'react'
-import PostReported from "./PostReported"
+import PostReported from "./listElements/PostReported"
 
 const Reported = ()=>{
 

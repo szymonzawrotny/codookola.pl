@@ -346,7 +346,7 @@ const getAlerts = async (req,res)=>{
     const {id} = req.body; 
 
     try{ 
-        const [alerts] = await pool.promise().query("SELECT * FROM alerts where user_id = ?",[id]);
+        const [alerts] = await pool.promise().query("SELECT * FROM alerts where user_id = ? order by alert_id desc",[id]);
 
         res.status(200).json({answer: alerts})
 
@@ -361,7 +361,7 @@ const addEvent = async (req, res) => {
 
     let location = { lat: "brak", lng: "brak" };
 
-    const address = `${coutnry},${city} ${street} ${number}`;
+    const address = `${country},${city} ${street} ${number}`;
 
     try {
         location = await convert(address);
@@ -373,6 +373,8 @@ const addEvent = async (req, res) => {
     const photoPaths = req.files.map(file => `/uploads/${file.filename}`);
 
     const [photo_path, photo_path2, photo_path3] = photoPaths;
+
+    //if path == null to ustawiasz /uploads/default.jpg 
 
     try {
         pool.query(
@@ -787,7 +789,7 @@ const editUserData = async (req,res)=>{
 }
 
 const usersApi = async (req,res)=>{
-    const query = "SELECT user_id,name,lastname,email,role,city,street FROM users";
+    const query = "SELECT user_id,name,lastname,email,role,city,street,age FROM users";
     pool.query(query, (err, results) => {
         if (err) {
             console.error("Błąd zapytania:", err);
@@ -797,9 +799,138 @@ const usersApi = async (req,res)=>{
     });
 }
 
+const addEventToMap = async (req,res)=>{
+    const {data} = req.body;
+     
+    try {
+        await pool.promise().query(
+        `INSERT INTO events (nazwa, adres, miasto, kod_pocztowy, lat, lng, opis, rodzaj, data, author_id, author_email, photo_path, photo_path2, photo_path3) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+        [
+            data.nazwa, data.adres, data.miasto, data.kod_pocztowy, data.lat, data.lng, 
+            data.opis, data.rodzaj, data.data, data.author_id, data.author_email, 
+            data.photo_path, data.photo_path2, data.photo_path3
+        ]
+        );
+        console.log(`Przeniesiono wydarzenie: ${data.nazwa}`);
+
+        await pool.promise().query('DELETE FROM events_to_accept WHERE event_id = ?',[data.event_id]);
+
+        await pool.promise().query('insert into alerts (alert_id,user_id,content) values (NULL, ?, ?)',[data.author_id,"Pomyślnie dodano wydarzenie! Możesz już zobaczyć swoje wydarzenie na mapie."]);
+
+        res.status(200).json({message:"dodano działa"})
+    } catch (err) {
+        console.error(`Błąd podczas przenoszenia wydarzenia ${data.nazwa}:`, err);
+        res.status(500).json({message: "błąd serwera"})
+    }
+}
+
+const dontAcceptEvent = async (req,res)=>{
+    const { user_id,event_id } = req.body;
+
+    try{
+        await pool.promise().query('DELETE FROM events_to_accept WHERE event_id = ?',[event_id]);
+        console.log("nie zaakcpetowano wydarzenia")
+
+        await pool.promise().query('insert into alerts (alert_id,user_id,content) values (NULL, ?, ?)',[user_id,"Nie udało się dodać wydarzenia. Prawdopodobnie zawiera ono poważny błąd bądź treści nie zgodne z regulaminem. Popraw wydarzenie a następnie dodaj je podobnie"]);
+
+        res.status(200).json({message:"usunięto wydarzenie wszystko ok"})
+    } catch(err){
+        console.log(`Błąd podczas usuwania wydarzenia ${event_id}:`,err);
+        res.status(500).json({message:"błąd serwera"})
+    }
+
+}
+
+const editEventData = async (req, res) => {
+    const { id, type, value, userId } = req.body;
+
+    try {
+        let query = '';
+        let tab = [];
+
+        switch (type) {
+            case "name": {
+                query = 'UPDATE events SET nazwa = ? WHERE event_id = ?';
+                tab = [value, id];
+            } break;
+
+            case "desc": {
+                query = 'UPDATE events SET opis = ? WHERE event_id = ?';
+                tab = [value, id];
+            } break;
+
+            case "address": {
+                let text = value.split(',').map(item => item.trim());
+                if (text.length < 3) {
+                    res.status(400).json({ message: "Nieprawidłowy format adresu. Oczekiwano: 'miasto, kod_pocztowy, adres'" });
+                    return;
+                }
+
+                const address = `Polska,${text[0]},${text[2]}`;
+                let location = { lat: "brak", lng: "brak" };
+                try {
+                    location = await convert(address);
+                } catch (error) {
+                    console.error(error);
+                }
+
+                query = 'UPDATE events SET miasto = ?, kod_pocztowy = ?, adres = ?, lat = ?, lng = ? WHERE event_id = ?';
+                tab = [text[0], text[1], text[2],location.lat,location.lng, id];
+
+                 
+            } break;
+
+            default: {
+                res.status(400).json({ message: "Nieprawidłowy typ edycji" });
+                return;
+            }
+        }
+
+        pool.query(query, tab, async (err) => {
+            if (err) {
+                console.error("Błąd przy aktualizacji bazy danych:", err);
+                res.status(500).json({ message: "błąd w zapytaniu do bazy danych" });
+                return;
+            }
+
+            await pool.promise().query('insert into alerts (alert_id,user_id,content) values (NULL, ?, ?)',[userId,"Edytowano wydarzenie! Dane zostały zaktualizowane."]);
+            res.status(200).json({ message: "zmieniono dane wydarzenia" });
+        });
+    } catch (err) {
+        console.error("Błąd w zapytaniu do bazy danych", err);
+        res.status(500).json({ message: "błąd w zapytaniu do bazy danych" });
+    }
+};
+
+const editPhotos = async (req,res)=>{
+    const { id } = req.body;
+
+    try{
+        const photoPaths = req.files.map(file => `/uploads/${file.filename}`);
+
+        const [photo_path, photo_path2, photo_path3] = photoPaths;
+
+        let query = 'UPDATE events SET photo_path = ?, photo_path2 = ?, photo_path3 = ? WHERE event_id = ?';
+
+        pool.query(query, [photo_path, photo_path2, photo_path3,id], async (err) => {
+            if (err) {
+                console.error("Błąd przy aktualizacji bazy danych:", err);
+                res.status(500).json({ message: "błąd w zapytaniu do bazy danych" });
+                return;
+            }
+            res.status(200).json({ message: "zmieniono dane wydarzenia" });
+        });
+    } catch(err){
+        console.log(err);
+        res.status(500).json({message: "Błąd przy edytowaniu zdjęć"})
+    }
+}
+
 export {register, api, likes, addLike, save, addSave, send,
         addIcon,icons,askbot, getSavedEvents,views,addView,
         eventsToAccept,eventsReported, addReport, getAlerts,
         addEvent, deleteEvent,checkNumber,rankingList, stats,
-        getComments, addComment, editUserData, usersApi};
-
+        getComments, addComment, editUserData, usersApi,
+        addEventToMap,dontAcceptEvent,editEventData,editPhotos
+};

@@ -85,8 +85,8 @@ const Map = React.memo(({setPosState,setComponent,mapRef,selectedId,setSelectedI
 
     return (
         <LoadScript 
-            googleMapsApiKey={process.env.NEXT_PUBLIC_KEY}
-            //googleMapsApiKey=""
+            // googleMapsApiKey={process.env.NEXT_PUBLIC_KEY}
+            googleMapsApiKey=""
         >
             <GoogleMap
                 mapContainerStyle={{ height: "100vh", width: "100%" }}

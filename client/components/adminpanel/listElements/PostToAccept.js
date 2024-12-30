@@ -1,7 +1,8 @@
-const PostToAccept = ({one,index})=>{
+const PostToAccept = ({one,index,isActive, setIsActive,setData})=>{
 
     const showEvent = ()=>{
-        console.log("siema pokaż event do akceptacji")
+        setIsActive(!isActive) 
+        setData(one)
     }
 
     return(
@@ -9,7 +10,7 @@ const PostToAccept = ({one,index})=>{
             {index+1}. {one.nazwa} 
             <button
                 onClick={showEvent}>
-                    sprawdź</button>
+                    {isActive? "ukryj" : "pokaż"}</button>
         </div>
     )
 }

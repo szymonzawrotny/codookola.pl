@@ -40,7 +40,8 @@ const Home = () => {
       })
 
       if(response.ok){
-          console.log("dodano")
+          const data = await response.json();
+          console.log(data.message)
       } else {
           console.log("coś nie poszło")
       }

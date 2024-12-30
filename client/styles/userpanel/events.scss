@@ -15,11 +15,8 @@
             border-radius:15px;
             box-shadow: 0 0 15px 5px rgb(190, 188, 188);
             padding:25px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: center;
             position: relative;
+            overflow-y: scroll;
             .empty{
                 position: absolute;
                 top:50%;
@@ -29,32 +26,67 @@
                 width:100%;
                 text-align: center;
             }
+            p:nth-of-type(1){
+                min-height: auto;
+            }
             p{
                 width:90%;
+                min-height:31%;
                 padding:15px;
                 border-bottom: 2px solid #222;
                 display: flex;
-                span{
-                    flex-basis: 50%;
-                }
-                .space{
-                    flex-grow: 1;
-                }
+                flex-direction: column;
+                margin: auto auto;
                 form{
-                    border:2px solid red;
                     min-width: 200px;
+                    margin-top: 10px;
+                    display: flex;
+                    flex-direction: column;
+                    flex-grow:1;
+                    textarea{
+                        flex-grow:1;
+                        resize:none;
+                    }
+                    input[type="text"]{
+                        flex-grow:1;
+                    }
                 }
             }
             .swiperContainer{
                 width:90%;
-                margin-top: 50px;
+                margin-top: 15px;
                 max-width: 500px;
                 position: relative;
+                margin: auto auto;
+                margin-top: 50px;
+                form{
+                    display: flex;
+                    flex-wrap:wrap;
+                    position: relative;
+                    input{
+                        margin:10px;
+                    }
+                    input[type="submit"]{
+                        position: absolute;
+                        bottom:0;
+                        right:0;
+                        text-transform: uppercase;
+                        padding:5px;
+                        letter-spacing: 1px;
+                        border:2px solid #222;
+                        background-color: aliceblue;
+                        box-shadow: 2px 2px #222;
+                        cursor: pointer;
+                    }
+                }
                 .swiper-slide{
                     display: flex;
                     justify-content: center;
                     align-items: center;
                     position: relative;
+                    max-height:300px;
+                    border-radius:5px;
+                    overflow: hidden;
                     img{
                         width:100%;
                         height: auto;
@@ -144,7 +176,6 @@
         display: flex;
         flex-direction: column;
         .eventsOption{
-            margin-top: 50px;
             border:2px solid blue;
             flex-basis: 50%;
             height:50svh;

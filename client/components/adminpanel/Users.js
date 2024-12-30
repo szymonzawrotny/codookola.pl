@@ -1,10 +1,13 @@
 "use client"
 import { useState,useEffect } from 'react'
-import User from './User'
+import User from './listElements/User'
+import EditUser from './editPanels/EditUser'
 
 const Users = ()=>{
 
     const [list,setList] = useState([])
+    const [isActive, setIsActive] = useState(false);
+    const [data,setData] = useState(null);
 
     const fetchData = async ()=>{
         const response = await fetch("http://localhost:5000/usersapi")
@@ -17,7 +20,13 @@ const Users = ()=>{
     },[])
 
     const elements = list.map((one,index)=>{
-        return <User one={one} index={index} key={index}/>
+        return <User 
+                    one={one} 
+                    index={index} 
+                    key={index}
+                    setData={setData}
+                    isActive={isActive} 
+                    setIsActive={setIsActive}/>
     })
 
     return(
@@ -30,7 +39,11 @@ const Users = ()=>{
                     }
                 </div>
             </div>
-            <div className="editPost">tutaj edycja</div>
+            <div className="editPost">
+                {
+                    isActive ? <EditUser data={data}/> : "Wybierz wydarzenie..."
+                }
+            </div>
         </section>
     )
 }

@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import "@/styles/userpanel/events.scss"
 
 import EventListElement from '@/components/userpanel/EventListElement';
-import SwiperBox from '@/components/mapPage/SwiperBox';
 import EditPanel from '@/components/userpanel/EditPanel';
 
 const Home = ()=>{
@@ -15,14 +14,7 @@ const Home = ()=>{
     const router = useRouter();
 
     const [eventName,setEventName] = useState("");
-    const [eventDesc,setEventDesc] = useState("");
-    const [eventAuthor,setEventAuthor] = useState("");
-    const [eventAddress,setEventAddress] = useState({
-        city: "",
-        cityNumber: "",
-        address: ""
-    })
-    const [date,setDate] = useState("")
+    const [eventInfo,setEventInfo] = useState(null);
 
     const {data:session} = useSession({
         required: true,
@@ -70,15 +62,9 @@ const Home = ()=>{
     }
 
     const showEvent = async (obiekt)=>{
+        setEventInfo(obiekt);
         setEdit(false)
-        setEventName(obiekt.nazwa);
-        setEventDesc(obiekt.opis);
-        setEventAuthor(obiekt.author_email)
-        setEventAddress({
-        city: obiekt.miasto,
-        cityNumber: obiekt.kod_pocztowy,
-        address: obiekt.adres
-    })
+        setEventName(obiekt.nazwa)
     }
 
     const editEvent = async (obiekt)=>{
@@ -102,10 +88,7 @@ const Home = ()=>{
             <div className="eventsOption">
                 <div className="optionContainer">
                     {!eventName==""? <EditPanel 
-                        eventAuthor={eventAuthor} 
-                        eventName={eventName} 
-                        eventDesc={eventDesc} 
-                        eventAddress={eventAddress} 
+                        eventInfo={eventInfo}
                         edit={edit} />: <div className="empty">Wybierz swoje wydarzenie!</div> }
                 </div>
             </div>
