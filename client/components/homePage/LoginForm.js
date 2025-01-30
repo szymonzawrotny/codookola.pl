@@ -74,14 +74,14 @@ const LoginForm = ()=>{
                 <input 
                     type={passwordVisible ? "text" : "password"}
                     id="password" 
-                    placeholder="Password"
+                    placeholder="Hasło"
                     value={pass}
                     onChange={handleInput}/>
                     <div className="errorText">{passwordError}</div>
                 {passwordVisible ? <FaEyeSlash size={36} onClick={changeType} style={{cursor:"pointer"}}/> : <FaEye size={36} onClick={changeType} style={{cursor:"pointer"}}/>}
             </div>
             <div className="down">
-                <input type="submit" value="NEXT" />
+                <input type="submit" value="DALEJ" />
             </div>
         </form>
     )

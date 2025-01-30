@@ -8,7 +8,7 @@ import "@/styles/homePage/rightPanel.scss";
 
 const RightPanel = ({headerText})=>{
 
-    const form = headerText=="login"?<LoginForm/>:<RegisterForm/>;
+    const form = headerText=="zaloguj"?<LoginForm/>:<RegisterForm/>;
 
     return(
         <div className="rightPanel">
@@ -22,7 +22,7 @@ const RightPanel = ({headerText})=>{
             {form}
             <footer>
                 <Link href="/policy" className="policy">
-                    privacy policy <FaArrowRight/>
+                    polityka prywatności <FaArrowRight/>
                 </Link>
             </footer>
         </div>

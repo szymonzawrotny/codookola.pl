@@ -61,7 +61,7 @@ const SearchBar = ({handleButton})=>{
                     type="text"
                     onClick={handleInputShow} 
                     onChange={handleInput}
-                    placeholder="Search location"/>
+                    placeholder="Szukaj wydarzeń..."/>
                 <HiOutlineMagnifyingGlass size={32}/>
                 <div className="list">
                     <div className="elements">

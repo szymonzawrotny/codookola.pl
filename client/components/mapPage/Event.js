@@ -10,7 +10,7 @@ import Image from 'next/image';
 import SwiperBox from "./SwiperBox";
 import "@/styles/mapPage/interface/panels/event.scss";
 
-const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
+const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo,onlyView=false})=>{
 
     const {data:session} = useSession({
         required: false,
@@ -66,16 +66,18 @@ const Event = ({handleButton,handleLike,isLike,handleSave,save,eventInfo})=>{
         setPath(`http://localhost:5000${eventInfo.photo_path}`)
         setPath2(`http://localhost:5000${eventInfo.photo_path2}`)
         setPath3(`http://localhost:5000${eventInfo.photo_path3}`)
-    },[])
+    },[eventInfo])
 
     return(
         <div className="event">
-            <div className="options" onClick={handleOptions} ref={ref}>
+            {session ? (
+                <div className="options" onClick={handleOptions} ref={ref}>
                 <SlOptions size={28}/>
                 <div className="optionsPanel" onClick={handleReport}>
                     <MdReportGmailerrorred/>zgłoś
                 </div>
             </div>
+            ) : null}
             <div className="userData">
                 <div className="icon">
                     {iconPath ? <div className="userIcon"><Image

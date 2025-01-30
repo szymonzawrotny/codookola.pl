@@ -15,7 +15,6 @@ const Home = ()=>{
         onUnauthenticated(){
             router.push("/")
         }
-
     })
 
     const [file, setFile] = useState(null);

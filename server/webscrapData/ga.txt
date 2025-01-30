@@ -1,0 +1,338 @@
+[
+  {
+    "event_id": 1,
+    "nazwa": "MATA TOUR 2040 : ) - WROCŁAW",
+    "data": "Pt., 31 października 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Hala Stulecia, Wrocław",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 2,
+    "nazwa": "MATA TOUR 2040 : ) - KATOWICE",
+    "data": "Niedz., 30 listopada 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "MCK - Międzynarodowe Centrum Kongresowe, Katowice",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 3,
+    "nazwa": "MATA TOUR 2040 : ) - POZNAŃ",
+    "data": "Czw., 13 listopada 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "MTP POZNAŃ (PAWILON 3A), Poznań",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 4,
+    "nazwa": "MATA TOUR 2040 : ) - GDAŃSK",
+    "data": "Niedz., 7 grudnia 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "ERGO ARENA Gdańsk/Sopot, Gdańsk",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 5,
+    "nazwa": "MATA TOUR 2040 : ) - KRAKÓW",
+    "data": "Pt., 21 listopada 2025, 19:30",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "TAURON Arena Kraków, Kraków",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 6,
+    "nazwa": "QUEBONAFIDE  PÓŁNOC / POŁUDNIE",
+    "data": "Pt., 14 marca 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Online, Internet",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 15,
+    "nazwa": "Paktofonika | TYLE, CO NA BILET | Lublin",
+    "data": "Niedz., 19 stycznia 2025, 19:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Atlas Arena, Łódź",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 16,
+    "nazwa": "BAMBI | TRAP OR DIE TOUR | WROCŁAW",
+    "data": "27-29.03.2025, 20:30",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Gdańsk - różne lokalizacje, Gdańsk",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 18,
+    "nazwa": "Kortowiada 2025 - Festiwal Studencki",
+    "data": "24-26.04.2025, 20:30",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Poznań - różne lokalizacje, Poznań",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 19,
+    "nazwa": "Kaśka Sochacka - Ta Druga TOUR | Gliwice",
+    "data": "Pt., 25 kwietnia 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Warszawa - różne lokalizacje, Warszawa",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 21,
+    "nazwa": "BAMBI | TRAP OR DIE TOUR | WARSZAWA",
+    "data": "Niedz., 9 marca 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Kraków - różne lokalizacje, Kraków",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 23,
+    "nazwa": "SnowFest Festival 2025",
+    "data": "Pt., 7 marca 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "G2A Arena Centrum Wystawienniczo–Kongresowe Województwa Podkarpackiego, Jasionka",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 24,
+    "nazwa": "BAMBI | TRAP OR DIE TOUR | GDAŃSK/SOPOT",
+    "data": "Pt., 11 kwietnia 2025, 19:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Klub Studio, Kraków",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 26,
+    "nazwa": "4. Urodziny Dopehouse",
+    "data": "Sob., 1 marca 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Arena Ostrów, Ostrów Wielkopolski",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 27,
+    "nazwa": "Kortez Wiosna'25 | Lublin",
+    "data": "Niedz., 16 marca 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Fabryka Kultury Zgrzyt, Lublin",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 28,
+    "nazwa": "Kortez Wiosna'25 | Zabrze",
+    "data": "29.05.25 - 31.05.25, 16:30",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Hala Stulecia, Wrocław",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 29,
+    "nazwa": "Kortez Wiosna'25 | Poznań",
+    "data": "Pon., 12 maja 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Netto Arena, Szczecin",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 30,
+    "nazwa": "Kortez Wiosna'25 | Kraków",
+    "data": "Czw., 10 kwietnia 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Plaża Kortowska, Olsztyn",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 31,
+    "nazwa": "Kortez Wiosna'25 | Lublin",
+    "data": "Pt., 9 maja 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Mała Arena, PreZero Arena Gliwice, Gliwice",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 32,
+    "nazwa": "Kortez Wiosna'25 | Częstochowa",
+    "data": "Sob., 26 kwietnia 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "COS Torwar, Warszawa",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 33,
+    "nazwa": "Kortez Wiosna'25 | Gdynia",
+    "data": "7.03.25 - 8.03.25, 18:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "COS Torwar, Warszawa",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 34,
+    "nazwa": "Kortez Wiosna'25 | Gdynia",
+    "data": "Pt., 21 marca 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Centrum Wystawienniczo-Kongresowe, Opole",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 37,
+    "nazwa": "BAMBI | TRAP OR DIE TOUR | POZNAŃ",
+    "data": "Sob., 15 marca 2025, 20:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "Amfiteatr Skalite, Szczyrk",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  },
+  {
+    "event_id": 38,
+    "nazwa": "KIKUO | Warszawa",
+    "data": "Sob., 4 października 2025, 19:00",
+    "rodzaj": "koncert",
+    "author_id": "999",
+    "author_email": "bot o.O",
+    "opis": "wygenerowano automatycznie",
+    "adres": "ERGO ARENA Gdańsk/Sopot, Gdańsk",
+    "location": {
+      "lat": "brak",
+      "lng": "brak"
+    }
+  }
+]

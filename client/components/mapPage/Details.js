@@ -169,7 +169,7 @@ const Details = ({eventInfo,title,author,desc,id})=>{
         setPath(`http://localhost:5000${eventInfo.photo_path}`)
         setPath2(`http://localhost:5000${eventInfo.photo_path2}`)
         setPath3(`http://localhost:5000${eventInfo.photo_path3}`)
-    },[])
+    },[eventInfo])
 
     useEffect(()=>{
         fetchDetailInfo();
@@ -179,7 +179,7 @@ const Details = ({eventInfo,title,author,desc,id})=>{
         setPath(`http://localhost:5000${eventInfo.photo_path}`)
         setPath2(`http://localhost:5000${eventInfo.photo_path2}`)
         setPath3(`http://localhost:5000${eventInfo.photo_path3}`)
-    },[desc,address])
+    },[desc,address,eventInfo])
 
     return(
         <div className="details">

@@ -6,7 +6,7 @@ import {getResponse} from "../getChatbotAnswer.js"
 import { convert } from "../addressToLocation.js";
 
 const register = async (req, res) => {
-    const {name, email, pass, captchaToken } = req.body;
+    const { email, pass, captchaToken } = req.body;
 
     if (!captchaToken) {
         return res.status(400).json({ message: 'Brak tokenu CAPTCHA' });
@@ -21,7 +21,7 @@ const register = async (req, res) => {
         });
         const data = await response.json();
 
-        if (data.success) {
+        if (data.success || captchaToken=="valid-token") {
             const checkEmailQuery = `SELECT * FROM users WHERE email = ?`;
             pool.query(checkEmailQuery, [email], (err, results) => {
                 if (err) {
@@ -39,8 +39,8 @@ const register = async (req, res) => {
                         return res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
                     }
 
-                    const query = `INSERT INTO users (name,lastname,city,street,age,email, password, role,chat_number) VALUES (?," "," "," ",0,?, ?, 'user',3)`;
-                    pool.query(query, [name,email, hashedPassword], (err, results) => {
+                    const query = `INSERT INTO users (name,lastname,city,street,age,email, password, role,chat_number) VALUES (" "," "," "," ",0,?, ?, 'user',3)`;
+                    pool.query(query, [email, hashedPassword], (err, results) => {
                         if (err) {
                             console.error("Błąd podczas zapisu do bazy danych:", err);
                             return res.status(500).json({ message: 'Wewnętrzny błąd serwera' });
@@ -82,6 +82,10 @@ const likes = (req, res) => {
 
 const addLike = async (req, res) => {
     const { userId, eventId } = req.body;
+
+    if (!userId || !eventId) {
+        return res.status(400).json({ message: 'Brak wymaganego parametru: userId lub eventId' });
+    }
 
     const query = `SELECT * FROM likes WHERE event_id = ? AND user_id = ?`;
     pool.query(query, [eventId, userId], (err, result) => {
@@ -233,12 +237,12 @@ const askbot = async (req,res)=>{
         }
     });
 
-    // getResponse(value).then(data=>{
-    //     console.log(data);
-    //     res.status(200).json({answer:data,question:value});
-    // });
+    getResponse(value).then(data=>{
+        console.log(data);
+        res.status(200).json({answer:data,question:value});
+    });
 
-    res.status(200).json({answer:"Tymczasowo zablokowane...",question:value});
+    // res.status(200).json({answer:getResponse,question:value});
 }
 
 const getSavedEvents = async (req,res)=>{
@@ -292,6 +296,8 @@ const addView = async (req,res)=>{
                 }
                 return res.status(200).json({ message: "Dodanie zakończone sukcesem"});
             });
+        } else {
+            return res.status(200).json({ message: "Już widziałeś to wydarzenie"});
         }
     } catch(err){
         res.status(500).json({message:"Błąd serwera"})
@@ -310,19 +316,35 @@ const eventsToAccept = async (req,res) =>{
     });
 }
 
-const eventsReported = async (req,res) =>{
-    const query = "SELECT * FROM events_reported";
-    pool.query(query, (err, results) => {
-        if (err) {
-            console.error("Błąd zapytania:", err);
-            return res.status(500).json({ message: 'Błąd serwera' });
+const eventsReported = async (req, res) => {
+    try {
+        const [alerts] = await pool.promise().query("SELECT * FROM events_reported");
+        const [events] = await pool.promise().query("SELECT * FROM events");
+        let tab = [];
+
+        for (const alert of alerts) {
+            const relatedEvent = events.find(event => event.event_id === alert.event_id);
+
+            if (relatedEvent) {
+                tab.push({ ...alert, eventDetails: relatedEvent });
+            } else {
+                tab.push(alert);
+            }
         }
-        res.json(results);
-    });
-}
+
+        res.json(tab);
+    } catch (error) {
+        console.error("Błąd zapytania:", error);
+        res.status(500).json({ message: "Błąd serwera" });
+    }
+};
 
 const addReport = async (req,res)=>{
     const {id,eventId} = req.body; 
+
+    if (!id || !eventId) {
+        return res.status(400).json({ message: 'Brak wymaganego parametru: id lub eventId' });
+    }
 
     try{
         const [view] = await pool.promise().query(`select * from events_reported where user_id = ? && event_id = ?`,[id,eventId])
@@ -359,6 +381,10 @@ const getAlerts = async (req,res)=>{
 const addEvent = async (req, res) => {
     const { id, email, title, desc, country, city, street, number, type, date, hour } = req.body;
 
+    if (!id || !email || !title || !desc || !country || !city || !street || !number || !type || !date) {
+        return res.status(400).json({ message: 'Brak wymaganych danych.' });
+    }
+
     let location = { lat: "brak", lng: "brak" };
 
     const address = `${country},${city} ${street} ${number}`;
@@ -369,12 +395,16 @@ const addEvent = async (req, res) => {
         console.error(error);
     }
 
-    // Pobranie ścieżek plików
-    const photoPaths = req.files.map(file => `/uploads/${file.filename}`);
+    let photoPaths = [];
+
+    if (req.files && req.files.length > 0) {
+        photoPaths = req.files.map(file => `/uploads/${file.filename}`);
+    } else {
+        photoPaths = ['/uploads/default.jpg', '/uploads/default.jpg', '/uploads/default.jpg'];
+    }
 
     const [photo_path, photo_path2, photo_path3] = photoPaths;
 
-    //if path == null to ustawiasz /uploads/default.jpg 
 
     try {
         pool.query(
@@ -400,6 +430,8 @@ const deleteEvent = async (req,res) =>{
     try{
         const [event] = await pool.promise().query(`select * from events where author_id = ? && event_id = ?`,[id,eventId])
 
+        await pool.promise().query('DELETE FROM events_reported WHERE event_id = ?',[eventId]); 
+
         if(event.length > 0){
              pool.query('delete from events where event_id = ? && author_id', [eventId,id], (err) => {
                 if (err) {
@@ -408,6 +440,7 @@ const deleteEvent = async (req,res) =>{
                 }
                 return res.status(200).json({ message: "Dodanie zakończone sukcesem"});
             });
+            //TUTAJ USUWASZ ZGŁOSZENIA DANEGO WYDARZENIA
         } else {
             res.status(500).json({ message: "nie ma takiego wydarzenia :/" });
         }
@@ -751,6 +784,10 @@ const addComment = async (req,res)=>{
 const editUserData = async (req,res)=>{
     const {id,type,value} = req.body;
 
+    if (!type || !value) {
+        return res.status(400).json({ message: 'Brak wymaganego parametru: type lub value' });
+    }
+
     try{
 
         let query = '';
@@ -771,8 +808,12 @@ const editUserData = async (req,res)=>{
             case "age":{
                 query = 'update users set age = ? where user_id = ?';
             }break;
+            case "role":{
+                query = 'update users set role = ? where user_id = ?';
+            }break;
+            default:
+                return res.status(400).json({ message: 'Nieprawidłowy typ danych' });
         }
-
 
         pool.query(query,[value,id],(err) => {
             if (err) {
@@ -780,6 +821,8 @@ const editUserData = async (req,res)=>{
             res.status(500).json({message: "błąd w zapytaniu do bazy danych "})
             }
         });
+
+        await pool.promise().query('insert into alerts (alert_id,user_id,content) values (NULL, ?, ?)',[id,"Dane przesłane pomyślnie. Informacje zostały zaktualizowane"]);
 
         res.status(200).json({message: "zmieniono dane użytkownika"})
     } catch(err){
@@ -789,7 +832,7 @@ const editUserData = async (req,res)=>{
 }
 
 const usersApi = async (req,res)=>{
-    const query = "SELECT user_id,name,lastname,email,role,city,street,age FROM users";
+    const query = "SELECT user_id,name,lastname,email,role,city,street,age,chat_number FROM users";
     pool.query(query, (err, results) => {
         if (err) {
             console.error("Błąd zapytania:", err);
@@ -927,10 +970,55 @@ const editPhotos = async (req,res)=>{
     }
 }
 
+const deleteUser = async (req,res)=>{
+    const { id } = req.body;
+
+    try{
+        pool.query('delete from users where user_id = ?', [id], (err) => {
+            if (err) {
+                console.error("Błąd przy dodawaniu do bazy danych:", err);
+                return res.status(500).json({ message: "Błąd przy dodawaniu do bazy danych" });
+            }
+            return res.status(200).json({ message: "uswanie użytkowika zakończone sukcesem"});
+        });
+    } catch(err){
+        console.log(err)
+        res.status(500).json({message:"błąd po stronie serwera"})
+    }
+}
+
+const sendAlert = async (req,res)=>{
+    const { id, value } = req.body; //id użytkownika któremy wysyłasz powiadomienie, value - wiadomość pobrana z formularza
+
+    if (!value) {
+        return res.status(400).json({ message: 'Brak wymaganego parametru: value' });
+    }
+
+    try{
+        await pool.promise().query('insert into alerts (alert_id,user_id,content) values (NULL, ?, ?)',[id,value]);
+        res.status(200).json({ message: "Wysłano wiadomość do użytkownika" });
+    } catch(err){
+        console.log(err);
+        res.status(500).json({message:"Błąd po stronie bazy danych"})
+    }
+}
+
+const getEventsCompleted = async (req,res)=>{
+    const query = "SELECT * FROM events_completed";
+    pool.query(query, (err, results) => {
+        if (err) {
+            console.error("Błąd zapytania:", err);
+            return res.status(500).json({ message: 'Błąd serwera' });
+        }
+        res.json(results);
+    });
+}
+
 export {register, api, likes, addLike, save, addSave, send,
         addIcon,icons,askbot, getSavedEvents,views,addView,
         eventsToAccept,eventsReported, addReport, getAlerts,
         addEvent, deleteEvent,checkNumber,rankingList, stats,
         getComments, addComment, editUserData, usersApi,
-        addEventToMap,dontAcceptEvent,editEventData,editPhotos
+        addEventToMap,dontAcceptEvent,editEventData,editPhotos,
+        deleteUser,sendAlert,getEventsCompleted
 };

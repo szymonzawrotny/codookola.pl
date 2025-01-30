@@ -85,7 +85,7 @@ const Map = React.memo(({setPosState,setComponent,mapRef,selectedId,setSelectedI
 
     return (
         <LoadScript 
-            // googleMapsApiKey={process.env.NEXT_PUBLIC_KEY}
+            //googleMapsApiKey={process.env.NEXT_PUBLIC_KEY}
             googleMapsApiKey=""
         >
             <GoogleMap

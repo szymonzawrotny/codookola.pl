@@ -59,9 +59,9 @@ const Home = ()=>{
                 <form onSubmit={handleSubmit}>
                     <input type="text" placeholder='Tytuł...' value={title} onChange={(e)=>setTitle(e.target.value)}/>
                     <select>
-                        <option value="pierwsze">pierwsze</option>
-                        <option value="drugie">drugie</option>
-                        <option value="trzecie">trzecie</option>
+                        <option value="pierwsze">Problem z wydarzeniem</option>
+                        <option value="drugie">Problem z kontem</option>
+                        <option value="trzecie">Nowa funkcja</option>
                         <option value="czwarte">czwarte</option>
                     </select>
                     <textarea value={message} onChange={(e)=>setMessage(e.target.value)} placeholder='Treść wiadomości...'></textarea>

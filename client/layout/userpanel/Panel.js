@@ -109,27 +109,27 @@ const Panel = ({children})=>{
                 </div>
                 <Link href="/userpanel" className="option active" onClick={handleOption}>
                     <FaHome />
-                    home
+                    główna
                 </Link>
                 <Link href="/userpanel/info" className="option" onClick={handleOption}>
                     <FaRegUserCircle />
-                    info
+                    dane
                 </Link>
                 <Link href="/userpanel/stats" className="option" onClick={handleOption}>
                     <IoStatsChart/>
-                    stats
+                    statystyki
                 </Link>
                 <Link href="/userpanel/events" className="option" onClick={handleOption}>
                     <MdEventNote/>
-                    events
+                    wydarzenia
                 </Link>
                 <Link href="/userpanel/support" className="option" onClick={handleOption}>
                     <BsChatText/>
-                    support
+                    wsparcie
                 </Link>
                 <div className="option" onClick={logout}>
                     <BiLogOutCircle/>
-                    log out
+                    wyloguj
                 </div>
                 <div className="add">
                     odkrywaj wydarzenia!

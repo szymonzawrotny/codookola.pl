@@ -1,43 +1,37 @@
 'use client';
 import { useState, useEffect, useRef } from 'react';
 import ReCAPTCHA from "react-google-recaptcha";
-
 import { IoPersonCircleOutline } from "react-icons/io5";
 import { FaUnlockAlt, FaEye, FaEyeSlash } from "react-icons/fa";
-import { MdDriveFileRenameOutline } from "react-icons/md";
 
 const RegisterForm = () => {
     const recaptchaRef = useRef();
-    
-    const [name, setName] = useState("");
+
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [passwordRepeat, setPasswordRepeat] = useState("");
     const [captchaToken, setCaptchaToken] = useState("");
-    
+
     const [errors, setErrors] = useState({
-        name: "",
         email: "",
-        password: ""
+        password: "",
+        passwordRepeat: ""
     });
 
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const [passwordVisibleRepeat, setPasswordVisibleRepeat] = useState(false);
 
     const onCaptchaChange = (token) => {
-        if (token) setCaptchaToken(token);
+        setCaptchaToken(token);
     };
 
     const validateFields = () => {
         let hasErrors = false;
         const newErrors = {
-            name: "",
             email: "",
-            password: ""
+            password: "",
+            passwordRepeat: ""
         };
-
-        if (name.trim() === "") {
-            newErrors.name = "Imię nie może być puste.";
-            hasErrors = true;
-        }
 
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(email)) {
@@ -51,23 +45,31 @@ const RegisterForm = () => {
             hasErrors = true;
         }
 
+        if (password !== passwordRepeat) {
+            newErrors.passwordRepeat = "Hasła nie są identyczne.";
+            hasErrors = true;
+        }
+
         setErrors(newErrors);
         return !hasErrors;
     };
 
     const handleFormSend = async (e) => {
         e.preventDefault();
+        recaptchaRef.current.execute();
 
         if (!validateFields()) {
             return;
         }
 
-        recaptchaRef.current.execute();
+        if (!captchaToken) {
+            alert("CAPTCHA nie została jeszcze wygenerowana. Spróbuj ponownie.");
+            return;
+        }
 
         const response = await fetch("http://localhost:5000/reg", {
             method: "POST",
             body: JSON.stringify({
-                name,
                 email,
                 pass: password,
                 captchaToken
@@ -78,43 +80,26 @@ const RegisterForm = () => {
         });
 
         if (response.ok) {
-            document.querySelector(".loginAlert").classList.remove("hidden");
-            setName("");
             setEmail("");
             setPassword("");
+            setPasswordRepeat("");
             setCaptchaToken("");
             setErrors({});
 
-            setTimeout(()=>{
-                document.querySelector(".loginAlert").classList.add("hidden");
-            },3000)
+            const data = await response.json();
+            alert("Rejestracja zakończona sukcesem.");
         } else {
+            const data = await response.json();
             alert("Wystąpił błąd podczas rejestracji.");
         }
     };
 
-    const togglePasswordVisibility = () => setPasswordVisible(!passwordVisible);
-
     useEffect(() => {
         recaptchaRef.current.execute();
-    }, []);
+    }, [email]);
 
     return (
         <form onSubmit={handleFormSend} className="register">
-            <div className={`input ${errors.name ? "error" : ""}`}>
-                <MdDriveFileRenameOutline size={34} style={{ color: "#222", marginLeft: "8px" }} />
-                <input
-                    type="text"
-                    value={name}
-                    onChange={(e) => {
-                        setName(e.target.value);
-                        setErrors((prev) => ({ ...prev, name: "" }));
-                    }}
-                    placeholder="Imię"
-                />
-                {errors.name && <div className="errorText">{errors.name}</div>}
-            </div>
-
             <div className={`input ${errors.email ? "error" : ""}`}>
                 <IoPersonCircleOutline size={42} style={{ color: "#222" }} />
                 <input
@@ -141,11 +126,26 @@ const RegisterForm = () => {
                     placeholder="Hasło"
                 />
                 {errors.password && <div className="errorText">{errors.password}</div>}
-                {passwordVisible ? (
-                    <FaEyeSlash size={36} onClick={togglePasswordVisibility} style={{ cursor: "pointer" }} />
-                ) : (
-                    <FaEye size={36} onClick={togglePasswordVisibility} style={{ cursor: "pointer" }} />
-                )}
+                <span onClick={() => setPasswordVisible(!passwordVisible)}>
+                    {passwordVisible ? <FaEyeSlash size={36} /> : <FaEye size={36} />}
+                </span>
+            </div>
+
+            <div className={`input ${errors.passwordRepeat ? "error" : ""}`}>
+                <FaUnlockAlt size={34} style={{ color: "#222", marginLeft: "8px" }} />
+                <input
+                    type={passwordVisibleRepeat ? "text" : "password"}
+                    value={passwordRepeat}
+                    onChange={(e) => {
+                        setPasswordRepeat(e.target.value);
+                        setErrors((prev) => ({ ...prev, passwordRepeat: "" }));
+                    }}
+                    placeholder="Powtórz hasło"
+                />
+                {errors.passwordRepeat && <div className="errorText">{errors.passwordRepeat}</div>}
+                <span onClick={() => setPasswordVisibleRepeat(!passwordVisibleRepeat)}>
+                    {passwordVisibleRepeat ? <FaEyeSlash size={36} /> : <FaEye size={36} />}
+                </span>
             </div>
 
             <div className="down">
@@ -157,7 +157,7 @@ const RegisterForm = () => {
                         onChange={onCaptchaChange}
                     />
                 </div>
-                <input type="submit" value="NEXT" />
+                <input type="submit" value="DALEJ" />
             </div>
         </form>
     );

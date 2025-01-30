@@ -1,0 +1,128 @@
+.EventCompleted{
+    width:100%;
+    height:350px;
+    min-height: 350px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background-color: #faea9a;
+    margin-top: 25px;
+    border-radius: 15px;
+    transition: .3s ease-in-out;
+    justify-content: flex-start;
+    padding-bottom: 15px;
+    overflow: hidden;
+    .userData{
+        height:60px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-weight: 700;
+        transition: .3s ease-in-out;
+        .icon{
+            .userIcon{
+                width:30px;
+                height:30px;
+                margin: 0 10px 0 15px;
+                border-radius: 50%;
+                position: relative;
+                overflow: hidden;
+                img{
+                    position: absolute;
+                    top:50%;
+                    left:50%;
+                    transform: translate(-50%,-50%);
+                    max-height:100%;
+                    width:auto;
+                    user-select:none;
+                    -webkit-user-drag: none;  //zakaz przeciągania fotek
+                }
+            }
+            svg{
+                font-size:28px;
+                margin: 0 10px 0 15px;
+                color:#222;
+            }
+        }
+        .name{
+            cursor: default;
+            font-size:14px;
+            font-weight: 500;
+            user-select:none;
+        }
+    }
+    .photos{
+        overflow: hidden;
+        position: relative;
+        user-select: none;
+        .swiper-wrapper{
+            height: 200px;
+            .swiper-slide{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                position: relative;
+                img{
+                    position: absolute;
+                    top:50%;
+                    left:50%;
+                    transform: translate(-50%,-50%);
+                    width:100%;
+                    height: auto;
+                }
+            }
+        }
+    }
+    .title{
+        height:50px;
+        position: relative;
+        display: flex;
+        align-items:center;
+        font-weight: 500;
+        letter-spacing: 2px;
+        cursor: default;
+        text-transform: capitalize;
+        font-size:16px;
+        transition: .3s ease-in-out;
+        span{
+            margin-left: 15px;
+        }
+    }
+    .desc{
+        position: absolute;
+        top:350px;
+        left:15px;
+        width:90%;
+        max-height: 75px;
+        overflow-y: scroll;
+        letter-spacing: 2px;
+    }
+    .data{
+        position: absolute;
+        top:425px;
+        left:15px;
+        width:90%;
+        text-transform: capitalize;
+        p{
+            margin: 5px 0 5px 0;
+        }
+    }
+    .unroll{
+        position: absolute;
+        bottom: 15px;
+        right: 15px;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        svg{
+            font-size:22px;
+            color:royalblue;
+        }
+    }
+}
+
+.EventCompleted.active{
+    height: 600px;
+}

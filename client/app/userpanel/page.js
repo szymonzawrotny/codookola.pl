@@ -19,10 +19,7 @@ const Home = ()=>{
             <div className="homeOptions">
                 <div className="calendar">
                     <Calendar value={value}/>
-                </div>
-                <div className="homeChart">
-                    <InfoChart/>
-                </div>
+                </div> 
             </div>
         </div>
     )

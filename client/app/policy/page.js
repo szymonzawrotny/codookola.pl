@@ -6,44 +6,40 @@ const Policy = ()=>{
 
     const chapterData = [
         {
-            tittle: "Privacy Policy:",
-            text: "This privacy policy and cookies policy outlines the principles of processing personal data and the use of cookies and other technologies on the website szymonzawrotny.pl . The administrator of the site is Szymon Zawrotny. You can contact the administrator at: szymonzawrotny@gmail.com."
+            tittle: "Polityka prywatności:",
+            text: "Niniejsza polityka prywatności i plików cookies określa zasady przetwarzania danych osobowych oraz wykorzystywania plików cookies i innych technologii w serwisie internetowym szymonzawrotny.pl . Administratorem strony jest Szymon Zawrotny. Kontakt z administratorem możliwy jest pod adresem: szymonzawrotny@gmail.com."
         },
         {
-            tittle: "Personal Data We Collect:",
-            text: `When registering on our portal, we collect the following data: Email address and password. After logging in, we also collect location data, which is necessary for the proper functioning of the interactive map displaying events in the user's vicinity.
-
-            Users can also add events by providing the location, date, and time of the event.`
+            tittle: "Dane osobowe, które zbieramy:",
+            text: `Podczas rejestracji na naszym portalu zbieramy następujące dane: adres e-mail oraz hasło. Po zalogowaniu gromadzimy również dane dotyczące lokalizacji, które są niezbędne do prawidłowego działania interaktywnej mapy wyświetlającej wydarzenia w pobliżu użytkownika. Użytkownicy mogą także dodawać wydarzenia, podając lokalizację, datę i godzinę wydarzenia.`
         },
         {
-            tittle: "Purposes of Data Processing:",
-            text: `We collect and process your data for the following purposes: Enabling registration and login to the portal, displaying events on the interactive map based on the user's location, storing and managing added events, optimizing website performance and analyzing traffic through Google Analyticss, allowing users to edit their data, delete their account, and remove added events.`
+            tittle: "Cele przetwarzania danych:",
+            text: `Gromadzimy i przetwarzamy Twoje dane w następujących celach: Umożliwienie rejestracji i logowania do portalu, wyświetlanie wydarzeń na interaktywnej mapie na podstawie lokalizacji użytkownika, przechowywanie i zarządzanie dodanymi wydarzeniami, optymalizacja działania serwisu oraz analiza ruchu za pomocą Google Analytics, umożliwienie użytkownikom edycji swoich danych, usunięcia konta oraz dodanych wydarzeń.`
         },
         {
-            tittle: "Data Sharing:",
-            text: "Your personal data is not shared with third parties unless required by law or necessary to fulfill the purposes described above. For website traffic analysis, we use Google Analytics, which may process anonymized user data."
+            tittle: "Udostępnianie danych:",
+            text: "Twoje dane osobowe nie są udostępniane podmiotom trzecim, chyba że wymagają tego przepisy prawa lub jest to niezbędne do realizacji celów opisanych powyżej. W celu analizy ruchu na stronie korzystamy z Google Analytics, który może przetwarzać zanonimizowane dane użytkowników."
         },
         {
-            tittle: "Tracking Technologies:",
-            text: "We use cookies and similar technologies on our website to collect information about user activity and optimize the website's functionality. You can manage your cookie preferences in your browser settings."
+            tittle: "Technologie śledzenia:",
+            text: "Na naszej stronie używamy plików cookies i podobnych technologii, aby zbierać informacje o aktywności użytkowników i optymalizować funkcjonowanie serwisu. Preferencje dotyczące cookies można zarządzać w ustawieniach przeglądarki."
         },
         {
-            tittle: "User Rights:",
-            text: `Every user has the right to:
-            Access their personal data, edit their personal data, delete their account, delete events they have added, withdraw consent for data processing at any time (applies to location data).
-            To exercise your rights, please contact us at szymonzawrotny@gmail.com.`
+            tittle: "Prawa użytkowników:",
+            text: `Każdy użytkownik ma prawo do: Dostępu do swoich danych osobowych, edycji swoich danych osobowych, usunięcia konta, usunięcia dodanych wydarzeń, wycofania zgody na przetwarzanie danych w dowolnym momencie (dotyczy danych lokalizacyjnych). Aby skorzystać z tych praw, prosimy o kontakt pod adresem: szymonzawrotny@gmail.com.`
         },
         {
-            tittle: "Data Security:",
-            text: "The administrator implements appropriate technical and organizational measures to ensure the protection of users' personal data. Data is stored in a database system that meets security and information protection standards, minimizing the risk of unauthorized access, loss, or destruction of data."
+            tittle: "Bezpieczeństwo danych:",
+            text: "Administrator wdraża odpowiednie środki techniczne i organizacyjne w celu zapewnienia ochrony danych osobowych użytkowników. Dane są przechowywane w systemie baz danych, który spełnia standardy bezpieczeństwa i ochrony informacji, minimalizując ryzyko nieautoryzowanego dostępu, utraty lub zniszczenia danych."
         },
         {
-            tittle: "Changes to the Privacy Policy:",
-            text: "We reserve the right to update this privacy policy. Any changes will be published on this page, and we will inform users of significant changes through a notification."
+            tittle: "Zmiany w polityce prywatności:",
+            text: "Zastrzegamy sobie prawo do aktualizacji niniejszej polityki prywatności. Wszelkie zmiany będą publikowane na tej stronie, a o istotnych zmianach poinformujemy użytkowników za pomocą powiadomienia."
         },
         {
-            tittle: "Contact:",
-            text: "If you have any questions regarding our privacy policy, please contact us at: szymonzawrotny@gmail.com."
+            tittle: "Kontakt:",
+            text: "Jeśli masz jakiekolwiek pytania dotyczące naszej polityki prywatności, skontaktuj się z nami pod adresem: szymonzawrotny@gmail.com."
         },
     ]
 
@@ -55,10 +51,10 @@ const Policy = ()=>{
         <div className="policyPage">
             <header>
                 <span className="title">
-                    privacy policy
+                    polityka prywatności
                 </span>
                 <span className="subTitle">
-                    our personal statement, cookies, third-parties
+                    oświadczenie dotyczące danych osobowych, pliki cookies, podmioty trzecie
                 </span>
             </header>
             <main>

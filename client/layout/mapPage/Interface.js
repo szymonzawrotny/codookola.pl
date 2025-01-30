@@ -15,6 +15,7 @@ import Save from '@/components/mapPage/Save';
 import Last from '@/components/mapPage/Last';
 import Add from '@/components/mapPage/Add';
 import Details from '@/components/mapPage/Details';
+import Archive from '@/components/mapPage/Archive';
 
 const InterFace = ({posState, setPosState,pos,handleButton,component,setComponent}) => {
 
@@ -63,6 +64,8 @@ const InterFace = ({posState, setPosState,pos,handleButton,component,setComponen
             case "last": setComponent(<Last handleButton={handleButton}/>);
                 break;
             case "add": setComponent(<Add handleMapAlert={handleMapAlert} mapAlertRef={mapAlertRef}/>);
+                break;
+            case "archive": setComponent(<Archive handleButton={handleButton}/>);
                 break;
         }
 

@@ -3,6 +3,7 @@ import chrome from 'selenium-webdriver/chrome.js';
 import path from 'path';
 import * as cheerio from 'cheerio';
 import fs from 'fs'; 
+import { convert } from "../addressToLocation.js";
 
 const chromeDriverPath = path.resolve("C:/Users/grzyb/szymon/programowanie/dane/chromedriver-win64/chromedriver.exe");
 
@@ -43,14 +44,26 @@ const tcConcerts = async ()=>{
 
             console.log(i+1,titleText,dateText,placeText);
 
+            let location = { lat: "brak", lng: "brak" };
+            const address = `Polska, ${placeText}`; 
+    
+            try {
+            console.log(`Konwersja adresu: ${address}`);
+            location = await convert(address); 
+            await delay(500); 
+            } catch (error) {
+            console.error(`Błąd podczas konwersji adresu "${address}":`, error);
+            }
+    
             data.push({
-                event_id: i,
-                nazwa: titleText,
-                data: dateText,
-                adress: placeText,
-            })
+            event_id: i,
+            nazwa: titleText,
+            data: dateText,
+            adress: placeText,
+            location,
+            });
 
-            fs.writeFileSync('../webscrapData/tc_concerts.txt', JSON.stringify(data, null, 2), 'utf-8');
+            fs.writeFileSync('./webscrapData/tc_concerts.txt', JSON.stringify(data, null, 2), 'utf-8');
         }
 
 
@@ -61,7 +74,5 @@ const tcConcerts = async ()=>{
         console.log("wykonano pierwszy")
     }
 }
-
-tcConcerts()
 
 export {tcConcerts}

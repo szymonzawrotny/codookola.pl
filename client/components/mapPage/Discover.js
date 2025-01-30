@@ -5,23 +5,21 @@ import { useSession } from 'next-auth/react'
 
 import Event from "./Event";
 
-const Discover = ({handleButton,})=>{
+const Discover = ({handleButton}) => {
 
-    const {data:session} = useSession({
-        required: false,
-    })
+    const { data: session } = useSession({ required: false });
 
-    const [eventList,setEventList] = useState([]);
-    const [likeList,setLikeList] = useState([]);
-    const [saveList,setSaveList] = useState([]);
+    const [eventList, setEventList] = useState([]);
+    const [likeList, setLikeList] = useState([]);
+    const [saveList, setSaveList] = useState([]);
     const [lat, setLat] = useState(53.56317881922556);
     const [lng, setLng] = useState(20.99479282831869);
-
-    const [tab,setTab] = useState([]);
-    const [eventType,setEventType] = useState("wszystkie")
+    const [tab, setTab] = useState([]);
+    const [eventType, setEventType] = useState("wszystkie");
+    const [distance, setDistance] = useState(600); // Zmienna stanu dla odległości
     const inputRef = useRef();
 
-    const fetchData = async () =>{
+    const fetchData = async () => {
         try {
             const response = await fetch("http://localhost:5000/api");
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
@@ -33,32 +31,31 @@ const Discover = ({handleButton,})=>{
         }
     }
 
-    const fetchLikeList = async ()=>{
+    const fetchLikeList = async () => {
         const result = await fetch("http://localhost:5000/likes")
-        .then(response => response.json())
-        .then(data=>setLikeList(data));
+            .then(response => response.json())
+            .then(data => setLikeList(data));
     }
-    
-    const fetchSaveList = async ()=>{
+
+    const fetchSaveList = async () => {
         const result = await fetch("http://localhost:5000/save")
-        .then(response => response.json())
-        .then(data=>setSaveList(data));
+            .then(response => response.json())
+            .then(data => setSaveList(data));
     }
 
-    const handleLike = async (e)=>{
-
+    const handleLike = async (e) => {
         let eventId;
-        if(e.target.tagName == "svg"){
+        if (e.target.tagName == "svg") {
             eventId = e.target.parentNode.id;
-        } else if(e.target.tagName == "path"){
+        } else if (e.target.tagName == "path") {
             eventId = e.target.parentNode.parentNode.id;
-        }else {
+        } else {
             eventId = e.target.id;
         }
 
-        const response = await fetch("http://localhost:5000/addlike",{
+        const response = await fetch("http://localhost:5000/addlike", {
             method: "POST",
-            body:JSON.stringify({
+            body: JSON.stringify({
                 userId: session?.user?.email?.id,
                 eventId
             }),
@@ -67,26 +64,25 @@ const Discover = ({handleButton,})=>{
             }
         })
 
-        if(response.ok){
+        if (response.ok) {
             const data = await response.json();
             fetchLikeList();
         }
     }
 
-    const handleSave = async (e)=>{
-
+    const handleSave = async (e) => {
         let eventId;
-        if(e.target.tagName == "svg"){
+        if (e.target.tagName == "svg") {
             eventId = e.target.parentNode.id;
-        } else if(e.target.tagName == "path"){
+        } else if (e.target.tagName == "path") {
             eventId = e.target.parentNode.parentNode.id;
-        }else {
+        } else {
             eventId = e.target.id;
         }
 
-        const response = await fetch("http://localhost:5000/addSave",{
+        const response = await fetch("http://localhost:5000/addSave", {
             method: "POST",
-            body:JSON.stringify({
+            body: JSON.stringify({
                 userId: session?.user?.email?.id,
                 eventId
             }),
@@ -95,78 +91,82 @@ const Discover = ({handleButton,})=>{
             }
         })
 
-        if(response.ok){
+        if (response.ok) {
             const data = await response.json();
             fetchSaveList();
         }
     }
 
-    const handleEventType = async (e)=>{
+    const handleEventType = async (e) => {
         const value = e.target.value;
-        setEventType(value)
+        setEventType(value);
 
-        inputRef.current.value = ""
+        inputRef.current.value = "";
 
-        if(value=="wszystkie"){
-            setTab(eventList)
+        if (value == "wszystkie") {
+            setTab(eventList);
         } else {
-            const newTab = eventList.filter(one=>{
-                return (one.rodzaj == value )
-            })
-
-            setTab(newTab)
+            const newTab = eventList.filter(one => one.rodzaj === value);
+            setTab(newTab);
         }
     }
 
-    const handleDistance = async (e) => {
+    const handleDistance = (e) => {
         const value = e.target.value;
-
-        let maxDistance;
-        if (value === "<50") {
-            maxDistance = 50;
-        } else if (value === "<100") {
-            maxDistance = 100;
-        } else if (value === "<150") {
-            maxDistance = 150;
-        } else if (value === ">150") {
-            maxDistance = Infinity;
-        }
+        setDistance(value);  // Aktualizacja wartości suwaka w stanie
 
         const filteredEvents = eventList.filter(event => {
-            const distance = getDistanceFromCords(lat, lng, event.lat, event.lng);
-            return distance <= maxDistance;
+            const dist = getDistanceFromCords(lat, lng, event.lat, event.lng);
+            return dist <= value;
         });
 
         setTab(filteredEvents);
     };
 
-    const getDistanceFromCords = (lat1,lng1,lat2,lng2) =>{
-        const deg2rad = (deg)=> deg*(Math.PI/180);
+    const getMaxDistance = () => {
+        const distanceArr = tab.map(event => getDistanceFromCords(lat, lng, event.lat, event.lng));
+        const maxDistance = Math.max(...distanceArr);
+        return maxDistance ? maxDistance : 600;  // Domyślnie 150 km, jeśli brak wyników
+    };
 
-        let R = 6371 //promień ziemi w km
-        let dLat = deg2rad(lat2-lat1);
-        let dLng = deg2rad(lng2-lng1);
+    const getDistanceFromCords = (lat1, lng1, lat2, lng2) => {
+        const deg2rad = (deg) => deg * (Math.PI / 180);
 
-        let a = Math.sin(dLat/2) * Math.sin(dLat) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLng/2) * Math.sin(dLng/2)
+        let R = 6371; // promień ziemi w km
+        let dLat = deg2rad(lat2 - lat1);
+        let dLng = deg2rad(lng2 - lng1);
 
-        let c = 2 * Math.atan2(Math.sqrt(a),Math.sqrt(1-a));
-        let d = R * c; //dystans w km
+        let a = Math.sin(dLat / 2) * Math.sin(dLat) + Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+        let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+        let d = R * c; // dystans w km
 
         return d;
     }
 
-    const handleSort = async (e) => {
+    const handleSort = (e) => {
         const value = e?.target?.value?.toLowerCase()?.trim() || "";
 
-        const newTab = eventList.filter(one => 
-            one.nazwa.toLowerCase().includes(value) &&
+        let sortedTab = [...eventList];
+
+        if (value === "najnowsze") {
+            sortedTab.sort((a, b) => new Date(a.data) - new Date(b.data));
+        } else if (value === "najstarsze") {
+            sortedTab.sort((a, b) => new Date(b.data) - new Date(a.data));
+        } else if (value === "pokolei") {
+            sortedTab = [...eventList];
+        }
+
+        const filteredTab = sortedTab.filter(one => 
+            one.nazwa.toLowerCase().includes(inputRef.current.value) &&
             (eventType === "wszystkie" || one.rodzaj === eventType)
         );
 
-        setTab(newTab.length > 0 ? newTab : []);
+        setTab(filteredTab.length > 0 ? filteredTab : []);
     };
 
-    useEffect(()=>{
+
+    useEffect(() => {
         fetchData();
         fetchLikeList();
         fetchSaveList();
@@ -179,49 +179,49 @@ const Discover = ({handleButton,})=>{
             setLat(53.56317881922556);
             setLng(20.99479282831869);
         });
-    },[]);
+    }, []);
 
-    const elements = tab.map((one,index)=>{
+    const elements = tab.map((one, index) => {
 
         let isLike = false;
         let isSave = false;
 
-        likeList.forEach(like=>{
-            if(session?.user?.email?.id === like.user_id){
-                if(one.event_id === like.event_id){
+        likeList.forEach(like => {
+            if (session?.user?.email?.id === like.user_id) {
+                if (one.event_id === like.event_id) {
                     isLike = true;
                 }
             }
         })
 
-        saveList.forEach(save=>{
-            if(session?.user?.email?.id === save.user_id){
-                if(one.event_id === save.event_id){
+        saveList.forEach(save => {
+            if (session?.user?.email?.id === save.user_id) {
+                if (one.event_id === save.event_id) {
                     isSave = true;
                 }
             }
         })
 
         return <Event
-                key={index}
-                handleButton={handleButton}
-                eventInfo={one}
-                handleLike={handleLike}
-                isLike={isLike}
-                handleSave={handleSave}
-                save={isSave}
-                />
-    })
+            key={index}
+            handleButton={handleButton}
+            eventInfo={one}
+            handleLike={handleLike}
+            isLike={isLike}
+            handleSave={handleSave}
+            save={isSave}
+        />
+    });
 
-    return(
+    return (
         <div className="discover">
             <div className="search">
                 <div className='input'>
-                    <input 
-                        type="text" 
-                        placeholder='Wpisz wydarzenie...' 
+                    <input
+                        type="text"
+                        placeholder='Wpisz wydarzenie...'
                         ref={inputRef}
-                        onChange={handleSort}></input>
+                        onChange={handleSort} />
                     <HiMagnifyingGlass />
                 </div>
                 <div className='sort'>
@@ -234,20 +234,30 @@ const Discover = ({handleButton,})=>{
                         <option value="naukowe">Naukowe</option>
                         <option value="imprezka">Imprezka</option>
                     </select>
-                    <select className='date' onChange={handleDistance}>
-                        <option value=">150">powyżej 150km</option>
-                        <option value="<150">100-150km</option>
-                        <option value="<100">50-100km</option>
-                        <option value="<50">poniżej 50km</option>
+                    <select className='type' onChange={handleSort}>
+                        <option value="pokolei">Po kolei</option>
+                        <option value="najnowsze">Już zaraz!</option>
+                        <option value="najstarsze">Poczekaj</option>
                     </select>
+                    <div className="space"></div>
+                    <input
+                        type="range"
+                        id="distance-slider"
+                        min="0"
+                        max="600"
+                        step="10"
+                        value={distance}
+                        onChange={handleDistance}
+                        className="slider"
+                    />
+                    <span>{distance} km</span>
                 </div>
             </div>
             <div className="eventList">
-                {
-                    elements.length >0 ? elements : <div className="empty">brak postów</div>
-                }
+                {elements.length > 0 ? elements : <div className="empty">brak postów</div>}
             </div>
         </div>
     )
 }
+
 export default Discover;

@@ -1,15 +1,14 @@
 "use client"
 import { useState,useEffect } from 'react'
-import EditAcceptPanel from '@/components/adminpanel/EditAcceptPanel'
+import EditEventPanel from '@/components/adminpanel/EditEventPanel'
 
 const Home = ()=>{
 
     const [list,setList] = useState([])
-    const [isActive, setIsActive] = useState(false);
     const [data,setData] = useState(null);
 
     const fetchData = async ()=>{
-        const response = await fetch("http://localhost:5000/eventsToAccept")
+        const response = await fetch("http://localhost:5000/api")
         .then(response => response.json())
         .then(data=>setList(data))
     }
@@ -39,7 +38,7 @@ const Home = ()=>{
             <div className="editPanel">
                 <div className="editContainer">
                     {
-                        data ? <EditAcceptPanel data={data}/> : <div className="contentEmpty">Wybierz wydarzenie...</div>
+                        data ? <EditEventPanel data={data}/> : <div className="contentEmpty">Wybierz wydarzenie...</div>
                     }
                 </div>
             </div>

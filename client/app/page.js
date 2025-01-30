@@ -2,12 +2,12 @@
 import { useState } from 'react';
 import "./style.scss"
 
-import LeftPanel from "@/layout/homePage/LeftPanel";
+import LeftPanel from '@/layout/homePage/LeftPanel';
 import RightPanel from "@/layout/homePage/RightPanel";
 
 const Home = ()=>{
 
-    const [headerText,setHeaderText] = useState("login");
+    const [headerText,setHeaderText] = useState("zaloguj");
 
     const handleClickPanel = (e)=>{
         const activePanel = document.querySelector(".active");
@@ -18,12 +18,12 @@ const Home = ()=>{
             activePanel.classList.remove("move");
             register.classList.remove("move");
             login.classList.add("move");
-            setHeaderText("login");
+            setHeaderText("zaloguj");
         } else if(e.target.textContent == "sign up"){
             activePanel.classList.add("move");
             register.classList.add("move");
             login.classList.remove("move");
-            setHeaderText("register");
+            setHeaderText("zarejestruj");
         }
     }
 

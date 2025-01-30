@@ -7,11 +7,15 @@ import cron from 'node-cron'
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
+// import { tcCulture } from './webscraping/tc_culture.js';
+// import { tcConcerts } from './webscraping/tc_concerts.js';
+
 import { register, api, likes, addLike, save, addSave, send,
          addIcon,icons, askbot, getSavedEvents, views, addView, eventsToAccept, 
          eventsReported, addReport, getAlerts, addEvent, deleteEvent, checkNumber,
          rankingList, stats, getComments, addComment, editUserData, usersApi,
-         addEventToMap,dontAcceptEvent,editEventData,editPhotos
+         addEventToMap,dontAcceptEvent,editEventData,editPhotos,deleteUser,
+         sendAlert,getEventsCompleted
         } from "./routes/routes.js";
          
 import { pool } from './config/database.js';
@@ -43,17 +47,18 @@ app.listen(port, () => {
 });
 
 let cronIteration = 0;
+let cronWeekIteration = 0;
 
 cron.schedule('01 00 * * *',async ()=>{
     if(cronIteration == 0){
       pool.query('update users set chat_number = 3',(err) => {
         if (err) {
           console.error("Błąd przy aktualizacji bazy danych:", err);
-          return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" });
+          return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" }); //przecież tu nie ma res
         }
       });
 
-      const [events] = await pool.promise().query(`SELECT * FROM events WHERE data < NOW()`);
+      const [events] = await pool.promise().query(`SELECT * FROM events WHERE data < NOW()`); 
       console.log(`Znaleziono ${events.length} wydarzeń do przeniesienia`);
 
       // Przenoszenie wydarzeń do tabeli events_completed
@@ -68,6 +73,10 @@ cron.schedule('01 00 * * *',async ()=>{
               event.photo_path, event.photo_path2, event.photo_path3
             ]
           );
+
+          //usuwanie zgłoszeń po tym jak zostaną usunięte zgłoszone wydarzenia
+          await pool.promise().query('DELETE FROM events_reported WHERE event_id = ?',[event.event_id]); 
+    
           console.log(`Przeniesiono wydarzenie: ${event.nazwa}`);
         } catch (err) {
           console.error(`Błąd podczas przenoszenia wydarzenia ${event.nazwa}:`, err);
@@ -84,6 +93,18 @@ cron.schedule('01 00 * * *',async ()=>{
 
 cron.schedule('02 00 * * *',()=>{
   cronIteration = 0;
+})
+
+cron.schedule('03 00 * * 1',()=>{
+  if(cronWeekIteration==0){
+    //tcCulture();
+    //tcConcerts();
+    cronWeekIteration++;
+  }
+})
+
+cron.schedule('04 00 * * 1',()=>{
+  cronWeekIteration = 0;
 })
 
 app.get("/api", api)
@@ -116,3 +137,8 @@ app.post("/addeventtomap",addEventToMap);
 app.post("/dontacceptevent",dontAcceptEvent)
 app.post("/editeventdata",editEventData)
 app.post("/editphotos",upload.array('photos', 3),editPhotos)
+app.post("/deleteuser", deleteUser)
+app.post("/sendalert",sendAlert)
+app.get("/geteventscompleted",getEventsCompleted)
+
+export default app;

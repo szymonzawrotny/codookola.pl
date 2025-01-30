@@ -22,7 +22,7 @@ const fetchEvents = async () => {
         .build();
 
     try {
-        const url = process.env.WEBSCRAPING_URL
+        const url = "https://goingapp.pl/szukaj"
         await driver.get(url);
 
         const wait = 5000;
@@ -115,5 +115,7 @@ const fetchEvents = async () => {
         console.log("wykonano");
     }
 };
+
+fetchEvents()
 
 export { fetchEvents, response };

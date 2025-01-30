@@ -1,98 +1,42 @@
 [
   {
     "event_id": 0,
-    "nazwa": "Rafał Pacześ ProkuraTOUR'a",
-    "data": "poniedziałek, 25 listopada 2024",
-    "adress": "Klub Studio, Kraków"
+    "nazwa": "Kabaret Hrabi - \"Lubię to!\"| godz. 17:30",
+    "data": "poniedziałek, 27 stycznia 2025",
+    "adress": "Klub Stodoła, Warszawa",
+    "location": {
+      "lat": 52.21614,
+      "lng": 21.01621
+    }
   },
   {
     "event_id": 1,
-    "nazwa": "Rafał Pacześ ProkuraTOUR'a",
-    "data": "wtorek, 26 listopada 2024",
-    "adress": "Klub Studio, Kraków"
+    "nazwa": "Kabaret Hrabi - \"Lubię to!\"| godz. 20:30",
+    "data": "poniedziałek, 27 stycznia 2025",
+    "adress": "Klub Stodoła, Warszawa",
+    "location": {
+      "lat": 52.21614,
+      "lng": 21.01621
+    }
   },
   {
     "event_id": 2,
-    "nazwa": "Rafał Pacześ ProkuraTOUR'a",
-    "data": "wtorek, 3 grudnia 2024",
-    "adress": "Klub Studio, Kraków"
+    "nazwa": "Michał Leja",
+    "data": "2 lutego 2025",
+    "adress": "Klub Gwarek, Kraków",
+    "location": {
+      "lat": 50.06677,
+      "lng": 19.90444
+    }
   },
   {
     "event_id": 3,
-    "nazwa": "Rafał Pacześ ProkuraTOUR'a",
-    "data": "środa, 4 grudnia 2024",
-    "adress": "Klub Studio, Kraków"
-  },
-  {
-    "event_id": 4,
-    "nazwa": "EDUKUJĄC RITĘ - SPEKTAKL",
-    "data": "poniedziałek, 16 grudnia 2024",
-    "adress": "Wytwórnia, Łódź"
-  },
-  {
-    "event_id": 5,
-    "nazwa": "Sylwester w Klubie Studio",
-    "data": "wtorek, 31 grudnia 2024",
-    "adress": "Klub Studio, Kraków"
-  },
-  {
-    "event_id": 6,
-    "nazwa": "Stand-up Daniel Midas: Złote myśli // 16:30",
-    "data": "niedziela, 12 stycznia 2025",
-    "adress": "Klub Stodoła, Warszawa"
-  },
-  {
-    "event_id": 7,
-    "nazwa": "Stand-up Daniel Midas: Złote myśli // 20:00",
-    "data": "niedziela, 12 stycznia 2025",
-    "adress": "Klub Stodoła, Warszawa"
-  },
-  {
-    "event_id": 8,
-    "nazwa": "Kabaret Hrabi - \"Lubię to!\"| godz. 17:30",
-    "data": "poniedziałek, 27 stycznia 2025",
-    "adress": "Klub Stodoła, Warszawa"
-  },
-  {
-    "event_id": 9,
-    "nazwa": "Kabaret Hrabi - \"Lubię to!\"| godz. 20:30",
-    "data": "poniedziałek, 27 stycznia 2025",
-    "adress": "Klub Stodoła, Warszawa"
-  },
-  {
-    "event_id": 10,
-    "nazwa": "Kabaret Hrabi “Wady i Waszki” | godz. 17:00",
-    "data": "czwartek, 13 lutego 2025",
-    "adress": "Klub Studio, Kraków"
-  },
-  {
-    "event_id": 11,
-    "nazwa": "Kabaret Hrabi “Wady i Waszki” | godz. 20:00",
-    "data": "czwartek, 13 lutego 2025",
-    "adress": "Klub Studio, Kraków"
-  },
-  {
-    "event_id": 12,
-    "nazwa": "Antoni Syrek-Dąbrowski",
-    "data": "niedziela, 16 lutego 2025",
-    "adress": "Klub Stodoła, Warszawa"
-  },
-  {
-    "event_id": 13,
-    "nazwa": "Dorosłe Dziewczyny",
-    "data": "wtorek, 25 lutego 2025",
-    "adress": "Klub Stodoła, Warszawa"
-  },
-  {
-    "event_id": 14,
-    "nazwa": "Maxim Galkin",
-    "data": "czwartek, 6 marca 2025",
-    "adress": "Klub Stodoła, Warszawa"
-  },
-  {
-    "event_id": 15,
-    "nazwa": "Slava Komissarenko",
-    "data": "poniedziałek, 17 marca 2025",
-    "adress": "Klub Stodoła, Warszawa"
+    "nazwa": "Dizel Show",
+    "data": "piątek, 7 lutego 2025",
+    "adress": "Klub Stodoła, Warszawa",
+    "location": {
+      "lat": 52.21614,
+      "lng": 21.01621
+    }
   }
 ]

@@ -3,7 +3,7 @@ import "@/styles/mapPage/interface/sidePanel.scss";
 import { FaRegBookmark } from "react-icons/fa";
 import { RxCounterClockwiseClock } from "react-icons/rx";
 import { IoAddCircleOutline } from "react-icons/io5";
-import { FiMapPin } from "react-icons/fi";
+import { FiMapPin, FiArchive } from "react-icons/fi";
 
 const SidePanel = ({handleIconAnimation})=>{
 
@@ -29,6 +29,13 @@ const SidePanel = ({handleIconAnimation})=>{
                 onClick={handleIconAnimation}>
                     <RxCounterClockwiseClock size={26}/>
                     ostatnie
+            </div>
+            <div 
+                className="icon"
+                id="archive" 
+                onClick={handleIconAnimation}>
+                    <FiArchive size={26}/>
+                    dawne    
             </div>
             <div 
                 className="icon"

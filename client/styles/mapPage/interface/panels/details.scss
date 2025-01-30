@@ -298,6 +298,18 @@
             .details{
                 .mainPhoto{
                     margin-top: 40px;
+                    .swiper-wrapper{
+                        height: 160px;
+                    }
+                }
+                .detailsNav{
+                    height:4%;
+                }
+                .detailButtons{
+                    height:4%;
+                }
+                .detailsMain{
+                    height:250px;
                 }
             }
         }
