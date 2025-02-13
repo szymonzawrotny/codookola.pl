@@ -153,8 +153,21 @@
     .mapPage{
         .eventPanel{
             .add{
+                padding-bottom: 19%;
+                display: block;
+                overflow: scroll;
                 h1{
-                    margin-top: 50px;
+                    margin-top: 75px;
+                    left:50%;
+                    transform: translateX(-50%);
+                    width:75%;
+                }
+                .addContainer{
+                    margin: 0 auto;
+                    margin-top: 25px;
+                    .addElement.active{
+                        min-height: 500px;
+                    }
                 }
             }
         }

@@ -77,7 +77,7 @@ const EditPanel = ({data})=>{
         <div className="content">
             <h2>{data.email}</h2>
             <p>{`Rola użytkownika: ${data.role}`}</p>
-            <p>{`Pozostała ilość zapytań do chatbota: ${data.chat_number}`}</p>
+            <p>{`Pozostała liczba zapytań do chatbota: ${data.chat_number}`}</p>
             <p>{`Imię: ${data.name && data.name.trim() ? data.name : "brak"}`}</p>
             <p>{`Nazwisko: ${data.lastname && data.lastname.trim() ? data.lastname : "brak"}`}</p>
             <p>{`Wiek: ${data.age ? data.age : "brak"}`}</p>

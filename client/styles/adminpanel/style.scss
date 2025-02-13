@@ -307,6 +307,23 @@
                 background-color: #72cfc8;
             }
         }
+        main{
+            .edit{
+                flex-direction: column;
+                height:1500px;
+                .editPanel{
+                    min-height: 70%;
+                    .content{
+                        .grant{
+                            flex-direction: column;
+                        }
+                    }
+                }
+                .list{
+                     min-height: 25%;
+                }
+            }
+        }
         .adminWindow{
             display: none;
         }
