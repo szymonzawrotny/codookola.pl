@@ -6,6 +6,7 @@ import path from 'path';
 import cron from 'node-cron'
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
+import { readFile } from 'fs/promises';
 
 // import { tcCulture } from './webscraping/tc_culture.js';
 // import { tcConcerts } from './webscraping/tc_concerts.js';
@@ -46,6 +47,17 @@ app.listen(port, () => {
     console.log(`Serwer nasłuchuje na porcie ${port}`);
 });
 
+const loadJsonFromTxt = async (filePath) => {
+    try {
+        const data = await readFile(filePath, 'utf8');
+        const jsonObject = JSON.parse(data);
+        //console.log(jsonObject);
+        return jsonObject;
+    } catch (error) {
+        console.error('Błąd:', error);
+    }
+};
+
 let cronIteration = 0;
 let cronWeekIteration = 0;
 
@@ -54,7 +66,6 @@ cron.schedule('01 00 * * *',async ()=>{
       pool.query('update users set chat_number = 3',(err) => {
         if (err) {
           console.error("Błąd przy aktualizacji bazy danych:", err);
-          return res.status(500).json({ message: "Błąd przy aktualizacji bazy danych" }); //przecież tu nie ma res
         }
       });
 
@@ -95,11 +106,80 @@ cron.schedule('02 00 * * *',()=>{
   cronIteration = 0;
 })
 
-cron.schedule('03 00 * * 1',()=>{
+cron.schedule('03 00 * * 1',async ()=>{
   if(cronWeekIteration==0){
     //tcCulture();
     //tcConcerts();
     cronWeekIteration++;
+
+    const tcConcertsObject = await loadJsonFromTxt("./webscrapData/tc_concerts.txt");
+    tcConcertsObject.forEach( async (item)=>{
+      try {
+        const city = item.adress.split(",")[1];
+        const adress = item.adress.split(",")[0];
+        const data = item.data.split(",")[1]
+
+        await pool.promise().query(
+          `INSERT INTO events_to_accept (nazwa, adres, miasto, kod_pocztowy, lat, lng, opis, rodzaj, data, author_id, author_email, photo_path, photo_path2, photo_path3) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+          [
+            item.nazwa, adress, city, "brak", item.location.lat, item.location.lng, 
+            "wygenerowane automatycznie", "koncert", data, 2167, "szymonzawrotny@gmail.com", 
+            "/uploads/default.jpg", "/uploads/default.jpg", "/uploads/default.jpg"
+          ]
+        );
+        console.log(`Dodano wydarzenie do poczekalni: ${item.nazwa}`);
+      } catch (err) {
+        console.error(`Błąd podczas dodawania wydarzenia ${item.nazwa}:`, err);
+      }
+    })
+
+    const gaObject = await loadJsonFromTxt("./webscrapData/ga.txt");
+    gaObject.forEach(async (item)=>{
+      console.log(item.nazwa);
+      try {
+        const city = item.adres.split(",")[1];
+        const adress = item.adres.split(",")[0];
+        const data = item.data.split(",")[1]
+
+        await pool.promise().query(
+          `INSERT INTO events_to_accept (nazwa, adres, miasto, kod_pocztowy, lat, lng, opis, rodzaj, data, author_id, author_email, photo_path, photo_path2, photo_path3) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+          [
+            item.nazwa, adress, city, "brak", item.location.lat, item.location.lng, 
+            "wygenerowane automatycznie", "koncert", data, 2167, "szymonzawrotny@gmail.com", 
+            "/uploads/default.jpg", "/uploads/default.jpg", "/uploads/default.jpg"
+          ]
+        );
+        console.log(`Dodano wydarzenie do poczekalni: ${item.nazwa}`);
+      } catch (err) {
+        console.error(`Błąd podczas dodawania wydarzenia ${item.nazwa}:`, err);
+      }
+    })
+
+    const tcCultureObject =  await loadJsonFromTxt("./webscrapData/tc_culture.txt");
+    tcCultureObject.forEach(async (item)=>{
+      try {
+        const city = item.adress.split(",")[1];
+        const adress = item.adress.split(",")[0];
+        let data = item.data.split(",")[1]
+        if(!data) data= item.data
+
+        await pool.promise().query(
+          `INSERT INTO events_to_accept (nazwa, adres, miasto, kod_pocztowy, lat, lng, opis, rodzaj, data, author_id, author_email, photo_path, photo_path2, photo_path3) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`, 
+          [
+            item.nazwa, adress, city, "brak", item.location.lat, item.location.lng, 
+            "wygenerowane automatycznie", "koncert", data, 2167, "szymonzawrotny@gmail.com", 
+            "/uploads/default.jpg", "/uploads/default.jpg", "/uploads/default.jpg"
+          ]
+        );
+        console.log(`Dodano wydarzenie do poczekalni: ${item.nazwa}`);
+      } catch (err) {
+        console.error(`Błąd podczas dodawania wydarzenia ${item.nazwa}:`, err);
+      }
+    })
+    
   }
 })
 

@@ -98,8 +98,8 @@ const fetchEvents = async () => {
                     nazwa: text,
                     data: date,
                     rodzaj: "koncert",
-                    author_id: "999",
-                    author_email: "bot o.O",
+                    author_id: "2167",
+                    author_email: "szymonzawrotny@gmail.com",
                     opis: "wygenerowano automatycznie",
                     adres: address,
                     location: location
